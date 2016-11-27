@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 
 [CustomEditor(typeof(LevelCreator))]
@@ -26,7 +27,20 @@ public class LevelCreatorEditor : Editor {
 
     void OnSceneGUI() {
         if (script == null) return;
-        if (script.Tiles == null) ResetLevel();
+        if (script.Tiles == null) {
+            Zone[] tiles = FindObjectsOfType<Zone>();
+            if (tiles.Length == 0) ResetLevel();
+            else {
+                IEnumerable<Zone> query = tiles.OrderBy(zone => zone.Index);
+                query = query.Reverse();
+                script.Tiles = query.ToList();
+                curX = (int)(script.transform.position.x / tileSpacing);
+                curY = -(int)(script.transform.position.y / tileSpacing);
+
+                script.Width = tiles.Where(zone => zone.transform.position.y == 0).Count();
+                script.Height = tiles.Length / script.Width;
+            }
+        }
         Rect size = new Rect(0, 0, 260, 130);
         float sizeButton = 20f;
         GUI.BeginGroup(new Rect(Screen.width - size.width, Screen.height - size.height - 50, size.width, size.height));
@@ -98,6 +112,13 @@ public class LevelCreatorEditor : Editor {
             }
         }
 
+        /*
+        bool lockButton = GUI.Toggle(new Rect(200, sizeButton, sizeButton * 3, sizeButton), script.Tiles[LevelCreator.Offset(curY, curX, script.Width)].Locked, "Lock");
+        if (lockButton) {
+            script.Tiles[LevelCreator.Offset(curY, curX, script.Width)].Locked = !script.Tiles[LevelCreator.Offset(curY, curX, script.Width)].Locked;
+        }
+        */
+
         // DEBUG
         if(GUI.Button(new Rect(0, 0, rc.width, rc.height), "1")) {
             for(int i = 0; i < script.Tiles.Count; i++) {
@@ -119,7 +140,7 @@ public class LevelCreatorEditor : Editor {
         curY = 0;
         script.Height = 1;
         script.Width = 1;
-        script.Tiles = new List<Tile>();
+        script.Tiles = new List<Zone>();
         ResetCursor();
         AddTile();
     }
@@ -130,19 +151,31 @@ public class LevelCreatorEditor : Editor {
     }
 
     private void AddTile() {
-        script.Tiles.Add(Tile.CreateTile(script.tile, script.transform.position, script.background).GetComponent<Tile>());
+        script.Tiles.Add(Zone.CreateTile(script.tile, script.transform.position, script.background).GetComponent<Zone>());
+        for (int i = 0; i < script.Tiles.Count; i++) {
+            script.Tiles[i].Index = i;
+        }
     }
 
     private void AddTile(Vector2 pos) {
-        script.Tiles.Add(Tile.CreateTile(script.tile, pos, script.background).GetComponent<Tile>());
+        script.Tiles.Add(Zone.CreateTile(script.tile, pos, script.background).GetComponent<Zone>());
+        for (int i = 0; i < script.Tiles.Count; i++) {
+            script.Tiles[i].Index = i;
+        }
     }
 
     private void AddTile(int row, int col) {
-        script.Tiles.Insert(LevelCreator.Offset(row, col, script.Width), Tile.CreateTile(script.tile, script.transform.position, script.background).GetComponent<Tile>());
+        script.Tiles.Insert(LevelCreator.Offset(row, col, script.Width), Zone.CreateTile(script.tile, script.transform.position, script.background).GetComponent<Zone>());
+        for (int i = 0; i < script.Tiles.Count; i++) {
+            script.Tiles[i].Index = i;
+        }
     }
 
     private void AddTile(int row, int col, float x, float y) {
         Vector3 pos = new Vector3(x, y, script.transform.position.z);
-        script.Tiles.Insert(LevelCreator.Offset(row, col, script.Width), Tile.CreateTile(script.tile, pos, script.background).GetComponent<Tile>());
+        script.Tiles.Insert(LevelCreator.Offset(row, col, script.Width), Zone.CreateTile(script.tile, pos, script.background).GetComponent<Zone>());
+        for (int i = 0; i < script.Tiles.Count; i++) {
+            script.Tiles[i].Index = i;
+        }
     }
 }

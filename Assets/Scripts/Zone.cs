@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
-public class Tile : MonoBehaviour {
+public class Zone : MonoBehaviour {
     private Sprite background;
+    private bool occupied, locked;
+
+    private int index;
 
 	void Start () {
 	    if(background == null) {
@@ -21,5 +23,20 @@ public class Tile : MonoBehaviour {
         t.anchor = TextAnchor.MiddleCenter;
         // END DEBUG
         return tile;
+    }
+
+    public bool Occupied {
+        get { return occupied; }
+        set { occupied = value; }
+    }
+
+    public bool Locked {
+        get { return locked; }
+        set { locked = value; }
+    }
+
+    public int Index {
+        get { return index; }
+        set { index = value; }
     }
 }

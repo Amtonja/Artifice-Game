@@ -7,7 +7,7 @@ public class LevelCreator : MonoBehaviour {
 
     private int width = 1, height = 1;
 
-    private List<Tile> tiles;
+    private List<Zone> tiles;
 
     public static int Offset(int row, int col, int rowLen) {
         return ((row * rowLen) + col);
@@ -23,7 +23,7 @@ public class LevelCreator : MonoBehaviour {
         set { height = value; }
     }
 
-    public List<Tile> Tiles {
+    public List<Zone> Tiles {
         get { return tiles; }
         set { tiles = value; }
     }
