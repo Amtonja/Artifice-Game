@@ -1,4 +1,4 @@
-﻿namespace Artiface.Characters {
+﻿namespace Artifice.Characters {
     public class CombatStats {
         private int level;
 
@@ -17,6 +17,7 @@
         public CombatStats(int _level, string id) {
             level = _level;
             // Load stats from level and ID
+            // TODO load player stats differently
         }
 
         #region C# Properties

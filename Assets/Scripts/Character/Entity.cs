@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using Artiface.Interfaces;
+using Artifice.Interfaces;
 
-namespace Artiface.Characters {
+namespace Artifice.Characters {
     public abstract class Entity : MonoBehaviour, IIdentifiable, IInteractable, IHealth<int>, ICombatable {
         protected string title;
         protected string id;
@@ -23,6 +23,14 @@ namespace Artiface.Characters {
         }
 
         public abstract void Die();
+
+        public virtual void EnterCombat() {
+            inCombat = true;
+        }
+
+        public virtual void ExitCombat() {
+            inCombat = false;
+        }
 
         #region C# Properties
         public string Name {

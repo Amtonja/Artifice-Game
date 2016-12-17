@@ -1,4 +1,4 @@
-﻿namespace Artiface.Interfaces {
+﻿namespace Artifice.Interfaces {
     public interface IHealth<T> {
         T Health { get; }
 
