@@ -4,7 +4,7 @@ using Artifice.Interfaces;
 namespace Artifice.Data {
     /// <summary>
     /// Holds data about achievements
-    /// Implements the IXML interface so it can be writting and read into xml
+    /// Implements the IXML interface so it can be writing and reading into xml
     /// </summary>
     public class Achievement : IXML {
         private string title = "__ERROR_NO_TITLE__";
@@ -17,7 +17,8 @@ namespace Artifice.Data {
         private bool fired = false;
         private int points = 0;
         private Sprite icon;
-        private string iconPath;
+
+        private const string ICON_PATH = "Achievements/Icons/";
 
         public Achievement() { }
 
@@ -31,16 +32,15 @@ namespace Artifice.Data {
         /// <param name="_steps">Number of steps the achievement has before it can be completed</param>
         /// <param name="_hidden">Whether or not the achievement is hidden</param>
         /// <param name="_iconPath">Path to the icon of the achievement</param>
-        public Achievement(string _title, string _description, string _id, int _points, int _steps, bool _hidden, string _iconPath) {
+        public Achievement(string _title, string _description, string _id, int _points, int _steps, bool _hidden) {
             title = _title;
             description = _description;
             id = _id;
             points = _points;
             steps = _steps;
             hidden = _hidden;
-            iconPath = _iconPath;
-            icon = Resources.Load<Sprite>(iconPath);
 
+            icon = Resources.Load<Sprite>(ICON_PATH + title);
             stepAmount = 100.0f / steps;
         }
 
@@ -93,12 +93,6 @@ namespace Artifice.Data {
             get { return hidden; }
             set { hidden = value; }
         }
-        /// <summary>
-        /// Internal path to the icon image
-        /// </summary>
-        public string IconPath {
-            get { return iconPath; }
-        }
 
         #endregion
         /// <summary>
@@ -135,7 +129,7 @@ namespace Artifice.Data {
         /// The directory where the achievements XML data can be found
         /// </summary>
         public string ResourcesDir {
-            get { return "Data/Achievements"; }
+            get { return "Files/Achievements"; }
         }
         #endregion
     }

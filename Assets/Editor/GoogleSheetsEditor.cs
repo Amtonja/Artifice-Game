@@ -266,7 +266,7 @@ public class GoogleSheetsEditor : EditorWindow {
 
         foundSheets++;
         string folder = GetFolder(sheetTitle);
-        SaveFile("Assets/" + folder + "/" + sheetTitle + ".xml", output);
+        SaveFile("Assets" + folder + sheetTitle + ".xml", output);
         Debug.Log(sheetTitle + ".xml updated at " + folder);
 
         return true;
@@ -390,30 +390,17 @@ public class GoogleSheetsEditor : EditorWindow {
     }
 
     string GetFolder(string dir) {
-        string[] subdirEntries = Directory.GetDirectories(Application.dataPath, "Data", SearchOption.AllDirectories);
-        foreach (string subDir in subdirEntries) {
-            if (subDir.Contains("Resources")) {
-                string outp = subDir.Replace(Application.dataPath, "");
-                if (outp[0] == '\\') outp = outp.Substring(1);
-                return outp;
-            }
-        }
-        string folder = Application.dataPath + "/Resources";
+        string folder = "/Resources";
         if (!Directory.Exists(folder)) {
             Directory.CreateDirectory(folder);
             AssetDatabase.ImportAsset(folder, ImportAssetOptions.ForceUpdate);
         }
-        folder = folder + "/Data";
+        folder = folder + "/Files/";
         if (!Directory.Exists(folder)) {
             Directory.CreateDirectory(folder);
             AssetDatabase.ImportAsset(folder, ImportAssetOptions.ForceUpdate);
         }
-
-        folder = folder + "/" + dir;
-        if (!Directory.Exists(folder)) {
-            Directory.CreateDirectory(folder);
-            AssetDatabase.ImportAsset(folder, ImportAssetOptions.ForceUpdate);
-        }
+        
         AssetDatabase.Refresh();
 
         return folder;
