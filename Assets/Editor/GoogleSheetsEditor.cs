@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
 using Artifice.Data;
+using Artifice.Items;
 
 public class GoogleSheetsEditor : EditorWindow {
     private static GoogleSheetsSettings _settings = null;
@@ -248,7 +249,6 @@ public class GoogleSheetsEditor : EditorWindow {
 
         if (data.Contains("<html>")) {
             LoadHTML(ref loadData, data, sheetTitle, sheetID);
-            Debug.Log(loadData.Count);
         } else {
             //CSV
             LoadCSV(ref loadData, data, sheetTitle);
@@ -258,6 +258,9 @@ public class GoogleSheetsEditor : EditorWindow {
         switch (sheetTitle) {
             case "Achievements":
                 output = SaveLoadManager.WriteXML<Achievement>(loadData);
+                break;
+            case "Potions":
+                output = SaveLoadManager.WriteXML<Potion>(loadData);
                 break;
             default:
                 Debug.LogWarning("Please Add Sheet: " + sheetTitle + " in an appropriate switch statement");
@@ -333,7 +336,9 @@ public class GoogleSheetsEditor : EditorWindow {
             List<string> contents = GetCVSLine(line);
             List<object> rowData = new List<object>();
             for (int j = 0; j < contents.Count; j++) {
-                    rowData.Add(contents[j]);
+                if (contents[j] == "") continue;
+                rowData.Add(contents[j]);
+                Debug.Log(contents[j]);
             }
             loadData.Add(rowData);
         }

@@ -57,7 +57,11 @@ namespace Artifice.Data {
                         // Find the property in the class that matches the tagname and add it to the list
                         PropertyInfo p = properties.Find(x => x.Name == reader.LocalName);
                         if (p != null) {
-                            parameters.Add(reader.ReadElementContentAs(p.PropertyType, null));
+                            if (p.PropertyType.IsEnum) {
+                                parameters.Add(Enum.Parse(p.PropertyType, reader.ReadElementContentAsString()));
+                            } else {
+                                parameters.Add(reader.ReadElementContentAs(p.PropertyType, null));
+                            }
                         }
                     } else if (reader.NodeType == XmlNodeType.EndElement) {
                         // If we reach an end tag whose name is the same as 'T'

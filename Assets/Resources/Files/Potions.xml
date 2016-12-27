@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "Windows-1252"?>
+<PotionData>
+	<Potion>
+		<ID>_basic_</ID>
+		<Title>Basic Potion</Title>
+		<Description>This is a basic potion</Description>
+		<Rarity>Common</Rarity>
+		<Worth>10</Worth>
+		<MethodGroups>BasicHealing</MethodGroups>
+		<EffectAmounts>10
+</EffectAmounts>
+	</Potion>
+	<Potion>
+		<ID>_advanced</ID>
+		<Title>Advanced Potion</Title>
+		<Description>This is an advanced potion</Description>
+		<Rarity>Rare</Rarity>
+		<Worth>100</Worth>
+		<MethodGroups>BasicHealing, AdvancedHealing</MethodGroups>
+		<EffectAmounts>10, 50</EffectAmounts>
+	</Potion>
+</PotionData>
