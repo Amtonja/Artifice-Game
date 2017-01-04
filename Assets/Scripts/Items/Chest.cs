@@ -9,7 +9,7 @@ namespace Artifice.Items {
 
         void Start() {
             inventory = new Inventory();
-            if (!isOpen) {
+            if (CanInteract) {
                 if(itemIDs.Length != 0) inventory.Add(itemIDs);
             }
         }
@@ -20,11 +20,11 @@ namespace Artifice.Items {
             set { isOpen = value; }
         }
 
-        public object[] Interact(params object[] parameters) {
-            if (isOpen) return null;
-            isOpen = true;
+        public void Interact() {
+            if (!CanInteract) return;
+            CanInteract = false;
             // TODO play open anim
-            return inventory.Items.ToArray();
+            // TODO add inventory items to the player's inventory
         }
         #endregion
 

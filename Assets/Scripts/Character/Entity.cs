@@ -11,7 +11,7 @@ namespace Artifice.Characters {
         protected int health;
         protected CharacterRace race;
 
-        public abstract object[] Interact(params object[] parameters);
+        public abstract void Interact();
 
         public virtual void TakeDamage(int _damage) {
             health -= _damage;
