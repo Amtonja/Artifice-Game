@@ -6,6 +6,9 @@ using System;
 
 public class Player : Entity {
 
+	/// <summary>
+	/// This field is temporary, and will be replaced by the XML reader
+	/// </summary>
 	[SerializeField]
 	private EntityInfo entityInfo;
 
@@ -26,12 +29,6 @@ public class Player : Entity {
 		this.stats.BaseSpeed = entityInfo.combatStats.speed;
 		this.stats.BaseStrength = entityInfo.combatStats.strength;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 
 	/// <summary>
 	/// A struct to hold necessary info for this entity,
@@ -60,6 +57,17 @@ public class Player : Entity {
 		public int maxHealth;
 	}
 
+	/// <summary>
+	/// Raises the TriggerEnter2D event.
+	/// This will be used (for now) to handle when combat should begin.
+	/// </summary>
+	/// <param name="other">Other.</param>
+	void OnTriggerEnter2D (Collider2D other) {
+		if(other.gameObject.tag.Equals("Enemy")) {
+			PlayManager.instance.EnemyEncountered(other.gameObject.GetComponent<Player>());
+		}
+	}
+
 	#region implemented abstract members of Entity
 
 	public override void Interact ()
@@ -70,6 +78,16 @@ public class Player : Entity {
 	public override void Die ()
 	{
 		Debug.Log(gameObject.name + " Died!");
+	}
+
+	public override void EnterCombat ()
+	{
+		base.EnterCombat ();
+	}
+
+	public override void ExitCombat ()
+	{
+		base.ExitCombat ();
 	}
 
 	#endregion

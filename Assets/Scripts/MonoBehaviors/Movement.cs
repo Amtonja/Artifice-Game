@@ -4,49 +4,69 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
 
+	/// <summary>
+	/// A reference to the player component that should also be attached
+	/// to this gameobject
+	/// </summary>
 	private Player player;
+
+	/// <summary>
+	/// The coordinate that this player is at. This should always be whole numbers.
+	/// </summary>
 	private Vector2 coordinate;
+
+	/// <summary>
+	/// Where should another player/NPC following this player be?
+	/// </summary>
 	private Vector2 followPos;
 
+	/// <summary>
+	/// Handles input delay, so that the player doesn't move too fast
+	/// </summary>
+	private float inputDelay;
+
+	/// <summary>
+	/// If this player is meant to follow another player, set this variable
+	/// </summary>
 	public Movement followTarget;
 
-	// Use this for initialization
 	void Start () {
 		player = GetComponent<Player>();
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		if(followTarget == null) {
+			//I use this variable to tell if any input was made
 			Vector2 moveVector = Vector2.zero;
-			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
-				moveVector += Vector2.up;
-			}
-			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-				moveVector += Vector2.left;
-			}
-			if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
-				moveVector += Vector2.down;
-			}
-			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-				moveVector += Vector2.right;
+
+			if(inputDelay <= 0f) {
+				inputDelay = 0.3f;
+				Vector2 moveDelta = Vector2.zero;
+				if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
+					moveDelta += Vector2.up;
+				}
+				if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+					moveDelta += Vector2.left;
+				}
+				if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
+					moveDelta += Vector2.down;
+				}
+				if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+					moveDelta += Vector2.right;
+				}
+				if(moveDelta == Vector2.zero) {
+					inputDelay = 0f;
+				} else {
+					followPos = coordinate;
+					coordinate += moveDelta;
+				}
+			} else {
+				inputDelay -= Time.deltaTime;
 			}
 
-			if (moveVector != Vector2.zero) {
-				transform.Translate(moveVector*Time.deltaTime*3f);
-				followPos = (Vector2)transform.position - moveVector/2f;
-			}
-	//		else {
-	//			transform.position = Vector3.MoveTowards(transform.position,
-	//				new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y), 0f),
-	//				Time.deltaTime);
-	//		}
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime*5f);
 		} else {
-			Vector3 newPos = Vector3.MoveTowards(transform.position, followTarget.followPos, Time.deltaTime*(1+Vector3.Distance(transform.position, followTarget.followPos)*2f));
-			if (newPos - transform.position != Vector3.zero) {
-				followPos = transform.position - (newPos - transform.position).normalized/2f;
-				transform.position = newPos;
-			}
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(followTarget.followPos.x), Mathf.Floor(followTarget.followPos.y), 0f), Time.deltaTime*5f);
 		}
 	}
 }
