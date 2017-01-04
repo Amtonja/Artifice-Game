@@ -1,0 +1,10 @@
+<?xml version = "1.0" encoding = "Windows-1252"?>
+<ItemData>
+	<Item>
+		<ID>_gold_</ID>
+		<Title>Gold</Title>
+		<Description>Currency exchanged when purchasing, trading, or looting</Description>
+		<Rarity>Common</Rarity>
+		<Worth>1</Worth>
+	</Item>
+</ItemData>

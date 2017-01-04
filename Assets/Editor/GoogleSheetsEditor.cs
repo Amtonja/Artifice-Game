@@ -259,6 +259,9 @@ public class GoogleSheetsEditor : EditorWindow {
             case "Achievements":
                 output = SaveLoadManager.WriteXML<Achievement>(loadData);
                 break;
+            case "Items":
+                output = SaveLoadManager.WriteXML<Item>(loadData);
+                break;
             case "Potions":
                 output = SaveLoadManager.WriteXML<Potion>(loadData);
                 break;
