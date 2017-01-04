@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: GoogleSheetsSettings
   m_EditorClassIdentifier: 
   sheetTitles:
-  - Achievements
+  - Items
   sheetsURL: https://docs.google.com/spreadsheet/pub?key=1wyPDkPeNLsnRxu3qA2V6PwFGktzdJD1HSgVVg8_NVeE&output=csv&single=true&gid=0
-  specificSheets: Achievements
+  specificSheets: Items

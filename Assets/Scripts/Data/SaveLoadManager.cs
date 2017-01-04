@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
 using System.IO;
@@ -57,7 +56,11 @@ namespace Artifice.Data {
                         // Find the property in the class that matches the tagname and add it to the list
                         PropertyInfo p = properties.Find(x => x.Name == reader.LocalName);
                         if (p != null) {
-                            parameters.Add(reader.ReadElementContentAs(p.PropertyType, null));
+                            if (p.PropertyType.IsEnum) {
+                                parameters.Add(Enum.Parse(p.PropertyType, reader.ReadElementContentAsString()));
+                            } else {
+                                parameters.Add(reader.ReadElementContentAs(p.PropertyType, null));
+                            }
                         }
                     } else if (reader.NodeType == XmlNodeType.EndElement) {
                         // If we reach an end tag whose name is the same as 'T'
@@ -83,7 +86,7 @@ namespace Artifice.Data {
             string output = "<?xml version = \"1.0\" encoding = \"Windows-1252\"?>\n<" + typeof(T).Name + "Data>\n";
             // Get all the properties of the class 'T'
             List<PropertyInfo> properties = typeof(T).GetProperties().ToList();
-            // Go through the data and create appropriate tags for it
+            // Go through the data and create appropriate tags for them
             foreach (List<object> obj in loadData) {
                 int tabCounter = 1;
                 output += XMLUtility.GetTag(typeof(T).Name, tabCounter++);
