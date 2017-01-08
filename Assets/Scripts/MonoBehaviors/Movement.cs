@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Artifice.Data;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,10 +11,13 @@ public class Movement : MonoBehaviour {
 
 	public Movement followTarget;
 
+    //private SortableSprite sp;
+
 	// Use this for initialization
 	void Start () {
 		player = GetComponent<Player>();
-	}
+        //sp = GetComponentInChildren<SortableSprite>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,13 +25,27 @@ public class Movement : MonoBehaviour {
 			Vector2 moveVector = Vector2.zero;
 			if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
 				moveVector += Vector2.up;
+                /*
+                sp.UpdateSortingOrder();
+                int next = Artifice.Data.GameManager.Instance.PlayerChunk + 1;
+                if(transform.position.y > Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
+                    Artifice.Data.GameManager.Instance.PlayerChunk++;
+                }
+                */
 			}
 			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
 				moveVector += Vector2.left;
 			}
 			if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
 				moveVector += Vector2.down;
-			}
+                /*
+                sp.UpdateSortingOrder();
+                int next = Artifice.Data.GameManager.Instance.PlayerChunk;
+                if (transform.position.y < Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
+                    Artifice.Data.GameManager.Instance.PlayerChunk--;
+                }
+                */
+            }
 			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
 				moveVector += Vector2.right;
 			}
