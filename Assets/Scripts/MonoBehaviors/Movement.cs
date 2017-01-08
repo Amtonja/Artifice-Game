@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Artifice.Data;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,10 +31,14 @@ public class Movement : MonoBehaviour {
 	/// </summary>
 	public Movement followTarget;
 
+    //private SortableSprite sp;
+
+	
 	void Start () {
 		player = GetComponent<Player>();
-	}
-
+        //sp = GetComponentInChildren<SortableSprite>();
+    }
+	
 	void Update () {
 		if(followTarget == null) {
 			//I use this variable to tell if any input was made
@@ -44,14 +49,28 @@ public class Movement : MonoBehaviour {
 				Vector2 moveDelta = Vector2.zero;
 				if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) {
 					moveDelta += Vector2.up;
-				}
-				if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+                    /*
+                    sp.UpdateSortingOrder();
+                    int next = Artifice.Data.GameManager.Instance.PlayerChunk + 1;
+                    if(transform.position.y > Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
+                        Artifice.Data.GameManager.Instance.PlayerChunk++;
+                    }
+                    */
+                }
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
 					moveDelta += Vector2.left;
 				}
 				if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) {
 					moveDelta += Vector2.down;
-				}
-				if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+                    /*
+                    sp.UpdateSortingOrder();
+                    int next = Artifice.Data.GameManager.Instance.PlayerChunk;
+                    if (transform.position.y < Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
+                        Artifice.Data.GameManager.Instance.PlayerChunk--;
+                    }
+                    */
+                }
+                if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
 					moveDelta += Vector2.right;
 				}
 				if(moveDelta == Vector2.zero) {
