@@ -69,6 +69,7 @@ public class PlayManager : MonoBehaviour {
 	/// <param name="enemy">Enemy.</param>
 	private void SetupCombatPositions(Player enemy) {
 		CombatSpace space = enemy.transform.FindChild("CombatSpace").GetComponent<CombatSpace>();
+		space.gameObject.SetActive(true);
 		for (int i = 0; i < party.Length; i++) {
 			party[i].GetComponent<Movement>().enabled = false;
 			party[i].transform.position = space.PlayerPosition(i);

@@ -13,19 +13,29 @@ public class CombatUIManager : MonoBehaviour {
 	/// <summary>
 	/// This list is populated when the PlayManager indicates we have entered combat
 	/// </summary>
-	private CombatPlayerUI[] combatants;
+	private List<CombatPlayerUI> combatants;
 
 
 	void Start () {
 		combatPlayerUI = transform.FindChild("Canvas/PlayerUI").gameObject;
+		combatants = new List<CombatPlayerUI>();
 	}
 
 	public void SetupPlayerUI(Player p) {
-		for(int i = 0; i < combatants.Length; i++) {
+		//First check if we can reuse an existing piece of UI
+		for(int i = 0; i < combatants.Count; i++) {
 			if(combatants[i].ActivePlayer == null) {
+				combatants[i].gameObject.SetActive(true);
 				combatants[i].ActivePlayer = p;
 				return;
 			}
 		}
+
+		//If not, we make a new one
+		GameObject combatUI = GameObject.Instantiate(combatPlayerUI, transform.GetChild(0));
+		combatUI.transform.localScale = Vector3.one;
+		combatants.Add(combatUI.GetComponent<CombatPlayerUI>());
+		combatUI.SetActive(true);
+		combatUI.GetComponent<CombatPlayerUI>().ActivePlayer = p;
 	}
 }

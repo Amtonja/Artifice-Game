@@ -12,8 +12,9 @@ public class CombatPlayerUI : MonoBehaviour {
 	private Text playerName, playerLevel;
 
 	// Use this for initialization
-	void Start () {
-		
+	void OnEnable () {
+		playerName = transform.FindChild("PlayerName").GetComponent<Text>();
+		playerLevel = transform.FindChild("PlayerLevel").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
@@ -32,6 +33,7 @@ public class CombatPlayerUI : MonoBehaviour {
 			activePlayer = value;
 			playerName.text = activePlayer.Name;
 			playerLevel.text = activePlayer.Stats.Level.ToString("00");
+			transform.position = activePlayer.transform.position + Vector3.up*2f + Vector3.right/2f;
 		}
 		get {
 			return activePlayer;
