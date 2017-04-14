@@ -1,73 +1,50 @@
 fileFormatVersion: 2
-guid: 993f93057b0098a48a73606c75297aa2
-timeCreated: 1492134035
+guid: 4c3c61ded8127e34b9d6a80a95d16d44
+timeCreated: 1492134523
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: HurleySpriteSheet (1)_0
-    21300002: HurleySpriteSheet (1)_1
-    21300004: HurleySpriteSheet (1)_2
-    21300006: HurleySpriteSheet (1)_3
-    21300008: HurleySpriteSheet (1)_4
-    21300010: HurleySpriteSheet (1)_5
-    21300012: HurleySpriteSheet (1)_6
-    21300014: HurleySpriteSheet (1)_7
-    21300016: HurleySpriteSheet (1)_8
-    21300018: HurleySpriteSheet (1)_9
-    21300020: HurleySpriteSheet (1)_10
-    21300022: HurleySpriteSheet (1)_11
-    21300024: HurleySpriteSheet (1)_12
-    21300026: HurleySpriteSheet (1)_13
-    21300028: HurleySpriteSheet (1)_14
-    21300030: HurleySpriteSheet (1)_15
-    21300032: HurleySpriteSheet (1)_16
-    21300034: HurleySpriteSheet (1)_17
-    21300036: HurleySpriteSheet (1)_18
-    21300038: HurleySpriteSheet (1)_19
-    21300040: HurleySpriteSheet (1)_20
-    21300042: HurleySpriteSheet (1)_21
-    21300044: HurleySpriteSheet (1)_22
-    21300046: HurleySpriteSheet (1)_23
-    21300048: HurleySpriteSheet (1)_24
-    21300050: HurleySpriteSheet (1)_25
-    21300052: HurleySpriteSheet (1)_26
-    21300054: HurleySpriteSheet (1)_27
-    21300056: HurleySpriteSheet (1)_28
-    21300058: HurleySpriteSheet (1)_29
-    21300060: HurleySpriteSheet (1)_30
-    21300062: HurleySpriteSheet (1)_31
-    21300064: HurleySpriteSheet_0
-    21300066: HurleySpriteSheet_1
-    21300068: HurleySpriteSheet_2
-    21300070: HurleySpriteSheet_3
-    21300072: HurleySpriteSheet_4
-    21300074: HurleySpriteSheet_5
-    21300076: HurleySpriteSheet_6
-    21300078: HurleySpriteSheet_7
-    21300080: HurleySpriteSheet_8
-    21300082: HurleySpriteSheet_9
-    21300084: HurleySpriteSheet_10
-    21300086: HurleySpriteSheet_11
-    21300088: HurleySpriteSheet_12
-    21300090: HurleySpriteSheet_13
-    21300092: HurleySpriteSheet_14
-    21300094: HurleySpriteSheet_15
-    21300096: HurleySpriteSheet_16
-    21300098: HurleySpriteSheet_17
-    21300100: HurleySpriteSheet_18
-    21300102: HurleySpriteSheet_19
-    21300104: HurleySpriteSheet_20
-    21300106: HurleySpriteSheet_21
-    21300108: HurleySpriteSheet_22
-    21300110: HurleySpriteSheet_23
-    21300112: HurleySpriteSheet_24
-    21300114: HurleySpriteSheet_25
-    21300116: HurleySpriteSheet_26
-    21300118: HurleySpriteSheet_27
-    21300120: HurleySpriteSheet_28
-    21300122: HurleySpriteSheet_29
-    21300124: HurleySpriteSheet_30
-    21300126: HurleySpriteSheet_31
+    21300000: EvansSpriteSheet_0
+    21300002: EvansSpriteSheet_1
+    21300004: EvansSpriteSheet_2
+    21300006: EvansSpriteSheet_3
+    21300008: EvansSpriteSheet_4
+    21300010: EvansSpriteSheet_5
+    21300012: EvansSpriteSheet_6
+    21300014: EvansSpriteSheet_7
+    21300016: EvansSpriteSheet_8
+    21300018: EvansSpriteSheet_9
+    21300020: EvansSpriteSheet_10
+    21300022: EvansSpriteSheet_11
+    21300024: EvansSpriteSheet_12
+    21300026: EvansSpriteSheet_13
+    21300028: EvansSpriteSheet_14
+    21300030: EvansSpriteSheet_15
+    21300032: EvansSpriteSheet_16
+    21300034: EvansSpriteSheet_17
+    21300036: EvansSpriteSheet_18
+    21300038: EvansSpriteSheet_19
+    21300040: EvansSpriteSheet_20
+    21300042: EvansSpriteSheet_21
+    21300044: EvansSpriteSheet_22
+    21300046: EvansSpriteSheet_23
+    21300048: EvansSpriteSheet_24
+    21300050: EvansSpriteSheet_25
+    21300052: EvansSpriteSheet_26
+    21300054: EvansSpriteSheet_27
+    21300056: EvansSpriteSheet_28
+    21300058: EvansSpriteSheet_29
+    21300060: EvansSpriteSheet_30
+    21300062: EvansSpriteSheet_31
+    21300064: EvansSpriteSheet_32
+    21300066: EvansSpriteSheet_33
+    21300068: EvansSpriteSheet_34
+    21300070: EvansSpriteSheet_35
+    21300072: EvansSpriteSheet_36
+    21300074: EvansSpriteSheet_37
+    21300076: EvansSpriteSheet_38
+    21300078: EvansSpriteSheet_39
+    21300080: EvansSpriteSheet_40
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -101,8 +78,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.5553823, y: 0.47595146}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
@@ -134,103 +111,142 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HurleySpriteSheet_0
+      name: EvansSpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 395
-        width: 18
-        height: 41
+        x: 24
+        y: 522
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_1
+      name: EvansSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 86
-        y: 395
-        width: 18
-        height: 41
+        x: 88
+        y: 522
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_2
+      name: EvansSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 151
-        y: 395
-        width: 18
-        height: 41
+        x: 152
+        y: 521
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_3
+      name: EvansSpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 214
-        y: 395
-        width: 18
-        height: 41
+        x: 216
+        y: 520
+        width: 16
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_4
+      name: EvansSpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 278
-        y: 395
-        width: 18
-        height: 41
+        x: 280
+        y: 522
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_5
+      name: EvansSpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 22
-        y: 331
-        width: 18
-        height: 41
+        x: 24
+        y: 456
+        width: 16
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_6
+      name: EvansSpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 86
-        y: 331
-        width: 18
-        height: 41
+        x: 82
+        y: 457
+        width: 25
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_7
+      name: EvansSpriteSheet_7
       rect:
         serializedVersion: 2
         x: 140
-        y: 331
-        width: 29
+        y: 472
+        width: 39
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 459
+        width: 17
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 459
+        width: 17
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 394
+        width: 17
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -238,12 +254,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_8
+      name: EvansSpriteSheet_11
       rect:
         serializedVersion: 2
-        x: 204
-        y: 331
-        width: 29
+        x: 88
+        y: 394
+        width: 16
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -251,77 +267,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_9
+      name: EvansSpriteSheet_12
       rect:
         serializedVersion: 2
-        x: 268
-        y: 333
-        width: 30
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_10
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 267
-        width: 25
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_11
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 267
-        width: 25
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_12
-      rect:
-        serializedVersion: 2
-        x: 148
-        y: 267
-        width: 31
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_13
-      rect:
-        serializedVersion: 2
-        x: 212
-        y: 267
-        width: 31
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_14
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 267
-        width: 33
+        x: 152
+        y: 394
+        width: 16
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -329,12 +280,285 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_15
+      name: EvansSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 393
+        width: 16
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 393
+        width: 21
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 329
+        width: 24
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 329
+        width: 21
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 329
+        width: 24
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 330
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 330
+        width: 41
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 266
+        width: 40
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 265
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 264
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 265
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 263
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_25
       rect:
         serializedVersion: 2
         x: 12
-        y: 204
-        width: 38
+        y: 200
+        width: 41
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 201
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 201
+        width: 44
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 203
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 205
+        width: 40
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 141
+        width: 45
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 142
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 140
+        width: 46
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 139
+        width: 29
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: EvansSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 138
+        width: 43
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -342,208 +566,78 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_16
+      name: EvansSpriteSheet_35
       rect:
         serializedVersion: 2
-        x: 78
-        y: 205
-        width: 31
-        height: 41
+        x: 10
+        y: 74
+        width: 49
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_17
+      name: EvansSpriteSheet_36
       rect:
         serializedVersion: 2
-        x: 140
-        y: 205
-        width: 45
-        height: 41
+        x: 74
+        y: 73
+        width: 38
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_18
+      name: EvansSpriteSheet_37
       rect:
         serializedVersion: 2
-        x: 217
-        y: 203
+        x: 148
+        y: 73
         width: 19
-        height: 41
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_19
+      name: EvansSpriteSheet_38
       rect:
         serializedVersion: 2
-        x: 270
-        y: 212
-        width: 37
-        height: 21
+        x: 212
+        y: 73
+        width: 25
+        height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_20
+      name: EvansSpriteSheet_39
       rect:
         serializedVersion: 2
-        x: 22
-        y: 139
-        width: 18
-        height: 41
+        x: 269
+        y: 73
+        width: 32
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_21
+      name: EvansSpriteSheet_40
       rect:
         serializedVersion: 2
-        x: 86
-        y: 139
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_22
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 139
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_23
-      rect:
-        serializedVersion: 2
-        x: 214
-        y: 139
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_24
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 139
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_25
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 75
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_26
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 75
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_27
-      rect:
-        serializedVersion: 2
-        x: 151
-        y: 75
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_28
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 75
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_29
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 75
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_30
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 11
-        width: 18
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: HurleySpriteSheet_31
-      rect:
-        serializedVersion: 2
-        x: 86
-        y: 11
-        width: 18
-        height: 41
+        x: 24
+        y: 10
+        width: 16
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
