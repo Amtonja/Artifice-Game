@@ -54,6 +54,8 @@ public class Movement : MonoBehaviour
     {
         player = GetComponent<Player>();
         //sp = GetComponentInChildren<SortableSprite>();
+		coordinate = new Vector2(this.transform.position.x, this.transform.position.y);
+		followPos = coordinate;
     }
 
     void Update()
