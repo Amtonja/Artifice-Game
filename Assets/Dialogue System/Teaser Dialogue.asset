@@ -249,7 +249,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
-        value: 
+        value: SendMessage(DoThing,, CM_DialogueStart) @{{end}}
         type: 0
         typeString: CustomFieldType_Text
       - title: Response Menu Sequence
@@ -279,8 +279,8 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 425
-        y: 91
+        x: 428.20392
+        y: 88.94174
         width: 160
         height: 30
     - id: 2
