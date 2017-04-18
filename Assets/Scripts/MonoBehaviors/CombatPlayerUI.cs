@@ -10,7 +10,8 @@ public class CombatPlayerUI : MonoBehaviour {
 
 	//All the various ui elements that need to be updated during battle
 	private Image actionBar, specialBar, rageBar, magicBar, agilityBar, healthBar, healthBarDelta;
-	private Text playerName, playerLevel;    
+	private Text playerName, playerLevel;
+    private Canvas iconCanvas;   
         
     public float healthBarDeltaTime;
     
@@ -28,14 +29,24 @@ public class CombatPlayerUI : MonoBehaviour {
         healthBarDelta = transform.FindChild("HealthBar/DeltaOverlay").GetComponent<Image>();
 
         healthBarDelta.fillAmount = 1.0f;
+
+        iconCanvas = GetComponentInChildren<Canvas>();        
+        iconCanvas.enabled = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (ActivePlayer.IsMyTurn)
+        {
+           iconCanvas.enabled = true;
+        }
+
         if (ActivePlayer.HealthChanged)
         {
             UpdateHealthBar();
         }
+
+        actionBar.fillAmount = ActivePlayer.ActionBarValue / ActivePlayer.ActionBarTarget;        
 	}
 
     /// <summary>
