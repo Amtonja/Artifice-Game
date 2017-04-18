@@ -574,8 +574,8 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 435
-        y: 287
+        x: 430.28302
+        y: 288.88678
         width: 160
         height: 30
     - id: 6
