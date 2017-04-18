@@ -10,10 +10,10 @@ public class Player : Entity {
 	/// This field is temporary, and will be replaced by the XML reader
 	/// </summary>
 	[SerializeField]
-	private EntityInfo entityInfo;
+	private EntityInfo entityInfo;       
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 
 		//TODO: This will be loaded in via XML reader later
 		this.title = entityInfo.name;
@@ -28,7 +28,18 @@ public class Player : Entity {
 		this.stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
 		this.stats.BaseSpeed = entityInfo.combatStats.speed;
 		this.stats.BaseStrength = entityInfo.combatStats.strength;
+
+        stats.MaxHealth = stats.BaseMaxHealth;
+        health = stats.MaxHealth;
 	}
+
+    void Update ()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            TakeDamage(20);
+        }
+    }
 
 	/// <summary>
 	/// A struct to hold necessary info for this entity,
@@ -90,6 +101,10 @@ public class Player : Entity {
 		base.ExitCombat ();
 	}
 
-	#endregion
+    #endregion
+
+    #region C# Properties
+    
+    #endregion
 
 }

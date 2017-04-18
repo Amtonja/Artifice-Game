@@ -10,15 +10,19 @@ namespace Artifice.Characters {
         protected CombatStats stats;
         protected int health;
         protected CharacterRace race;
+        private bool healthChanged = false;
 
         public abstract void Interact();
 
         public virtual void TakeDamage(int _damage) {
+            HealthChanged = true;
             health -= _damage;
+            //Debug.Log(title + "took " + _damage + " and is at " + health + " HP out of " + stats.MaxHealth + " HP");
             if (health <= 0) Die();
         }
 
         public virtual void Heal(int _health) {
+            HealthChanged = true;
             health = Mathf.Clamp(health, 0, stats.MaxHealth);
         }
 
@@ -63,6 +67,19 @@ namespace Artifice.Characters {
         public CharacterRace Race {
             get { return race; }
             set { race = value; }
+        }
+
+        public bool HealthChanged
+        {
+            get
+            {
+                return healthChanged;
+            }
+
+            set
+            {
+                healthChanged = value;
+            }
         }
         #endregion
     }
