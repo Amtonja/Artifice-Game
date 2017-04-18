@@ -25,7 +25,7 @@ public class CombatUIManager : MonoBehaviour {
 		//First check if we can reuse an existing piece of UI
 		for(int i = 0; i < combatants.Count; i++) {
 			if(combatants[i].ActivePlayer == null) {
-				combatants[i].gameObject.SetActive(true);
+				combatants[i].gameObject.SetActive(true);                
 				combatants[i].ActivePlayer = p;
 				return;
 			}
@@ -35,7 +35,7 @@ public class CombatUIManager : MonoBehaviour {
 		GameObject combatUI = GameObject.Instantiate(combatPlayerUI, transform.GetChild(0));
 		combatUI.transform.localScale = Vector3.one;
 		combatants.Add(combatUI.GetComponent<CombatPlayerUI>());
-		combatUI.SetActive(true);
-		combatUI.GetComponent<CombatPlayerUI>().ActivePlayer = p;
+		combatUI.SetActive(true);        
+        combatUI.GetComponent<CombatPlayerUI>().ActivePlayer = p;
 	}
 }

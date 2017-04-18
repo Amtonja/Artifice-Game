@@ -29,15 +29,25 @@ public class Player : Entity {
 		this.stats.BaseSpeed = entityInfo.combatStats.speed;
 		this.stats.BaseStrength = entityInfo.combatStats.strength;
 
-        stats.MaxHealth = stats.BaseMaxHealth;
-        health = stats.MaxHealth;
+        ResetStats();
+        health = Stats.MaxHealth;
+
+        ActionBarTarget = 20;
 	}
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+        if (InCombat)
         {
-            TakeDamage(20);
+            if (ActionBarValue < ActionBarTarget)
+            {
+                ActionBarValue += Stats.Speed / 10.0f; // Don't use this value                
+            }            
+            else if (ActionBarValue >= ActionBarTarget)
+            {
+                // take a turn
+                IsMyTurn = true;                
+            } 
         }
     }
 
@@ -52,6 +62,8 @@ public class Player : Entity {
 		public string id;
 		public CombatStatsInfo combatStats;
 		public CharacterRace race;
+        // DEBUG
+        //public float abv;
 	}
 
 	/// <summary>
@@ -78,6 +90,23 @@ public class Player : Entity {
 			PlayManager.instance.EnemyEncountered(other.gameObject.GetComponent<Player>());
 		}
 	}
+
+    /// <summary>
+    /// Sets all combat stats equal to their base values.
+    /// Used for initialization or when all modifying effects are removed.
+    /// </summary>
+    void ResetStats()
+    {
+        Stats.Accuracy = Stats.BaseAccuracy;
+        Stats.Defense = Stats.BaseDefense;
+        Stats.Evasion = Stats.BaseEvasion;
+        Stats.Loyalty = Stats.BaseLoyalty;
+        Stats.Magic = Stats.BaseMagic;
+        Stats.MagicDefense = Stats.BaseMagicDefense;
+        Stats.MaxHealth = Stats.BaseMaxHealth;
+        Stats.Speed = Stats.BaseSpeed;
+        Stats.Strength = Stats.BaseDefense;
+    }
 
 	#region implemented abstract members of Entity
 
@@ -106,5 +135,4 @@ public class Player : Entity {
     #region C# Properties
     
     #endregion
-
 }

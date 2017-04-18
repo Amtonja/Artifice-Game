@@ -10,7 +10,11 @@ namespace Artifice.Characters {
         protected CombatStats stats;
         protected int health;
         protected CharacterRace race;
-        private bool healthChanged = false;
+        protected float actionBarValue = 0f;
+        protected float actionBarTarget;
+        private bool isMyTurn = false;
+
+        private bool healthChanged = false;        
 
         public abstract void Interact();
 
@@ -29,10 +33,12 @@ namespace Artifice.Characters {
         public abstract void Die();
 
         public virtual void EnterCombat() {
+            ActionBarValue = 0f;
             inCombat = true;
         }
 
         public virtual void ExitCombat() {
+            ActionBarValue = 0f;
             inCombat = false;
         }
 
@@ -79,6 +85,45 @@ namespace Artifice.Characters {
             set
             {
                 healthChanged = value;
+            }
+        }
+
+        public float ActionBarValue
+        {
+            get
+            {
+                return actionBarValue;
+            }
+
+            set
+            {
+                actionBarValue = value;
+            }
+        }
+
+        public float ActionBarTarget
+        {
+            get
+            {
+                return actionBarTarget;
+            }
+
+            set
+            {
+                actionBarTarget = value;
+            }
+        }
+
+        public bool IsMyTurn
+        {
+            get
+            {
+                return isMyTurn;
+            }
+
+            set
+            {
+                isMyTurn = value;
             }
         }
         #endregion
