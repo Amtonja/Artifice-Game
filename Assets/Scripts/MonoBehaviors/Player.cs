@@ -10,8 +10,11 @@ public class Player : Entity {
 	/// This field is temporary, and will be replaced by the XML reader
 	/// </summary>
 	[SerializeField]
-	private EntityInfo entityInfo;       
-
+	private EntityInfo entityInfo;    
+    
+    private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
+    private float agilityBarTarget = 20f, magicBarTarget = 20f, rageBarTarget = 20f, specialBarTarget = 20f;
+        
     // Use this for initialization
     void Start () {
 
@@ -41,14 +44,42 @@ public class Player : Entity {
         {
             if (ActionBarValue < ActionBarTarget)
             {
-                ActionBarValue += Stats.Speed / 10.0f; // Don't use this value                
+                ActionBarValue += (Stats.Speed / 5.0f) * Time.deltaTime; // Don't use this value                
             }            
             else if (ActionBarValue >= ActionBarTarget)
             {
                 // take a turn
-                IsMyTurn = true;                
+                IsMyTurn = true;
+                PlayManager.instance.PauseGame();
+            }
+            
+            // Update the other four bars
+            if (AgilityBarValue < AgilityBarTarget)
+            {
+                AgilityBarValue += (Stats.Speed / 12.0f) * Time.deltaTime; // Don't use this value either
             } 
+
+            if (MagicBarValue < MagicBarTarget)
+            {
+                MagicBarValue += (Stats.Magic / 10.0f) * Time.deltaTime; // Still no
+            }
+
+            if (RageBarValue < RageBarTarget)
+            {
+                RageBarValue += (Stats.Strength / 10.0f) * Time.deltaTime; // What do you think?
+            }
+
+            if (SpecialBarValue < SpecialBarTarget)
+            {
+                SpecialBarValue += (Stats.Loyalty / 10.0f) * Time.deltaTime; // Look, just get real formulas for these
+            }
         }
+    }
+
+    public void MeleeAttack(Entity target)
+    {
+        int damage = Stats.Strength; // Get real formula
+        target.TakeDamage(damage - target.Stats.Defense); // Get real formula
     }
 
 	/// <summary>
@@ -133,6 +164,108 @@ public class Player : Entity {
     #endregion
 
     #region C# Properties
-    
+    public float AgilityBarValue
+    {
+        get
+        {
+            return agilityBarValue;
+        }
+
+        set
+        {
+            agilityBarValue = value;
+        }
+    }
+
+    public float MagicBarValue
+    {
+        get
+        {
+            return magicBarValue;
+        }
+
+        set
+        {
+            magicBarValue = value;
+        }
+    }
+
+    public float RageBarValue
+    {
+        get
+        {
+            return rageBarValue;
+        }
+
+        set
+        {
+            rageBarValue = value;
+        }
+    }
+
+    public float SpecialBarValue
+    {
+        get
+        {
+            return specialBarValue;
+        }
+
+        set
+        {
+            specialBarValue = value;
+        }
+    }
+
+    public float AgilityBarTarget
+    {
+        get
+        {
+            return agilityBarTarget;
+        }
+
+        set
+        {
+            agilityBarTarget = value;
+        }
+    }
+
+    public float MagicBarTarget
+    {
+        get
+        {
+            return magicBarTarget;
+        }
+
+        set
+        {
+            magicBarTarget = value;
+        }
+    }
+
+    public float RageBarTarget
+    {
+        get
+        {
+            return rageBarTarget;
+        }
+
+        set
+        {
+            rageBarTarget = value;
+        }
+    }
+
+    public float SpecialBarTarget
+    {
+        get
+        {
+            return specialBarTarget;
+        }
+
+        set
+        {
+            specialBarTarget = value;
+        }
+    }
     #endregion
 }
