@@ -48,7 +48,15 @@ public class Movement : MonoBehaviour
 	private Vector2 intendedPosition; 
 
     //private SortableSprite sp;
+	private Animator _animator;
 
+	//Used to tell what direction we're facin' for idle sprites
+	private enum directions {Up, Down, Left, Right};
+	private directions moveDir;
+
+	//Temporary measure to stop following animation from constantly going into an idle state every time it pops into place
+	private float waitTimerMax = 0.22f;
+	private float waitTimer = 0.22f;
 
     void Start()
     {
@@ -56,6 +64,8 @@ public class Movement : MonoBehaviour
         //sp = GetComponentInChildren<SortableSprite>();
 		coordinate = new Vector2(this.transform.position.x, this.transform.position.y);
 		followPos = coordinate;
+
+		_animator = GetComponent<Animator>(); //Might need to be in Awake
     }
 
     void Update()
@@ -86,10 +96,14 @@ public class Movement : MonoBehaviour
                         Artifice.Data.GameManager.Instance.PlayerChunk++;
                     }
                     */
+					_animator.Play( Animator.StringToHash( "GoUp" ) );
+					moveDir = directions.Up;
                 }
                 if (Input.GetAxis("Horizontal") < 0f)
                 {
                     moveDelta += Vector2.left;
+					_animator.Play( Animator.StringToHash( "GoLeft" ) );
+					moveDir = directions.Left;
                 }
                 if (Input.GetAxis("Vertical") < 0f)
                 {
@@ -101,14 +115,28 @@ public class Movement : MonoBehaviour
                         Artifice.Data.GameManager.Instance.PlayerChunk--;
                     }
                     */
+					_animator.Play( Animator.StringToHash( "GoDown" ) );
+					moveDir = directions.Down;
                 }
                 if (Input.GetAxis("Horizontal") > 0f)
                 {
                     moveDelta += Vector2.right;
+					_animator.Play( Animator.StringToHash( "GoRight" ) );
+					moveDir = directions.Right;
                 }
                 if (moveDelta == Vector2.zero)
                 {
                     inputDelay = 0f;
+					//Set the correct idle direction
+					if (moveDir == directions.Up) {
+						_animator.Play (Animator.StringToHash ("IdleUp"));
+					} else if (moveDir == directions.Down) {
+						_animator.Play (Animator.StringToHash ("IdleDown"));
+					} else if (moveDir == directions.Right) {
+						_animator.Play (Animator.StringToHash ("IdleRight"));
+					} else if (moveDir == directions.Left) {
+						_animator.Play (Animator.StringToHash ("IdleLeft"));
+					}
                 }
                 else
                 {
@@ -123,7 +151,43 @@ public class Movement : MonoBehaviour
 
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime*5f);
 		} else {
+			//Following target code
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(followTarget.followPos.x), Mathf.Floor(followTarget.followPos.y), 0f), Time.deltaTime*5f);
+
+			//Sprite stuff
+			if (followTarget.followPos.x < this.transform.position.x) {
+				_animator.Play (Animator.StringToHash ("GoLeft"));
+				moveDir = directions.Left;
+				waitTimer = waitTimerMax;
+			} else if (followTarget.followPos.x > this.transform.position.x) {
+				_animator.Play (Animator.StringToHash ("GoRight"));
+				moveDir = directions.Right;
+				waitTimer = waitTimerMax;
+			} else if (followTarget.followPos.y < this.transform.position.y) {
+				_animator.Play (Animator.StringToHash ("GoDown"));
+				moveDir = directions.Down;
+				waitTimer = waitTimerMax;
+			} else if (followTarget.followPos.y > this.transform.position.y) {
+				_animator.Play( Animator.StringToHash( "GoUp" ) );
+				moveDir = directions.Up;
+				waitTimer = waitTimerMax;
+			}
+
+			//Short wait timer so we don't keep hitting idle every time it pops into place
+			waitTimer -= Time.deltaTime;
+
+			if(this.transform.position.x == followTarget.followPos.x && this.transform.position.y == followTarget.followPos.y && waitTimer <= 0f){
+//				Debug.Log ("We did the thing!");
+				if (moveDir == directions.Up) {
+					_animator.Play (Animator.StringToHash ("IdleUp"));
+				} else if (moveDir == directions.Down) {
+					_animator.Play (Animator.StringToHash ("IdleDown"));
+				} else if (moveDir == directions.Right) {
+					_animator.Play (Animator.StringToHash ("IdleRight"));
+				} else if (moveDir == directions.Left) {
+					_animator.Play (Animator.StringToHash ("IdleLeft"));
+				}
+			}
 		}
 	}
 
@@ -138,30 +202,64 @@ public class Movement : MonoBehaviour
 				if (intendedPosition.y > this.transform.position.y) {
 					moveDelta += Vector2.up;
 					Debug.Log ("Forcing up!");
+					_animator.Play( Animator.StringToHash( "GoUp" ) );
+					moveDir = directions.Up;
 				}
 				else if (intendedPosition.x < this.transform.position.x) {
 					moveDelta += Vector2.left;
 					Debug.Log ("Forcing left!");
+					_animator.Play( Animator.StringToHash( "GoLeft" ) );
+					moveDir = directions.Left;
 				}
 				else if (intendedPosition.y < this.transform.position.y) {
 					moveDelta += Vector2.down;
 					Debug.Log ("Forcing down!");
+					_animator.Play( Animator.StringToHash( "GoDown" ) );
+					moveDir = directions.Down;
 				}
 				else if (intendedPosition.x > this.transform.position.x) {
 					moveDelta += Vector2.right;
 					Debug.Log ("Forcing right!");
+					_animator.Play( Animator.StringToHash( "GoRight" ) );
+					moveDir = directions.Right;
 				}
 				if(moveDelta == Vector2.zero) {
 					inputDelay = 0f;
+					//adjust sprite
+					if (moveDir == directions.Up) {
+						_animator.Play (Animator.StringToHash ("IdleUp"));
+					} else if (moveDir == directions.Down) {
+						_animator.Play (Animator.StringToHash ("IdleDown"));
+					} else if (moveDir == directions.Right) {
+						_animator.Play (Animator.StringToHash ("IdleRight"));
+					} else if (moveDir == directions.Left) {
+						_animator.Play (Animator.StringToHash ("IdleLeft"));
+					}
 				} else {
 					followPos = coordinate;
+
 					coordinate += moveDelta;
+
 				}
 			} else {
 				inputDelay -= Time.deltaTime;
 			}
 
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime*5f);
+
+			//If we're at the end point, go to their idle
+			if (this.transform.position.x == intendedPosition.x && this.transform.position.y == intendedPosition.y) {
+				if (moveDir == directions.Up) {
+					_animator.Play (Animator.StringToHash ("IdleUp"));
+				} else if (moveDir == directions.Down) {
+					_animator.Play (Animator.StringToHash ("IdleDown"));
+				} else if (moveDir == directions.Right) {
+					_animator.Play (Animator.StringToHash ("IdleRight"));
+				} else if (moveDir == directions.Left) {
+					_animator.Play (Animator.StringToHash ("IdleLeft"));
+				}
+			}
+
 
 
 		} else {

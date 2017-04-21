@@ -1,50 +1,55 @@
 fileFormatVersion: 2
 guid: 4c3c61ded8127e34b9d6a80a95d16d44
-timeCreated: 1492134523
+timeCreated: 1492731174
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: EvansSpriteSheet_0
-    21300002: EvansSpriteSheet_1
-    21300004: EvansSpriteSheet_2
-    21300006: EvansSpriteSheet_3
-    21300008: EvansSpriteSheet_4
-    21300010: EvansSpriteSheet_5
-    21300012: EvansSpriteSheet_6
-    21300014: EvansSpriteSheet_7
-    21300016: EvansSpriteSheet_8
-    21300018: EvansSpriteSheet_9
-    21300020: EvansSpriteSheet_10
-    21300022: EvansSpriteSheet_11
-    21300024: EvansSpriteSheet_12
-    21300026: EvansSpriteSheet_13
-    21300028: EvansSpriteSheet_14
-    21300030: EvansSpriteSheet_15
-    21300032: EvansSpriteSheet_16
-    21300034: EvansSpriteSheet_17
-    21300036: EvansSpriteSheet_18
-    21300038: EvansSpriteSheet_19
-    21300040: EvansSpriteSheet_20
-    21300042: EvansSpriteSheet_21
-    21300044: EvansSpriteSheet_22
-    21300046: EvansSpriteSheet_23
-    21300048: EvansSpriteSheet_24
-    21300050: EvansSpriteSheet_25
-    21300052: EvansSpriteSheet_26
-    21300054: EvansSpriteSheet_27
-    21300056: EvansSpriteSheet_28
-    21300058: EvansSpriteSheet_29
-    21300060: EvansSpriteSheet_30
-    21300062: EvansSpriteSheet_31
-    21300064: EvansSpriteSheet_32
-    21300066: EvansSpriteSheet_33
-    21300068: EvansSpriteSheet_34
-    21300070: EvansSpriteSheet_35
-    21300072: EvansSpriteSheet_36
-    21300074: EvansSpriteSheet_37
-    21300076: EvansSpriteSheet_38
-    21300078: EvansSpriteSheet_39
+    21300000: Evans_Idle
+    21300002: Evans_Up1
+    21300004: Evans_Up2
+    21300006: Evans_Up3
+    21300008: Evans_Up4
+    21300010: Evans_Up4
+    21300012: Evans_Death1
+    21300014: Evans_Death2
+    21300016: Evans_LeftIdle
+    21300018: Evans_RightIdle
+    21300020: Evans_Down1
+    21300022: Evans_Down2
+    21300024: Evans_Down3
+    21300026: Evans_Down4
+    21300028: Evans_Left1
+    21300030: Evans_Left2
+    21300032: Evans_Right1
+    21300034: Evans_Right2
+    21300036: Evans_SwordIdle1
+    21300038: Evans_SwordIdle2
+    21300040: Evans_SwordIdle3
+    21300042: Evans_GunIdle1
+    21300044: Evans_GunIdle2
+    21300046: Evans_GunIdle3
+    21300048: Evans_GunAttack1
+    21300050: Evans_GunAttack2
+    21300052: Evans_GunAttack3
+    21300054: Evans_GunAttack4
+    21300056: Evans_SwordAttack1
+    21300058: Evans_SwordAttack2
+    21300060: Evans_SwordAttack3
+    21300062: Evans_SwordAttack4
+    21300064: Evans_SwordAttack5
+    21300066: Evans_SwordAttack6
+    21300068: Evans_Spell1
+    21300070: Evans_Spell2
+    21300072: Evans_SwordThing3
+    21300074: Evans_SwordDraw1
+    21300076: Evans_SwordDraw2
+    21300078: Evans_SwordDraw3
     21300080: EvansSpriteSheet_40
+    21300082: Evans_UpIdle
+    21300084: Evans_Right3
+    21300086: Evans_Right4
+    21300088: Evans_Left3
+    21300090: Evans_Left4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -107,526 +112,534 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 1
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EvansSpriteSheet_0
+      name: Evans_Idle
       rect:
         serializedVersion: 2
-        x: 24
-        y: 522
-        width: 16
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_1
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 522
-        width: 16
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_2
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 521
-        width: 16
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_3
-      rect:
-        serializedVersion: 2
-        x: 216
+        x: 20
         y: 520
-        width: 16
-        height: 44
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_4
+      name: Evans_UpIdle
       rect:
         serializedVersion: 2
-        x: 280
-        y: 522
-        width: 16
-        height: 42
+        x: 84
+        y: 520
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_5
+      name: Evans_Up1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 148
+        y: 520
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Up2
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 520
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Up3
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 520
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Up4
+      rect:
+        serializedVersion: 2
+        x: 20
         y: 456
-        width: 16
-        height: 44
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_6
+      name: Evans_Death1
       rect:
         serializedVersion: 2
         x: 82
         y: 457
-        width: 25
-        height: 43
+        width: 40
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_7
+      name: Evans_Death2
       rect:
         serializedVersion: 2
         x: 140
         y: 472
-        width: 39
-        height: 18
+        width: 40
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_8
+      name: Evans_LeftIdle
       rect:
         serializedVersion: 2
-        x: 216
-        y: 459
-        width: 17
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_9
-      rect:
-        serializedVersion: 2
-        x: 280
-        y: 459
-        width: 17
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_10
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 394
-        width: 17
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_11
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 394
-        width: 16
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_12
-      rect:
-        serializedVersion: 2
-        x: 152
-        y: 394
-        width: 16
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_13
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 393
-        width: 16
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_14
-      rect:
-        serializedVersion: 2
-        x: 279
-        y: 393
-        width: 21
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: EvansSpriteSheet_15
-      rect:
-        serializedVersion: 2
-        x: 19
-        y: 329
+        x: 212
+        y: 457
         width: 24
-        height: 43
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_16
+      name: Evans_RightIdle
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 457
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Down1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 392
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Down2
       rect:
         serializedVersion: 2
         x: 84
-        y: 329
-        width: 21
-        height: 43
+        y: 392
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_17
+      name: Evans_Down3
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 392
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Down4
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 392
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Left1
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 391
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Left2
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 327
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Right1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 327
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Right2
       rect:
         serializedVersion: 2
         x: 149
-        y: 329
+        y: 327
         width: 24
-        height: 43
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_18
+      name: Evans_SwordIdle1
       rect:
         serializedVersion: 2
         x: 202
-        y: 330
-        width: 39
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 328
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.62, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_19
+      name: Evans_SwordIdle2
       rect:
         serializedVersion: 2
         x: 266
-        y: 330
-        width: 41
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 328
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.61, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_20
+      name: Evans_SwordIdle3
       rect:
         serializedVersion: 2
         x: 10
-        y: 266
-        width: 40
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 264
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.61, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_21
+      name: Evans_GunIdle1
       rect:
         serializedVersion: 2
         x: 76
-        y: 265
-        width: 42
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 262
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.38, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_22
+      name: Evans_GunIdle2
       rect:
         serializedVersion: 2
         x: 140
-        y: 264
-        width: 41
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 262
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.38, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_23
+      name: Evans_GunIdle3
       rect:
         serializedVersion: 2
         x: 205
-        y: 265
-        width: 42
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 263
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.38, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_24
+      name: Evans_GunAttack1
       rect:
         serializedVersion: 2
         x: 266
         y: 263
-        width: 37
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.58, y: 0.46}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_25
+      name: Evans_GunAttack2
       rect:
         serializedVersion: 2
         x: 12
         y: 200
-        width: 41
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.33, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_26
+      name: Evans_GunAttack3
       rect:
         serializedVersion: 2
         x: 84
-        y: 201
-        width: 44
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 199
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_27
+      name: Evans_GunAttack4
       rect:
         serializedVersion: 2
         x: 148
-        y: 201
-        width: 44
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 199
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_28
+      name: Evans_SwordAttack1
       rect:
         serializedVersion: 2
         x: 202
-        y: 203
-        width: 39
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 201
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.62, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_29
+      name: Evans_SwordAttack2
       rect:
         serializedVersion: 2
         x: 266
-        y: 205
-        width: 40
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 203
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.62, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_30
+      name: Evans_SwordAttack3
       rect:
         serializedVersion: 2
         x: 10
-        y: 141
-        width: 45
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 138
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.72, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_31
+      name: Evans_SwordAttack4
       rect:
         serializedVersion: 2
         x: 74
-        y: 142
-        width: 40
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 139
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.62, y: 0.44}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_32
+      name: Evans_SwordAttack5
       rect:
         serializedVersion: 2
         x: 139
-        y: 140
-        width: 46
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 138
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.23, y: 0.41}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_33
+      name: Evans_SwordAttack6
       rect:
         serializedVersion: 2
         x: 204
         y: 139
-        width: 29
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.21, y: 0.43}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_34
+      name: Evans_Spell1
       rect:
         serializedVersion: 2
         x: 266
-        y: 138
-        width: 43
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 136
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_35
+      name: Evans_Spell2
       rect:
         serializedVersion: 2
         x: 10
         y: 74
-        width: 49
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.62, y: 0.44}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_36
+      name: Evans_SwordThing3
       rect:
         serializedVersion: 2
         x: 74
         y: 73
-        width: 38
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.61, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_37
+      name: Evans_SwordDraw1
       rect:
         serializedVersion: 2
-        x: 148
-        y: 73
-        width: 19
-        height: 43
+        x: 134
+        y: 71
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_38
+      name: Evans_SwordDraw2
       rect:
         serializedVersion: 2
-        x: 212
-        y: 73
-        width: 25
-        height: 43
+        x: 204
+        y: 71
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: EvansSpriteSheet_39
+      name: Evans_SwordDraw3
       rect:
         serializedVersion: 2
-        x: 269
-        y: 73
-        width: 32
-        height: 44
+        x: 268
+        y: 71
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -637,9 +650,61 @@ TextureImporter:
         x: 24
         y: 10
         width: 16
-        height: 42
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Right3
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 7
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Right4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 7
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Left3
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 7
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Left4
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 7
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

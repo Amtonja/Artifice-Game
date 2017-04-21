@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 993f93057b0098a48a73606c75297aa2
-timeCreated: 1492134035
+timeCreated: 1492712690
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -36,38 +36,41 @@ TextureImporter:
     21300058: HurleySpriteSheet (1)_29
     21300060: HurleySpriteSheet (1)_30
     21300062: HurleySpriteSheet (1)_31
-    21300064: HurleySpriteSheet_0
+    21300064: Hurley_IdleDown
     21300066: HurleySpriteSheet_1
-    21300068: HurleySpriteSheet_2
-    21300070: HurleySpriteSheet_3
-    21300072: HurleySpriteSheet_4
-    21300074: HurleySpriteSheet_5
-    21300076: HurleySpriteSheet_6
-    21300078: HurleySpriteSheet_7
+    21300068: Hurley_IdleUp
+    21300070: Hurley_Up1
+    21300072: Hurley_Up2
+    21300074: Hurley_Up3
+    21300076: Hurley_Up4
+    21300078: Hurley_SwordIdle1
     21300080: HurleySpriteSheet_8
     21300082: HurleySpriteSheet_9
-    21300084: HurleySpriteSheet_10
-    21300086: HurleySpriteSheet_11
-    21300088: HurleySpriteSheet_12
-    21300090: HurleySpriteSheet_13
-    21300092: HurleySpriteSheet_14
-    21300094: HurleySpriteSheet_15
-    21300096: HurleySpriteSheet_16
-    21300098: HurleySpriteSheet_17
-    21300100: HurleySpriteSheet_18
-    21300102: HurleySpriteSheet_19
-    21300104: HurleySpriteSheet_20
-    21300106: HurleySpriteSheet_21
-    21300108: HurleySpriteSheet_22
-    21300110: HurleySpriteSheet_23
-    21300112: HurleySpriteSheet_24
-    21300114: HurleySpriteSheet_25
-    21300116: HurleySpriteSheet_26
-    21300118: HurleySpriteSheet_27
-    21300120: HurleySpriteSheet_28
-    21300122: HurleySpriteSheet_29
+    21300084: Hurley_GunIdle1
+    21300086: Hurley_GunIdle2
+    21300088: Hurley_GunAttack1
+    21300090: Hurley_GunAttack2
+    21300092: Hurley_Spell1
+    21300094: Hurley_Spell2
+    21300096: Hurley_SwordAttack1
+    21300098: Hurley_SwordAttack2
+    21300100: Hurley_Death1
+    21300102: Hurley_Death2
+    21300104: Hurley_IdleRight
+    21300106: Hurley_IdleLeft
+    21300108: Hurley_Down1
+    21300110: Hurley_Down2
+    21300112: Hurley_Down3
+    21300114: Hurley_Down4
+    21300116: Hurley_Right1
+    21300118: Hurley_Right2
+    21300120: Hurley_Left1
+    21300122: Hurley_Left2
     21300124: HurleySpriteSheet_30
-    21300126: HurleySpriteSheet_31
+    21300126: Hurley_Right3
+    21300128: Hurley_Right4
+    21300130: Hurley_Left3
+    21300132: Hurley_Left4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -130,19 +133,27 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 1
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HurleySpriteSheet_0
+      name: Hurley_IdleDown
       rect:
         serializedVersion: 2
-        x: 22
-        y: 395
-        width: 18
-        height: 41
+        x: 19
+        y: 393
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -150,90 +161,90 @@ TextureImporter:
       name: HurleySpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 86
-        y: 395
-        width: 18
-        height: 41
+        x: 83
+        y: 393
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_2
+      name: Hurley_IdleUp
       rect:
         serializedVersion: 2
-        x: 151
-        y: 395
-        width: 18
-        height: 41
+        x: 147
+        y: 393
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_3
+      name: Hurley_Up1
       rect:
         serializedVersion: 2
-        x: 214
-        y: 395
-        width: 18
-        height: 41
+        x: 211
+        y: 393
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_4
+      name: Hurley_Up2
       rect:
         serializedVersion: 2
-        x: 278
-        y: 395
-        width: 18
-        height: 41
+        x: 275
+        y: 393
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_5
+      name: Hurley_Up3
       rect:
         serializedVersion: 2
-        x: 22
-        y: 331
-        width: 18
-        height: 41
+        x: 19
+        y: 329
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_6
+      name: Hurley_Up4
       rect:
         serializedVersion: 2
-        x: 86
-        y: 331
-        width: 18
-        height: 41
+        x: 82
+        y: 329
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_7
+      name: Hurley_SwordIdle1
       rect:
         serializedVersion: 2
         x: 140
-        y: 331
-        width: 29
-        height: 42
+        y: 329
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -243,10 +254,10 @@ TextureImporter:
         serializedVersion: 2
         x: 204
         y: 331
-        width: 29
-        height: 42
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -256,270 +267,270 @@ TextureImporter:
         serializedVersion: 2
         x: 268
         y: 333
-        width: 30
-        height: 41
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_10
+      name: Hurley_GunIdle1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 267
-        width: 25
-        height: 41
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 11
+        y: 265
+        width: 50
+        height: 50
+      alignment: 9
+      pivot: {x: 0.42, y: 0.46}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_11
+      name: Hurley_GunIdle2
       rect:
         serializedVersion: 2
         x: 80
-        y: 267
-        width: 25
-        height: 41
+        y: 265
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_12
+      name: Hurley_GunAttack1
       rect:
         serializedVersion: 2
         x: 148
-        y: 267
-        width: 31
-        height: 41
+        y: 265
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_13
+      name: Hurley_GunAttack2
       rect:
         serializedVersion: 2
         x: 212
-        y: 267
-        width: 31
-        height: 41
+        y: 265
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_14
+      name: Hurley_Spell1
       rect:
         serializedVersion: 2
         x: 268
-        y: 267
-        width: 33
-        height: 42
+        y: 266
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_15
+      name: Hurley_Spell2
       rect:
         serializedVersion: 2
         x: 12
-        y: 204
-        width: 38
-        height: 42
+        y: 203
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_16
+      name: Hurley_SwordAttack1
       rect:
         serializedVersion: 2
         x: 78
         y: 205
-        width: 31
-        height: 41
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_17
+      name: Hurley_SwordAttack2
       rect:
         serializedVersion: 2
         x: 140
         y: 205
-        width: 45
-        height: 41
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_18
+      name: Hurley_Death1
       rect:
         serializedVersion: 2
         x: 217
         y: 203
-        width: 19
-        height: 41
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_19
+      name: Hurley_Death2
       rect:
         serializedVersion: 2
         x: 270
         y: 212
-        width: 37
-        height: 21
+        width: 50
+        height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_20
+      name: Hurley_IdleRight
       rect:
         serializedVersion: 2
-        x: 22
-        y: 139
-        width: 18
-        height: 41
+        x: 19
+        y: 137
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_21
+      name: Hurley_IdleLeft
       rect:
         serializedVersion: 2
-        x: 86
-        y: 139
-        width: 18
-        height: 41
+        x: 84
+        y: 137
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_22
+      name: Hurley_Down1
       rect:
         serializedVersion: 2
-        x: 150
-        y: 139
-        width: 18
-        height: 41
+        x: 147
+        y: 137
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_23
+      name: Hurley_Down2
       rect:
         serializedVersion: 2
-        x: 214
-        y: 139
-        width: 18
-        height: 41
+        x: 212
+        y: 137
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_24
+      name: Hurley_Down3
       rect:
         serializedVersion: 2
-        x: 278
-        y: 139
-        width: 18
-        height: 41
+        x: 276
+        y: 137
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_25
+      name: Hurley_Down4
       rect:
         serializedVersion: 2
-        x: 22
-        y: 75
-        width: 18
-        height: 41
+        x: 19
+        y: 73
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_26
+      name: Hurley_Right1
       rect:
         serializedVersion: 2
-        x: 87
-        y: 75
-        width: 18
-        height: 41
+        x: 84
+        y: 73
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_27
+      name: Hurley_Right2
       rect:
         serializedVersion: 2
-        x: 151
-        y: 75
-        width: 18
-        height: 41
+        x: 148
+        y: 73
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_28
+      name: Hurley_Left1
       rect:
         serializedVersion: 2
-        x: 215
-        y: 75
-        width: 18
-        height: 41
+        x: 212
+        y: 73
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_29
+      name: Hurley_Left2
       rect:
         serializedVersion: 2
-        x: 278
-        y: 75
-        width: 18
-        height: 41
+        x: 275
+        y: 73
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -527,25 +538,64 @@ TextureImporter:
       name: HurleySpriteSheet_30
       rect:
         serializedVersion: 2
-        x: 22
-        y: 11
-        width: 18
-        height: 41
+        x: 19
+        y: 8
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_31
+      name: Hurley_Right3
       rect:
         serializedVersion: 2
-        x: 86
-        y: 11
-        width: 18
-        height: 41
+        x: 84
+        y: 8
+        width: 24
+        height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hurley_Right4
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 8
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hurley_Left3
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 8
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hurley_Left4
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 8
+        width: 24
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
