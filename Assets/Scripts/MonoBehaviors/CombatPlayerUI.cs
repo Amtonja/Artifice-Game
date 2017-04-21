@@ -34,11 +34,7 @@ public class CombatPlayerUI : MonoBehaviour
 
         healthBarDelta.fillAmount = 1.0f;
 
-        iconCanvas = GetComponentInChildren<Canvas>();
-        ActionMenu = iconCanvas.transform.Find("ActionIcon/OptionPanel").gameObject;
-        MagicMenu = iconCanvas.transform.Find("MagicIcon/OptionPanel").gameObject;
-        ActionMenu.SetActive(false);
-        MagicMenu.SetActive(false);
+        iconCanvas = GetComponentInChildren<Canvas>();        
         iconCanvas.enabled = false;
     }
 
@@ -94,31 +90,45 @@ public class CombatPlayerUI : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
+    }    
+
+    public void OpenSubmenu(GameObject icon)
+    {
+        GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
+        if (submenu != null) submenu.SetActive(true);
     }
 
-    public void ActionSelect()
+    public void CloseSubmenu(GameObject icon)
     {
-        ActionMenu.SetActive(true);
-        GameObject selected = ActionMenu.transform.GetChild(0).gameObject;
-        EventSystem.current.SetSelectedGameObject(selected);
+        GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
+        if (submenu != null) submenu.SetActive(false);
     }
 
-    public void ActionDeselect()
+    /// <summary>
+    /// Handles the UI event of focus moving FROM one of the 
+    /// 5 top-level icons horizontally.
+    /// </summary>
+    /// <param name="eventData">Data of the Move event sent by the event system.</param>
+    public void OnMoveIcon(BaseEventData eventData)
     {
-
-        ActionMenu.SetActive(false);
+        AxisEventData axisData = eventData as AxisEventData;
+        MoveDirection moveDir = axisData.moveDir;
+        if (moveDir == MoveDirection.Left)
+        {
+            // Here's hoping this nightmare is a workaround for EventSystem.current.lastSelectedGameObject
+            // Point is, close the submenu of whichever icon we are moving AWAY FROM
+            CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnRight().gameObject);
+        }        
+        else if (moveDir == MoveDirection.Right)
+        {
+            // Same, but opposite direction
+            CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnLeft().gameObject);
+        }
     }
 
-    public void MagicSelect()
+    public void ChooseTarget()
     {
-        MagicMenu.SetActive(true);
-        GameObject selected = MagicMenu.transform.GetChild(0).gameObject;
-        EventSystem.current.SetSelectedGameObject(selected);
-    }
 
-    public void MagicDeselect()
-    {
-        MagicMenu.SetActive(false);
     }
 
     /// <summary>
