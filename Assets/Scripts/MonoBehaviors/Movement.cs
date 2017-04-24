@@ -106,7 +106,7 @@ public class Movement : MonoBehaviour
 					moveDir = directions.Left;
                 }
                 if (Input.GetAxis("Vertical") < 0f)
-                {
+                {                    
                     moveDelta += Vector2.down;
                     /*
                     sp.UpdateSortingOrder();

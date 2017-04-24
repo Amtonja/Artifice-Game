@@ -14,9 +14,19 @@ public class CombatPlayerUI : MonoBehaviour
     private Image actionBar, specialBar, rageBar, magicBar, agilityBar, healthBar, healthBarDelta;
     private Text playerName, playerLevel;
     private Canvas iconCanvas;
-    private GameObject ActionMenu, MagicMenu;
+    private GameObject cursor;
+    private List<Player> enemiesList;
+    private Player selectedEnemy;    
 
     public float healthBarDeltaTime;
+
+    public enum PlayerUIState
+    {
+        WAITING_FOR_ACTION,
+        ACTION_SELECT,
+        ENEMY_SELECT
+    }
+    private PlayerUIState state;
 
     // Use this for initialization
     void OnEnable()
@@ -36,28 +46,75 @@ public class CombatPlayerUI : MonoBehaviour
 
         iconCanvas = GetComponentInChildren<Canvas>();        
         iconCanvas.enabled = false;
+
+        cursor = transform.Find("Cursor").gameObject;
+
+        enemiesList = PlayManager.instance.EnemyCombatants;
+        selectedEnemy = enemiesList[0];
+
+        State = PlayerUIState.WAITING_FOR_ACTION;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ActivePlayer.IsMyTurn && !iconCanvas.isActiveAndEnabled)
+        if (State == PlayerUIState.WAITING_FOR_ACTION)
         {
-            iconCanvas.enabled = true;
-            EventSystem.current.SetSelectedGameObject(iconCanvas.transform.Find("ActionIcon").gameObject);
+            if (ActivePlayer.IsMyTurn)
+            {
+                State = PlayerUIState.ACTION_SELECT;
+                return;
+            }
+            // Update the five bars
+            actionBar.fillAmount = ActivePlayer.ActionBarValue / ActivePlayer.ActionBarTarget;
+            agilityBar.fillAmount = ActivePlayer.AgilityBarValue / ActivePlayer.AgilityBarTarget;
+            magicBar.fillAmount = ActivePlayer.MagicBarValue / ActivePlayer.MagicBarTarget;
+            rageBar.fillAmount = ActivePlayer.RageBarValue / ActivePlayer.RageBarTarget;
+            specialBar.fillAmount = ActivePlayer.SpecialBarValue / ActivePlayer.SpecialBarTarget;
         }
 
+        //if (ActivePlayer.IsMyTurn && !iconCanvas.isActiveAndEnabled)
+        if (State == PlayerUIState.ACTION_SELECT)
+        {
+            //iconCanvas.enabled = true;
+            //EventSystem.current.SetSelectedGameObject(iconCanvas.transform.Find("ActionIcon").gameObject);
+        }
+
+        // Happening in any state
         if (ActivePlayer.HealthChanged)
         {
             UpdateHealthBar();
-        }
+        }        
 
-        // Update the five bars
-        actionBar.fillAmount = ActivePlayer.ActionBarValue / ActivePlayer.ActionBarTarget;
-        agilityBar.fillAmount = ActivePlayer.AgilityBarValue / ActivePlayer.AgilityBarTarget;
-        magicBar.fillAmount = ActivePlayer.MagicBarValue / ActivePlayer.MagicBarTarget;
-        rageBar.fillAmount = ActivePlayer.RageBarValue / ActivePlayer.RageBarTarget;
-        specialBar.fillAmount = ActivePlayer.SpecialBarValue / ActivePlayer.SpecialBarTarget;
+        if (State == PlayerUIState.ENEMY_SELECT)
+        {
+            //Debug.Log("Selected enemy: " + selectedEnemy.name);
+            Debug.Log("Player UI in ENEMY_SELECT state");
+            if (Input.GetAxis("Vertical") < 0f)
+            {
+                Debug.Log("Vertical axis down");
+                selectedEnemy = enemiesList[(enemiesList.IndexOf(selectedEnemy) + 1) % enemiesList.Count];
+                cursor.transform.position = selectedEnemy.transform.position;
+            }
+
+            if (Input.GetAxis("Vertical") > 0f)
+            {
+                Debug.Log("Vertical axis up");
+                selectedEnemy = enemiesList[Mathf.Abs((enemiesList.IndexOf(selectedEnemy) - 1) % enemiesList.Count)];
+                cursor.transform.position = selectedEnemy.transform.position;
+            }
+
+            if (Input.GetButtonDown("Submit"))
+            {
+                ActivePlayer.MyCombatAction(selectedEnemy);
+                State = PlayerUIState.WAITING_FOR_ACTION;
+            }
+
+            if (Input.GetButtonDown("Cancel"))
+            {
+                State = PlayerUIState.ACTION_SELECT;
+            }
+        }
     }
 
     /// <summary>
@@ -126,10 +183,13 @@ public class CombatPlayerUI : MonoBehaviour
         }
     }
 
-    public void ChooseTarget()
+    public void OnMelee()
     {
-
-    }
+        Debug.Log("You have selected: Melee Attack");
+        ActivePlayer.MyCombatAction = ActivePlayer.MeleeAttack;
+        Input.ResetInputAxes();
+        State = PlayerUIState.ENEMY_SELECT;       
+    }    
 
     /// <summary>
     /// Sets the active player, and also updates the
@@ -143,11 +203,47 @@ public class CombatPlayerUI : MonoBehaviour
             activePlayer = value;
             playerName.text = activePlayer.Name;
             playerLevel.text = activePlayer.Stats.Level.ToString("00");
-            transform.position = activePlayer.transform.position + Vector3.up * 2f + Vector3.right / 2f;
+            transform.position = activePlayer.transform.position + Vector3.up / 2f; //+ Vector3.up * 2f + Vector3.right / 2f;
         }
         get
         {
             return activePlayer;
+        }
+    }
+
+    public PlayerUIState State
+    {
+        get
+        {
+            return state;
+        }
+
+        set
+        {
+            PlayerUIState oldState = state;
+            state = value;
+            if (state != oldState)
+            {
+                if (value == PlayerUIState.ACTION_SELECT)
+                {
+                    cursor.SetActive(false);
+                    iconCanvas.enabled = true;
+                    EventSystem.current.sendNavigationEvents = true;
+                    EventSystem.current.SetSelectedGameObject(iconCanvas.transform.Find("ActionIcon").gameObject);
+                }
+                if (value == PlayerUIState.ENEMY_SELECT)
+                {
+                    EventSystem.current.sendNavigationEvents = false;
+                    cursor.transform.position = selectedEnemy.transform.position;
+                    cursor.SetActive(true);
+                }
+                if (value == PlayerUIState.WAITING_FOR_ACTION)
+                {
+                    iconCanvas.enabled = false;
+                    EventSystem.current.sendNavigationEvents = true;
+                    cursor.SetActive(false);
+                }
+            }
         }
     }
 }

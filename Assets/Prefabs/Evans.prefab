@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1431489070619788}
   m_IsPrefabParent: 1
+--- !u!1 &1226764530169252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4205745771281234}
+  m_Layer: 0
+  m_Name: Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1431489070619788
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,13 +39,27 @@ GameObject:
   - component: {fileID: 114539703176097850}
   - component: {fileID: 61400534968174820}
   - component: {fileID: 50919755712382930}
+  - component: {fileID: 95627289049998174}
   m_Layer: 0
   m_Name: Evans
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4205745771281234
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1226764530169252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.002, y: -0.202, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4258221493361940}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4258221493361940
 Transform:
   m_ObjectHideFlags: 1
@@ -38,9 +67,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431489070619788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.62, y: 0, z: 0}
+  m_LocalPosition: {x: -2.03, y: -0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4205745771281234}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,9 +105,26 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0016651154, y: 0.0016643405}
   serializedVersion: 2
-  m_Size: {x: 0.51, y: 0.6}
+  m_Size: {x: 0.16382387, y: 0.42691278}
+--- !u!95 &95627289049998174
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431489070619788}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86873bead24740748b387dc2d567f104, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114353809896882622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,15 +140,15 @@ MonoBehaviour:
     name: Evans
     id: 1
     combatStats:
-      strength: 0
-      defense: 0
-      magic: 0
-      speed: 0
-      evasion: 0
-      accuracy: 0
-      magicDefense: 0
-      luck: 0
-      maxHealth: 0
+      strength: 9
+      defense: 10
+      magic: 12
+      speed: 10
+      evasion: 6
+      accuracy: 6
+      magicDefense: 8
+      luck: 10
+      maxHealth: 150
     race: 0
 --- !u!114 &114539703176097850
 MonoBehaviour:

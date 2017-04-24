@@ -14,9 +14,15 @@ public class Player : Entity {
     
     private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
     private float agilityBarTarget = 20f, magicBarTarget = 20f, rageBarTarget = 20f, specialBarTarget = 20f;
+
+    private Vector3 _footPos;
+
+    private CombatAction _combatAction;
         
     // Use this for initialization
     void Start () {
+
+        _footPos = transform.Find("Base").localPosition;
 
 		//TODO: This will be loaded in via XML reader later
 		this.title = entityInfo.name;
@@ -77,9 +83,13 @@ public class Player : Entity {
     }
 
     public void MeleeAttack(Entity target)
-    {
+    {        
+        Debug.Log("Melee attack on " + target.name);
         int damage = Stats.Strength; // Get real formula
         target.TakeDamage(damage - target.Stats.Defense); // Get real formula
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.UnpauseGame();
     }
 
 	/// <summary>
@@ -138,6 +148,8 @@ public class Player : Entity {
         Stats.Speed = Stats.BaseSpeed;
         Stats.Strength = Stats.BaseDefense;
     }
+
+    public delegate void CombatAction(Entity target);
 
 	#region implemented abstract members of Entity
 
@@ -265,6 +277,27 @@ public class Player : Entity {
         set
         {
             specialBarTarget = value;
+        }
+    }
+
+    public Vector3 FootPos
+    {
+        get
+        {
+            return _footPos;
+        }
+    }
+
+    public CombatAction MyCombatAction
+    {
+        get
+        {
+            return _combatAction;
+        }
+
+        set
+        {
+            _combatAction = value;
         }
     }
     #endregion
