@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 993f93057b0098a48a73606c75297aa2
-timeCreated: 1492712690
+timeCreated: 1493062117
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -44,8 +44,8 @@ TextureImporter:
     21300074: Hurley_Up3
     21300076: Hurley_Up4
     21300078: Hurley_SwordIdle1
-    21300080: HurleySpriteSheet_8
-    21300082: HurleySpriteSheet_9
+    21300080: Hurley_SwordIdle2
+    21300082: Hurley_SwordIdle3
     21300084: Hurley_GunIdle1
     21300086: Hurley_GunIdle2
     21300088: Hurley_GunAttack1
@@ -243,34 +243,34 @@ TextureImporter:
         y: 329
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4, y: 0.49}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_8
+      name: Hurley_SwordIdle2
       rect:
         serializedVersion: 2
         x: 204
-        y: 331
+        y: 329
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4, y: 0.51}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: HurleySpriteSheet_9
+      name: Hurley_SwordIdle3
       rect:
         serializedVersion: 2
         x: 268
-        y: 333
+        y: 329
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.36, y: 0.51}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -283,7 +283,7 @@ TextureImporter:
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: 0.42, y: 0.46}
+      pivot: {x: 0.4, y: 0.46}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -295,8 +295,8 @@ TextureImporter:
         y: 265
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.32, y: 0.46}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -308,8 +308,8 @@ TextureImporter:
         y: 265
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.14, y: 0.46}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -321,8 +321,8 @@ TextureImporter:
         y: 265
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.14, y: 0.46}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -331,11 +331,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 268
-        y: 266
+        y: 264
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -344,11 +344,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12
-        y: 203
+        y: 201
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.34, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -360,8 +360,8 @@ TextureImporter:
         y: 205
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.3, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -373,8 +373,8 @@ TextureImporter:
         y: 205
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.15, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -382,8 +382,8 @@ TextureImporter:
       name: Hurley_Death1
       rect:
         serializedVersion: 2
-        x: 217
-        y: 203
+        x: 198
+        y: 200
         width: 50
         height: 50
       alignment: 0
@@ -395,12 +395,12 @@ TextureImporter:
       name: Hurley_Death2
       rect:
         serializedVersion: 2
-        x: 270
-        y: 212
+        x: 265
+        y: 209
         width: 50
         height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.17, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

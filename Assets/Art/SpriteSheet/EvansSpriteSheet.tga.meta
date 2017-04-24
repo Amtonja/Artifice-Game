@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4c3c61ded8127e34b9d6a80a95d16d44
-timeCreated: 1492731174
+timeCreated: 1493065783
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -205,8 +205,8 @@ TextureImporter:
       name: Evans_Death1
       rect:
         serializedVersion: 2
-        x: 82
-        y: 457
+        x: 74
+        y: 455
         width: 40
         height: 46
       alignment: 0
@@ -219,11 +219,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 140
-        y: 472
+        y: 471
         width: 40
         height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.2, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -361,8 +361,8 @@ TextureImporter:
       name: Evans_SwordIdle1
       rect:
         serializedVersion: 2
-        x: 202
-        y: 328
+        x: 201
+        y: 326
         width: 50
         height: 50
       alignment: 9
@@ -374,8 +374,8 @@ TextureImporter:
       name: Evans_SwordIdle2
       rect:
         serializedVersion: 2
-        x: 266
-        y: 328
+        x: 265
+        y: 326
         width: 50
         height: 50
       alignment: 9
@@ -387,12 +387,12 @@ TextureImporter:
       name: Evans_SwordIdle3
       rect:
         serializedVersion: 2
-        x: 10
-        y: 264
+        x: 9
+        y: 262
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: 0.61, y: 0.5}
+      pivot: {x: 0.7, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -401,7 +401,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 76
-        y: 262
+        y: 261
         width: 50
         height: 50
       alignment: 9
@@ -414,7 +414,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 140
-        y: 262
+        y: 260
         width: 50
         height: 50
       alignment: 9
@@ -427,7 +427,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 205
-        y: 263
+        y: 261
         width: 50
         height: 50
       alignment: 9
@@ -440,7 +440,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 266
-        y: 263
+        y: 261
         width: 50
         height: 50
       alignment: 9
@@ -453,11 +453,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 12
-        y: 200
+        y: 199
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: 0.33, y: 0.5}
+      pivot: {x: 0.34, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -465,8 +465,8 @@ TextureImporter:
       name: Evans_GunAttack3
       rect:
         serializedVersion: 2
-        x: 84
-        y: 199
+        x: 83
+        y: 197
         width: 50
         height: 50
       alignment: 9
@@ -479,7 +479,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 148
-        y: 199
+        y: 197
         width: 50
         height: 50
       alignment: 9
@@ -492,11 +492,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 202
-        y: 201
+        y: 199
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: 0.62, y: 0.47}
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -505,11 +505,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 266
-        y: 203
+        y: 205
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: 0.62, y: 0.42}
+      pivot: {x: 0.6, y: 0.42}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -518,11 +518,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10
-        y: 138
+        y: 137
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: 0.72, y: 0.42}
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -530,12 +530,12 @@ TextureImporter:
       name: Evans_SwordAttack4
       rect:
         serializedVersion: 2
-        x: 74
-        y: 139
+        x: 70
+        y: 138
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: 0.62, y: 0.44}
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -543,7 +543,7 @@ TextureImporter:
       name: Evans_SwordAttack5
       rect:
         serializedVersion: 2
-        x: 139
+        x: 137
         y: 138
         width: 50
         height: 50
@@ -556,12 +556,12 @@ TextureImporter:
       name: Evans_SwordAttack6
       rect:
         serializedVersion: 2
-        x: 204
+        x: 192
         y: 139
         width: 50
         height: 50
-      alignment: 9
-      pivot: {x: 0.21, y: 0.43}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -570,7 +570,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 266
-        y: 136
+        y: 134
         width: 50
         height: 50
       alignment: 9
@@ -583,11 +583,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10
-        y: 74
+        y: 70
         width: 50
         height: 50
       alignment: 9
-      pivot: {x: 0.62, y: 0.44}
+      pivot: {x: 0.6, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
