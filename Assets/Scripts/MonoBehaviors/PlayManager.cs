@@ -28,6 +28,12 @@ public class PlayManager : MonoBehaviour
     public CombatUIManager combatUI;
 
     /// <summary>
+    /// Reference to the CombatGrid object so that it can be
+    /// inactive initially and activated when combat begins.
+    /// </summary>
+    private CombatGrid combatGrid;
+
+    /// <summary>
     /// The current players in the party
     /// </summary>
     public Player[] party;
@@ -43,6 +49,8 @@ public class PlayManager : MonoBehaviour
         exploreMode = true;
         instance = this;
         combatantEnemies = new List<Player>();
+        combatGrid = GameObject.FindGameObjectWithTag("CombatGrid").GetComponent<CombatGrid>();        
+        combatGrid.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -54,6 +62,7 @@ public class PlayManager : MonoBehaviour
     public void EnemyEncountered(Player enemy)
     {
         exploreMode = false;
+        combatGrid.gameObject.SetActive(true);
 
         GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject e in enemiesInScene)
@@ -72,23 +81,18 @@ public class PlayManager : MonoBehaviour
             combatUI.SetupPlayerUI(party[i]);
         }
 
-        foreach (Player p in combatantEnemies)
-        {
-            Debug.Log("Combat with: " + p.name);
-        }
+        
     }
 
     /// <summary>
     /// Moves the players and combatants to their appropriate battle positions as
-    /// set up in the CombatSpace script. This assumes that the enemy has a CombatSpace
-    /// object childed to the enemy.
+    /// set up in the CombatGrid script. 
     /// </summary>
     /// <param name="enemy">Enemy.</param>
     private void SetupCombatPositions(List<Player> enemies)
-    {
-        //CombatSpace space = enemy.transform.FindChild("CombatSpace").GetComponent<CombatSpace>();
-        CombatGrid grid = GameObject.FindGameObjectWithTag("CombatGrid").GetComponent<CombatGrid>();
-        grid.gameObject.SetActive(true);
+    {        
+        combatGrid.GenerateGrid();
+        combatGrid.gameObject.SetActive(true);
 
         // Set each player's position to the given cell of the grid, offset for their sprite's height
         // And also disable the players' movement
@@ -96,19 +100,20 @@ public class PlayManager : MonoBehaviour
         {
             party[i].GetComponent<Movement>().enabled = false;
             Vector3 startPosition =
-                new Vector3(grid.playerStartPositions[i].x * grid.CellSizeX, grid.playerStartPositions[i].y * grid.CellSizeY - party[i].FootPos.y);
-            party[i].transform.position = grid.transform.position + startPosition;
-        }
-        //enemy.transform.position = space.EnemyPosition();
+                new Vector3(combatGrid.playerStartPositions[i].x * combatGrid.CellSizeX, 
+                combatGrid.playerStartPositions[i].y * combatGrid.CellSizeY - party[i].FootPos.y);
+            party[i].transform.position = combatGrid.transform.position + startPosition;
+        }        
 
         // Do the same as above for the enemies
         for (int i = 0; i < enemies.Count; i++)
         {
             //enemies[i].GetComponent<Movement>().enabled = false;
             Vector3 startPosition =
-                new Vector3(grid.enemyStartPositions[i].x * grid.CellSizeX, grid.enemyStartPositions[i].y * grid.CellSizeY - enemies[i].FootPos.y);
-            enemies[i].transform.position = grid.transform.position + startPosition;
-            grid.Cells[(int)grid.enemyStartPositions[i].x, (int)grid.enemyStartPositions[i].y].SetToHostileColor();       
+                new Vector3(combatGrid.enemyStartPositions[i].x * combatGrid.CellSizeX, 
+                combatGrid.enemyStartPositions[i].y * combatGrid.CellSizeY - enemies[i].FootPos.y);
+            enemies[i].transform.position = combatGrid.transform.position + startPosition;
+            //combatGrid.Cells[(int)combatGrid.enemyStartPositions[i].x, (int)combatGrid.enemyStartPositions[i].y].SetToHostileColor();       
         }
     }
 

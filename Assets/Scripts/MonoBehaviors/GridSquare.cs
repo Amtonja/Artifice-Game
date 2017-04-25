@@ -8,10 +8,15 @@ public class GridSquare : MonoBehaviour
 
     public Color friendlyColor, hostileColor, neutralColor;
 
+    void Awake()
+    {
+        myRenderer = GetComponent<SpriteRenderer>();
+    }
+
     // Use this for initialization
     void Start()
     {
-        myRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame
@@ -28,8 +33,8 @@ public class GridSquare : MonoBehaviour
             SetToFriendlyColor();
         }
 
-        else if (other.CompareTag("Enemy")) 
-            //&& myRenderer.sprite.bounds.Contains(other.GetComponent<Player>().FootPos))
+        else if (other.CompareTag("Enemy"))
+           // && myRenderer.sprite.bounds.Contains(other.GetComponent<Player>().FootPos))
         {
             SetToHostileColor();
         }
@@ -46,7 +51,7 @@ public class GridSquare : MonoBehaviour
     }
 
     public void SetToHostileColor()
-    {
+    {        
         myRenderer.color = hostileColor;
     }
 

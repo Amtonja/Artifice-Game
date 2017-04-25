@@ -50,7 +50,7 @@ public class Player : Entity {
         {
             if (ActionBarValue < ActionBarTarget)
             {
-                ActionBarValue += (Stats.Speed / 5.0f) * Time.deltaTime; // Don't use this value                
+                ActionBarValue += (Stats.Speed / 2.0f) * Time.deltaTime; // Don't use this value                
             }            
             else if (ActionBarValue >= ActionBarTarget)
             {
@@ -92,12 +92,59 @@ public class Player : Entity {
         PlayManager.instance.UnpauseGame();
     }
 
-	/// <summary>
-	/// A struct to hold necessary info for this entity,
-	/// allowing it to be easily accessed and modified
-	/// in the Unity Editor.
-	/// </summary>
-	[Serializable]
+    public void RangedAttack(Entity target)
+    {
+        int damage = Stats.Accuracy; // Get real formula
+        target.TakeDamage(damage - target.Stats.Defense); // Get real formula
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.UnpauseGame();
+    }
+
+    public void BoltSpell(Entity target)
+    {
+        int damage = Stats.Magic; // Get real formula
+        target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.UnpauseGame();
+    }
+
+    // Assuming these will eventually be different
+    public void GustSpell(Entity target)
+    {
+        int damage = Stats.Magic; // Get real formula
+        target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.UnpauseGame();
+    }
+
+    public void CureSpell(Entity target)
+    {
+        Debug.Log("Casting Cure on " + target.name);
+        int healthRestored = Stats.Magic; // Get real formula
+        target.Heal(healthRestored);
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.UnpauseGame();
+    }
+
+    public void AimSpell(Entity target)
+    {
+        int accuracyBuff = Stats.Magic; // Get real formula
+        target.Stats.Accuracy += accuracyBuff; // Get real formula
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.UnpauseGame();
+    }
+
+    /// <summary>
+    /// A struct to hold necessary info for this entity,
+    /// allowing it to be easily accessed and modified
+    /// in the Unity Editor.
+    /// </summary>
+    [Serializable]
 	private struct EntityInfo {
 		public string name;
 		public string id;

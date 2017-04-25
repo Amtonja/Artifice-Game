@@ -35,31 +35,36 @@ public class CombatGrid : MonoBehaviour
     void Start()
     {        
         
-    }
-
-    void OnEnable()
-    {
-        _cells = new GridSquare[gridWidth, gridHeight];
-
-        gridOrigin = transform.Find("GridOrigin");
-        gridOrigin.localPosition = new Vector3(0, 0);
-        
-        for (int i = 0; i < gridWidth; i++)
-        {
-            for (int j = 0; j < gridHeight; j++)
-            {
-                GridSquare square = Instantiate(cellPrefab, new Vector3(i * CellSizeX, j * CellSizeY), 
-                    Quaternion.identity, transform.GetChild(0)) as GridSquare;
-                square.transform.localPosition = new Vector3(i * CellSizeX, j * CellSizeY);
-                _cells[i, j] = square;
-            }
-        }
-    }
+    }   
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void GenerateGrid()
+    {
+        _cells = new GridSquare[gridWidth, gridHeight];
+
+        gridOrigin = transform.Find("GridOrigin");
+        gridOrigin.localPosition = new Vector3(0, 0);
+
+        for (int i = 0; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridHeight; j++)
+            {
+                GridSquare square = Instantiate(cellPrefab, new Vector3(i * CellSizeX, j * CellSizeY),
+                    Quaternion.identity, transform.GetChild(0)) as GridSquare;
+                square.transform.localPosition = new Vector3(i * CellSizeX, j * CellSizeY);
+                _cells[i, j] = square;
+            }
+        }
+
+        for (int i = 0; i < enemyStartPositions.Length; i++)
+        {
+            Cells[(int)enemyStartPositions[i].x, (int)enemyStartPositions[i].y].SetToHostileColor();
+        }
     }
 
     #region C# Properties

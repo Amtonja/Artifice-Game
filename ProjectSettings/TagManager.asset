@@ -43,3 +43,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: CombatGrid
+    uniqueID: 4144747701
+    locked: 0
+  - name: Enemies
+    uniqueID: 1483318571
+    locked: 0
+  - name: PlayerCharacters
+    uniqueID: 1014269967
+    locked: 0
+  - name: UI
+    uniqueID: 29846227
+    locked: 0
