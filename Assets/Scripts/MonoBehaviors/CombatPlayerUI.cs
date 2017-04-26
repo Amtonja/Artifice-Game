@@ -80,14 +80,7 @@ public class CombatPlayerUI : MonoBehaviour
             magicBar.fillAmount = ActivePlayer.MagicBarValue / ActivePlayer.MagicBarTarget;
             rageBar.fillAmount = ActivePlayer.RageBarValue / ActivePlayer.RageBarTarget;
             specialBar.fillAmount = ActivePlayer.SpecialBarValue / ActivePlayer.SpecialBarTarget;
-        }
-
-        //if (ActivePlayer.IsMyTurn && !iconCanvas.isActiveAndEnabled)
-        if (State == PlayerUIState.ACTION_SELECT)
-        {
-            //iconCanvas.enabled = true;
-            //EventSystem.current.SetSelectedGameObject(iconCanvas.transform.Find("ActionIcon").gameObject);
-        }
+        }        
 
         // Happening in any state
         if (ActivePlayer.HealthChanged)

@@ -376,6 +376,12 @@ Prefab:
       value: 
       objectReference: {fileID: 114380319092413142, guid: 0fd8efb78a96384498e9c6dfbabfe172,
         type: 2}
+    - target: {fileID: 114672948340293816, guid: b406117de1af4464ca68d8573fdcf81d,
+        type: 2}
+      propertyPath: popupTextPrefab
+      value: 
+      objectReference: {fileID: 114536084034317090, guid: d7a81b9ac41b35c4c816612f0099c613,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b406117de1af4464ca68d8573fdcf81d, type: 2}
   m_IsPrefabParent: 0
@@ -560,7 +566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 486.5, y: 304}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 973, y: 608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629319268

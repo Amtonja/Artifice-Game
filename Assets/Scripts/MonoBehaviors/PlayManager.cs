@@ -34,6 +34,11 @@ public class PlayManager : MonoBehaviour
     private CombatGrid combatGrid;
 
     /// <summary>
+    /// Prefab used to display damage/healing in combat.
+    /// </summary>
+    public PopupText popupTextPrefab;
+
+    /// <summary>
     /// The current players in the party
     /// </summary>
     public Player[] party;
@@ -42,7 +47,7 @@ public class PlayManager : MonoBehaviour
     /// The enemies the player is currently engaged with.
     /// Usually this list is empty unless in combat.
     /// </summary>
-    private List<Player> combatantEnemies;
+    private List<Player> combatantEnemies;    
 
     void Start()
     {
@@ -79,9 +84,7 @@ public class PlayManager : MonoBehaviour
         {
             party[i].EnterCombat();
             combatUI.SetupPlayerUI(party[i]);
-        }
-
-        
+        }        
     }
 
     /// <summary>
@@ -117,6 +120,13 @@ public class PlayManager : MonoBehaviour
         }
     }
 
+    public void CreatePopupText(string text, Transform location)
+    {
+        PopupText popup = Instantiate(popupTextPrefab, combatUI.transform.Find("Canvas"), false);
+        popup.GetComponentInChildren<UnityEngine.UI.Text>().text = text;        
+        popup.transform.position = location.position;
+    }
+
     /// <summary>
     /// Call this when the encounter is complete.
     /// </summary>
@@ -128,6 +138,16 @@ public class PlayManager : MonoBehaviour
         {
             party[i].ExitCombat();
         }
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1f;
     }
 
     #region C# Properties
@@ -145,16 +165,6 @@ public class PlayManager : MonoBehaviour
         {
             return exploreMode;
         }
-    }
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0f;
-    }
-
-    public void UnpauseGame()
-    {
-        Time.timeScale = 1f;
-    }
+    }    
     #endregion
 }

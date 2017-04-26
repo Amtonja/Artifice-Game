@@ -52,4 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combatUI: {fileID: 0}
+  popupTextPrefab: {fileID: 114536084034317090, guid: d7a81b9ac41b35c4c816612f0099c613,
+    type: 2}
   party: []

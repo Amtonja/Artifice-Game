@@ -21,7 +21,8 @@ namespace Artifice.Characters {
         public virtual void TakeDamage(int _damage) {
             HealthChanged = true;
             health -= _damage;
-            //Debug.Log(title + "took " + _damage + " and is at " + health + " HP out of " + stats.MaxHealth + " HP");
+            Debug.Log(title + "took " + _damage + " and is at " + health + " HP out of " + stats.MaxHealth + " HP");
+            PlayManager.instance.CreatePopupText(_damage.ToString(), transform);
             if (health <= 0) Die();
         }
 
