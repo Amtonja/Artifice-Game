@@ -43,6 +43,23 @@ public class CombatGrid : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Checks the neighbors (horizontal, vertical, and diagonal) of the cell at x, y 
+    /// to see if any contains an enemy.
+    /// </summary>
+    /// <param name="x">x-coordinate of the cell</param>
+    /// <param name="y">y-coordinate of the cell</param>
+    /// <returns>True if an enemy is in any neighboring cell, false otherwise.</returns>
+
+    public bool CheckForAdjacentEnemies(int x, int y)
+    {
+        bool value = false;
+
+
+
+        return value;
+    }
+
     public void GenerateGrid()
     {
         _cells = new GridSquare[gridWidth, gridHeight];

@@ -97,11 +97,10 @@ public class PlayManager : MonoBehaviour
         combatGrid.GenerateGrid();
         combatGrid.gameObject.SetActive(true);
 
-        // Set each player's position to the given cell of the grid, offset for their sprite's height
-        // And also disable the players' movement
+        // Set each player's position to the given cell of the grid, offset for their sprite's height        
         for (int i = 0; i < party.Length; i++)
         {
-            party[i].GetComponent<Movement>().enabled = false;
+            //party[i].GetComponent<Movement>().enabled = false;
             Vector3 startPosition =
                 new Vector3(combatGrid.playerStartPositions[i].x * combatGrid.CellSizeX, 
                 combatGrid.playerStartPositions[i].y * combatGrid.CellSizeY - party[i].FootPos.y);

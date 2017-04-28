@@ -77,7 +77,7 @@ public class Movement : MonoBehaviour
 			return;
 		}
 
-        if (followTarget == null)
+        if (followTarget == null && !player.InCombat)
         {
             //I use this variable to tell if any input was made
             Vector2 moveVector = Vector2.zero;
@@ -150,7 +150,7 @@ public class Movement : MonoBehaviour
             }
 
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime*5f);
-		} else {
+		} else if (followTarget != null && !player.InCombat) {
 			//Following target code
 			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(followTarget.followPos.x), Mathf.Floor(followTarget.followPos.y), 0f), Time.deltaTime*5f);
 
