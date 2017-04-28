@@ -61,6 +61,7 @@ public class Player : Entity {
                 // take a turn
                 IsMyTurn = true;
                 PlayManager.instance.PauseGame();
+
             }
             
             // Update the other four bars
