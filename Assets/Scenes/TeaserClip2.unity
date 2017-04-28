@@ -501,6 +501,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
+        type: 2}
+      propertyPath: entityInfo.combatStats.speed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
   m_IsPrefabParent: 0
