@@ -18,9 +18,13 @@ public class Player : Entity {
     private Vector3 _footPos;
 
     private CombatAction _combatAction;
+
+	private Animator _animator;
         
     // Use this for initialization
     void Start () {
+
+		_animator = GetComponent<Animator>();
 
         _footPos = transform.Find("Base").localPosition;
 
@@ -82,24 +86,47 @@ public class Player : Entity {
         }
     }
 
+	private Entity tempTarget; //because we need to pass the target entity to the attack end state
+
     public void MeleeAttack(Entity target)
     {        
         Debug.Log("Melee attack on " + target.name);
-        int damage = Stats.Strength; // Get real formula
-        target.TakeDamage(damage - target.Stats.Defense); // Get real formula
+		tempTarget = target;
+		_animator.Play( Animator.StringToHash( "SwordAttack" ));
+
+
+
+		ActionBarValue = 0f;
+		IsMyTurn = false;
+		PlayManager.instance.UnpauseGame();
+    }
+
+	//Called by animator. Ensures damage is dealt on the correct attack frame
+	public void EndMeleeAttack(){
+		int damage = Stats.Strength; // Get real formula
+		tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
+
+
+	}
+
+    public void RangedAttack(Entity target)
+    {
+
+		tempTarget = target;
+		_animator.Play( Animator.StringToHash( "GunAttack" ));
         ActionBarValue = 0f;
         IsMyTurn = false;
         PlayManager.instance.UnpauseGame();
     }
 
-    public void RangedAttack(Entity target)
-    {
-        int damage = Stats.Accuracy; // Get real formula
-        target.TakeDamage(damage - target.Stats.Defense); // Get real formula
-        ActionBarValue = 0f;
-        IsMyTurn = false;
-        PlayManager.instance.UnpauseGame();
-    }
+	//Called by animator. Ensures damage is dealt on the correct attack frame
+	public void EndRangedAttack(){
+		int damage = Stats.Accuracy; // Get real formula
+		tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
+
+
+	}
+
 
     public void BoltSpell(Entity target)
     {
@@ -212,11 +239,17 @@ public class Player : Entity {
 
 	public override void EnterCombat ()
 	{
+//		_animator = GetComponent<Animator>(); //Can't find the instance if it's not here? What?
+		_animator.Play( Animator.StringToHash( "SwordIdle" ) );
+//		Movement move = this.gameObject.GetComponent<Movement> ();
+//		move.ForceLock (true); //probably redundant
 		base.EnterCombat ();
 	}
 
 	public override void ExitCombat ()
 	{
+//		Movement move = this.gameObject.GetComponent<Movement> ();
+//		move.ForceLock (false);
 		base.ExitCombat ();
 	}
 

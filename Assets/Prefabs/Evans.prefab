@@ -35,11 +35,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4258221493361940}
   - component: {fileID: 212529958292024128}
+  - component: {fileID: 95627289049998174}
   - component: {fileID: 114353809896882622}
   - component: {fileID: 114539703176097850}
   - component: {fileID: 61400534968174820}
   - component: {fileID: 50919755712382930}
-  - component: {fileID: 95627289049998174}
   m_Layer: 0
   m_Name: Evans
   m_TagString: Player

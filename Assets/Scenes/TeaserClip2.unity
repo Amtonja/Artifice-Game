@@ -189,7 +189,7 @@ Prefab:
     - target: {fileID: 224395729420458486, guid: 0fd8efb78a96384498e9c6dfbabfe172,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224395729420458486, guid: 0fd8efb78a96384498e9c6dfbabfe172,
         type: 2}
@@ -309,7 +309,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &788052694
 Prefab:
@@ -486,7 +486,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
@@ -530,7 +543,7 @@ Transform:
   m_Children:
   - {fileID: 1629319267}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1629319266
 GameObject:
@@ -762,11 +775,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1368199425817126, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
       propertyPath: m_Name
       value: Komodo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
@@ -814,6 +840,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4258221493361940, guid: d2f01571c47d1f24f87b436f571b9d94, type: 2}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431489070619788, guid: d2f01571c47d1f24f87b436f571b9d94, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

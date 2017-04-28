@@ -63,6 +63,9 @@ public class Movement : MonoBehaviour
 	private float waitTimerMax = 0.22f;
 	private float waitTimer = 0.22f;
 
+
+	private bool bForceLock = false; //skips everything when we're in combat
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -75,6 +78,13 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+
+		//If we're in combat, skip everything
+		if(bForceLock){return;}
+
+//		if (!PlayManager.instance.ExploreMode ()) {
+//			return;
+//		}
 		//skip everything except forced movement if that's what we're using
 		if (bForceMove) {
 			bForceFace = false;
@@ -322,5 +332,10 @@ public class Movement : MonoBehaviour
 	//passed by CM_StopFaceDir
 	public void StopFaceDir(){
 		bForceFace = false;
+	}
+
+
+	public void ForceLock(bool setting){
+		bForceLock = setting;
 	}
 }
