@@ -100,7 +100,6 @@ public class PlayManager : MonoBehaviour
         // Set each player's position to the given cell of the grid, offset for their sprite's height        
         for (int i = 0; i < party.Length; i++)
         {
-            //party[i].GetComponent<Movement>().enabled = false;
             Vector3 startPosition =
                 new Vector3(combatGrid.playerStartPositions[i].x * combatGrid.CellSizeX, 
                 combatGrid.playerStartPositions[i].y * combatGrid.CellSizeY - party[i].FootPos.y);
@@ -110,12 +109,10 @@ public class PlayManager : MonoBehaviour
         // Do the same as above for the enemies
         for (int i = 0; i < enemies.Count; i++)
         {
-            //enemies[i].GetComponent<Movement>().enabled = false;
             Vector3 startPosition =
                 new Vector3(combatGrid.enemyStartPositions[i].x * combatGrid.CellSizeX, 
                 combatGrid.enemyStartPositions[i].y * combatGrid.CellSizeY - enemies[i].FootPos.y);
-            enemies[i].transform.position = combatGrid.transform.position + startPosition;
-            //combatGrid.Cells[(int)combatGrid.enemyStartPositions[i].x, (int)combatGrid.enemyStartPositions[i].y].SetToHostileColor();       
+            enemies[i].transform.position = combatGrid.transform.position + startPosition; 
         }
     }
 

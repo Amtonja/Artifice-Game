@@ -93,9 +93,6 @@ public class Player : Entity {
         Debug.Log("Melee attack on " + target.name);
 		tempTarget = target;
 		_animator.Play( Animator.StringToHash( "SwordAttack" ));
-
-
-
 		ActionBarValue = 0f;
 		IsMyTurn = false;
 		PlayManager.instance.UnpauseGame();
@@ -105,13 +102,10 @@ public class Player : Entity {
 	public void EndMeleeAttack(){
 		int damage = Stats.Strength; // Get real formula
 		tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
-
-
 	}
 
     public void RangedAttack(Entity target)
     {
-
 		tempTarget = target;
 		_animator.Play( Animator.StringToHash( "GunAttack" ));
         ActionBarValue = 0f;
@@ -123,8 +117,6 @@ public class Player : Entity {
 	public void EndRangedAttack(){
 		int damage = Stats.Accuracy; // Get real formula
 		tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
-
-
 	}
 
 
@@ -242,14 +234,15 @@ public class Player : Entity {
 //		_animator = GetComponent<Animator>(); //Can't find the instance if it's not here? What?
 		_animator.Play( Animator.StringToHash( "SwordIdle" ) );
 //		Movement move = this.gameObject.GetComponent<Movement> ();
-//		move.ForceLock (true); //probably redundant
+		//GetComponent<Movement>().ForceLock(true); //probably redundant
 		base.EnterCombat ();
 	}
 
 	public override void ExitCombat ()
 	{
-//		Movement move = this.gameObject.GetComponent<Movement> ();
-//		move.ForceLock (false);
+        //		Movement move = this.gameObject.GetComponent<Movement> ();
+        //		move.ForceLock (false);
+        //GetComponent<Movement>().ForceLock(false);
 		base.ExitCombat ();
 	}
 
