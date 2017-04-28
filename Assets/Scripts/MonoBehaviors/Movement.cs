@@ -79,8 +79,9 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
-        //If we're in combat, skip everything
-        if (bForceLock) { return; }
+		//If we're in combat, skip everything
+		if(bForceLock){return;}
+		if(player.InCombat){return;}
 
         //		if (!PlayManager.instance.ExploreMode ()) {
         //			return;
