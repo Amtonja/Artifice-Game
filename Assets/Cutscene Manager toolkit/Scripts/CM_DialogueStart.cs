@@ -16,7 +16,7 @@ public class CM_DialogueStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		DialogueManager.StartConversation (dialogueName);
+//		DialogueManager.StartConversation (dialogueName);
 //		DialogueManager.
 //		this.gameObject.SendMessage("DoThing");
 
@@ -36,4 +36,10 @@ public class CM_DialogueStart : MonoBehaviour {
 		UnityEngine.Debug.Log ("Batman!");
 
 	}
+
+	//Called via CM modules to activate this script.
+	public void Activate(){
+		DialogueManager.StartConversation (dialogueName);
+	}
+
 }

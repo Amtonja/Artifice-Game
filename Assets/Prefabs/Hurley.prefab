@@ -20,13 +20,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4747219464466686}
   - component: {fileID: 212771996872743772}
+  - component: {fileID: 95928917623304604}
   - component: {fileID: 114469851435398964}
   - component: {fileID: 114551961529728186}
   - component: {fileID: 114814993479263588}
   - component: {fileID: 61698954228227954}
   - component: {fileID: 114962635086556694}
   - component: {fileID: 50844562761748164}
-  - component: {fileID: 95928917623304604}
   m_Layer: 0
   m_Name: Hurley
   m_TagString: Player

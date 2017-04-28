@@ -4,7 +4,6 @@ using UnityEngine;
 
 /// <summary>
 /// Used by the Cutscene Manager system to force a character to move in a direction. Currently this is only one space at at time.
-/// TODO: Not... have it only be one space at a time. Probably just get character position, and watch to see if it's 
 /// </summary>
 
 public class CM_ForceMove : MonoBehaviour {

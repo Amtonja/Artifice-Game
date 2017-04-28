@@ -38,6 +38,11 @@ public class Movement : MonoBehaviour
 	private bool bForceMove = false;
 
 	/// <summary>
+	/// Used by the cutscene manager; overrides player input and forces character to face a direction.
+	/// </summary>
+	private bool bForceFace = false;
+
+	/// <summary>
 	/// A reference to the CM_ForceMove object that told us to do this, so we can tell it we're done when the process ends.
 	/// </summary>
 	private GameObject forcedSender;
@@ -51,12 +56,15 @@ public class Movement : MonoBehaviour
 	private Animator _animator;
 
 	//Used to tell what direction we're facin' for idle sprites
-	private enum directions {Up, Down, Left, Right};
+	public enum directions {Up, Down, Left, Right};
 	private directions moveDir;
 
 	//Temporary measure to stop following animation from constantly going into an idle state every time it pops into place
 	private float waitTimerMax = 0.22f;
 	private float waitTimer = 0.22f;
+
+
+	private bool bForceLock = false; //skips everything when we're in combat
 
     void Start()
     {
@@ -70,14 +78,27 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+
+		//If we're in combat, skip everything
+		if(bForceLock){return;}
+
+//		if (!PlayManager.instance.ExploreMode ()) {
+//			return;
+//		}
 		//skip everything except forced movement if that's what we're using
-		if (bForceMove) 
-		{
+		if (bForceMove) {
+			bForceFace = false;
 			ForceMove ();
+			return;
+		} 
+
+		//skip everything if we're just forced to face a direction
+		if (bForceFace) {
 			return;
 		}
 
-        if (followTarget == null && !player.InCombat)
+
+        if (followTarget == null)
         {
             //I use this variable to tell if any input was made
             Vector2 moveVector = Vector2.zero;
@@ -272,6 +293,9 @@ public class Movement : MonoBehaviour
 
 	//Begin forcing movement. Called by CM_ForceMove to start the process.
 	public void StartForcedMove(Vector2 spaces){
+		//Kill follow target if we have one because it messes with things
+		followTarget = null;
+		coordinate = this.transform.position;
 		intendedPosition = new Vector2(this.transform.position.x + spaces.x, this.transform.position.y + spaces.y);
 		bForceMove = true;
 		Debug.Log ("Forced movement starting!");
@@ -288,5 +312,30 @@ public class Movement : MonoBehaviour
 	//passed by the instance of CM_ForceMove,so we can tell it we're done.
 	public void GetForcedSender (GameObject sender){
 		forcedSender = sender;
+	}
+
+	//passed by CM_FaceDir
+//	public void FaceDir(string fDir){
+	public void FaceDir(Vector2 fDir){
+		bForceFace = true;
+		if (fDir.y == 1) {
+			_animator.Play (Animator.StringToHash ("IdleUp"));
+		} else if (fDir.y == -1) {
+			_animator.Play (Animator.StringToHash ("IdleDown"));
+		} else if (fDir.x == 1) {
+			_animator.Play (Animator.StringToHash ("IdleRight"));
+		} else if (fDir.x == -1) {
+			_animator.Play (Animator.StringToHash ("IdleLeft"));
+		}
+	}
+
+	//passed by CM_StopFaceDir
+	public void StopFaceDir(){
+		bForceFace = false;
+	}
+
+
+	public void ForceLock(bool setting){
+		bForceLock = setting;
 	}
 }
