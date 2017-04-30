@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4988925975560988}
   - component: {fileID: 198733561090529260}
   - component: {fileID: 199095048689318930}
-  - component: {fileID: 114776046733379606}
   - component: {fileID: 114936852145442908}
   m_Layer: 0
   m_Name: Smoke
@@ -54,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637313369878380}
   m_LocalRotation: {x: -0.4099792, y: -0.5761224, z: 0.5761226, w: 0.4099792}
-  m_LocalPosition: {x: 0.814, y: 1.071, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4988925975560988}
@@ -74,19 +73,6 @@ Transform:
   m_Father: {fileID: 4937716096346440}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114776046733379606
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1836526445008122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29014cd42b6d273408e0ceefd336c0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDuration: 8
-  maxDuration: 10
 --- !u!114 &114936852145442908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,7 +92,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1637313369878380}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   looping: 1
   prewarm: 1
@@ -159,7 +145,7 @@ ParticleSystem:
     serializedVersion: 3
     enabled: 1
     startLifetime:
-      scalar: 5
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -330,7 +316,7 @@ ParticleSystem:
       maxColor: {r: 0.7647059, g: 0.67058825, b: 0.37254903, a: 1}
       minMaxState: 0
     startSize:
-      scalar: 1
+      scalar: 1.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -688,7 +674,7 @@ ParticleSystem:
     time3: 0
     m_BurstCount: 0
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       scalar: 1
       maxCurve:
@@ -696,7 +682,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 1
+          value: 0.053231932
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -708,7 +694,7 @@ ParticleSystem:
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -2182,8 +2168,8 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 3
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
@@ -2230,7 +2216,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     m_Bounce:
-      scalar: 1
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2269,7 +2255,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     m_EnergyLossOnCollision:
-      scalar: 0
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2709,8 +2695,8 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 5
   simulationSpeed: 1
-  looping: 1
-  prewarm: 1
+  looping: 0
+  prewarm: 0
   playOnAwake: 1
   autoRandomSeed: 1
   startDelay:
@@ -5292,7 +5278,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1411883951
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

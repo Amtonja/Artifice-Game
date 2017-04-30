@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1368199425817126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.518, y: -1.06, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4215009935219308}
   m_Father: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
       strength: 1
       defense: 1
       magic: 1
-      speed: 1
+      speed: 10
       evasion: 1
       accuracy: 1
       magicDefense: 1

@@ -22,6 +22,7 @@ namespace Artifice.Characters {
 
         public virtual void TakeDamage(int _damage) {
             HealthChanged = true;
+            if (_damage < 0) { _damage = 0; }
             health -= _damage;
             Debug.Log(title + " took " + _damage + " and is at " + health + " HP out of " + stats.MaxHealth + " HP");
             PlayManager.instance.CreatePopupText(_damage.ToString(), transform);

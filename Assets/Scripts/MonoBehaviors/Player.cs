@@ -4,14 +4,15 @@ using Artifice.Characters;
 using UnityEngine;
 using System;
 
-public class Player : Entity {
+public class Player : Entity
+{
 
-	/// <summary>
-	/// This field is temporary, and will be replaced by the XML reader
-	/// </summary>
-	[SerializeField]
-	private EntityInfo entityInfo;    
-    
+    /// <summary>
+    /// This field is temporary, and will be replaced by the XML reader
+    /// </summary>
+    [SerializeField]
+    private EntityInfo entityInfo;
+
     private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
     private float agilityBarTarget = 20f, magicBarTarget = 20f, rageBarTarget = 20f, specialBarTarget = 20f;
 
@@ -19,36 +20,37 @@ public class Player : Entity {
 
     private CombatAction _combatAction;
 
-	private Animator _animator;
-        
-    // Use this for initialization
-    void Start () {
+    private Animator _animator;
 
-		_animator = GetComponent<Animator>();
+    // Use this for initialization
+    void Start()
+    {
+
+        _animator = GetComponent<Animator>();
 
         _footPos = transform.Find("Base").localPosition;
 
-		//TODO: This will be loaded in via XML reader later
-		this.title = entityInfo.name;
-		this.id = entityInfo.id;
-		this.stats = new CombatStats();
-		this.stats.Level = 1;
-		this.stats.BaseAccuracy = entityInfo.combatStats.accuracy;
-		this.stats.BaseDefense = entityInfo.combatStats.defense;
-		this.stats.BaseEvasion = entityInfo.combatStats.evasion;
-		this.stats.BaseMagic = entityInfo.combatStats.magic;
-		this.stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
-		this.stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
-		this.stats.BaseSpeed = entityInfo.combatStats.speed;
-		this.stats.BaseStrength = entityInfo.combatStats.strength;
+        //TODO: This will be loaded in via XML reader later
+        this.title = entityInfo.name;
+        this.id = entityInfo.id;
+        this.stats = new CombatStats();
+        this.stats.Level = 1;
+        this.stats.BaseAccuracy = entityInfo.combatStats.accuracy;
+        this.stats.BaseDefense = entityInfo.combatStats.defense;
+        this.stats.BaseEvasion = entityInfo.combatStats.evasion;
+        this.stats.BaseMagic = entityInfo.combatStats.magic;
+        this.stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
+        this.stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
+        this.stats.BaseSpeed = entityInfo.combatStats.speed;
+        this.stats.BaseStrength = entityInfo.combatStats.strength;
 
         ResetStats();
         health = Stats.MaxHealth;
 
         ActionBarTarget = 20;
-	}
+    }
 
-    void Update ()
+    void Update()
     {
         if (InCombat)
         {
@@ -65,7 +67,7 @@ public class Player : Entity {
             if (ActionBarValue < ActionBarTarget)
             {
                 ActionBarValue += (Stats.Speed / 2.0f) * Time.deltaTime; // Don't use this value                
-            }            
+            }
             else if (ActionBarValue >= ActionBarTarget)
             {
                 // take a turn
@@ -73,12 +75,12 @@ public class Player : Entity {
                 PlayManager.instance.PauseGame();
 
             }
-            
+
             // Update the other four bars
             if (AgilityBarValue < AgilityBarTarget)
             {
                 AgilityBarValue += (Stats.Speed / 12.0f) * Time.deltaTime; // Don't use this value either
-            } 
+            }
 
             if (MagicBarValue < MagicBarTarget)
             {
@@ -97,42 +99,50 @@ public class Player : Entity {
         }
     }
 
-	private Entity tempTarget; //because we need to pass the target entity to the attack end state
+    private Entity tempTarget; //because we need to pass the target entity to the attack end state
 
     public void MeleeAttack(Entity target)
-    {        
-        Debug.Log("Melee attack on " + target.name);
-		tempTarget = target;
-		_animator.Play( Animator.StringToHash( "SwordAttack" ));
-		ActionBarValue = 0f;
-		IsMyTurn = false;
-		PlayManager.instance.UnpauseGame();
-    }
-
-	//Called by animator. Ensures damage is dealt on the correct attack frame
-	public void EndMeleeAttack(){
-		int damage = Stats.Strength; // Get real formula
-		tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
-	}
-
-    public void RangedAttack(Entity target)
     {
-		tempTarget = target;
-		_animator.Play( Animator.StringToHash( "GunAttack" ));
+        Debug.Log("Melee attack on " + target.name);
+        tempTarget = target;
+        _animator.Play(Animator.StringToHash("SwordAttack"));
         ActionBarValue = 0f;
         IsMyTurn = false;
         PlayManager.instance.UnpauseGame();
     }
 
-	//Called by animator. Ensures damage is dealt on the correct attack frame
-	public void EndRangedAttack(){
-		int damage = Stats.Accuracy; // Get real formula
-		tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
-	}
+    //Called by animator. Ensures damage is dealt on the correct attack frame
+    public void EndMeleeAttack()
+    {
+        int damage = Stats.Strength; // Get real formula
+        tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
+    }
+
+    public void RangedAttack(Entity target)
+    {
+        tempTarget = target;
+        _animator.Play(Animator.StringToHash("GunAttack"));
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.UnpauseGame();
+    }
+
+    //Called by animator. Ensures damage is dealt on the correct attack frame
+    public void EndRangedAttack()
+    {
+        int damage = Stats.Accuracy; // Get real formula
+        tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
+    }
 
 
     public void BoltSpell(Entity target)
     {
+        GameObject lightningBolt = Instantiate(Resources.Load("Prefabs/SimpleLightningBoltPrefab"), transform) as GameObject;
+        DigitalRuby.LightningBolt.LightningBoltScript lbs = lightningBolt.GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
+        lbs.StartObject = gameObject;
+        lbs.EndObject = target.gameObject;
+        Destroy(lightningBolt, 0.5f);
+
         int damage = Stats.Magic; // Get real formula
         target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
         ActionBarValue = 0f;
@@ -169,45 +179,67 @@ public class Player : Entity {
         PlayManager.instance.UnpauseGame();
     }
 
+    public void FireBreath(Entity target)
+    {
+        //Debug.Log(name + " breathing fire on " + target.name);
+        Quaternion rotToTarget = Quaternion.LookRotation(target.transform.position - transform.position);
+        ParticleSystem firebreath = Instantiate(
+            Resources.Load("Prefabs/FireBreath", typeof(ParticleSystem)),
+            transform.position,
+            rotToTarget,
+            transform) as ParticleSystem;
+        Destroy(firebreath, 0.5f);
+
+        int damage = Stats.Magic;
+        target.TakeDamage(damage - target.Stats.MagicDefense);
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.UnpauseGame();
+    }
+
     /// <summary>
     /// A struct to hold necessary info for this entity,
     /// allowing it to be easily accessed and modified
     /// in the Unity Editor.
     /// </summary>
     [Serializable]
-	private struct EntityInfo {
-		public string name;
-		public string id;
-		public CombatStatsInfo combatStats;
-		public CharacterRace race;
+    private struct EntityInfo
+    {
+        public string name;
+        public string id;
+        public CombatStatsInfo combatStats;
+        public CharacterRace race;
         // DEBUG
         //public float abv;
-	}
+    }
 
-	/// <summary>
-	/// A struct to hold necessary info for this entity,
-	/// allowing it to be easily accessed and modified
-	/// in the Unity Editor.
-	/// </summary>
-	[Serializable]
-	private struct CombatStatsInfo {
-		[Range(1,20)]
-		public int strength, defense, magic, speed, evasion, accuracy, magicDefense, luck;
+    /// <summary>
+    /// A struct to hold necessary info for this entity,
+    /// allowing it to be easily accessed and modified
+    /// in the Unity Editor.
+    /// </summary>
+    [Serializable]
+    private struct CombatStatsInfo
+    {
+        [Range(1, 20)]
+        public int strength, defense, magic, speed, evasion, accuracy, magicDefense, luck;
 
-		[Range(10,200)]
-		public int maxHealth;
-	}
+        [Range(10, 200)]
+        public int maxHealth;
+    }
 
-	/// <summary>
-	/// Raises the TriggerEnter2D event.
-	/// This will be used (for now) to handle when combat should begin.
-	/// </summary>
-	/// <param name="other">Other.</param>
-	void OnTriggerEnter2D (Collider2D other) {
-		if(other.gameObject.tag.Equals("Enemy")) {
-			PlayManager.instance.EnemyEncountered(other.gameObject.GetComponent<Player>());
-		}
-	}
+    /// <summary>
+    /// Raises the TriggerEnter2D event.
+    /// This will be used (for now) to handle when combat should begin.
+    /// </summary>
+    /// <param name="other">Other.</param>
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag.Equals("Enemy"))
+        {
+            PlayManager.instance.EnemyEncountered(other.gameObject.GetComponent<Player>());
+        }
+    }
 
     /// <summary>
     /// Sets all combat stats equal to their base values.
@@ -228,34 +260,34 @@ public class Player : Entity {
 
     public delegate void CombatAction(Entity target);
 
-	#region implemented abstract members of Entity
+    #region implemented abstract members of Entity
 
-	public override void Interact ()
-	{
-		throw new NotImplementedException ();
-	}
+    public override void Interact()
+    {
+        throw new NotImplementedException();
+    }
 
-	public override void Die ()
-	{
-		Debug.Log(gameObject.name + " Died!");
-	}
+    public override void Die()
+    {
+        Debug.Log(gameObject.name + " Died!");
+    }
 
-	public override void EnterCombat ()
-	{
-//		_animator = GetComponent<Animator>(); //Can't find the instance if it's not here? What?
-		_animator.Play( Animator.StringToHash( "SwordIdle" ) );
-//		Movement move = this.gameObject.GetComponent<Movement> ();
-		//GetComponent<Movement>().ForceLock(true); //probably redundant
-		base.EnterCombat ();
-	}
+    public override void EnterCombat()
+    {
+        //		_animator = GetComponent<Animator>(); //Can't find the instance if it's not here? What?
+        _animator.Play(Animator.StringToHash("SwordIdle"));
+        //		Movement move = this.gameObject.GetComponent<Movement> ();
+        //GetComponent<Movement>().ForceLock(true); //probably redundant
+        base.EnterCombat();
+    }
 
-	public override void ExitCombat ()
-	{
+    public override void ExitCombat()
+    {
         //		Movement move = this.gameObject.GetComponent<Movement> ();
         //		move.ForceLock (false);
         //GetComponent<Movement>().ForceLock(false);
-		base.ExitCombat ();
-	}
+        base.ExitCombat();
+    }
 
     #endregion
 
