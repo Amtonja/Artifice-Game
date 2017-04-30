@@ -52,6 +52,16 @@ public class Player : Entity {
     {
         if (InCombat)
         {
+			//For damage flickering
+			if(alphaColor <= 1){
+
+				Color newColor = Color.white;//new Color(255/4, 255/4, 255, alphaColor);
+				newColor[3] = alphaColor;
+				this.gameObject.GetComponent<SpriteRenderer>().color = newColor;//.a = alphaColor;
+				alphaColor = alphaColor + alphaColor * 0.7f;
+				if(alphaColor >= 1.0f){ alphaColor = 1;}
+			}
+
             if (ActionBarValue < ActionBarTarget)
             {
                 ActionBarValue += (Stats.Speed / 2.0f) * Time.deltaTime; // Don't use this value                

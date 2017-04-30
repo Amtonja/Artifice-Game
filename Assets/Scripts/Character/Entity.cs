@@ -18,12 +18,16 @@ namespace Artifice.Characters {
 
         public abstract void Interact();
 
+		protected float alphaColor = 1.0f; //for temporary blink
+
         public virtual void TakeDamage(int _damage) {
             HealthChanged = true;
             health -= _damage;
             Debug.Log(title + " took " + _damage + " and is at " + health + " HP out of " + stats.MaxHealth + " HP");
             PlayManager.instance.CreatePopupText(_damage.ToString(), transform);
             if (health <= 0) Die();
+
+			alphaColor = 0.1f;
         }
 
         public virtual void Heal(int _health) {
