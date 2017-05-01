@@ -138,6 +138,7 @@ public class Player : Entity
     public void BoltSpell(Entity target)
     {
         GameObject lightningBolt = Instantiate(Resources.Load("Prefabs/SimpleLightningBoltPrefab"), transform) as GameObject;
+        lightningBolt.GetComponent<LineRenderer>().sortingLayerName = "VisualEffects"; // Doing this here because it's not exposed in inspector
         DigitalRuby.LightningBolt.LightningBoltScript lbs = lightningBolt.GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
         lbs.StartObject = gameObject;
         lbs.EndObject = target.gameObject;
