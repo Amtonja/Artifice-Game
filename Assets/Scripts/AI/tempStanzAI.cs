@@ -34,15 +34,15 @@ namespace Artifice.Characters {
 				Entity target = person.GetComponent<Entity> ();
 
 //				if (randB < 0.5f) {
-//				if(!bToggle){
+				if(!bToggle){
 					_player.BoltSpell (target);
 					bToggle = true;
 					Debug.Log ("Stanz casts bolt!");
-//				} else {
-//					_player.FireBreath(target);
-//					bToggle = false;
-//					Debug.Log ("Stanz casts fire breath!");
-//				}
+				} else {
+					_player.FireBreath(target);
+					bToggle = false;
+					Debug.Log ("Stanz casts fire breath!");
+				}
 
 			}
 		}

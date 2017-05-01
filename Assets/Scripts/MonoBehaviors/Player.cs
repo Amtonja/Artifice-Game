@@ -137,6 +137,7 @@ public class Player : Entity
 
     public void BoltSpell(Entity target)
     {
+		_animator.Play(Animator.StringToHash("CastSpell"));
         GameObject lightningBolt = Instantiate(Resources.Load("Prefabs/SimpleLightningBoltPrefab"), transform) as GameObject;
         lightningBolt.GetComponent<LineRenderer>().sortingLayerName = "VisualEffects"; // Doing this here because it's not exposed in inspector
         DigitalRuby.LightningBolt.LightningBoltScript lbs = lightningBolt.GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
@@ -154,6 +155,7 @@ public class Player : Entity
     // Assuming these will eventually be different
     public void GustSpell(Entity target)
     {
+		_animator.Play(Animator.StringToHash("CastSpell"));
         int damage = Stats.Magic; // Get real formula
         target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
         ActionBarValue = 0f;
@@ -182,6 +184,7 @@ public class Player : Entity
 
     public void FireBreath(Entity target)
     {
+		_animator.Play(Animator.StringToHash("CastSpell"));
         //Debug.Log(name + " breathing fire on " + target.name);
         Quaternion rotToTarget = Quaternion.LookRotation(target.transform.position - transform.position);
         ParticleSystem firebreath = Instantiate(

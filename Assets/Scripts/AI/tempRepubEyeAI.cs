@@ -10,6 +10,7 @@ namespace Artifice.Characters {
 
 		private Player _player; //ref to our Player script
 
+
 		// Use this for initialization
 		void Start () {
 			_player = GetComponent<Player> ();

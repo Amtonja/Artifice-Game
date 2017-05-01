@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 61108881207258096}
   - component: {fileID: 114335615163619678}
   - component: {fileID: 50114439019086996}
+  - component: {fileID: 114020395788365030}
   m_Layer: 0
   m_Name: Stanz
   m_TagString: Enemy
@@ -56,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1397305834632994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 18, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4408864949166596}
@@ -105,11 +106,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0.0008327961, y: -0.0058249235}
   serializedVersion: 2
-  m_Size: {x: 0.18544626, y: 0.41523445}
+  m_Size: {x: 0.5, y: 0.5}
 --- !u!95 &95280786145438006
 Animator:
   serializedVersion: 3
@@ -127,6 +128,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114020395788365030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397305834632994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7725f380bef1fcf44a929c7d147afeb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114092018056419578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityInfo:
-    name: Hurley
+    name: Stanz
     id: 0
     combatStats:
       strength: 10
@@ -226,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
-  bNPC: 0
+  bNPC: 1
 --- !u!212 &212301401561194170
 SpriteRenderer:
   m_ObjectHideFlags: 1
