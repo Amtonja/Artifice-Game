@@ -6112,6 +6112,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 0.034970753}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1272406406 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114092018056419578, guid: 76883de494e91704eb95767ed5e29bd3,
+    type: 2}
+  m_PrefabInternal: {fileID: 437332468}
+  m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
 --- !u!1 &1274452102
 GameObject:
   m_ObjectHideFlags: 0
@@ -8178,7 +8184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1735985049
 Transform:
   m_ObjectHideFlags: 0
@@ -9928,8 +9934,7 @@ MonoBehaviour:
   combatUI: {fileID: 1735985050}
   popupTextPrefab: {fileID: 0}
   party:
-  - {fileID: 0}
-  - {fileID: 1031113343}
+  - {fileID: 1272406406}
 --- !u!4 &2116211711
 Transform:
   m_ObjectHideFlags: 0

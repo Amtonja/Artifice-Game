@@ -66,6 +66,11 @@ public class Movement : MonoBehaviour
 
     private bool bForceLock = false; //skips everything when we're in combat
 
+	/// <summary>
+	/// Check this if it doesn't use player controls.
+	/// </summary>
+	public bool bNPC = false;
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -101,7 +106,7 @@ public class Movement : MonoBehaviour
         }
 
 
-        if (followTarget == null && !player.InCombat)
+		if (followTarget == null && !player.InCombat && !bNPC)
         {
             //I use this variable to tell if any input was made
             Vector2 moveVector = Vector2.zero;

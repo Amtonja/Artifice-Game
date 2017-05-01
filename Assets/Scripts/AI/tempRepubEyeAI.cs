@@ -4,9 +4,9 @@ using UnityEngine;
 using Artifice.Interfaces;
 
 namespace Artifice.Characters {
-	public class tempKomodoAI : MonoBehaviour {
+	public class tempRepubEyeAI : MonoBehaviour {
 
-        //Temporary komodo script
+		//Temporary republic eye script
 
 		private Player _player; //ref to our Player script
 
@@ -14,14 +14,13 @@ namespace Artifice.Characters {
 		void Start () {
 			_player = GetComponent<Player> ();
 		}
-		
+
 		// Update is called once per frame
 		void Update () {
 			if (_player.IsMyTurn) {
 				Debug.Log (gameObject.name.ToString () + "'s turn!");
 
 				float randA = Random.value; //which target
-				float randB = Random.value; //which attack
 
 				GameObject person;
 				if (randA < 0.5f) {
@@ -31,13 +30,8 @@ namespace Artifice.Characters {
 				}
 				Entity target = person.GetComponent<Entity> ();
 
-				if (randB < 0.5f) {
-					_player.MeleeAttack (target);
-				} else {
+				_player.MeleeAttack (target);
 
-					_player.FireBreath(target);
-				}
-                
 			}
 		}
 	}

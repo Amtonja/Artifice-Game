@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5384e50717143f442897ed0b5f879424
-timeCreated: 1493571201
+timeCreated: 1493651956
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -25,6 +25,10 @@ TextureImporter:
     21300036: Stanz_RightIdle
     21300038: Stanz_Right1
     21300040: Stanz_Right2
+    21300042: Stanz_Left3
+    21300044: Stanz_Left4
+    21300046: Stanz_Right3
+    21300048: Stanz_Right4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -363,6 +367,58 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 21
+        y: 13
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Stanz_Left3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 13
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Stanz_Left4
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 12
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Stanz_Right3
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 12
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Stanz_Right4
+      rect:
+        serializedVersion: 2
+        x: 276
         y: 13
         width: 20
         height: 40

@@ -1338,7 +1338,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: SendMessage(Activate,, CM_ForceMoveB) @{{end}}
         type: 0
         typeString: 
       conversationID: 2
