@@ -90,13 +90,15 @@ public class CombatPlayerUI : MonoBehaviour
 
         if (State == PlayerUIState.ENEMY_SELECT)
         {
-            if (Input.GetAxisRaw("Vertical") < 0f)
+            //if (Input.GetAxisRaw("Vertical") < 0f)
+            if (Input.GetKeyDown(KeyCode.DownArrow)) // only for video recording
             {
                 selectedEnemy = enemiesList[(enemiesList.IndexOf(selectedEnemy) + 1) % enemiesList.Count];
                 cursor.transform.position = selectedEnemy.transform.position;
             }
 
-            if (Input.GetAxisRaw("Vertical") > 0f)
+            //if (Input.GetAxisRaw("Vertical") > 0f)
+            if (Input.GetKeyDown(KeyCode.UpArrow)) // Same
             {
                 selectedEnemy = enemiesList[Mathf.Abs((enemiesList.IndexOf(selectedEnemy) - 1) % enemiesList.Count)];
                 cursor.transform.position = selectedEnemy.transform.position;

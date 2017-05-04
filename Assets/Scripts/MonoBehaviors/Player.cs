@@ -52,7 +52,7 @@ public class Player : Entity
 
     void Update()
     {
-        if (InCombat)
+        if (InCombat && health > 0)
         {
 			//For damage flickering
 			if(alphaColor <= 1){
@@ -228,7 +228,7 @@ public class Player : Entity
         [Range(1, 20)]
         public int strength, defense, magic, speed, evasion, accuracy, magicDefense, luck;
 
-        [Range(10, 200)]
+        [Range(1, 200)]
         public int maxHealth;
     }
 
@@ -262,6 +262,19 @@ public class Player : Entity
         Stats.Strength = Stats.BaseDefense;
     }
 
+    IEnumerator FadeOut(SpriteRenderer sr)
+    {
+        float elapsedTime = 0.0f;
+        float totalTime = 1.0f;
+        Color targetColor = new Color(1f, 0f, 1f, 0f);
+        while (elapsedTime < totalTime)
+        {
+            elapsedTime += Time.unscaledDeltaTime;
+            sr.color = Color.Lerp(Color.white, targetColor, (elapsedTime / totalTime));
+            yield return null;
+        }
+    }
+
     public delegate void CombatAction(Entity target);
 
     #region implemented abstract members of Entity
@@ -274,6 +287,9 @@ public class Player : Entity
     public override void Die()
     {
         Debug.Log(gameObject.name + " Died!");
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        StartCoroutine(FadeOut(sr));   
     }
 
     public override void EnterCombat()
