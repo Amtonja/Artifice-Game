@@ -187,6 +187,19 @@ public class CombatPlayerUI : MonoBehaviour
         if (submenu != null) submenu.SetActive(false);
     }
 
+    public void CloseAllSubmenus()
+    {
+        Transform icons = iconCanvas.transform;
+        for (int i = 0; i < icons.childCount; i++)
+        {
+            Transform currentIcon = icons.GetChild(i);
+            if (currentIcon.Find("OptionPanel") != null)
+            {
+                CloseSubmenu(currentIcon.gameObject);
+            }
+        }
+    }
+
     /// <summary>
     /// Handles the UI event of focus moving FROM one of the 
     /// 5 top-level icons horizontally.
@@ -305,6 +318,7 @@ public class CombatPlayerUI : MonoBehaviour
                         cursor.SetActive(true);
                         break;
                     case PlayerUIState.WAITING_FOR_ACTION:
+                        CloseAllSubmenus();
                         iconCanvas.enabled = false;
                         EventSystem.current.sendNavigationEvents = true;
                         cursor.SetActive(false);
