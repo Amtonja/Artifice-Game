@@ -513,11 +513,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4747219464466686, guid: 836d1c50260583244a8b6a945877b8f7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4747219464466686, guid: 836d1c50260583244a8b6a945877b8f7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4747219464466686, guid: 836d1c50260583244a8b6a945877b8f7, type: 2}
       propertyPath: m_LocalPosition.z
@@ -552,6 +552,11 @@ Prefab:
       propertyPath: entityInfo.combatStats.speed
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 114551961529728186, guid: 836d1c50260583244a8b6a945877b8f7,
+        type: 2}
+      propertyPath: followTarget
+      value: 
+      objectReference: {fileID: 376133263}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 836d1c50260583244a8b6a945877b8f7, type: 2}
   m_IsPrefabParent: 0
@@ -2030,6 +2035,12 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &376133263 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114539703176097850, guid: d2f01571c47d1f24f87b436f571b9d94,
+    type: 2}
+  m_PrefabInternal: {fileID: 1999164500}
+  m_Script: {fileID: 11500000, guid: 883d8ee0545634f6f99a84cd0cace218, type: 3}
 --- !u!4 &406120297 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011164625700, guid: 2157956f89f550f4db9437db38fe8a87,

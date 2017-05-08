@@ -59,6 +59,9 @@ public class Movement : MonoBehaviour
     public enum directions { Up, Down, Left, Right };
     private directions moveDir;
 
+	private float moveSpeed = 3.0f;
+
+
     //Temporary measure to stop following animation from constantly going into an idle state every time it pops into place
     private float waitTimerMax = 0.22f;
     private float waitTimer = 0.22f;
@@ -66,10 +69,15 @@ public class Movement : MonoBehaviour
 
     private bool bForceLock = false; //skips everything when we're in combat
 
+
+
 	/// <summary>
 	/// Check this if it doesn't use player controls.
 	/// </summary>
 	public bool bNPC = false;
+
+	private bool bFollowing = false; //used for new following code.
+	private float followDist = 1.5f;
 
     void Start()
     {
@@ -84,7 +92,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
 
-		//If we're in combat, skip everything
+		//If we're in combat or a cutscene, skip everything
 		if(bForceLock){return;}
 		if(player.InCombat){return;}
 
@@ -105,144 +113,126 @@ public class Movement : MonoBehaviour
             return;
         }
 
+		if (followTarget == null && !player.InCombat && !bNPC) {
+			HandleMove ();
 
-		if (followTarget == null && !player.InCombat && !bNPC)
-        {
-            //I use this variable to tell if any input was made
-            Vector2 moveVector = Vector2.zero;
+		} else if(followTarget != null && !player.InCombat && !bNPC){
 
-            if (inputDelay <= 0f)
-            {
-                inputDelay = 0.3f;
-                Vector2 moveDelta = Vector2.zero;
-                if (Input.GetAxis("Vertical") > 0f)
-                {
-                    moveDelta += Vector2.up;
-                    /*
-                    sp.UpdateSortingOrder();
-                    int next = Artifice.Data.GameManager.Instance.PlayerChunk + 1;
-                    if(transform.position.y > Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
-                        Artifice.Data.GameManager.Instance.PlayerChunk++;
-                    }
-                    */
-                    _animator.Play(Animator.StringToHash("GoUp"));
-                    moveDir = directions.Up;
-                }
-                if (Input.GetAxis("Horizontal") < 0f)
-                {
-                    moveDelta += Vector2.left;
-                    _animator.Play(Animator.StringToHash("GoLeft"));
-                    moveDir = directions.Left;
-                }
-                if (Input.GetAxis("Vertical") < 0f)
-                {
-                    moveDelta += Vector2.down;
-                    /*
-                    sp.UpdateSortingOrder();
-                    int next = Artifice.Data.GameManager.Instance.PlayerChunk;
-                    if (transform.position.y < Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
-                        Artifice.Data.GameManager.Instance.PlayerChunk--;
-                    }
-                    */
-                    _animator.Play(Animator.StringToHash("GoDown"));
-                    moveDir = directions.Down;
-                }
-                if (Input.GetAxis("Horizontal") > 0f)
-                {
-                    moveDelta += Vector2.right;
-                    _animator.Play(Animator.StringToHash("GoRight"));
-                    moveDir = directions.Right;
-                }
-                if (moveDelta == Vector2.zero)
-                {
-                    inputDelay = 0f;
-                    //Set the correct idle direction
-                    if (moveDir == directions.Up)
-                    {
-                        _animator.Play(Animator.StringToHash("IdleUp"));
-                    }
-                    else if (moveDir == directions.Down)
-                    {
-                        _animator.Play(Animator.StringToHash("IdleDown"));
-                    }
-                    else if (moveDir == directions.Right)
-                    {
-                        _animator.Play(Animator.StringToHash("IdleRight"));
-                    }
-                    else if (moveDir == directions.Left)
-                    {
-                        _animator.Play(Animator.StringToHash("IdleLeft"));
-                    }
-                }
-                else
-                {
-                    followPos = coordinate;
-                    coordinate += moveDelta;
-                }
-            }
-            else
-            {
-                inputDelay -= Time.deltaTime;
-            }
+			FollowMove();
+		}
 
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime * 5f);
-        }
-        else if (followTarget != null && !player.InCombat)
-        {
-            //Following target code
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(followTarget.followPos.x), Mathf.Floor(followTarget.followPos.y), 0f), Time.deltaTime * 5f);
 
-            //Sprite stuff
-            if (followTarget.followPos.x < this.transform.position.x)
-            {
-                _animator.Play(Animator.StringToHash("GoLeft"));
-                moveDir = directions.Left;
-                waitTimer = waitTimerMax;
-            }
-            else if (followTarget.followPos.x > this.transform.position.x)
-            {
-                _animator.Play(Animator.StringToHash("GoRight"));
-                moveDir = directions.Right;
-                waitTimer = waitTimerMax;
-            }
-            else if (followTarget.followPos.y < this.transform.position.y)
-            {
-                _animator.Play(Animator.StringToHash("GoDown"));
-                moveDir = directions.Down;
-                waitTimer = waitTimerMax;
-            }
-            else if (followTarget.followPos.y > this.transform.position.y)
-            {
-                _animator.Play(Animator.StringToHash("GoUp"));
-                moveDir = directions.Up;
-                waitTimer = waitTimerMax;
-            }
-
-            //Short wait timer so we don't keep hitting idle every time it pops into place
-            waitTimer -= Time.deltaTime;
-
-            if (this.transform.position.x == followTarget.followPos.x && this.transform.position.y == followTarget.followPos.y && waitTimer <= 0f)
-            {
-                //				Debug.Log ("We did the thing!");
-                if (moveDir == directions.Up)
-                {
-                    _animator.Play(Animator.StringToHash("IdleUp"));
-                }
-                else if (moveDir == directions.Down)
-                {
-                    _animator.Play(Animator.StringToHash("IdleDown"));
-                }
-                else if (moveDir == directions.Right)
-                {
-                    _animator.Play(Animator.StringToHash("IdleRight"));
-                }
-                else if (moveDir == directions.Left)
-                {
-                    _animator.Play(Animator.StringToHash("IdleLeft"));
-                }
-            }
-        }
     }
+
+	//Gets input, moves character
+	private void HandleMove(){
+		Vector2 moveDelta = Vector2.zero;
+
+		if (Input.GetAxis ("Horizontal") == 0f && Input.GetAxis ("Vertical") == 0f) {
+			if (moveDir == directions.Up)
+			{
+				_animator.Play(Animator.StringToHash("IdleUp"));
+			}
+			else if (moveDir == directions.Down)
+			{
+				_animator.Play(Animator.StringToHash("IdleDown"));
+			}
+			else if (moveDir == directions.Right)
+			{
+				_animator.Play(Animator.StringToHash("IdleRight"));
+			}
+			else if (moveDir == directions.Left)
+			{
+				_animator.Play(Animator.StringToHash("IdleLeft"));
+			}
+
+			return;
+		}
+
+		if (Input.GetAxis ("Vertical") > 0.5f) {
+			moveDelta += Vector2.up;
+			//To avoid overlapping animations
+			if(Input.GetAxis("Horizontal") == 0f)
+				_animator.Play (Animator.StringToHash ("GoUp"));
+			moveDir = directions.Up;
+		} else if (Input.GetAxis ("Vertical") < -0.5f) {
+			moveDelta += Vector2.down;
+			if(Input.GetAxis("Horizontal") == 0f)
+				_animator.Play (Animator.StringToHash ("GoDown"));
+			moveDir = directions.Down;
+
+		} 
+		if (Input.GetAxis ("Horizontal") > 0.5f) {
+			moveDelta += Vector2.right;
+			_animator.Play(Animator.StringToHash("GoRight"));
+			moveDir = directions.Right;
+		} else if (Input.GetAxis ("Horizontal") < -0.5f) {
+			moveDelta += Vector2.left;
+			_animator.Play (Animator.StringToHash ("GoLeft"));
+			moveDir = directions.Left;
+		}
+
+		transform.Translate ((moveDelta * moveSpeed) * Time.deltaTime);
+	}
+
+	Vector2 followDirTest;
+	Vector2 facingDirTest;
+	//New following function.
+	private void FollowMove(){
+		//For now, other characters just try to stay near the player.
+		if (!bFollowing) {
+			//Check to see if we need to be following
+			if (Vector2.Distance (this.transform.position, followTarget.transform.position) > followDist) {
+				bFollowing = true;
+
+			} else {
+				//We're idle, so set idle pose
+				if (moveDir == directions.Up) {
+					_animator.Play (Animator.StringToHash ("IdleUp"));
+				} else if (moveDir == directions.Down) {
+					_animator.Play (Animator.StringToHash ("IdleDown"));
+				} else if (moveDir == directions.Right) {
+					_animator.Play (Animator.StringToHash ("IdleRight"));
+				} else if (moveDir == directions.Left) {
+					_animator.Play (Animator.StringToHash ("IdleLeft"));
+				}
+			}
+
+		} else {
+			//We need to follow
+			if (Vector2.Distance (this.transform.position, followTarget.transform.position) < followDist - 0.5f) {
+				bFollowing = false;
+				return;
+			}
+			float step = moveSpeed * Time.deltaTime;
+			Vector2 followDir = Vector2.MoveTowards (this.transform.position, followTarget.transform.position, step);
+			Vector2 facingDir = this.transform.position - followTarget.transform.position; //For animation
+			followDirTest = followDir;
+			facingDirTest = facingDir;
+
+			//Facing is backwards because it's a direction
+			if (facingDir.y < 0f) {
+				//To avoid overlapping animations
+				if(facingDir.x == 0f)
+					_animator.Play (Animator.StringToHash ("GoUp"));
+				moveDir = directions.Up;
+			} else if (facingDir.y > 0f) {
+				if(facingDir.x == 0f)
+					_animator.Play (Animator.StringToHash ("GoDown"));
+				moveDir = directions.Down;
+			} 
+			if (facingDir.x < 0f) {
+				_animator.Play(Animator.StringToHash("GoRight"));
+				moveDir = directions.Right;
+			} else if (facingDir.x > 0f) {
+				_animator.Play (Animator.StringToHash ("GoLeft"));
+				moveDir = directions.Left;
+			}
+
+
+			this.transform.position = followDir;// Transform.translate with facingDir for easier collision detection?
+		}
+	}
 
     //Forces a character to move in a direction.
     private void ForceMove()
@@ -377,6 +367,7 @@ public class Movement : MonoBehaviour
 
     //passed by CM_FaceDir
     //	public void FaceDir(string fDir){
+
     public void FaceDir(Vector2 fDir)
     {
         bForceFace = true;
@@ -409,4 +400,146 @@ public class Movement : MonoBehaviour
     {
         bForceLock = setting;
     }
+
+
+	//Old, tile-based movement. Unused, and just here for reference.
+	private void OldMove(){
+		if (followTarget == null && !player.InCombat && !bNPC)
+		{
+			//I use this variable to tell if any input was made
+			Vector2 moveVector = Vector2.zero;
+
+			if (inputDelay <= 0f)
+			{
+				inputDelay = 0.3f;
+				Vector2 moveDelta = Vector2.zero;
+				if (Input.GetAxis("Vertical") > 0f)
+				{
+					moveDelta += Vector2.up;
+					/*
+                    sp.UpdateSortingOrder();
+                    int next = Artifice.Data.GameManager.Instance.PlayerChunk + 1;
+                    if(transform.position.y > Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
+                        Artifice.Data.GameManager.Instance.PlayerChunk++;
+                    }
+                    */
+					_animator.Play(Animator.StringToHash("GoUp"));
+					moveDir = directions.Up;
+				}
+				if (Input.GetAxis("Horizontal") < 0f)
+				{
+					moveDelta += Vector2.left;
+					_animator.Play(Animator.StringToHash("GoLeft"));
+					moveDir = directions.Left;
+				}
+				if (Input.GetAxis("Vertical") < 0f)
+				{
+					moveDelta += Vector2.down;
+					/*
+                    sp.UpdateSortingOrder();
+                    int next = Artifice.Data.GameManager.Instance.PlayerChunk;
+                    if (transform.position.y < Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
+                        Artifice.Data.GameManager.Instance.PlayerChunk--;
+                    }
+                    */
+					_animator.Play(Animator.StringToHash("GoDown"));
+					moveDir = directions.Down;
+				}
+				if (Input.GetAxis("Horizontal") > 0f)
+				{
+					moveDelta += Vector2.right;
+					_animator.Play(Animator.StringToHash("GoRight"));
+					moveDir = directions.Right;
+				}
+				if (moveDelta == Vector2.zero)
+				{
+					inputDelay = 0f;
+					//Set the correct idle direction
+					if (moveDir == directions.Up)
+					{
+						_animator.Play(Animator.StringToHash("IdleUp"));
+					}
+					else if (moveDir == directions.Down)
+					{
+						_animator.Play(Animator.StringToHash("IdleDown"));
+					}
+					else if (moveDir == directions.Right)
+					{
+						_animator.Play(Animator.StringToHash("IdleRight"));
+					}
+					else if (moveDir == directions.Left)
+					{
+						_animator.Play(Animator.StringToHash("IdleLeft"));
+					}
+				}
+				else
+				{
+					followPos = coordinate;
+					coordinate += moveDelta;
+				}
+			}
+			else
+			{
+				inputDelay -= Time.deltaTime;
+			}
+
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime * 5f);
+		}
+		else if (followTarget != null && !player.InCombat)
+		{
+			//Following target code
+			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(followTarget.followPos.x), Mathf.Floor(followTarget.followPos.y), 0f), Time.deltaTime * 5f);
+
+			//Sprite stuff
+			if (followTarget.followPos.x < this.transform.position.x)
+			{
+				_animator.Play(Animator.StringToHash("GoLeft"));
+				moveDir = directions.Left;
+				waitTimer = waitTimerMax;
+			}
+			else if (followTarget.followPos.x > this.transform.position.x)
+			{
+				_animator.Play(Animator.StringToHash("GoRight"));
+				moveDir = directions.Right;
+				waitTimer = waitTimerMax;
+			}
+			else if (followTarget.followPos.y < this.transform.position.y)
+			{
+				_animator.Play(Animator.StringToHash("GoDown"));
+				moveDir = directions.Down;
+				waitTimer = waitTimerMax;
+			}
+			else if (followTarget.followPos.y > this.transform.position.y)
+			{
+				_animator.Play(Animator.StringToHash("GoUp"));
+				moveDir = directions.Up;
+				waitTimer = waitTimerMax;
+			}
+
+			//Short wait timer so we don't keep hitting idle every time it pops into place
+			waitTimer -= Time.deltaTime;
+
+			if (this.transform.position.x == followTarget.followPos.x && this.transform.position.y == followTarget.followPos.y && waitTimer <= 0f)
+			{
+				//				Debug.Log ("We did the thing!");
+				if (moveDir == directions.Up)
+				{
+					_animator.Play(Animator.StringToHash("IdleUp"));
+				}
+				else if (moveDir == directions.Down)
+				{
+					_animator.Play(Animator.StringToHash("IdleDown"));
+				}
+				else if (moveDir == directions.Right)
+				{
+					_animator.Play(Animator.StringToHash("IdleRight"));
+				}
+				else if (moveDir == directions.Left)
+				{
+					_animator.Play(Animator.StringToHash("IdleLeft"));
+				}
+			}
+		}
+
+	}
 }
