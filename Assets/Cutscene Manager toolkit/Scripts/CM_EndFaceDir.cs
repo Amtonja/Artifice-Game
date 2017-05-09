@@ -18,11 +18,11 @@ public class CM_EndFaceDir : MonoBehaviour {
 	/// <summary>
 	/// The move reference, for convenience.
 	/// </summary>
-	private Movement moveRef;
+//	private Movement moveRef;
 
 	// Use this for initialization
 	void Start () {
-		moveRef = target.GetComponent<Movement> ();
+//		moveRef = target.GetComponent<Movement> ();
 	}
 	
 	// Update is called once per frame

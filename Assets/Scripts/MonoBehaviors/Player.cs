@@ -239,9 +239,11 @@ public class Player : Entity
     /// <param name="other">Other.</param>
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag.Equals("Enemy"))
+//        if (other.gameObject.tag.Equals("Enemy"))
+		if(other.gameObject.tag.Equals("Battleground"))
         {
-            PlayManager.instance.EnemyEncountered(other.gameObject.GetComponent<Player>());
+//            PlayManager.instance.EnemyEncountered(other.gameObject.GetComponent<Player>());
+			other.gameObject.GetComponent<Battleground>().Begin();
         }
     }
 

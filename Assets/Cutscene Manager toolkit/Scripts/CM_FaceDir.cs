@@ -17,7 +17,7 @@ public class CM_FaceDir : MonoBehaviour {
 	/// <summary>
 	/// The move reference, for convenience.
 	/// </summary>
-	private Movement moveRef;
+//	private Movement moveRef;
 
 	/// <summary>
 	/// The pass target. This is the next link in the CM chain.
@@ -33,7 +33,7 @@ public class CM_FaceDir : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		moveRef = target.GetComponent<Movement> ();
+//		moveRef = target.GetComponent<Movement> ();
 	}
 	
 	// Update is called once per frame

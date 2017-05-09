@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
     /// <summary>
     /// The coordinate that this player is at. This should always be whole numbers.
     /// </summary>
-    private Vector2 coordinate;
+//    private Vector2 coordinate;
 
     /// <summary>
     /// Where should another player/NPC following this player be?
@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
     /// <summary>
     /// Handles input delay, so that the player doesn't move too fast
     /// </summary>
-    private float inputDelay;
+//    private float inputDelay;
 
     /// <summary>
     /// If this player is meant to follow another player, set this variable
@@ -63,8 +63,8 @@ public class Movement : MonoBehaviour
 
 
     //Temporary measure to stop following animation from constantly going into an idle state every time it pops into place
-    private float waitTimerMax = 0.22f;
-    private float waitTimer = 0.22f;
+//    private float waitTimerMax = 0.22f;
+//    private float waitTimer = 0.22f;
 
 
     private bool bForceLock = false; //skips everything when we're in combat
@@ -83,8 +83,8 @@ public class Movement : MonoBehaviour
     {
         player = GetComponent<Player>();
         //sp = GetComponentInChildren<SortableSprite>();
-        coordinate = new Vector2(this.transform.position.x, this.transform.position.y);
-        followPos = coordinate;
+//        coordinate = new Vector2(this.transform.position.x, this.transform.position.y);
+//        followPos = coordinate;
 
         _animator = GetComponent<Animator>(); //Might need to be in Awake
     }
@@ -95,6 +95,9 @@ public class Movement : MonoBehaviour
 		//If we're in combat or a cutscene, skip everything
 		if(bForceLock){return;}
 		if(player.InCombat){return;}
+//		if (PlayManager.instance.ExploreMode) {
+//			return;
+//		}
 
         //		if (!PlayManager.instance.ExploreMode ()) {
         //			return;
@@ -175,8 +178,6 @@ public class Movement : MonoBehaviour
 		transform.Translate ((moveDelta * moveSpeed) * Time.deltaTime);
 	}
 
-	Vector2 followDirTest;
-	Vector2 facingDirTest;
 	//New following function.
 	private void FollowMove(){
 		//For now, other characters just try to stay near the player.
@@ -207,8 +208,6 @@ public class Movement : MonoBehaviour
 			float step = moveSpeed * Time.deltaTime;
 			Vector2 followDir = Vector2.MoveTowards (this.transform.position, followTarget.transform.position, step);
 			Vector2 facingDir = this.transform.position - followTarget.transform.position; //For animation
-			followDirTest = followDir;
-			facingDirTest = facingDir;
 
 			//Facing is backwards because it's a direction
 			if (facingDir.y < 0f) {
@@ -237,75 +236,41 @@ public class Movement : MonoBehaviour
     //Forces a character to move in a direction.
     private void ForceMove()
     {
-        if (this.transform.position != new Vector3(intendedPosition.x, intendedPosition.y, 0))
+		if (Vector3.Distance(this.transform.position, new Vector3(intendedPosition.x, intendedPosition.y, 0)) > 0.1f)
         {
-            Vector2 moveVector = Vector2.zero;
 
-            if (inputDelay <= 0f)
-            {
-                inputDelay = 0.3f;
-                Vector2 moveDelta = Vector2.zero;
-                if (intendedPosition.y > this.transform.position.y)
-                {
-                    moveDelta += Vector2.up;
-                    Debug.Log("Forcing up!");
-                    _animator.Play(Animator.StringToHash("GoUp"));
-                    moveDir = directions.Up;
-                }
-                else if (intendedPosition.x < this.transform.position.x)
-                {
-                    moveDelta += Vector2.left;
-                    Debug.Log("Forcing left!");
-                    _animator.Play(Animator.StringToHash("GoLeft"));
-                    moveDir = directions.Left;
-                }
-                else if (intendedPosition.y < this.transform.position.y)
-                {
-                    moveDelta += Vector2.down;
-                    Debug.Log("Forcing down!");
-                    _animator.Play(Animator.StringToHash("GoDown"));
-                    moveDir = directions.Down;
-                }
-                else if (intendedPosition.x > this.transform.position.x)
-                {
-                    moveDelta += Vector2.right;
-                    Debug.Log("Forcing right!");
-                    _animator.Play(Animator.StringToHash("GoRight"));
-                    moveDir = directions.Right;
-                }
-                if (moveDelta == Vector2.zero)
-                {
-                    inputDelay = 0f;
-                    //adjust sprite
-                    if (moveDir == directions.Up)
-                    {
-                        _animator.Play(Animator.StringToHash("IdleUp"));
-                    }
-                    else if (moveDir == directions.Down)
-                    {
-                        _animator.Play(Animator.StringToHash("IdleDown"));
-                    }
-                    else if (moveDir == directions.Right)
-                    {
-                        _animator.Play(Animator.StringToHash("IdleRight"));
-                    }
-                    else if (moveDir == directions.Left)
-                    {
-                        _animator.Play(Animator.StringToHash("IdleLeft"));
-                    }
-                }
-                else {
-                    followPos = coordinate;
+//			float step = moveSpeed * Time.deltaTime;
+//			Vector2 moveDelta = Vector2.MoveTowards (this.transform.position, intendedPosition, step);
+			Vector3 moveDelta = new Vector3(intendedPosition.x, intendedPosition.y, 0f) - this.transform.position;
+			//Using MoveTowards, so these are backwards
+			if (moveDelta.y > 0f) {
+//				moveDelta += Vector2.up;
+				//To avoid overlapping animations
+				if(moveDelta.x == 0f)
+					_animator.Play (Animator.StringToHash ("GoUp"));
+				moveDir = directions.Up;
+			} else if (-moveDelta.y < -0f) {
+//				moveDelta += Vector2.down;
+				if(moveDelta.x == 0f)
+					_animator.Play (Animator.StringToHash ("GoDown"));
+				moveDir = directions.Down;
 
-                    coordinate += moveDelta;
+			} 
+			if (moveDelta.x > 0f) {
+//				moveDelta += Vector2.right;
+				_animator.Play(Animator.StringToHash("GoRight"));
+				moveDir = directions.Right;
+			} else if (moveDelta.x < -0f) {
+//				moveDelta += Vector2.left;
+				_animator.Play (Animator.StringToHash ("GoLeft"));
+				moveDir = directions.Left;
+			}
 
-                }
-            }
-            else {
-                inputDelay -= Time.deltaTime;
-            }
+			transform.Translate ((moveDelta.normalized * moveSpeed) * Time.deltaTime);
+//			transform.position = moveDelta;
 
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime * 5f);
+
+//            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime * 5f);
 
             //If we're at the end point, go to their idle
             if (this.transform.position.x == intendedPosition.x && this.transform.position.y == intendedPosition.y)
@@ -333,8 +298,9 @@ public class Movement : MonoBehaviour
         }
         else {
             Debug.Log("Finished moving!");
+			this.transform.position = intendedPosition;
             StopForcedMove();
-            inputDelay = 0.3f;
+//            inputDelay = 0.3f;
         }
 
     }
@@ -344,8 +310,9 @@ public class Movement : MonoBehaviour
     {
         //Kill follow target if we have one because it messes with things
         followTarget = null;
-        coordinate = this.transform.position;
-        intendedPosition = new Vector2(this.transform.position.x + spaces.x, this.transform.position.y + spaces.y);
+//        coordinate = this.transform.position;
+//        intendedPosition = new Vector2(this.transform.position.x + spaces.x, this.transform.position.y + spaces.y);
+		intendedPosition = spaces;
         bForceMove = true;
         Debug.Log("Forced movement starting!");
     }
@@ -355,7 +322,9 @@ public class Movement : MonoBehaviour
     {
         bForceMove = false;
         intendedPosition = new Vector2(0, 0);
-        forcedSender.GetComponent<CM_ForceMove>().NextTarget();
+//        forcedSender.GetComponent<CM_ForceMove>().NextTarget();
+		forcedSender.SendMessage("MoveComplete");
+
 
     }
 
@@ -403,143 +372,143 @@ public class Movement : MonoBehaviour
 
 
 	//Old, tile-based movement. Unused, and just here for reference.
-	private void OldMove(){
-		if (followTarget == null && !player.InCombat && !bNPC)
-		{
-			//I use this variable to tell if any input was made
-			Vector2 moveVector = Vector2.zero;
-
-			if (inputDelay <= 0f)
-			{
-				inputDelay = 0.3f;
-				Vector2 moveDelta = Vector2.zero;
-				if (Input.GetAxis("Vertical") > 0f)
-				{
-					moveDelta += Vector2.up;
-					/*
-                    sp.UpdateSortingOrder();
-                    int next = Artifice.Data.GameManager.Instance.PlayerChunk + 1;
-                    if(transform.position.y > Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
-                        Artifice.Data.GameManager.Instance.PlayerChunk++;
-                    }
-                    */
-					_animator.Play(Animator.StringToHash("GoUp"));
-					moveDir = directions.Up;
-				}
-				if (Input.GetAxis("Horizontal") < 0f)
-				{
-					moveDelta += Vector2.left;
-					_animator.Play(Animator.StringToHash("GoLeft"));
-					moveDir = directions.Left;
-				}
-				if (Input.GetAxis("Vertical") < 0f)
-				{
-					moveDelta += Vector2.down;
-					/*
-                    sp.UpdateSortingOrder();
-                    int next = Artifice.Data.GameManager.Instance.PlayerChunk;
-                    if (transform.position.y < Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
-                        Artifice.Data.GameManager.Instance.PlayerChunk--;
-                    }
-                    */
-					_animator.Play(Animator.StringToHash("GoDown"));
-					moveDir = directions.Down;
-				}
-				if (Input.GetAxis("Horizontal") > 0f)
-				{
-					moveDelta += Vector2.right;
-					_animator.Play(Animator.StringToHash("GoRight"));
-					moveDir = directions.Right;
-				}
-				if (moveDelta == Vector2.zero)
-				{
-					inputDelay = 0f;
-					//Set the correct idle direction
-					if (moveDir == directions.Up)
-					{
-						_animator.Play(Animator.StringToHash("IdleUp"));
-					}
-					else if (moveDir == directions.Down)
-					{
-						_animator.Play(Animator.StringToHash("IdleDown"));
-					}
-					else if (moveDir == directions.Right)
-					{
-						_animator.Play(Animator.StringToHash("IdleRight"));
-					}
-					else if (moveDir == directions.Left)
-					{
-						_animator.Play(Animator.StringToHash("IdleLeft"));
-					}
-				}
-				else
-				{
-					followPos = coordinate;
-					coordinate += moveDelta;
-				}
-			}
-			else
-			{
-				inputDelay -= Time.deltaTime;
-			}
-
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime * 5f);
-		}
-		else if (followTarget != null && !player.InCombat)
-		{
-			//Following target code
-			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(followTarget.followPos.x), Mathf.Floor(followTarget.followPos.y), 0f), Time.deltaTime * 5f);
-
-			//Sprite stuff
-			if (followTarget.followPos.x < this.transform.position.x)
-			{
-				_animator.Play(Animator.StringToHash("GoLeft"));
-				moveDir = directions.Left;
-				waitTimer = waitTimerMax;
-			}
-			else if (followTarget.followPos.x > this.transform.position.x)
-			{
-				_animator.Play(Animator.StringToHash("GoRight"));
-				moveDir = directions.Right;
-				waitTimer = waitTimerMax;
-			}
-			else if (followTarget.followPos.y < this.transform.position.y)
-			{
-				_animator.Play(Animator.StringToHash("GoDown"));
-				moveDir = directions.Down;
-				waitTimer = waitTimerMax;
-			}
-			else if (followTarget.followPos.y > this.transform.position.y)
-			{
-				_animator.Play(Animator.StringToHash("GoUp"));
-				moveDir = directions.Up;
-				waitTimer = waitTimerMax;
-			}
-
-			//Short wait timer so we don't keep hitting idle every time it pops into place
-			waitTimer -= Time.deltaTime;
-
-			if (this.transform.position.x == followTarget.followPos.x && this.transform.position.y == followTarget.followPos.y && waitTimer <= 0f)
-			{
-				//				Debug.Log ("We did the thing!");
-				if (moveDir == directions.Up)
-				{
-					_animator.Play(Animator.StringToHash("IdleUp"));
-				}
-				else if (moveDir == directions.Down)
-				{
-					_animator.Play(Animator.StringToHash("IdleDown"));
-				}
-				else if (moveDir == directions.Right)
-				{
-					_animator.Play(Animator.StringToHash("IdleRight"));
-				}
-				else if (moveDir == directions.Left)
-				{
-					_animator.Play(Animator.StringToHash("IdleLeft"));
-				}
-			}
-		}
-
-	}
+//	private void OldMove(){
+//		if (followTarget == null && !player.InCombat && !bNPC)
+//		{
+//			//I use this variable to tell if any input was made
+//			Vector2 moveVector = Vector2.zero;
+//
+//			if (inputDelay <= 0f)
+//			{
+//				inputDelay = 0.3f;
+//				Vector2 moveDelta = Vector2.zero;
+//				if (Input.GetAxis("Vertical") > 0f)
+//				{
+//					moveDelta += Vector2.up;
+//					/*
+//                    sp.UpdateSortingOrder();
+//                    int next = Artifice.Data.GameManager.Instance.PlayerChunk + 1;
+//                    if(transform.position.y > Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
+//                        Artifice.Data.GameManager.Instance.PlayerChunk++;
+//                    }
+//                    */
+//					_animator.Play(Animator.StringToHash("GoUp"));
+//					moveDir = directions.Up;
+//				}
+//				if (Input.GetAxis("Horizontal") < 0f)
+//				{
+//					moveDelta += Vector2.left;
+//					_animator.Play(Animator.StringToHash("GoLeft"));
+//					moveDir = directions.Left;
+//				}
+//				if (Input.GetAxis("Vertical") < 0f)
+//				{
+//					moveDelta += Vector2.down;
+//					/*
+//                    sp.UpdateSortingOrder();
+//                    int next = Artifice.Data.GameManager.Instance.PlayerChunk;
+//                    if (transform.position.y < Artifice.Data.GameManager.PLAYER_RESET_THRESHOLD * next) {
+//                        Artifice.Data.GameManager.Instance.PlayerChunk--;
+//                    }
+//                    */
+//					_animator.Play(Animator.StringToHash("GoDown"));
+//					moveDir = directions.Down;
+//				}
+//				if (Input.GetAxis("Horizontal") > 0f)
+//				{
+//					moveDelta += Vector2.right;
+//					_animator.Play(Animator.StringToHash("GoRight"));
+//					moveDir = directions.Right;
+//				}
+//				if (moveDelta == Vector2.zero)
+//				{
+//					inputDelay = 0f;
+//					//Set the correct idle direction
+//					if (moveDir == directions.Up)
+//					{
+//						_animator.Play(Animator.StringToHash("IdleUp"));
+//					}
+//					else if (moveDir == directions.Down)
+//					{
+//						_animator.Play(Animator.StringToHash("IdleDown"));
+//					}
+//					else if (moveDir == directions.Right)
+//					{
+//						_animator.Play(Animator.StringToHash("IdleRight"));
+//					}
+//					else if (moveDir == directions.Left)
+//					{
+//						_animator.Play(Animator.StringToHash("IdleLeft"));
+//					}
+//				}
+//				else
+//				{
+//					followPos = coordinate;
+//					coordinate += moveDelta;
+//				}
+//			}
+//			else
+//			{
+//				inputDelay -= Time.deltaTime;
+//			}
+//
+//			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime * 5f);
+//		}
+//		else if (followTarget != null && !player.InCombat)
+//		{
+//			//Following target code
+//			transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(followTarget.followPos.x), Mathf.Floor(followTarget.followPos.y), 0f), Time.deltaTime * 5f);
+//
+//			//Sprite stuff
+//			if (followTarget.followPos.x < this.transform.position.x)
+//			{
+//				_animator.Play(Animator.StringToHash("GoLeft"));
+//				moveDir = directions.Left;
+//				waitTimer = waitTimerMax;
+//			}
+//			else if (followTarget.followPos.x > this.transform.position.x)
+//			{
+//				_animator.Play(Animator.StringToHash("GoRight"));
+//				moveDir = directions.Right;
+//				waitTimer = waitTimerMax;
+//			}
+//			else if (followTarget.followPos.y < this.transform.position.y)
+//			{
+//				_animator.Play(Animator.StringToHash("GoDown"));
+//				moveDir = directions.Down;
+//				waitTimer = waitTimerMax;
+//			}
+//			else if (followTarget.followPos.y > this.transform.position.y)
+//			{
+//				_animator.Play(Animator.StringToHash("GoUp"));
+//				moveDir = directions.Up;
+//				waitTimer = waitTimerMax;
+//			}
+//
+//			//Short wait timer so we don't keep hitting idle every time it pops into place
+//			waitTimer -= Time.deltaTime;
+//
+//			if (this.transform.position.x == followTarget.followPos.x && this.transform.position.y == followTarget.followPos.y && waitTimer <= 0f)
+//			{
+//				//				Debug.Log ("We did the thing!");
+//				if (moveDir == directions.Up)
+//				{
+//					_animator.Play(Animator.StringToHash("IdleUp"));
+//				}
+//				else if (moveDir == directions.Down)
+//				{
+//					_animator.Play(Animator.StringToHash("IdleDown"));
+//				}
+//				else if (moveDir == directions.Right)
+//				{
+//					_animator.Play(Animator.StringToHash("IdleRight"));
+//				}
+//				else if (moveDir == directions.Left)
+//				{
+//					_animator.Play(Animator.StringToHash("IdleLeft"));
+//				}
+//			}
+//		}
+//
+//	}
 }

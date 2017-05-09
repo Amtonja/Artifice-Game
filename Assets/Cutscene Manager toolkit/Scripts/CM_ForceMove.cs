@@ -17,18 +17,23 @@ public class CM_ForceMove : MonoBehaviour {
 	/// <summary>
 	/// The move reference, for convenience.
 	/// </summary>
-	private Movement moveRef;
+//	private Movement moveRef;
 
 	/// <summary>
 	/// Direction to move.
 	/// </summary>
-	public enum directions {Up, Down, Left, Right};
-	public directions moveDir;
+//	public enum directions {Up, Down, Left, Right};
+//	public directions moveDir;
 
 	/// <summary>
 	/// How many spaces to move.
 	/// </summary>
-	public int spaces = 1;
+//	public int spaces = 1;
+
+	/// <summary>
+	/// Where to move the character.
+	/// </summary>
+	public GameObject movePos; 
 
 	/// <summary>
 	/// The pass target. This is the next link in the CM chain.
@@ -43,7 +48,7 @@ public class CM_ForceMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		moveRef = target.GetComponent<Movement> ();
+//		moveRef = target.GetComponent<Movement> ();
 	}
 	
 	// Update is called once per frame
@@ -56,17 +61,18 @@ public class CM_ForceMove : MonoBehaviour {
 	public void Activate(){
 //		bActive = true;
 		Vector2 newDir = new Vector2();
-		if (moveDir == directions.Up) {newDir.y = spaces;}
-		if(moveDir == directions.Down){newDir.y = -spaces;}
-		if (moveDir == directions.Left){newDir.x = -spaces;}
-		if(moveDir == directions.Right) {newDir.x = spaces;}
+		newDir = movePos.transform.position;
+//		if (moveDir == directions.Up) {newDir.y = spaces;}
+//		if(moveDir == directions.Down){newDir.y = -spaces;}
+//		if (moveDir == directions.Left){newDir.x = -spaces;}
+//		if(moveDir == directions.Right) {newDir.x = spaces;}
 
 		target.GetComponent<Movement> ().StartForcedMove (newDir);
 		target.GetComponent<Movement> ().GetForcedSender (this.gameObject);
 	}
 
 	//called by the character's movement script to signal it is done forcing a move
-	public void NextTarget(){
+	public void MoveComplete(){
 		passTarget.SendMessage ("Activate");
 		Debug.Log ("Force move complete! Next target!");
 	}

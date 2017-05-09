@@ -54,8 +54,8 @@ public class PlayManager : MonoBehaviour
         exploreMode = true;
         instance = this;
         combatantEnemies = new List<Player>();
-        combatGrid = GameObject.FindGameObjectWithTag("CombatGrid").GetComponent<CombatGrid>();        
-        combatGrid.gameObject.SetActive(false);
+//        combatGrid = GameObject.FindGameObjectWithTag("CombatGrid").GetComponent<CombatGrid>();        
+//        combatGrid.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -64,17 +64,17 @@ public class PlayManager : MonoBehaviour
     /// script attached to a player controlled character.
     /// </summary>
     /// <param name="enemy">Enemy.</param>
-    public void EnemyEncountered(Player enemy)
+	public void EnemyEncountered()//Player enemy)
     {
         exploreMode = false;
-        combatGrid.gameObject.SetActive(true);
+//        combatGrid.gameObject.SetActive(true);
 
-        GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject e in enemiesInScene)
-        {
-            combatantEnemies.Add(e.GetComponent<Player>());
-        }
-        SetupCombatPositions(combatantEnemies);
+//        GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
+//        foreach (GameObject e in enemiesInScene)
+//        {
+//            combatantEnemies.Add(e.GetComponent<Player>());
+//        }
+//        SetupCombatPositions(combatantEnemies);
 
         for (int i = 0; i < combatantEnemies.Count; i++)
         {
@@ -94,26 +94,27 @@ public class PlayManager : MonoBehaviour
     /// <param name="enemy">Enemy.</param>
     private void SetupCombatPositions(List<Player> enemies)
     {        
-        combatGrid.GenerateGrid();
-        combatGrid.gameObject.SetActive(true);
+//        combatGrid.GenerateGrid();
+//        combatGrid.gameObject.SetActive(true);
 
         // Set each player's position to the given cell of the grid, offset for their sprite's height        
-        for (int i = 0; i < party.Length; i++)
-        {
-            Vector3 startPosition =
-                new Vector3(combatGrid.playerStartPositions[i].x * combatGrid.CellSizeX, 
-                combatGrid.playerStartPositions[i].y * combatGrid.CellSizeY - party[i].FootPos.y);
-            party[i].transform.position = combatGrid.transform.position + startPosition;
-        }        
+//        for (int i = 0; i < party.Length; i++)
+//        {
+//            Vector3 startPosition =
+//                new Vector3(combatGrid.playerStartPositions[i].x * combatGrid.CellSizeX, 
+//                combatGrid.playerStartPositions[i].y * combatGrid.CellSizeY - party[i].FootPos.y);
+//            party[i].transform.position = combatGrid.transform.position + startPosition;
+//        }        
+//		party[1].
 
         // Do the same as above for the enemies
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            Vector3 startPosition =
-                new Vector3(combatGrid.enemyStartPositions[i].x * combatGrid.CellSizeX, 
-                combatGrid.enemyStartPositions[i].y * combatGrid.CellSizeY - enemies[i].FootPos.y);
-            enemies[i].transform.position = combatGrid.transform.position + startPosition; 
-        }
+//        for (int i = 0; i < enemies.Count; i++)
+//        {
+//            Vector3 startPosition =
+//                new Vector3(combatGrid.enemyStartPositions[i].x * combatGrid.CellSizeX, 
+//                combatGrid.enemyStartPositions[i].y * combatGrid.CellSizeY - enemies[i].FootPos.y);
+//            enemies[i].transform.position = combatGrid.transform.position + startPosition; 
+//        }
     }
 
     public void CreatePopupText(string text, Transform location)
@@ -153,6 +154,9 @@ public class PlayManager : MonoBehaviour
         {
             return combatantEnemies;
         }
+		set{
+			combatantEnemies = value;
+		}
     }
 
     public bool ExploreMode
@@ -161,6 +165,18 @@ public class PlayManager : MonoBehaviour
         {
             return exploreMode;
         }
+		set {
+			exploreMode = value;
+		}
     }    
+
+	public Player[] Party {
+		get {
+			return party;
+		}
+		set {
+			party = value;
+		}
+	}
     #endregion
 }
