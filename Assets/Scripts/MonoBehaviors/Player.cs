@@ -63,13 +63,21 @@ public class Player : Entity
         if (InCombat && health > 0)
         {
 			//For damage flickering
-			if(alphaColor <= 1){
+			if(alphaColor < 1){
 
 				Color newColor = Color.white;//new Color(255/4, 255/4, 255, alphaColor);
 				newColor[3] = alphaColor;
 				this.gameObject.GetComponent<SpriteRenderer>().color = newColor;//.a = alphaColor;
 				alphaColor = alphaColor + alphaColor * 0.7f;
-				if(alphaColor >= 1.0f){ alphaColor = 1;}
+				if(alphaColor >= 1.0f){ 
+					alphaColor = 1;
+//					PlayManager.instance.UnpauseGame ();
+					PlayManager.instance.UpdateAttacked();
+				}
+			}
+			//If we're paused, don't do below stuff
+			if (PlayManager.instance.PauseCombat == true) {
+				return;
 			}
 
             if (ActionBarValue < ActionBarTarget)
@@ -116,7 +124,9 @@ public class Player : Entity
         _animator.Play(Animator.StringToHash("SwordAttack"));
         ActionBarValue = 0f;
         IsMyTurn = false;
-        PlayManager.instance.UnpauseGame();
+//        PlayManager.instance.UnpauseGame();
+		PlayManager.instance.SendAttackCount(1);
+		PlayManager.instance.StartingAttack ();
     }
 
     //Called by animator. Ensures damage is dealt on the correct attack frame
@@ -132,7 +142,9 @@ public class Player : Entity
         _animator.Play(Animator.StringToHash("GunAttack"));
         ActionBarValue = 0f;
         IsMyTurn = false;
-        PlayManager.instance.UnpauseGame();
+//        PlayManager.instance.UnpauseGame();
+		PlayManager.instance.SendAttackCount(1);
+		PlayManager.instance.StartingAttack ();
     }
 
     //Called by animator. Ensures damage is dealt on the correct attack frame
@@ -171,7 +183,7 @@ public class Player : Entity
         target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
         ActionBarValue = 0f;
         IsMyTurn = false;
-        PlayManager.instance.UnpauseGame();
+//        PlayManager.instance.UnpauseGame();
     }
 
     // Assuming these will eventually be different
@@ -182,7 +194,7 @@ public class Player : Entity
         target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
         ActionBarValue = 0f;
         IsMyTurn = false;
-        PlayManager.instance.UnpauseGame();
+//        PlayManager.instance.UnpauseGame();
     }
 
     public void CureSpell(Entity target)
@@ -192,7 +204,7 @@ public class Player : Entity
         target.Heal(healthRestored);
         ActionBarValue = 0f;
         IsMyTurn = false;
-        PlayManager.instance.UnpauseGame();
+//        PlayManager.instance.UnpauseGame();
     }
 
     public void AimSpell(Entity target)
@@ -201,7 +213,7 @@ public class Player : Entity
         target.Stats.Accuracy += accuracyBuff; // Get real formula
         ActionBarValue = 0f;
         IsMyTurn = false;
-        PlayManager.instance.UnpauseGame();
+//        PlayManager.instance.UnpauseGame();
     }
 
     public void FireBreath(Entity target)
@@ -296,7 +308,10 @@ public class Player : Entity
             elapsedTime += Time.unscaledDeltaTime;
             sr.color = Color.Lerp(Color.white, targetColor, (elapsedTime / totalTime));
             yield return null;
-        }
+		} 
+
+		PlayManager.instance.UpdateAttacked ();
+		PlayManager.instance.RemoveEnemy (this);
     }
 
     public delegate void CombatAction(Entity target);
