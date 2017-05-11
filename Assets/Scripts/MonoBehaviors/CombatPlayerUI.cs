@@ -239,28 +239,32 @@ public class CombatPlayerUI : MonoBehaviour
 
     public void OnBolt()
     {
-        ActivePlayer.MyCombatAction = ActivePlayer.BoltSpell;
+        ActivePlayer.MySpell = ActivePlayer.BoltSpell;
+        ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
 
     public void OnGust()
     {
-        ActivePlayer.MyCombatAction = ActivePlayer.GustSpell;
+        ActivePlayer.MySpell = ActivePlayer.GustSpell;
+        ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
 
     public void OnCure()
     {
-        ActivePlayer.MyCombatAction = ActivePlayer.CureSpell;
+        ActivePlayer.MySpell = ActivePlayer.CureSpell;
+        ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
         Input.ResetInputAxes();
         State = PlayerUIState.PLAYER_SELECT;
     }
 
     public void OnAim()
     {
-        ActivePlayer.MyCombatAction = ActivePlayer.AimSpell;
+        ActivePlayer.MySpell = ActivePlayer.AimSpell;
+        ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
         Input.ResetInputAxes();
         State = PlayerUIState.PLAYER_SELECT;
     }

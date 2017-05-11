@@ -150,6 +150,7 @@ MonoBehaviour:
       luck: 10
       maxHealth: 150
     race: 0
+  spellOrigin: {x: 0.19, y: 0.057}
 --- !u!114 &114539703176097850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
+  bNPC: 0
 --- !u!212 &212529958292024128
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -13,12 +13,18 @@ public class Player : Entity
     [SerializeField]
     private EntityInfo entityInfo;
 
+    [SerializeField]
+    private Vector2 spellOrigin;
+
+    private Vector3 v3spellOrigin;
+
     private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
     private float agilityBarTarget = 20f, magicBarTarget = 20f, rageBarTarget = 20f, specialBarTarget = 20f;
 
     private Vector3 _footPos;
 
     private CombatAction _combatAction;
+    private SpellDelegate _spell;
 
     private Animator _animator;
 
@@ -48,6 +54,8 @@ public class Player : Entity
         health = Stats.MaxHealth;
 
         ActionBarTarget = 20;
+
+        v3spellOrigin = new Vector3(spellOrigin.x * transform.localScale.x, spellOrigin.y * transform.localScale.y, 0f);
     }
 
     void Update()
@@ -134,14 +142,28 @@ public class Player : Entity
         tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
     }
 
+    public void BeginSpellCast(Entity target)
+    {
+        Debug.Log(name + " begins casting a spell...");
+        //_spell = spell;
+        tempTarget = target;
+        _animator.Play(Animator.StringToHash("CastSpell"));
+    }
+
+    public void EndSpellCast()
+    {
+        Debug.Log(name + " finishes casting " + MySpell.Method);
+        MySpell(tempTarget);
+    }
 
     public void BoltSpell(Entity target)
     {
-		_animator.Play(Animator.StringToHash("CastSpell"));
+		//_animator.Play(Animator.StringToHash("CastSpell"));
         GameObject lightningBolt = Instantiate(Resources.Load("Prefabs/SimpleLightningBoltPrefab"), transform) as GameObject;
         lightningBolt.GetComponent<LineRenderer>().sortingLayerName = "VisualEffects"; // Doing this here because it's not exposed in inspector
         DigitalRuby.LightningBolt.LightningBoltScript lbs = lightningBolt.GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
         lbs.StartObject = gameObject;
+        lbs.StartPosition = v3spellOrigin;
         lbs.EndObject = target.gameObject;
         Destroy(lightningBolt, 0.5f);
 
@@ -155,7 +177,7 @@ public class Player : Entity
     // Assuming these will eventually be different
     public void GustSpell(Entity target)
     {
-		_animator.Play(Animator.StringToHash("CastSpell"));
+		//_animator.Play(Animator.StringToHash("CastSpell"));
         int damage = Stats.Magic; // Get real formula
         target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
         ActionBarValue = 0f;
@@ -187,12 +209,12 @@ public class Player : Entity
 		_animator.Play(Animator.StringToHash("CastSpell"));
         //Debug.Log(name + " breathing fire on " + target.name);
         Quaternion rotToTarget = Quaternion.LookRotation(target.transform.position - transform.position);
-        ParticleSystem firebreath = Instantiate(
-            Resources.Load("Prefabs/FireBreath", typeof(ParticleSystem)),
-            transform.position,
+        GameObject firebreath = Instantiate(
+            Resources.Load("Prefabs/FireBreath", typeof(GameObject)),
+            transform.position + v3spellOrigin,
             rotToTarget,
-            transform) as ParticleSystem;
-        Destroy(firebreath, 0.5f);
+            transform) as GameObject;
+        //Destroy(firebreath, 0.5f); // not used if the object destroys itself anyway
 
         int damage = Stats.Magic;
         target.TakeDamage(damage - target.Stats.MagicDefense);
@@ -278,6 +300,7 @@ public class Player : Entity
     }
 
     public delegate void CombatAction(Entity target);
+    public delegate void SpellDelegate(Entity target);
 
     #region implemented abstract members of Entity
 
@@ -436,6 +459,19 @@ public class Player : Entity
         set
         {
             _combatAction = value;
+        }
+    }
+
+    public SpellDelegate MySpell
+    {
+        get
+        {
+            return _spell;
+        }
+
+        set
+        {
+            _spell = value;
         }
     }
     #endregion
