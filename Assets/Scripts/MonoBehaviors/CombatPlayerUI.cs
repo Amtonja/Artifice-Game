@@ -67,6 +67,12 @@ public class CombatPlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		//reset enemy cursor position if that enemy is dead
+		if (enemiesList.Count != 0 && !enemiesList.Contains (selectedEnemy)) {
+			selectedEnemy = enemiesList [0];
+		}
+
+
         if (State == PlayerUIState.WAITING_FOR_ACTION)
         {
             if (ActivePlayer.IsMyTurn)

@@ -31,12 +31,12 @@ namespace Artifice.Characters {
 				}
 				Entity target = person.GetComponent<Entity> ();
 
-				if (randB < 0.5f) {
+//				if (randB < 0.5f) {
 					_player.MeleeAttack (target);
-				} else {
-
-					_player.FireBreath(target);
-				}
+//				} else {
+//
+//					_player.FireBreath(target);
+//				}
                 
 			}
 		}
