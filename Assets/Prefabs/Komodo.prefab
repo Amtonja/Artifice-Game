@@ -130,15 +130,15 @@ MonoBehaviour:
     name: Komodo
     id: 
     combatStats:
-      strength: 1
+      strength: 15
       defense: 1
-      magic: 1
+      magic: 17
       speed: 11
       evasion: 1
       accuracy: 1
       magicDefense: 1
       luck: 1
-      maxHealth: 5
+      maxHealth: 50
     race: 7
   spellOrigin: {x: -0.348, y: 0.022}
 --- !u!212 &212831686159816558

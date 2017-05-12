@@ -155,11 +155,16 @@ public class Player : Entity
         tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
     }
 
+    /// <summary>
+    /// The beginning of a spell casting. It plays the spellcasting animation
+    /// and tells PlayManager that an attack is being carried out.
+    /// </summary>
+    /// <param name="target">The target of the spell.</param>
     public void BeginSpellCast(Entity target)
     {
-        Debug.Log(name + " begins casting a spell...");
-        //_spell = spell;
+        //Debug.Log(name + " begins casting a spell...");
         tempTarget = target;
+        _animator.SetBool("SpellComplete", false);
         _animator.Play(Animator.StringToHash("CastSpell"));
         ActionBarValue = 0f;
         IsMyTurn = false;
@@ -167,10 +172,35 @@ public class Player : Entity
         PlayManager.instance.StartingAttack();
     }
 
+    /// <summary>
+    /// The end of an actual casting of a spell (but before the effect actually happens.)
+    /// This is called by an animation event. 
+    /// </summary>
     public void EndSpellCast()
     {
-        Debug.Log(name + " finishes casting " + MySpell.Method);
+        //Debug.Log(name + " finishes casting " + MySpell.Method);
         MySpell(tempTarget);
+    }
+
+    /// <summary>
+    /// Called by a spell method to display the visual effect for the given duration, then deal the damage
+    /// and clean up the visual effect. It also tells the animator the spell is finished so it can transition
+    /// back to the necessary idle state.
+    /// </summary>
+    /// <param name="target">Target of the spell.</param>
+    /// <param name="spellVisual">Game object instantiated for the spell's visual effect.</param>
+    /// <param name="spellDuration">Duration in seconds of the visual effect.</param>
+    /// <returns></returns>
+    public IEnumerator DealSpellDamage(Entity target, GameObject spellVisual, float spellDuration)
+    {
+        PlayManager.instance.DarkenBG(true);
+        yield return new WaitForSeconds(spellDuration);
+        
+        int damage = Stats.Magic; // Get real formula
+        target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
+        Destroy(spellVisual);
+        PlayManager.instance.DarkenBG(false);
+        _animator.SetBool("SpellComplete", true);
     }
 
     public void BoltSpell(Entity target)
@@ -182,11 +212,7 @@ public class Player : Entity
         lbs.StartObject = gameObject;
         lbs.StartPosition = v3spellOrigin;
         lbs.EndObject = target.gameObject;
-        Destroy(lightningBolt, 0.5f);
-
-        int damage = Stats.Magic; // Get real formula
-        target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
-       
+        StartCoroutine(DealSpellDamage(target, lightningBolt, 1.5f));       
 //        PlayManager.instance.UnpauseGame();
     }
 
@@ -215,22 +241,20 @@ public class Player : Entity
     }
 
     public void FireBreath(Entity target)
-    {
-		_animator.Play(Animator.StringToHash("CastSpell"));
-        //Debug.Log(name + " breathing fire on " + target.name);
+    {		
         Quaternion rotToTarget = Quaternion.LookRotation(target.transform.position - transform.position);
         GameObject firebreath = Instantiate(
             Resources.Load("Prefabs/FireBreath", typeof(GameObject)),
             transform.position + v3spellOrigin,
             rotToTarget,
             transform) as GameObject;
-        //Destroy(firebreath, 0.5f); // not used if the object destroys itself anyway
+        StartCoroutine(DealSpellDamage(target, firebreath, 1.5f));
 
-        int damage = Stats.Magic;
-        target.TakeDamage(damage - target.Stats.MagicDefense);
-        ActionBarValue = 0f;
-        IsMyTurn = false;
-        PlayManager.instance.UnpauseGame();
+        //int damage = Stats.Magic;
+        //target.TakeDamage(damage - target.Stats.MagicDefense);
+        //ActionBarValue = 0f;
+        //IsMyTurn = false;
+        //PlayManager.instance.UnpauseGame();
     }
 
     /// <summary>

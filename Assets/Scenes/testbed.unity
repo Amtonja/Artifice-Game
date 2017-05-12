@@ -4752,6 +4752,11 @@ Prefab:
       value: 
       objectReference: {fileID: 114536084034317090, guid: d7a81b9ac41b35c4c816612f0099c613,
         type: 2}
+    - target: {fileID: 114672948340293816, guid: b406117de1af4464ca68d8573fdcf81d,
+        type: 2}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 2077371726}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b406117de1af4464ca68d8573fdcf81d, type: 2}
   m_IsPrefabParent: 0
@@ -9389,34 +9394,6 @@ Prefab:
     - target: {fileID: 1368199425817126, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
       propertyPath: m_Name
       value: Komodo (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
-        type: 2}
-      propertyPath: entityInfo.combatStats.speed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
-        type: 2}
-      propertyPath: entityInfo.combatStats.maxHealth
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
-        type: 2}
-      propertyPath: entityInfo.combatStats.defense
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}

@@ -105,7 +105,7 @@ MonoBehaviour:
   AudioSource: {fileID: 0}
   StartTime: 0.25
   StopTime: 1
-  Duration: 1
+  Duration: 10
   ForceAmount: 0
   ForceRadius: 0
   IsProjectile: 1

@@ -72,6 +72,10 @@ public class PlayManager : MonoBehaviour
 	private float hitWaitTimer = 1f;
 	private float hitWaitCurrent = 0f;
 
+    /// <summary>
+    /// The current scene's background image.
+    /// </summary>
+    public SpriteRenderer background;
 
     void Start()
     {
@@ -268,6 +272,23 @@ public class PlayManager : MonoBehaviour
 		state = combatState.WaitForAttackConfirmation;
 
 	}
+
+    /// <summary>
+    /// Called to darken or un-darken the background image of this scene to increase/restore contrast with foreground
+    /// elements.
+    /// </summary>
+    /// <param name="darken">Darken if true, re-lighten otherwise</param>
+    public void DarkenBG(bool darken)
+    {
+        if (darken)
+        {
+            background.color = Color.gray;
+        }
+        else
+        {
+            background.color = Color.white;
+        }
+    }
 	//Called when an enemy's HP is at zero
 	public void RemoveEnemy(Player enemy){
 		EnemyCombatants.Remove (enemy);
