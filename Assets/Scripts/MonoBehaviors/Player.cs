@@ -333,7 +333,7 @@ public class Player : Entity
     public override void EnterCombat()
     {
         //		_animator = GetComponent<Animator>(); //Can't find the instance if it's not here? What?
-        _animator.Play(Animator.StringToHash("SwordIdle"));
+        _animator.Play(Animator.StringToHash("Intro"));
         //		Movement move = this.gameObject.GetComponent<Movement> ();
         //GetComponent<Movement>().ForceLock(true); //probably redundant
         base.EnterCombat();
