@@ -116,7 +116,7 @@ public class PlayManager : MonoBehaviour
 				hitWaitCurrent += Time.deltaTime;
 				if (hitWaitCurrent >= hitWaitTimer) {
 					hitWaitCurrent = 0f;
-					pauseCombat = false;
+					pauseCombat = false;                   
 					state = combatState.CombatLoop;
 				}
 			}
@@ -258,7 +258,8 @@ public class PlayManager : MonoBehaviour
 
 	}
 	//called by a character when it is attacked
-	public void UpdateAttacked(){
+	public void UpdateAttacked()
+    {
 		attackedCountCurrent++;
 	}
 

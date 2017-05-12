@@ -161,6 +161,10 @@ public class Player : Entity
         //_spell = spell;
         tempTarget = target;
         _animator.Play(Animator.StringToHash("CastSpell"));
+        ActionBarValue = 0f;
+        IsMyTurn = false;
+        PlayManager.instance.SendAttackCount(1);
+        PlayManager.instance.StartingAttack();
     }
 
     public void EndSpellCast()
@@ -182,8 +186,7 @@ public class Player : Entity
 
         int damage = Stats.Magic; // Get real formula
         target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
-        ActionBarValue = 0f;
-        IsMyTurn = false;
+       
 //        PlayManager.instance.UnpauseGame();
     }
 
@@ -192,9 +195,7 @@ public class Player : Entity
     {
 		//_animator.Play(Animator.StringToHash("CastSpell"));
         int damage = Stats.Magic; // Get real formula
-        target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
-        ActionBarValue = 0f;
-        IsMyTurn = false;
+        target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula       
 //        PlayManager.instance.UnpauseGame();
     }
 
@@ -202,18 +203,14 @@ public class Player : Entity
     {
         Debug.Log("Casting Cure on " + target.name);
         int healthRestored = Stats.Magic; // Get real formula
-        target.Heal(healthRestored);
-        ActionBarValue = 0f;
-        IsMyTurn = false;
+        target.Heal(healthRestored);       
 //        PlayManager.instance.UnpauseGame();
     }
 
     public void AimSpell(Entity target)
     {
         int accuracyBuff = Stats.Magic; // Get real formula
-        target.Stats.Accuracy += accuracyBuff; // Get real formula
-        ActionBarValue = 0f;
-        IsMyTurn = false;
+        target.Stats.Accuracy += accuracyBuff; // Get real formula       
 //        PlayManager.instance.UnpauseGame();
     }
 
