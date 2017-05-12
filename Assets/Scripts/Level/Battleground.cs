@@ -24,6 +24,8 @@ public class Battleground : MonoBehaviour {
 	private int readyCount = 0; //How many times characters tell us they're ready for combat. Needs to be equal to the player count
 	private int totalReadyCount;
 
+	public Transform[] secondPlayerPosList;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -64,6 +66,12 @@ public class Battleground : MonoBehaviour {
 			//Have everyone in party do into animations
 			PlayManager.instance.EnemyEncountered();
 		}
+
+	}
+
+	//Called by 
+	public void ChangeHeroFormation(int num){
+
 
 	}
 }

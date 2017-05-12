@@ -94,7 +94,7 @@ public class Movement : MonoBehaviour
 
 		//If we're in combat or a cutscene, skip everything
 		if(bForceLock){return;}
-		if(player.InCombat){return;}
+
 //		if (PlayManager.instance.ExploreMode) {
 //			return;
 //		}
@@ -109,6 +109,7 @@ public class Movement : MonoBehaviour
             ForceMove();
             return;
         }
+		if(player.InCombat){return;}
 
         //skip everything if we're just forced to face a direction
         if (bForceFace)
@@ -119,7 +120,7 @@ public class Movement : MonoBehaviour
 		if (followTarget == null && !player.InCombat && !bNPC) {
 			HandleMove ();
 
-		} else if(followTarget != null && !player.InCombat && !bNPC){
+		} else if(followTarget != null && !player.InCombat && !bNPC && !bForceMove){
 
 			FollowMove();
 		}
@@ -309,7 +310,7 @@ public class Movement : MonoBehaviour
     public void StartForcedMove(Vector2 spaces)
     {
         //Kill follow target if we have one because it messes with things
-        followTarget = null;
+//        followTarget = null;
 //        coordinate = this.transform.position;
 //        intendedPosition = new Vector2(this.transform.position.x + spaces.x, this.transform.position.y + spaces.y);
 		intendedPosition = spaces;
@@ -511,4 +512,16 @@ public class Movement : MonoBehaviour
 //		}
 //
 //	}
+
+
+
+	//properties
+	public Movement FollowTarget {
+		get {
+			return followTarget;
+		}
+		set {
+			followTarget = value;
+		}
+	}
 }

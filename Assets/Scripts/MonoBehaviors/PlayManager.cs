@@ -226,6 +226,12 @@ public class PlayManager : MonoBehaviour
         {
             party[i].ExitCombat();
 			//turn off combat UI
+
+			//Reset characters following lead character
+//			if (i != 0) {
+//				GameObject dude = party [i].gameObject;
+//				dude.gameObject.GetComponent<Movement> ().FollowTarget = party [0];
+//			}
         }
     }
 

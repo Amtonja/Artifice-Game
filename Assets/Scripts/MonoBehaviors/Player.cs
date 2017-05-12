@@ -71,6 +71,7 @@ public class Player : Entity
 				alphaColor = alphaColor + alphaColor * 0.7f;
 				if(alphaColor >= 1.0f){ 
 					alphaColor = 1;
+					this.gameObject.GetComponent<SpriteRenderer> ().color = Color.white;
 //					PlayManager.instance.UnpauseGame ();
 					PlayManager.instance.UpdateAttacked();
 				}
