@@ -16,7 +16,7 @@ namespace Artifice.Characters {
 			_player = GetComponent<Player> ();
 		}
 
-		private Entity temptarget;
+//		private Entity temptarget;
 		// Update is called once per frame
 		void Update () {
 			if (_player.IsMyTurn) {
@@ -33,7 +33,7 @@ namespace Artifice.Characters {
 					person = GameObject.Find ("Hurley");
 				}
 				Entity target = person.GetComponent<Entity> ();
-				temptarget = target;
+//				temptarget = target;
 
 				if(!bToggle){
 //					_player.BoltSpell (target);
