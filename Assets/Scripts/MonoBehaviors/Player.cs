@@ -295,12 +295,18 @@ public class Player : Entity
     /// <param name="other">Other.</param>
     void OnTriggerEnter2D(Collider2D other)
     {
+//		Debug.Log (PlayManager.instance.party[0].gameObject.name.ToString());
 		//Only the character in the lead should be able to instigate things
-		if (PlayManager.instance.party [0] == this) {
+		if (PlayManager.instance.party [0].gameObject == this.gameObject) {
 //        if (other.gameObject.tag.Equals("Enemy"))
 			if (other.gameObject.tag.Equals ("Battleground")) {
 				//            PlayManager.instance.EnemyEncountered(other.gameObject.GetComponent<Player>());
 				other.gameObject.GetComponent<Battleground> ().Begin ();
+			}
+
+			if (other.gameObject.tag.Equals ("AreaTransition")) {
+				Debug.Log ("Transition to new area!");
+				other.gameObject.GetComponent<AreaTransition> ().Begin ();
 			}
 		}
     }

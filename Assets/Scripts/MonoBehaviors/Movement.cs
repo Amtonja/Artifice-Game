@@ -67,7 +67,7 @@ public class Movement : MonoBehaviour
 //    private float waitTimer = 0.22f;
 
 
-    private bool bForceLock = false; //skips everything when we're in combat
+    private bool bForceLock = false; //Locks controls. Used by AreaTransition, etc?
 
 
 
@@ -396,6 +396,22 @@ public class Movement : MonoBehaviour
     public void ForceLock(bool setting)
     {
         bForceLock = setting;
+		if (moveDir == directions.Up)
+		{
+			_animator.Play(Animator.StringToHash("IdleUp"));
+		}
+		else if (moveDir == directions.Down)
+		{
+			_animator.Play(Animator.StringToHash("IdleDown"));
+		}
+		else if (moveDir == directions.Right)
+		{
+			_animator.Play(Animator.StringToHash("IdleRight"));
+		}
+		else if (moveDir == directions.Left)
+		{
+			_animator.Play(Animator.StringToHash("IdleLeft"));
+		}
     }
 
 
