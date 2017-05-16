@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 95935554672698118}
   - component: {fileID: 114170259840136106}
   - component: {fileID: 61622449182219804}
+  - component: {fileID: 114082450182883210}
   - component: {fileID: 114022854627826158}
   m_Layer: 0
   m_Name: Komodo
@@ -79,7 +80,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1368199425817126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -115,6 +116,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ef01cec55b8f4409732b7c6cfc5ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114082450182883210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368199425817126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883d8ee0545634f6f99a84cd0cace218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTarget: {fileID: 0}
+  bNPC: 1
 --- !u!114 &114170259840136106
 MonoBehaviour:
   m_ObjectHideFlags: 1

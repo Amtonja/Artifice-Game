@@ -1009,7 +1009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &199906937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,7 +1630,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1054751150337734, guid: 970f42a9ac74e674fae7b2f925829470, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 970f42a9ac74e674fae7b2f925829470, type: 2}
@@ -1976,7 +1976,7 @@ Prefab:
       objectReference: {fileID: 339579303}
     - target: {fileID: 1276542944061352, guid: 6b6c0289969107b47bd2e6a80e003ca8, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b6c0289969107b47bd2e6a80e003ca8, type: 2}
@@ -2165,7 +2165,7 @@ Prefab:
       objectReference: {fileID: 551471613}
     - target: {fileID: 1375770526488642, guid: 5a03df453fb5a4b418605dc215a94e70, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a03df453fb5a4b418605dc215a94e70, type: 2}
@@ -2720,7 +2720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &487133967
 Transform:
   m_ObjectHideFlags: 0
@@ -9395,6 +9395,11 @@ Prefab:
       propertyPath: m_Name
       value: Komodo (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
+        type: 2}
+      propertyPath: entityInfo.combatStats.maxHealth
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
   m_IsPrefabParent: 0
@@ -10102,6 +10107,11 @@ Prefab:
     - target: {fileID: 4604362250763200, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114170259840136106, guid: 4c1ae231c2e1452458f18a47f42e9544,
+        type: 2}
+      propertyPath: entityInfo.combatStats.maxHealth
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c1ae231c2e1452458f18a47f42e9544, type: 2}
@@ -11029,7 +11039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &2077371726
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -48,12 +48,17 @@ public class Battleground : MonoBehaviour {
 		PlayManager.instance.ExploreMode = false;
 		party = PlayManager.instance.Party;
 
-		totalReadyCount = party.Length; //Later, should be party + enemies
+		totalReadyCount = party.Length + enemies.Count; //Later, should be party + enemies
 
 		//Move everything into their spaces
 		for (int i = 0; i < party.Length; i++) {
 			party [i].GetComponent<Movement> ().GetForcedSender (this.gameObject);
 			party [i].GetComponent<Movement> ().StartForcedMove (playerPosList [i].transform.position);
+		}
+
+		for (int i = 0; i < enemies.Count; i++) {
+			enemies [i].GetComponent<Movement> ().GetForcedSender (this.gameObject);
+			enemies [i].GetComponent<Movement> ().StartForcedMove (enemyPosList [i].transform.position);
 		}
 
 	}

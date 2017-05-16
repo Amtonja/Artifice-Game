@@ -206,34 +206,61 @@ public class Movement : MonoBehaviour
 				bFollowing = false;
 				return;
 			}
-			float step = moveSpeed * Time.deltaTime;
-			Vector2 followDir = Vector2.MoveTowards (this.transform.position, followTarget.transform.position, step);
-			Vector2 facingDir = this.transform.position - followTarget.transform.position; //For animation
+//			float step = moveSpeed * Time.deltaTime;
+//			Vector2 followDir = Vector2.MoveTowards (this.transform.position, followTarget.transform.position, step);
+//			Vector2 facingDir = this.transform.position - followTarget.transform.position; //For animation
 
 			//Facing is backwards because it's a direction
-			if (facingDir.y < 0f) {
+//			if (facingDir.y < 0f) {
+//				//To avoid overlapping animations
+//				if(facingDir.x == 0f)
+//					_animator.Play (Animator.StringToHash ("GoUp"));
+//				moveDir = directions.Up;
+//			} else if (facingDir.y > 0f) {
+//				if(facingDir.x == 0f)
+//					_animator.Play (Animator.StringToHash ("GoDown"));
+//				moveDir = directions.Down;
+//			} 
+//			if (facingDir.x < 0f) {
+//				_animator.Play(Animator.StringToHash("GoRight"));
+//				moveDir = directions.Right;
+//			} else if (facingDir.x > 0f) {
+//				_animator.Play (Animator.StringToHash ("GoLeft"));
+//				moveDir = directions.Left;
+//			}
+//
+//
+//			this.transform.position = followDir;// Transform.translate with facingDir for easier collision detection?
+
+			Vector3 moveDelta = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, 0f) - this.transform.position;
+
+			if (moveDelta.y > 0f && Mathf.Abs(moveDelta.y) > Mathf.Abs(moveDelta.x)) {
+				//				moveDelta += Vector2.up;
 				//To avoid overlapping animations
-				if(facingDir.x == 0f)
-					_animator.Play (Animator.StringToHash ("GoUp"));
+				//				if(Mathf.Abs(moveDelta.y) > Mathf.Abs(moveDelta.x))
+				_animator.Play (Animator.StringToHash ("GoUp"));
 				moveDir = directions.Up;
-			} else if (facingDir.y > 0f) {
-				if(facingDir.x == 0f)
-					_animator.Play (Animator.StringToHash ("GoDown"));
+			} else if (moveDelta.y < 0f && Mathf.Abs(moveDelta.y) > Mathf.Abs(moveDelta.x)) {
+				//				moveDelta += Vector2.down;
+				//				if(moveDelta.x == 0f)
+				_animator.Play (Animator.StringToHash ("GoDown"));
 				moveDir = directions.Down;
+
 			} 
-			if (facingDir.x < 0f) {
+			else if (moveDelta.x > 0f){// && Mathf.Abs(moveDelta.x) > Mathf.Abs(moveDelta.y)) {
+				//				moveDelta += Vector2.right;
 				_animator.Play(Animator.StringToHash("GoRight"));
 				moveDir = directions.Right;
-			} else if (facingDir.x > 0f) {
+			} else if (moveDelta.x < -0f){// && Mathf.Abs(moveDelta.x) > Mathf.Abs(moveDelta.y)) {
+				//				moveDelta += Vector2.left;
 				_animator.Play (Animator.StringToHash ("GoLeft"));
 				moveDir = directions.Left;
 			}
 
-
-			this.transform.position = followDir;// Transform.translate with facingDir for easier collision detection?
+			transform.Translate ((moveDelta.normalized * moveSpeed) * Time.deltaTime);
 		}
 	}
-
+		
     //Forces a character to move in a direction.
     private void ForceMove()
     {
@@ -243,25 +270,25 @@ public class Movement : MonoBehaviour
 //			float step = moveSpeed * Time.deltaTime;
 //			Vector2 moveDelta = Vector2.MoveTowards (this.transform.position, intendedPosition, step);
 			Vector3 moveDelta = new Vector3(intendedPosition.x, intendedPosition.y, 0f) - this.transform.position;
-			//Using MoveTowards, so these are backwards
-			if (moveDelta.y > 0f) {
+
+			if (moveDelta.y > 0f && Mathf.Abs(moveDelta.y) > Mathf.Abs(moveDelta.x)) {
 //				moveDelta += Vector2.up;
 				//To avoid overlapping animations
-				if(moveDelta.x == 0f)
+//				if(Mathf.Abs(moveDelta.y) > Mathf.Abs(moveDelta.x))
 					_animator.Play (Animator.StringToHash ("GoUp"));
 				moveDir = directions.Up;
-			} else if (-moveDelta.y < -0f) {
+			} else if (moveDelta.y < 0f && Mathf.Abs(moveDelta.y) > Mathf.Abs(moveDelta.x)) {
 //				moveDelta += Vector2.down;
-				if(moveDelta.x == 0f)
+//				if(moveDelta.x == 0f)
 					_animator.Play (Animator.StringToHash ("GoDown"));
 				moveDir = directions.Down;
 
 			} 
-			if (moveDelta.x > 0f) {
+			else if (moveDelta.x > 0f){// && Mathf.Abs(moveDelta.x) > Mathf.Abs(moveDelta.y)) {
 //				moveDelta += Vector2.right;
 				_animator.Play(Animator.StringToHash("GoRight"));
 				moveDir = directions.Right;
-			} else if (moveDelta.x < -0f) {
+			} else if (moveDelta.x < -0f){// && Mathf.Abs(moveDelta.x) > Mathf.Abs(moveDelta.y)) {
 //				moveDelta += Vector2.left;
 				_animator.Play (Animator.StringToHash ("GoLeft"));
 				moveDir = directions.Left;

@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 212070131674812730}
   - component: {fileID: 95463405358382992}
   - component: {fileID: 114949949858825638}
+  - component: {fileID: 114823148149353490}
   - component: {fileID: 61312314724341298}
   - component: {fileID: 114624575379145830}
   m_Layer: 0
@@ -79,7 +80,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313333967950716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -115,6 +116,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac304f6b3e8d8a418bbb1f1d590e9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114823148149353490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1313333967950716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883d8ee0545634f6f99a84cd0cace218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTarget: {fileID: 0}
+  bNPC: 1
 --- !u!114 &114949949858825638
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,6 +154,7 @@ MonoBehaviour:
       luck: 1
       maxHealth: 200
     race: 7
+  spellOrigin: {x: 0, y: 0}
 --- !u!212 &212070131674812730
 SpriteRenderer:
   m_ObjectHideFlags: 1

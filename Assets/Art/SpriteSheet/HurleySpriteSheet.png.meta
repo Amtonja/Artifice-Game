@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 993f93057b0098a48a73606c75297aa2
-timeCreated: 1494612234
+timeCreated: 1494886558
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -281,7 +281,7 @@ TextureImporter:
       name: Hurley_GunIdle1
       rect:
         serializedVersion: 2
-        x: 6
+        x: 5
         y: 320
         width: 50
         height: 50
@@ -542,7 +542,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7
-        y: 65
+        y: 63
         width: 48
         height: 48
       alignment: 0
@@ -606,8 +606,8 @@ TextureImporter:
       name: Hurley_SwordIntro2
       rect:
         serializedVersion: 2
-        x: 6
-        y: 10
+        x: 7
+        y: 9
         width: 48
         height: 48
       alignment: 0
