@@ -9,7 +9,7 @@ namespace Artifice.Characters {
 
 		private Player _player; //ref to our Player script
 
-		private bool bToggle = true; //just toggles between attacks
+		private bool bToggle = false; //just toggles between attacks
 
 		// Use this for initialization
 		void Start () {
@@ -35,7 +35,6 @@ namespace Artifice.Characters {
 				Entity target = person.GetComponent<Entity> ();
 				temptarget = target;
 
-//				if (randB < 0.5f) {
 				if(!bToggle){
 //					_player.BoltSpell (target);
 					_player.MySpell = _player.BoltSpell;
