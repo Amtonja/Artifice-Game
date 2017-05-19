@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityInfo:
     name: Stanz
-    id: 0
+    id: _stanz_
     combatStats:
       strength: 10
       defense: 12
@@ -164,6 +164,7 @@ MonoBehaviour:
       luck: 5
       maxHealth: 150
     race: 0
+  spellOrigin: {x: 0, y: 0}
 --- !u!114 &114335615163619678
 MonoBehaviour:
   m_ObjectHideFlags: 1

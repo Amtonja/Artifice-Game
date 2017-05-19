@@ -7,9 +7,10 @@ using System;
 public class Player : Entity
 {
 
-    /// <summary>
-    /// This field is temporary, and will be replaced by the XML reader
-    /// </summary>
+    ///// <summary>
+    ///// This field is temporary, and will be replaced by the XML reader
+    ///   Comment out again when switching back to XML
+    ///// </summary>
     [SerializeField]
     private EntityInfo entityInfo;
 
@@ -28,30 +29,40 @@ public class Player : Entity
 
     private Animator _animator;
 
+    [SerializeField]
+    private string characterName, characterID;
+
     // Use this for initialization
     void Start()
     {
-
         _animator = GetComponent<Animator>();
 
         _footPos = transform.Find("Base").localPosition;
 
         //TODO: This will be loaded in via XML reader later
-        this.title = entityInfo.name;
-        this.id = entityInfo.id;
-        this.stats = new CombatStats();
-        this.stats.Level = 1;
-        this.stats.BaseAccuracy = entityInfo.combatStats.accuracy;
-        this.stats.BaseDefense = entityInfo.combatStats.defense;
-        this.stats.BaseEvasion = entityInfo.combatStats.evasion;
-        this.stats.BaseMagic = entityInfo.combatStats.magic;
-        this.stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
-        this.stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
-        this.stats.BaseSpeed = entityInfo.combatStats.speed;
-        this.stats.BaseStrength = entityInfo.combatStats.strength;
+        title = characterName;
+        id = characterID;
+        
+
+        //stats = new CombatStats(1, id); // for reading stats from XML
+        stats = new CombatStats(); // default constructor for reading stats from entityInfo
+        // Comment these lines out when switching back to XML
+        stats.Level = 1;
+        stats.BaseAccuracy = entityInfo.combatStats.accuracy;
+        stats.BaseDefense = entityInfo.combatStats.defense;
+        stats.BaseEvasion = entityInfo.combatStats.evasion;
+        stats.BaseMagic = entityInfo.combatStats.magic;
+        stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
+        stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
+        stats.BaseSpeed = entityInfo.combatStats.speed;
+        stats.BaseAttack = entityInfo.combatStats.strength;
+        
 
         ResetStats();
         health = Stats.MaxHealth;
+
+        //Debug.Log("Stats loaded for " + characterName);
+        //Debug.Log(stats.ToString());
 
         ActionBarTarget = 20;
 
@@ -106,12 +117,13 @@ public class Player : Entity
 
             if (RageBarValue < RageBarTarget)
             {
-                RageBarValue += (Stats.Strength / 10.0f) * Time.deltaTime; // What do you think?
+                RageBarValue += (Stats.Attack / 10.0f) * Time.deltaTime; // What do you think?
             }
 
             if (SpecialBarValue < SpecialBarTarget)
             {
-                SpecialBarValue += (Stats.Loyalty / 10.0f) * Time.deltaTime; // Look, just get real formulas for these
+                // Loyalty not a thing -- find out real stat used
+                //SpecialBarValue += (Stats.Loyalty / 10.0f) * Time.deltaTime; // Look, just get real formulas for these
             }
         }
     }
@@ -133,7 +145,7 @@ public class Player : Entity
     //Called by animator. Ensures damage is dealt on the correct attack frame
     public void EndMeleeAttack()
     {
-        int damage = Stats.Strength; // Get real formula
+        int damage = Stats.Attack; // Get real formula
         tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
     }
 
@@ -320,12 +332,12 @@ public class Player : Entity
         Stats.Accuracy = Stats.BaseAccuracy;
         Stats.Defense = Stats.BaseDefense;
         Stats.Evasion = Stats.BaseEvasion;
-        Stats.Loyalty = Stats.BaseLoyalty;
+        //Stats.Loyalty = Stats.BaseLoyalty;
         Stats.Magic = Stats.BaseMagic;
         Stats.MagicDefense = Stats.BaseMagicDefense;
         Stats.MaxHealth = Stats.BaseMaxHealth;
         Stats.Speed = Stats.BaseSpeed;
-        Stats.Strength = Stats.BaseDefense;
+        Stats.Attack = Stats.BaseAttack;
     }
 
     IEnumerator FadeOut(SpriteRenderer sr)

@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityInfo:
     name: Komodo
-    id: 
+    id: _komodo_
     combatStats:
       strength: 15
       defense: 1

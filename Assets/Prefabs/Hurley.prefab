@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityInfo:
     name: Hurley
-    id: 0
+    id: _hurley_
     combatStats:
       strength: 10
       defense: 12

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<characters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ArtificeCharacterStats.xsd">
+  <character>
+    <id>_hurley_</id>
+    <name>Hurley</name>
+    <level>1</level>
+    <attack>10</attack>
+    <defense>12</defense>
+    <accuracy>8</accuracy>
+    <magic>9</magic>
+    <magic_defense>10</magic_defense>
+    <evasion>6</evasion>
+    <speed>8</speed>
+    <max_health>100</max_health>
+  </character>
+  <character>
+    <id>_evans_</id>
+    <name>Evans</name>
+    <level>1</level>
+    <attack>9</attack>
+    <defense>10</defense>
+    <accuracy>12</accuracy>
+    <magic>6</magic>
+    <magic_defense>6</magic_defense>
+    <evasion>8</evasion>
+    <speed>10</speed>
+    <max_health>100</max_health>
+  </character>
+</characters>

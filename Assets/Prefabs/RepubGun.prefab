@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityInfo:
     name: Republic Gunner
-    id: 
+    id: _republicgunner_
     combatStats:
       strength: 1
       defense: 1
@@ -140,6 +140,7 @@ MonoBehaviour:
       luck: 1
       maxHealth: 200
     race: 7
+  spellOrigin: {x: 0, y: 0}
 --- !u!212 &212825690988881936
 SpriteRenderer:
   m_ObjectHideFlags: 1

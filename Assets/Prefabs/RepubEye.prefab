@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityInfo:
     name: Republic Eye
-    id: 
+    id: _republiceye_
     combatStats:
       strength: 1
       defense: 1
