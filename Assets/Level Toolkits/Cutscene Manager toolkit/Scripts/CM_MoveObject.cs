@@ -7,9 +7,15 @@ public class CM_MoveObject : MonoBehaviour {
 	//Move multiple objects in a direction for a distance. Used mostly for non-player objects; does not account for animation.
 
 
-	public GameObject[] targets;
+	public GameObject target;
+	private Vector3 startPosition;
+	private Transform[] playerStartPositions;
+	public bool bAndPlayers = false;
 	public Vector2 dir;
 	public float distance;
+	public float moveSpeed;
+
+
 
 
 	/// <summary>
@@ -22,13 +28,19 @@ public class CM_MoveObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		dir = Vector2.down;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (!bRunning) {
 			return;
+		}
+
+		target.transform.Translate ((dir * moveSpeed) * Time.deltaTime);
+		if (Vector3.Distance (startPosition, target.transform.position) >= distance) {
+			End ();
+
 		}
 	}
 
@@ -51,6 +63,12 @@ public class CM_MoveObject : MonoBehaviour {
 
 	void End(){
 		passTarget.SendMessage ("Activate");
+		bRunning = false;
 
+	}
+
+	public void Activate(){
+		startPosition = target.transform.position;
+		bRunning = true;
 	}
 }
