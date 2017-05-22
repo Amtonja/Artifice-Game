@@ -154,7 +154,10 @@ MonoBehaviour:
       luck: 1
       maxHealth: 50
     race: 7
+  useXMLStats: 1
   spellOrigin: {x: -0.348, y: 0.022}
+  characterName: Komodo
+  characterID: _komodo_
 --- !u!212 &212831686159816558
 SpriteRenderer:
   m_ObjectHideFlags: 1

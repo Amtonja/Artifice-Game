@@ -154,7 +154,10 @@ MonoBehaviour:
       luck: 1
       maxHealth: 200
     race: 7
+  useXMLStats: 1
   spellOrigin: {x: 0, y: 0}
+  characterName: Republic Eye
+  characterID: _republiceye_
 --- !u!212 &212070131674812730
 SpriteRenderer:
   m_ObjectHideFlags: 1

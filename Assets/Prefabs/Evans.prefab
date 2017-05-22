@@ -136,6 +136,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entityInfo:
+    name: 
+    id: 
+    combatStats:
+      strength: 0
+      defense: 0
+      magic: 0
+      speed: 0
+      evasion: 0
+      accuracy: 0
+      magicDefense: 0
+      luck: 0
+      maxHealth: 0
+    race: 0
+  useXMLStats: 1
   spellOrigin: {x: 0.19, y: 0.057}
   characterName: Evans
   characterID: _evans_

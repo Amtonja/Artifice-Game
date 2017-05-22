@@ -14,6 +14,8 @@ public class Player : Entity
     [SerializeField]
     private EntityInfo entityInfo;
 
+    public bool useXMLStats;
+
     [SerializeField]
     private Vector2 spellOrigin;
 
@@ -42,27 +44,30 @@ public class Player : Entity
         //TODO: This will be loaded in via XML reader later
         title = characterName;
         id = characterID;
-        
 
-        //stats = new CombatStats(1, id); // for reading stats from XML
-        stats = new CombatStats(); // default constructor for reading stats from entityInfo
-        // Comment these lines out when switching back to XML
-        stats.Level = 1;
-        stats.BaseAccuracy = entityInfo.combatStats.accuracy;
-        stats.BaseDefense = entityInfo.combatStats.defense;
-        stats.BaseEvasion = entityInfo.combatStats.evasion;
-        stats.BaseMagic = entityInfo.combatStats.magic;
-        stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
-        stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
-        stats.BaseSpeed = entityInfo.combatStats.speed;
-        stats.BaseAttack = entityInfo.combatStats.strength;
-        
+        if (useXMLStats)
+        {
+            stats = new CombatStats(1, id); // for reading stats from XML
+            
+            Debug.Log("Stats loaded for " + characterName);
+            Debug.Log(stats.ToString());
+        }        
+        else
+        {
+            stats = new CombatStats(); // default constructor for reading stats from entityInfo
+            stats.Level = 1;
+            stats.BaseAccuracy = entityInfo.combatStats.accuracy;
+            stats.BaseDefense = entityInfo.combatStats.defense;
+            stats.BaseEvasion = entityInfo.combatStats.evasion;
+            stats.BaseMagic = entityInfo.combatStats.magic;
+            stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
+            stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
+            stats.BaseSpeed = entityInfo.combatStats.speed;
+            stats.BaseAttack = entityInfo.combatStats.strength;
+        }        
 
         ResetStats();
-        health = Stats.MaxHealth;
-
-        //Debug.Log("Stats loaded for " + characterName);
-        //Debug.Log(stats.ToString());
+        health = Stats.MaxHealth;        
 
         ActionBarTarget = 20;
 

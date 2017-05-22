@@ -26,4 +26,56 @@
     <speed>10</speed>
     <max_health>100</max_health>
   </character>
+  <character>
+    <id>_stanz_</id>
+    <name>Stanz</name>
+    <level>1</level>
+    <attack>9</attack>
+    <defense>10</defense>
+    <accuracy>12</accuracy>
+    <magic>6</magic>
+    <magic_defense>6</magic_defense>
+    <evasion>8</evasion>
+    <speed>10</speed>
+    <max_health>100</max_health>
+  </character>
+  <character>
+    <id>_republicgunner_</id>
+    <name>Republic Gunner</name>
+    <level>1</level>
+    <attack>9</attack>
+    <defense>10</defense>
+    <accuracy>12</accuracy>
+    <magic>6</magic>
+    <magic_defense>6</magic_defense>
+    <evasion>8</evasion>
+    <speed>10</speed>
+    <max_health>100</max_health>
+  </character>
+  <character>
+    <id>_republiceye_</id>
+    <name>Republic Eye</name>
+    <level>1</level>
+    <attack>9</attack>
+    <defense>10</defense>
+    <accuracy>12</accuracy>
+    <magic>6</magic>
+    <magic_defense>6</magic_defense>
+    <evasion>8</evasion>
+    <speed>10</speed>
+    <max_health>100</max_health>
+  </character>
+  <character>
+    <id>_komodo_</id>
+    <name>Komodo</name>
+    <level>1</level>
+    <attack>9</attack>
+    <defense>10</defense>
+    <accuracy>12</accuracy>
+    <magic>6</magic>
+    <magic_defense>6</magic_defense>
+    <evasion>8</evasion>
+    <speed>10</speed>
+    <max_health>100</max_health>
+  </character>
 </characters>

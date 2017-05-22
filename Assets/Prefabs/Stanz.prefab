@@ -164,7 +164,10 @@ MonoBehaviour:
       luck: 5
       maxHealth: 150
     race: 0
+  useXMLStats: 1
   spellOrigin: {x: 0, y: 0}
+  characterName: Stanz
+  characterID: _stanz_
 --- !u!114 &114335615163619678
 MonoBehaviour:
   m_ObjectHideFlags: 1

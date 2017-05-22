@@ -152,7 +152,10 @@ MonoBehaviour:
       luck: 5
       maxHealth: 150
     race: 0
+  useXMLStats: 1
   spellOrigin: {x: 0.211, y: 0.015}
+  characterName: Hurley
+  characterID: _hurley_
 --- !u!114 &114551961529728186
 MonoBehaviour:
   m_ObjectHideFlags: 1
