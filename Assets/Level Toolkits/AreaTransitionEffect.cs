@@ -22,7 +22,7 @@ public class AreaTransitionEffect : MonoBehaviour {
 
 	private Vector3 escapePos; //where we need to leave
 
-	private AreaTransition caller; //who called us
+	private GameObject caller; //who called us
 	// Use this for initialization
 	void Start () {
 		cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -54,7 +54,7 @@ public class AreaTransitionEffect : MonoBehaviour {
 				this.transform.position = newPos;
 //				Debug.Log (Vector3.Distance (this.transform.position, cam.transform.position));
 			} else {
-				caller.CloseComplete ();
+				caller.SendMessage ("CloseComplete");
 				Debug.Log ("Faded to black!");
 			}
 
@@ -65,10 +65,11 @@ public class AreaTransitionEffect : MonoBehaviour {
 				Vector2 newPos = Vector2.MoveTowards (this.transform.position, escapePos, step);
 				//				transform.Translate ((Vector2.right * moveSpeed) * Time.deltaTime);
 				this.transform.position = newPos;
-				Debug.Log (Vector3.Distance (this.transform.position, escapePos));
+//				Debug.Log (Vector3.Distance (this.transform.position, escapePos));
 			} else {
 				//we're done
-				caller.OpenComplete();
+//				caller.OpenComplete();
+				caller.SendMessage("OpenComplete");
 //				sprite.enabled = false;
 				Debug.Log("Moved out of way!");
 				bRunning = false;
@@ -80,7 +81,7 @@ public class AreaTransitionEffect : MonoBehaviour {
 	}
 
 
-	public void Begin(AreaTransition sender){
+	public void Begin(GameObject sender){
 		//Begin effect. Called by AreaTransition.
 		bRunning = true;
 
@@ -110,6 +111,11 @@ public class AreaTransitionEffect : MonoBehaviour {
 		temp.z = -8; //why this works I don't know
 		this.transform.position = temp;
 
+
+	}
+
+	public void UpdateSender(GameObject sender){
+		caller = sender;
 
 	}
 }

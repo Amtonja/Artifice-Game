@@ -1,9 +1,45 @@
 fileFormatVersion: 2
 guid: d72c86091cb73d84fbcc099ad26a7fb8
-timeCreated: 1494969185
+timeCreated: 1495469122
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Russo_Death1
+    21300002: Russo_Death2
+    21300004: Russo_DownIdle
+    21300006: Russo_Down1
+    21300008: Russo_Down2
+    21300010: Russo_Left1
+    21300012: Russo_Left2
+    21300014: Russo_Right2
+    21300016: Russo_Right1
+    21300018: Russo_RightIdle
+    21300020: RussoSpriteSheet_8
+    21300022: RussoSpriteSheet_9
+    21300024: RussoSpriteSheet_10
+    21300026: Russo_Melee3
+    21300028: Russo_Down3
+    21300030: Russo_Down4
+    21300032: Russo_LeftIdle
+    21300034: Russo_Left3
+    21300036: Russo_Left4
+    21300038: Russo_Right4
+    21300040: Russo_Right3
+    21300042: Russo_UpIdle
+    21300044: Russo_Idle1
+    21300046: Russo_Idle2
+    21300048: Russo_Melee1
+    21300050: Russo_Melee2
+    21300052: Russo_Up1
+    21300054: Russo_Up2
+    21300056: Russo_Up3
+    21300058: Russo_Up4
+    21300060: Russo_Intro1
+    21300062: Russo_Intro2
+    21300064: RussoSpriteSheet_30
+    21300066: Russo_HitFrame
+    21300068: Russo_Cast1
+    21300070: Russo_Cast2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -27,14 +63,14 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +94,493 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Russo_Death1
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 23
+        width: 36
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Death2
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 23
+        width: 45
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_DownIdle
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 139
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Down1
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 138
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Down2
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 137
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Left1
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 140
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Left2
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 139
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Right2
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 139
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Right1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 140
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_RightIdle
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 139
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RussoSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 140
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RussoSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 139
+        width: 24
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RussoSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 140
+        width: 23
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Melee3
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 140
+        width: 28
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Down3
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 82
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Down4
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 83
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_LeftIdle
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 83
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Left3
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 82
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Left4
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 81
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Right4
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 81
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Right3
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 82
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_UpIdle
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 82
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Idle1
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 82
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Idle2
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 83
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Melee1
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 82
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Melee2
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 82
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Up1
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 28
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Up2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 26
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Up3
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 25
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Up4
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 27
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Intro1
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 26
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Intro2
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 26
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: RussoSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 27
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_HitFrame
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 27
+        width: 25
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Cast1
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 28
+        width: 27
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Russo_Cast2
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 28
+        width: 29
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

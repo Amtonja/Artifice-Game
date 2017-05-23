@@ -9,14 +9,12 @@ public class CM_MoveObject : MonoBehaviour {
 
 	public GameObject target;
 	private Vector3 startPosition;
-	private Transform[] playerStartPositions;
-	public bool bAndPlayers = false;
-	public Vector2 dir;
-	public float distance;
+	public bool bMovePlayer = false;
+	public GameObject endLocation;
 	public float moveSpeed;
 
-
-
+	public bool bJitter = false;
+	public float jitterAmount = 0f;
 
 	/// <summary>
 	/// The pass target. This is the next link in the CM chain.
@@ -28,7 +26,7 @@ public class CM_MoveObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		dir = Vector2.down;
+
 	}
 	
 	// Update is called once per frame
@@ -37,10 +35,23 @@ public class CM_MoveObject : MonoBehaviour {
 			return;
 		}
 
-		target.transform.Translate ((dir * moveSpeed) * Time.deltaTime);
-		if (Vector3.Distance (startPosition, target.transform.position) >= distance) {
-			End ();
+//		target.transform.Translate ((dir * moveSpeed) * Time.deltaTime);
+//		if (Vector3.Distance (startPosition, target.transform.position) >= distance) {
+//			End ();
+//
+//		}
 
+		Vector3 moveDelta = new Vector3(endLocation.transform.position.x, endLocation.transform.position.y, 0f) - target.transform.position;
+		if (bJitter) {
+			moveDelta.x += jitterAmount;
+			jitterAmount = jitterAmount * -1;
+		}
+		if (Vector3.Distance (target.transform.position, endLocation.transform.position) > 0.1f && !bJitter ||
+			Vector3.Distance (target.transform.position, endLocation.transform.position) > 0.1f + jitterAmount && bJitter) {
+			target.transform.Translate ((moveDelta.normalized * moveSpeed) * Time.deltaTime);
+		} else {
+			target.transform.position = endLocation.transform.position;
+			End ();
 		}
 	}
 

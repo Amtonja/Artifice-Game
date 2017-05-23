@@ -50,7 +50,8 @@ public class AreaTransition : MonoBehaviour {
 			PlayManager.instance.party [i].GetComponent<Movement> ().ForceLock (true);
 		}
 		//Send notification to AreaTransitionEffect to begin the effect
-		effect.Begin(this);
+//		effect.Begin(this);
+		effect.SendMessage("Begin", this.gameObject);
 	}
 
 	public void CloseComplete(){

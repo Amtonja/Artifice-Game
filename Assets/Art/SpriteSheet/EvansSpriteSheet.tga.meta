@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4c3c61ded8127e34b9d6a80a95d16d44
-timeCreated: 1494944091
+timeCreated: 1495472278
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -23,7 +23,7 @@ TextureImporter:
     21300032: Evans_Right1
     21300034: Evans_Right2
     21300036: Evans_SwordIdle1
-    21300038: Evans_SwordIdle2
+    21300038: Evans_HitFrame
     21300040: Evans_SwordIdle3
     21300042: Evans_GunIdle1
     21300044: Evans_GunIdle2
@@ -371,7 +371,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Evans_SwordIdle2
+      name: Evans_HitFrame
       rect:
         serializedVersion: 2
         x: 265

@@ -84,12 +84,14 @@ public class Player : Entity
 				Color newColor = Color.white;//new Color(255/4, 255/4, 255, alphaColor);
 				newColor[3] = alphaColor;
 				this.gameObject.GetComponent<SpriteRenderer>().color = newColor;//.a = alphaColor;
-				alphaColor = alphaColor + alphaColor * 0.7f;
+				_animator.Play(Animator.StringToHash("HitFrame"));
+				alphaColor = alphaColor + alphaColor * 0.07f;
 				if(alphaColor >= 1.0f){ 
 					alphaColor = 1;
 					this.gameObject.GetComponent<SpriteRenderer> ().color = Color.white;
 //					PlayManager.instance.UnpauseGame ();
 					PlayManager.instance.UpdateAttacked();
+					_animator.Play(Animator.StringToHash("Idle"));
 				}
 			}
 			//If we're paused, don't do below stuff
@@ -312,6 +314,11 @@ public class Player : Entity
     /// <param name="other">Other.</param>
     void OnTriggerEnter2D(Collider2D other)
     {
+		//Check to make sure we're not forcelocked. If we are, we're probably being moved around manually,
+		//meaning we need to avoid triggers
+		if(this.GetComponent<Movement>().CheckForceLock){return;}
+
+
 //		Debug.Log (PlayManager.instance.party[0].gameObject.name.ToString());
 		//Only the character in the lead should be able to instigate things
 		if (PlayManager.instance.party [0].gameObject == this.gameObject) {
@@ -324,6 +331,11 @@ public class Player : Entity
 			if (other.gameObject.tag.Equals ("AreaTransition")) {
 				Debug.Log ("Transition to new area!");
 				other.gameObject.GetComponent<AreaTransition> ().Begin ();
+			}
+
+			if (other.gameObject.tag.Equals ("CM_Trigger")) {
+				Debug.Log ("CM_Trigger found");
+				other.gameObject.GetComponent<CM_Trigger> ().Activate ();
 			}
 		}
     }

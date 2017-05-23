@@ -8,6 +8,7 @@ TagManager:
   - CombatGrid
   - Battleground
   - AreaTransition
+  - CM_Trigger
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: CombatGrid
     uniqueID: 4144747701
+    locked: 0
+  - name: HideBackground
+    uniqueID: 3630936111
     locked: 0
   - name: Enemies
     uniqueID: 1483318571

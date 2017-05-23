@@ -567,4 +567,10 @@ public class Movement : MonoBehaviour
 			followTarget = value;
 		}
 	}
+
+	public bool CheckForceLock{
+		get {
+			return bForceLock;
+		}
+	}
 }

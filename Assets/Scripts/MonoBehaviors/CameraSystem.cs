@@ -10,6 +10,8 @@ using UnityEngine;
 public class CameraSystem : MonoBehaviour {
 
 	public AreaInfo currentArea; //AreaInfo tells us the bounds of the area, among other things. 
+
+	private bool bHoldCam; //tells the camera to hold a position
 	
 	void Update () { //old, loose-position code
 //		Vector3 averagePosition = new Vector3(0f,2f,0f);
@@ -39,6 +41,9 @@ public class CameraSystem : MonoBehaviour {
 
 
 	void LateUpdate(){
+		if (bHoldCam) {
+			return;
+		}
 
 		if (PlayManager.instance.ExploreMode) {
 
@@ -97,5 +102,9 @@ public class CameraSystem : MonoBehaviour {
 
 		this.transform.position = fixedLocation;
 
+	}
+
+	public void LockCam(bool input){
+		bHoldCam = input;
 	}
 }

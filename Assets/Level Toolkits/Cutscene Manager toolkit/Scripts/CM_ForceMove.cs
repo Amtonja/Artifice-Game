@@ -15,6 +15,16 @@ public class CM_ForceMove : MonoBehaviour {
 	public GameObject target;
 
 	/// <summary>
+	/// Use players instead
+	/// </summary>
+	public bool bUsePlayers = false;
+
+	/// <summary>
+	/// The index of the party to use if above is true
+	/// </summary>
+	public int partyIndex = 0; 
+
+	/// <summary>
 	/// The move reference, for convenience.
 	/// </summary>
 //	private Movement moveRef;
@@ -66,9 +76,14 @@ public class CM_ForceMove : MonoBehaviour {
 //		if(moveDir == directions.Down){newDir.y = -spaces;}
 //		if (moveDir == directions.Left){newDir.x = -spaces;}
 //		if(moveDir == directions.Right) {newDir.x = spaces;}
+		if (bUsePlayers) {
+			target = PlayManager.instance.party [partyIndex].gameObject;
+		}
 
 		target.GetComponent<Movement> ().StartForcedMove (newDir);
 		target.GetComponent<Movement> ().GetForcedSender (this.gameObject);
+
+		Debug.Log ("ForceMove activated!");
 	}
 
 	//called by the character's movement script to signal it is done forcing a move
