@@ -19,6 +19,8 @@ public class AreaTransition : MonoBehaviour {
 
 	private GameObject cam;
 
+	public bool bVertical = false; //used for non-lead party placement
+
 	// Use this for initialization
 	void Start () {
 		cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -57,7 +59,34 @@ public class AreaTransition : MonoBehaviour {
 	public void CloseComplete(){
 		//Called by the transition effect to tell us it's done transitioning to black.
 		//now that the screen is dark, move characters to new position.
-		PlayManager.instance.party[0].transform.position = enterPos;
+
+//		PlayManager.instance.party[0].transform.position = enterPos;
+		foreach (Player brosef in PlayManager.instance.party) {
+			brosef.transform.position = enterPos;
+		}
+		//Move characters along side them. This is sloppy at present but whatever it's late
+		if (PlayManager.instance.party.Length > 1) {
+			Vector3 adjustPos = enterPos;
+			if (bVertical) {
+				adjustPos.x += 0.5f;
+			} else {
+				adjustPos.y -= 0.5f;
+			}
+			PlayManager.instance.party [1].transform.position = adjustPos;
+			adjustPos = enterPos;
+
+			if (PlayManager.instance.party.Length > 2) {
+				if (bVertical) {
+					adjustPos.x -= 0.5f;
+				} else {
+					adjustPos.y += 0.5f;
+				}
+				PlayManager.instance.party [2].transform.position = adjustPos;
+			}
+
+
+		}
+
 
 		//Change the current areaInfo to the new one.
 		cam.GetComponent<CameraSystem>().currentArea = newArea;
