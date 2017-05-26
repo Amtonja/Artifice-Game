@@ -107,4 +107,10 @@ public class CameraSystem : MonoBehaviour {
 	public void LockCam(bool input){
 		bHoldCam = input;
 	}
+
+    //public void UnlockCam()
+    //{
+    //    Debug.Log("Unlocking camera.");
+    //    bHoldCam = false;
+    //}
 }
