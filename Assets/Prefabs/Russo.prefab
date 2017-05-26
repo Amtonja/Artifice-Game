@@ -163,6 +163,7 @@ MonoBehaviour:
       luck: 0
       maxHealth: 0
     race: 0
+  useXMLStats: 1
   spellOrigin: {x: 0.19, y: 0.057}
   characterName: Russo
   characterID: _russo_
