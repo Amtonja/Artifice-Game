@@ -24,10 +24,12 @@ namespace Artifice.Characters {
 				float randA = Random.value; //which target
 
 				GameObject person;
-				if (randA < 0.5f) {
+				if (randA < 0.3f) {
 					person = GameObject.Find ("Evans");
-				} else {
+				} else if (randA < 0.6f) {
 					person = GameObject.Find ("Hurley");
+				} else {
+					person = GameObject.Find ("Russo");
 				}
 				Entity target = person.GetComponent<Entity> ();
 

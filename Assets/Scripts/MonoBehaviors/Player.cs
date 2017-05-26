@@ -76,6 +76,9 @@ public class Player : Entity
 
     void Update()
     {
+		//Minor layer tweak to prevent characters from overlapping in weird ways
+		GetComponent<SpriteRenderer>().sortingOrder = -(int)(this.transform.position.y* 10);
+
         if (InCombat && health > 0)
         {
 			//For damage flickering
