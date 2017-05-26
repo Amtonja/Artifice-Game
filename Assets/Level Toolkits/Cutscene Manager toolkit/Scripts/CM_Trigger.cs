@@ -9,7 +9,7 @@ public class CM_Trigger : MonoBehaviour {
 	/// </summary>
 
 
-	public GameObject passTarget;
+	public GameObject[] passTarget;
 	public bool bStayOn = false;
 	private bool bTriggered; //only trigger once
 
@@ -27,9 +27,11 @@ public class CM_Trigger : MonoBehaviour {
 
 	public void Activate (){
 		if (!bTriggered || bStayOn == true) {
-			passTarget.SendMessage ("Activate");
-			bTriggered = true;
-			Debug.Log ("Trigger started!");
+			foreach (GameObject target in passTarget) {
+				target.SendMessage ("Activate");
+				bTriggered = true;
+				Debug.Log ("Trigger started!");
+			}
 		}
 
 
@@ -47,12 +49,12 @@ public class CM_Trigger : MonoBehaviour {
 	void OnDrawGizmos(){
 		//	void OnDrawGizmosSelected(){
 		//		if(targetList != null){
-		if(passTarget != null){
-			//			foreach(GameObject target in targetList){
+//		if(passTarget != null){
+		foreach(GameObject target in passTarget){
 
 			//draw a line from our position to it
 			Gizmos.color = Color.green;
-			Gizmos.DrawLine(this.transform.position, passTarget.transform.position);
+			Gizmos.DrawLine(this.transform.position, target.transform.position);
 
 			//			}
 
