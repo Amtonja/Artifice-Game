@@ -184,7 +184,7 @@ public class Player : Entity
     /// <param name="target">The target of the spell.</param>
     public void BeginSpellCast(Entity target)
     {
-        //Debug.Log(name + " begins casting a spell...");
+        Debug.Log(name + " begins casting a spell...");
         tempTarget = target;
         _animator.SetBool("SpellComplete", false);
         _animator.Play(Animator.StringToHash("CastSpell"));
@@ -215,6 +215,7 @@ public class Player : Entity
     /// <returns></returns>
     public IEnumerator DealSpellDamage(Entity target, GameObject spellVisual, float spellDuration)
     {
+        Debug.Log(name + " casts " + spellVisual.name + "at " + target.name + "!");
         PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
         
@@ -277,6 +278,17 @@ public class Player : Entity
         //ActionBarValue = 0f;
         //IsMyTurn = false;
         //PlayManager.instance.UnpauseGame();
+    }
+
+    public void EyeLaser(Entity target)
+    {
+        GameObject eyeLaser = Instantiate(Resources.Load("Prefabs/EyeLaser", typeof(GameObject)), transform) as GameObject;
+        LineRenderer lr = eyeLaser.GetComponent<LineRenderer>();
+        lr.sortingLayerName = "VisualEffects";
+        lr.numPositions = 2;
+        Vector3[] positions = { transform.position + v3spellOrigin, target.transform.position };
+        lr.SetPositions(positions);
+        StartCoroutine(DealSpellDamage(target, eyeLaser, 1.5f));
     }
 
     /// <summary>

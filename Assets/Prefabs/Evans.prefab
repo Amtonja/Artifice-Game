@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityInfo:
-    name: 
-    id: 
+    name: Evans
+    id: _evans_
     combatStats:
       strength: 0
       defense: 0

@@ -33,8 +33,10 @@ namespace Artifice.Characters {
 				}
 				Entity target = person.GetComponent<Entity> ();
 
-//				_player.MeleeAttack (target);
-				_player.MyCombatAction = _player.MeleeAttack; 
+                //				_player.MeleeAttack (target);
+                //_player.MyCombatAction = _player.MeleeAttack; 
+                _player.MySpell = _player.EyeLaser;
+                _player.MyCombatAction = _player.BeginSpellCast;
 
 				_player.MyCombatAction(target);
 
