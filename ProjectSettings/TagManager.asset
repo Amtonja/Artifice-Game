@@ -58,6 +58,9 @@ TagManager:
   - name: PlayerCharacters
     uniqueID: 1014269967
     locked: 0
+  - name: ObscureChars
+    uniqueID: 3000548575
+    locked: 0
   - name: HideChars
     uniqueID: 1480691849
     locked: 0
