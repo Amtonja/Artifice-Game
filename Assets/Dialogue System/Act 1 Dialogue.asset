@@ -515,7 +515,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "Welcome to Oran, Captain. It\r doesn\u2019t get any clearer then this,\r
+        value: "Welcome to Oran, Captain. It\r doesn\u2019t get any clearer than this,\r
           so I suggest we go now. Or not. I\r get paid either way."
         type: 0
         typeString: 
