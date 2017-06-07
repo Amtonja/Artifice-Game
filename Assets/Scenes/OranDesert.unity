@@ -540,6 +540,11 @@ Prefab:
       propertyPath: minY
       value: -14
       objectReference: {fileID: 0}
+    - target: {fileID: 114763322469447234, guid: 0607708aefa18d44582d7ae6a5f61719,
+        type: 2}
+      propertyPath: BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e477d04ea3d52048bb17237d475b68f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0607708aefa18d44582d7ae6a5f61719, type: 2}
   m_IsPrefabParent: 0
@@ -8077,6 +8082,68 @@ Transform:
   m_PrefabParentObject: {fileID: 4211610491656196, guid: 590c29c04a0866c438faffe42d026be0,
     type: 2}
   m_PrefabInternal: {fileID: 1250413287}
+--- !u!1001 &1262151304
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1466586462}
+    m_Modifications:
+    - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82965444737855574, guid: 865f4ea04e30c7040a7879522715370e,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e477d04ea3d52048bb17237d475b68f, type: 3}
+    - target: {fileID: 82965444737855574, guid: 865f4ea04e30c7040a7879522715370e,
+        type: 2}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82965444737855574, guid: 865f4ea04e30c7040a7879522715370e,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1262151305 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1262151304}
 --- !u!1 &1263276319
 GameObject:
   m_ObjectHideFlags: 0
@@ -9578,6 +9645,7 @@ GameObject:
   - component: {fileID: 1466586459}
   - component: {fileID: 1466586458}
   - component: {fileID: 1466586463}
+  - component: {fileID: 1466586464}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9649,7 +9717,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1262151305}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9665,6 +9734,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentArea: {fileID: 971807492}
+--- !u!114 &1466586464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1466586457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41e58c74463edf43a9624fcdf483d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _captureKey: 8
+  _captureOnStart: 0
+  _startPaused: 0
+  _listVideoCodecsOnStart: 0
+  _isRealTime: 1
+  _videoCodecPriority:
+  - Lagarith Lossless Codec
+  - x264vfw - H.264/MPEG-4 AVC codec
+  - Xvid MPEG-4 Codec
+  _frameRate: 30
+  _downScale: 1
+  _maxVideoSize: {x: 0, y: 0}
+  _forceVideoCodecIndex: -1
+  _flipVertically: 0
+  _supportAlpha: 0
+  _noAudio: 1
+  _audioCodecPriority: []
+  _forceAudioCodecIndex: -1
+  _forceAudioDeviceIndex: -1
+  _audioCapture: {fileID: 0}
+  _autoGenerateFilename: 1
+  _outputFolderType: 2
+  _outputFolderPath: C:\Users\Alan\Documents
+  _autoFilenamePrefix: Artifice
+  _autoFilenameExtension: avi
+  _forceFilename: movie.avi
+  _outputType: 0
+  _renderResolution: 14
+  _renderWidth: 0
+  _renderHeight: 0
+  _renderAntiAliasing: -1
+  _useMotionBlur: 0
+  _motionBlurSamples: 0
+  _motionBlurCameras: []
+  _allowVSyncDisable: 1
+  _allowFrameRateChange: 1
+  _useMediaFoundationH264: 0
+  _captureMouseCursor: 0
+  _mouseCursor: {fileID: 0}
+  _minimumDiskSpaceMB: 16
 --- !u!1001 &1469681117
 Prefab:
   m_ObjectHideFlags: 0

@@ -177,6 +177,8 @@ public class PlayManager : MonoBehaviour
 
 		//move to correct combat state
 		state = combatState.Init;
+
+        MusicManager.instance.StartCoroutine("PlayCombatMusic");
     }
 
     /// <summary>
@@ -225,6 +227,8 @@ public class PlayManager : MonoBehaviour
     public void EncounterComplete()
     {
         exploreMode = true;
+
+        MusicManager.instance.PlayCombatEnding();
 
         for (int i = 0; i < party.Length; i++)
         {

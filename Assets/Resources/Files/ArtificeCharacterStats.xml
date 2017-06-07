@@ -5,40 +5,40 @@
     <id>_hurley_</id>
     <name>Hurley</name>
     <level>1</level>
-    <attack>10</attack>
-    <defense>12</defense>
-    <accuracy>8</accuracy>
-    <magic>9</magic>
-    <magic_defense>10</magic_defense>
-    <evasion>6</evasion>
+    <attack>20</attack>
+    <defense>5</defense>
+    <accuracy>12</accuracy>
+    <magic>15</magic>
+    <magic_defense>4</magic_defense>
+    <evasion>10</evasion>
     <speed>8</speed>
-    <max_health>100</max_health>
+    <max_health>135</max_health>
   </character>
   <character>
     <id>_evans_</id>
     <name>Evans</name>
     <level>1</level>
-    <attack>9</attack>
-    <defense>10</defense>
-    <accuracy>12</accuracy>
-    <magic>6</magic>
-    <magic_defense>6</magic_defense>
-    <evasion>8</evasion>
+    <attack>15</attack>
+    <defense>3</defense>
+    <accuracy>20</accuracy>
+    <magic>12</magic>
+    <magic_defense>3</magic_defense>
+    <evasion>12</evasion>
     <speed>10</speed>
-    <max_health>100</max_health>
+    <max_health>115</max_health>
   </character>
   <character>
     <id>_stanz_</id>
     <name>Stanz</name>
     <level>1</level>
-    <attack>9</attack>
-    <defense>10</defense>
+    <attack>10</attack>
+    <defense>9</defense>
     <accuracy>12</accuracy>
-    <magic>6</magic>
+    <magic>20</magic>
     <magic_defense>6</magic_defense>
-    <evasion>8</evasion>
-    <speed>10</speed>
-    <max_health>100</max_health>
+    <evasion>10</evasion>
+    <speed>6</speed>
+    <max_health>175</max_health>
   </character>
   <character>
     <id>_russo_</id>
@@ -59,14 +59,14 @@
     <id>_republicgunner_</id>
     <name>Republic Gunner</name>
     <level>1</level>
-    <attack>9</attack>
-    <defense>10</defense>
-    <accuracy>12</accuracy>
-    <magic>6</magic>
-    <magic_defense>6</magic_defense>
-    <evasion>8</evasion>
-    <speed>10</speed>
-    <max_health>100</max_health>
+    <attack>8</attack>
+    <defense>3</defense>
+    <accuracy>20</accuracy>
+    <magic>10</magic>
+    <magic_defense>2</magic_defense>
+    <evasion>10</evasion>
+    <speed>8</speed>
+    <max_health>80</max_health>
   </character>
   
   <!-- CREATURES -->
@@ -74,26 +74,26 @@
     <id>_republiceye_</id>
     <name>Republic Eye</name>
     <level>1</level>
-    <attack>9</attack>
-    <defense>10</defense>
-    <accuracy>12</accuracy>
-    <magic>6</magic>
-    <magic_defense>6</magic_defense>
-    <evasion>8</evasion>
-    <speed>10</speed>
-    <max_health>100</max_health>
+    <attack>0</attack>
+    <defense>7</defense>
+    <accuracy>20</accuracy>
+    <magic>15</magic>
+    <magic_defense>5</magic_defense>
+    <evasion>12</evasion>
+    <speed>5</speed>
+    <max_health>60</max_health>
   </character>
   <character>
     <id>_komodo_</id>
     <name>Komodo</name>
     <level>1</level>
-    <attack>9</attack>
-    <defense>10</defense>
-    <accuracy>12</accuracy>
-    <magic>6</magic>
-    <magic_defense>6</magic_defense>
-    <evasion>8</evasion>
-    <speed>10</speed>
-    <max_health>100</max_health>
+    <attack>12</attack>
+    <defense>2</defense>
+    <accuracy>15</accuracy>
+    <magic>0</magic>
+    <magic_defense>3</magic_defense>
+    <evasion>15</evasion>
+    <speed>9</speed>
+    <max_health>50</max_health>
   </character>
 </characters>

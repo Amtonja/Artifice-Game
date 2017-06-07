@@ -39,12 +39,12 @@ namespace Artifice.Characters {
         public abstract void Die();
 
         public virtual void EnterCombat() {
-            ActionBarValue = 0f;
+            ActionBarTimer = 0f;
             inCombat = true;
         }
 
         public virtual void ExitCombat() {
-            ActionBarValue = 0f;
+            ActionBarTimer = 0f;
             inCombat = false;
         }
 
@@ -94,7 +94,7 @@ namespace Artifice.Characters {
             }
         }
 
-        public float ActionBarValue
+        public float ActionBarTimer
         {
             get
             {
@@ -107,7 +107,7 @@ namespace Artifice.Characters {
             }
         }
 
-        public float ActionBarTarget
+        public float ActionBarTargetTime
         {
             get
             {

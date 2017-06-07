@@ -22,7 +22,8 @@ public class Player : Entity
     private Vector3 v3spellOrigin;
 
     private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
-    private float agilityBarTarget = 20f, magicBarTarget = 20f, rageBarTarget = 20f, specialBarTarget = 20f;
+    private float agilityBarTarget, magicBarTarget, rageBarTarget = 20f, specialBarTarget = 20f;
+    private float actionBarDefaultTarget = 15f, agilityBarDefaultTarget = 22.7f, magicBarDefaultTarget = 37.5f;
 
     private Vector3 _footPos;
 
@@ -34,11 +35,16 @@ public class Player : Entity
     [SerializeField]
     private string characterName, characterID;
 
+    [SerializeField]
+    private AudioClip meleeSFX, rangedSFX;
+
+    private AudioSource _audio; 
+
     // Use this for initialization
     void Start()
     {
         _animator = GetComponent<Animator>();
-
+        _audio = GetComponent<AudioSource>();
         _footPos = transform.Find("Base").localPosition;
 
         //TODO: This will be loaded in via XML reader later
@@ -69,7 +75,11 @@ public class Player : Entity
         ResetStats();
         health = Stats.MaxHealth;        
 
-        ActionBarTarget = 20;
+        // The time for a character's action bar to fill is equal to the default time minus a percentage equal to their Speed stat
+        // Likewise for the other bars
+        ActionBarTargetTime = actionBarDefaultTarget - (actionBarDefaultTarget * stats.Speed / 100f);
+        AgilityBarTarget = agilityBarDefaultTarget - (agilityBarDefaultTarget * stats.Speed / 100f);
+        MagicBarTarget = magicBarDefaultTarget - (magicBarDefaultTarget * stats.Speed / 100f);
 
         v3spellOrigin = new Vector3(spellOrigin.x * transform.localScale.x, spellOrigin.y * transform.localScale.y, 0f);
     }
@@ -102,11 +112,11 @@ public class Player : Entity
 				return;
 			}
 
-            if (ActionBarValue < ActionBarTarget)
+            if (ActionBarTimer < ActionBarTargetTime)
             {
-                ActionBarValue += (Stats.Speed / 2.0f) * Time.deltaTime; // Don't use this value                
+                ActionBarTimer += Time.deltaTime;         
             }
-            else if (ActionBarValue >= ActionBarTarget)
+            else if (ActionBarTimer >= ActionBarTargetTime)
             {
                 // take a turn
                 IsMyTurn = true;
@@ -117,17 +127,17 @@ public class Player : Entity
             // Update the other four bars
             if (AgilityBarValue < AgilityBarTarget)
             {
-                AgilityBarValue += (Stats.Speed / 12.0f) * Time.deltaTime; // Don't use this value either
+                AgilityBarValue += Time.deltaTime;
             }
 
             if (MagicBarValue < MagicBarTarget)
             {
-                MagicBarValue += (Stats.Magic / 10.0f) * Time.deltaTime; // Still no
+                MagicBarValue += Time.deltaTime;
             }
 
             if (RageBarValue < RageBarTarget)
             {
-                RageBarValue += (Stats.Attack / 10.0f) * Time.deltaTime; // What do you think?
+                RageBarValue += Time.deltaTime;
             }
 
             if (SpecialBarValue < SpecialBarTarget)
@@ -145,7 +155,7 @@ public class Player : Entity
         Debug.Log("Melee attack on " + target.name);
         tempTarget = target;
         _animator.Play(Animator.StringToHash("SwordAttack"));
-        ActionBarValue = 0f;
+        ActionBarTimer = 0f;
         IsMyTurn = false;
 //        PlayManager.instance.UnpauseGame();
 		PlayManager.instance.SendAttackCount(1);
@@ -155,15 +165,16 @@ public class Player : Entity
     //Called by animator. Ensures damage is dealt on the correct attack frame
     public void EndMeleeAttack()
     {
-        int damage = Stats.Attack; // Get real formula
-        tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
+        _audio.PlayOneShot(meleeSFX);
+        int damage = Stats.Attack - tempTarget.Stats.Defense; // TODO: Multiply in weapon dmg multiplier when available
+        tempTarget.TakeDamage(damage);
     }
 
     public void RangedAttack(Entity target)
     {
         tempTarget = target;
         _animator.Play(Animator.StringToHash("GunAttack"));
-        ActionBarValue = 0f;
+        ActionBarTimer = 0f;
         IsMyTurn = false;
 //        PlayManager.instance.UnpauseGame();
 		PlayManager.instance.SendAttackCount(1);
@@ -173,8 +184,9 @@ public class Player : Entity
     //Called by animator. Ensures damage is dealt on the correct attack frame
     public void EndRangedAttack()
     {
-        int damage = Stats.Accuracy; // Get real formula
-        tempTarget.TakeDamage(damage - tempTarget.Stats.Defense); // Get real formula
+        _audio.PlayOneShot(rangedSFX);
+        int damage = Stats.Accuracy - tempTarget.Stats.Defense; // TODO: Multiply in weapon dmg multiplier when available
+        tempTarget.TakeDamage(damage);
     }
 
     /// <summary>
@@ -188,7 +200,7 @@ public class Player : Entity
         tempTarget = target;
         _animator.SetBool("SpellComplete", false);
         _animator.Play(Animator.StringToHash("CastSpell"));
-        ActionBarValue = 0f;
+        ActionBarTimer = 0f;
         IsMyTurn = false;
         PlayManager.instance.SendAttackCount(1);
         PlayManager.instance.StartingAttack();
@@ -219,8 +231,8 @@ public class Player : Entity
         PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
         
-        int damage = Stats.Magic; // Get real formula
-        target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula
+        int damage = Stats.Magic - target.Stats.MagicDefense; // TODO: Multiply in weapon magic multiplier when available
+        target.TakeDamage(damage);
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
         _animator.SetBool("SpellComplete", true);
@@ -235,7 +247,9 @@ public class Player : Entity
         lbs.StartObject = gameObject;
         lbs.StartPosition = v3spellOrigin;
         lbs.EndObject = target.gameObject;
-        StartCoroutine(DealSpellDamage(target, lightningBolt, 1.5f));       
+
+        float duration = lbs.GetComponent<AudioSource>().clip.length * 2;
+        StartCoroutine(DealSpellDamage(target, lightningBolt, duration));       
 //        PlayManager.instance.UnpauseGame();
     }
 
@@ -271,7 +285,9 @@ public class Player : Entity
             transform.position + v3spellOrigin,
             rotToTarget,
             transform) as GameObject;
-        StartCoroutine(DealSpellDamage(target, firebreath, 1.5f));
+
+        float duration = firebreath.GetComponent<AudioSource>().clip.length;
+        StartCoroutine(DealSpellDamage(target, firebreath, duration));
 
         //int damage = Stats.Magic;
         //target.TakeDamage(damage - target.Stats.MagicDefense);

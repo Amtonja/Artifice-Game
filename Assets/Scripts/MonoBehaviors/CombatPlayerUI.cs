@@ -81,7 +81,7 @@ public class CombatPlayerUI : MonoBehaviour
                 return;
             }
             // Update the five bars
-            actionBar.fillAmount = ActivePlayer.ActionBarValue / ActivePlayer.ActionBarTarget;
+            actionBar.fillAmount = ActivePlayer.ActionBarTimer / ActivePlayer.ActionBarTargetTime;
             agilityBar.fillAmount = ActivePlayer.AgilityBarValue / ActivePlayer.AgilityBarTarget;
             magicBar.fillAmount = ActivePlayer.MagicBarValue / ActivePlayer.MagicBarTarget;
             rageBar.fillAmount = ActivePlayer.RageBarValue / ActivePlayer.RageBarTarget;
