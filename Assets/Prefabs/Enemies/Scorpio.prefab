@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114198727807754866}
   - component: {fileID: 61384162733279226}
   - component: {fileID: 114939850832385646}
-  - component: {fileID: 114771621549308350}
+  - component: {fileID: 114949001461488516}
   m_Layer: 0
   m_Name: Scorpio
   m_TagString: Enemy
@@ -132,21 +132,10 @@ MonoBehaviour:
     race: 7
   useXMLStats: 1
   spellOrigin: {x: -0.348, y: 0.022}
-  characterName: Komodo
-  characterID: _komodo_
+  characterName: Scorpio
+  characterID: _scorpio_
   meleeSFX: {fileID: 0}
   rangedSFX: {fileID: 0}
---- !u!114 &114771621549308350
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841612056227444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9ef01cec55b8f4409732b7c6cfc5ed3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114939850832385646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,6 +149,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   bNPC: 1
+--- !u!114 &114949001461488516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841612056227444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe02e7efa7e57d46bf460de319622ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212547942948823268
 SpriteRenderer:
   m_ObjectHideFlags: 1
