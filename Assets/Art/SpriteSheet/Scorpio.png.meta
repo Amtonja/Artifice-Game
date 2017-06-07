@@ -1,9 +1,33 @@
 fileFormatVersion: 2
 guid: fcbee76fd25b0ab4b8abff29142b0977
-timeCreated: 1496685310
+timeCreated: 1496852803
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Scorpio_Left1
+    21300002: Scorpio_Left2
+    21300004: Scorpio_Left3
+    21300006: Scorpio_Left4
+    21300008: Scorpio_Idle1
+    21300010: Scorpio_Right1
+    21300012: Scorpio_Right2
+    21300014: Scorpio_Right3
+    21300016: Scorpio_Right4
+    21300018: Scorpio_Idle2
+    21300020: Scorpio_Down1
+    21300022: Scorpio_Down2
+    21300024: Scorpio_Down3
+    21300026: Scorpio_Down4
+    21300028: Scorpio_Hit
+    21300030: Scorpio_Up1
+    21300032: Scorpio_Up2
+    21300034: Scorpio_Up3
+    21300036: Scorpio_Up4
+    21300038: Scorpio_Death
+    21300040: Scorpio_Melee1
+    21300042: Scorpio_Melee2
+    21300044: Scorpio_Melee3
+    21300046: Scorpio_Melee4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -27,14 +51,14 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -58,9 +82,337 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scorpio_Left1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 337
+        width: 63
+        height: 48
+      alignment: 9
+      pivot: {x: 0.56, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Left2
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 337
+        width: 63
+        height: 49
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Left3
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 337
+        width: 63
+        height: 48
+      alignment: 9
+      pivot: {x: 0.56, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Left4
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 337
+        width: 63
+        height: 49
+      alignment: 9
+      pivot: {x: 0.55, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Idle1
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 330
+        width: 56
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Right1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 273
+        width: 63
+        height: 48
+      alignment: 9
+      pivot: {x: 0.44, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Right2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 273
+        width: 63
+        height: 49
+      alignment: 9
+      pivot: {x: 0.44, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Right3
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 273
+        width: 63
+        height: 48
+      alignment: 9
+      pivot: {x: 0.435, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Right4
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 273
+        width: 63
+        height: 49
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Idle2
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 265
+        width: 56
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Down1
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 209
+        width: 46
+        height: 48
+      alignment: 9
+      pivot: {x: 0.49, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Down2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 209
+        width: 46
+        height: 48
+      alignment: 9
+      pivot: {x: 0.49, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Down3
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 209
+        width: 46
+        height: 48
+      alignment: 9
+      pivot: {x: 0.49, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Down4
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 209
+        width: 46
+        height: 48
+      alignment: 9
+      pivot: {x: 0.49, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Hit
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 204
+        width: 50
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Up1
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 146
+        width: 45
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Up2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 146
+        width: 45
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Up3
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 146
+        width: 45
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Up4
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 146
+        width: 45
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Death
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 149
+        width: 78
+        height: 39
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Melee1
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 79
+        width: 56
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Melee2
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 78
+        width: 58
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Melee3
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 79
+        width: 56
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Scorpio_Melee4
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 79
+        width: 56
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
