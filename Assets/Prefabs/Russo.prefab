@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1873920067709384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17, y: -0.73, z: 0}
+  m_LocalPosition: {x: -3.827, y: -0.828, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4108934811637634}
@@ -167,6 +167,8 @@ MonoBehaviour:
   spellOrigin: {x: 0.19, y: 0.057}
   characterName: Russo
   characterID: _russo_
+  meleeSFX: {fileID: 0}
+  rangedSFX: {fileID: 0}
 --- !u!212 &212978801610733208
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -198,7 +200,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: d72c86091cb73d84fbcc099ad26a7fb8, type: 3}
+  m_Sprite: {fileID: 21300072, guid: d72c86091cb73d84fbcc099ad26a7fb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
