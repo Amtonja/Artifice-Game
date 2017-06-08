@@ -36,7 +36,7 @@ public class Player : Entity
     private string characterName, characterID;
 
     [SerializeField]
-    private AudioClip meleeSFX, rangedSFX;
+    private AudioClip meleeSFX, rangedSFX, footstepSFX, takeDamageSFX;
 
     private AudioSource _audio; 
 
@@ -148,7 +148,38 @@ public class Player : Entity
         }
     }
 
+    public void PlayFootstepSFX()
+    {
+        _audio.PlayOneShot(footstepSFX);
+    }
+
     private Entity tempTarget; //because we need to pass the target entity to the attack end state
+
+    /// <summary>
+    /// Determine if an attack will hit by comparing accuracy vs. evasion
+    /// and a random number
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    private bool CalculateHit(Entity target)
+    {
+        bool isAHit = true;
+
+        int attackRoll = UnityEngine.Random.Range(1, 20);
+        if (Stats.Accuracy > target.Stats.Evasion && attackRoll <= 1)
+        {
+            isAHit = false;
+        }
+        else if (Stats.Accuracy == target.Stats.Evasion && attackRoll <= 4)
+        {
+            isAHit = false;
+        }
+        else if (Stats.Accuracy < target.Stats.Evasion && attackRoll <= 10)
+        {
+            isAHit = false;
+        }
+        return isAHit;
+    }
 
     public void MeleeAttack(Entity target)
     {
@@ -167,7 +198,10 @@ public class Player : Entity
     {
         _audio.PlayOneShot(meleeSFX);
         int damage = Stats.Attack - tempTarget.Stats.Defense; // TODO: Multiply in weapon dmg multiplier when available
-        tempTarget.TakeDamage(damage);
+        if (CalculateHit(tempTarget))
+        {
+            tempTarget.TakeDamage(damage);
+        }
     }
 
     public void RangedAttack(Entity target)
@@ -186,7 +220,10 @@ public class Player : Entity
     {
         _audio.PlayOneShot(rangedSFX);
         int damage = Stats.Accuracy - tempTarget.Stats.Defense; // TODO: Multiply in weapon dmg multiplier when available
-        tempTarget.TakeDamage(damage);
+        if (CalculateHit(tempTarget))
+        {
+            tempTarget.TakeDamage(damage);
+        }
     }
 
     /// <summary>
@@ -238,6 +275,18 @@ public class Player : Entity
         _animator.SetBool("SpellComplete", true);
     }
 
+    public IEnumerator DealSpellHealing(Entity target, GameObject spellVisual, float spellDuration)
+    {
+        PlayManager.instance.DarkenBG(true);
+        yield return new WaitForSeconds(spellDuration);
+
+        int healing = Stats.Magic; // TODO: Weapon multiplier
+        target.Heal(healing);
+        Destroy(spellVisual);
+        PlayManager.instance.DarkenBG(false);
+        _animator.SetBool("SpellComplete", true);
+    }
+
     public void BoltSpell(Entity target)
     {
 		//_animator.Play(Animator.StringToHash("CastSpell"));
@@ -265,9 +314,18 @@ public class Player : Entity
     public void CureSpell(Entity target)
     {
         Debug.Log("Casting Cure on " + target.name);
-        int healthRestored = Stats.Magic; // Get real formula
-        target.Heal(healthRestored);       
-//        PlayManager.instance.UnpauseGame();
+        GameObject cure = Resources.Load("Prefabs/CureSpell") as GameObject;
+        Sprite targetSprite = target.GetComponent<SpriteRenderer>().sprite;
+
+        ParticleSystem ps = cure.GetComponent<ParticleSystem>();
+        ParticleSystem.ShapeModule particleBox = ps.shape;
+        particleBox.box = new Vector3(targetSprite.bounds.size.x * 2, 1, 0.1f);
+        cure = Instantiate(cure, transform);        
+        //cure.transform.position = new Vector3(target.transform.position.x, target.transform.position.y + targetSprite.rect.height / 2);
+        cure.transform.position = target.transform.position + new Vector3(0, targetSprite.bounds.size.y / 2, 0);
+        
+        float duration = cure.GetComponent<AudioSource>().clip.length;
+        StartCoroutine(DealSpellHealing(target, cure, duration));
     }
 
     public void AimSpell(Entity target)
@@ -437,6 +495,12 @@ public class Player : Entity
         //		move.ForceLock (false);
         //GetComponent<Movement>().ForceLock(false);
         base.ExitCombat();
+    }
+
+    public override void TakeDamage(int _damage)
+    {
+        base.TakeDamage(_damage);
+        _audio.PlayOneShot(takeDamageSFX);
     }
 
     #endregion

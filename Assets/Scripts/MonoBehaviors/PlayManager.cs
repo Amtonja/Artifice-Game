@@ -214,10 +214,11 @@ public class PlayManager : MonoBehaviour
 //        }
     }
 
-    public void CreatePopupText(string text, Transform location)
+    public void CreatePopupText(string text, Transform location, Color textColor)
     {
-        PopupText popup = Instantiate(popupTextPrefab, combatUI.transform.Find("Canvas"), false);
-        popup.GetComponentInChildren<UnityEngine.UI.Text>().text = text;        
+        PopupText popup = Instantiate(popupTextPrefab, combatUI.transform.Find("Canvas"), false);   
+        popup.GetComponentInChildren<UnityEngine.UI.Text>().text = text;
+        popup.GetComponentInChildren<UnityEngine.UI.Text>().color = textColor;
         popup.transform.position = location.position;
     }
 

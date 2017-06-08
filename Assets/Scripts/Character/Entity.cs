@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using Artifice.Interfaces;
 
-namespace Artifice.Characters {
-    public abstract class Entity : MonoBehaviour, IIdentifiable, IInteractable, IHealth<int>, ICombatable {
+namespace Artifice.Characters
+{
+    public abstract class Entity : MonoBehaviour, IIdentifiable, IInteractable, IHealth<int>, ICombatable
+    {
         protected string title;
         protected string id;
         protected bool canInteract;
@@ -14,69 +16,82 @@ namespace Artifice.Characters {
         protected float actionBarTarget;
         private bool isMyTurn = false;
 
-        private bool healthChanged = false;        
+        private bool healthChanged = false;
 
         public abstract void Interact();
 
-		protected float alphaColor = 1.0f; //for temporary blink
+        protected float alphaColor = 1.0f; //for temporary blink
 
-        public virtual void TakeDamage(int _damage) {
+        public virtual void TakeDamage(int _damage)
+        {
             HealthChanged = true;
             if (_damage < 0) { _damage = 0; }
             health -= _damage;
             Debug.Log(title + " took " + _damage + " and is at " + health + " HP out of " + stats.MaxHealth + " HP");
-            PlayManager.instance.CreatePopupText(_damage.ToString(), transform);
+            PlayManager.instance.CreatePopupText(_damage.ToString(), transform, Color.red);
             if (health <= 0) Die();
 
-			alphaColor = 0.1f;
+            alphaColor = 0.1f;
         }
 
-        public virtual void Heal(int _health) {
+        public virtual void Heal(int _health)
+        {
             HealthChanged = true;
+            health += _health;
             health = Mathf.Clamp(health, 0, stats.MaxHealth);
+            PlayManager.instance.CreatePopupText(_health.ToString(), transform, Color.green);
         }
 
         public abstract void Die();
 
-        public virtual void EnterCombat() {
+        public virtual void EnterCombat()
+        {
             ActionBarTimer = 0f;
             inCombat = true;
         }
 
-        public virtual void ExitCombat() {
+        public virtual void ExitCombat()
+        {
             ActionBarTimer = 0f;
             inCombat = false;
         }
 
         #region C# Properties
-        public string Name {
+        public string Name
+        {
             get { return title; }
             set { title = value; }
         }
-        public string ID {
+        public string ID
+        {
             get { return id; }
             set { id = value; }
         }
 
-        public bool CanInteract {
+        public bool CanInteract
+        {
             get { return canInteract; }
             set { canInteract = value; }
         }
 
-        public bool InCombat {
+        public bool InCombat
+        {
             get { return inCombat; }
             set { inCombat = value; }
         }
 
-        public CombatStats Stats {
+        public CombatStats Stats
+        {
             get { return stats; }
         }
 
-        public int Health {
+        public int Health
+        {
             get { return health; }
         }
 
-        public CharacterRace Race {
+        public CharacterRace Race
+        {
             get { return race; }
             set { race = value; }
         }

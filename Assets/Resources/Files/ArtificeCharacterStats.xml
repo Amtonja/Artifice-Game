@@ -90,7 +90,7 @@
     <attack>12</attack>
     <defense>2</defense>
     <accuracy>15</accuracy>
-    <magic>0</magic>
+    <magic>12</magic>
     <magic_defense>3</magic_defense>
     <evasion>15</evasion>
     <speed>9</speed>

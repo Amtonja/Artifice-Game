@@ -16,6 +16,8 @@ public class MusicManager : MonoBehaviour
     {
         instance = this;
         instance.musicSource = instance.GetComponent<AudioSource>();
+
+        PlayBGM();
     }
 
     // Update is called once per frame

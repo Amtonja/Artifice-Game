@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1002287157204096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 1, z: 0}
+  m_LocalPosition: {x: -2.773, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4702878770921528}
@@ -239,6 +239,8 @@ MonoBehaviour:
   characterID: _hurley_
   meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
   rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
+  footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
+  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
 --- !u!114 &114551961529728186
 MonoBehaviour:
   m_ObjectHideFlags: 1
