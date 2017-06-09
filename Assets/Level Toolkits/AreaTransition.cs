@@ -114,6 +114,7 @@ public class AreaTransition : MonoBehaviour {
 		}
 		//Go back to waiting.
 		state = transitionState.waiting;
+		effect.Reset (); //reset position to start position
 
 	}
 }

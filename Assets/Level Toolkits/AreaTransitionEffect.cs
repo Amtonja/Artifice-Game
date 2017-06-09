@@ -23,13 +23,15 @@ public class AreaTransitionEffect : MonoBehaviour {
 	private Vector3 escapePos; //where we need to leave
 
 	private GameObject caller; //who called us
+
+	private Vector2 startLoc; //where we end up after we're done. Makes sure this object doesn't show up in places it's not supposed to be after use
 	// Use this for initialization
 	void Start () {
 		cam = GameObject.FindGameObjectWithTag("MainCamera");
 		sprite = this.GetComponent<SpriteRenderer> ();
 		sprite.enabled = false;
 
-
+		startLoc = this.transform.position;
 
 	}
 	
@@ -116,6 +118,12 @@ public class AreaTransitionEffect : MonoBehaviour {
 
 	public void UpdateSender(GameObject sender){
 		caller = sender;
+
+	}
+
+	//called to move this object back to its original position, so it doesn't end up on a map
+	public void Reset(){
+		this.transform.position = startLoc;
 
 	}
 }

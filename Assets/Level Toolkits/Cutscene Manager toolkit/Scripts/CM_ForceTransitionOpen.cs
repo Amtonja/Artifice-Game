@@ -92,6 +92,8 @@ public class CM_ForceTransitionOpen : MonoBehaviour {
 		//Go back to waiting.
 		state = transitionState.waiting;
 		passTarget.SendMessage ("Activate");
+
+		effect.Reset (); //reset position to start position
 	}
 
 	void OnDrawGizmos(){
