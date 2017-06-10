@@ -79,6 +79,9 @@ public class Movement : MonoBehaviour
     private bool bFollowing = false; //used for new following code.
     private float followDist = 1.5f;
 
+
+	private Transform basePoint; //The base of the feet. Used for collision checks
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -87,6 +90,8 @@ public class Movement : MonoBehaviour
         //        followPos = coordinate;
 
         _animator = GetComponent<Animator>(); //Might need to be in Awake
+
+		basePoint = transform.FindChild ("Base");
     }
 
     void Update()
@@ -187,8 +192,47 @@ public class Movement : MonoBehaviour
             moveDir = directions.Left;
         }
 
-        transform.Translate((moveDelta * moveSpeed) * Time.deltaTime);
+		//If we detect collision in a direction we want to move, nuke momentum on that axis
+		if(Mathf.Abs(Input.GetAxis("Vertical")) > 0f && CollideCheck(0f, moveDelta.y)){
+			moveDelta.y = 0;
+		}
+
+		if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0f && CollideCheck(moveDelta.x, 0f)){
+			moveDelta.x = 0;
+		}
+
+//		if(!CollideCheck(moveDelta)){
+        	transform.Translate((moveDelta * moveSpeed) * Time.deltaTime);
+//		}
+
+
     }
+
+
+	private RaycastHit2D _raycastHit;
+	//
+
+	bool CollideCheck(float x, float y){
+
+		var ray = new Vector2 (0, 0);
+		if (basePoint != null) {
+			ray = new Vector2 (basePoint.transform.position.x, basePoint.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
+		} else {
+			ray = new Vector2 (this.transform.position.x, this.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
+		}
+
+		Vector2 delta = new Vector2 (x, y);
+	
+		Debug.DrawRay( ray, delta * 0.2f, Color.red );
+		_raycastHit = Physics2D.Raycast( ray, delta, 0.2f, ~9); //9 is collision layer, ~ means only focus on that
+		if (_raycastHit) {
+//			Debug.Log ("We hit " + _raycastHit.collider.name.ToString () + " and its layer is " + _raycastHit.collider.gameObject.layer.ToString());
+			return true;
+		} else {
+			return false;
+		}
+
+	}
 
     //New following function.
     private void FollowMove()
@@ -286,6 +330,15 @@ public class Movement : MonoBehaviour
                 _animator.Play(Animator.StringToHash("GoLeft"));
                 moveDir = directions.Left;
             }
+
+			//If we detect collision in a direction we want to move, nuke momentum on that axis
+			if(Mathf.Abs(moveDelta.y) > 0f && CollideCheck(0f, moveDelta.y)){
+				moveDelta.y = 0;
+			}
+
+			if(Mathf.Abs(moveDelta.x) > 0f && CollideCheck(moveDelta.x, 0f)){
+				moveDelta.x = 0;
+			}
 
             transform.Translate((moveDelta.normalized * moveSpeed) * Time.deltaTime);
         }
