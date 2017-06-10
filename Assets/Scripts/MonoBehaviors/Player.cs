@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Artifice.Characters;
 using UnityEngine;
+using UnityEngine.Audio;
 using System;
 
 public class Player : Entity
@@ -149,8 +150,8 @@ public class Player : Entity
     }
 
     public void PlayFootstepSFX()
-    {
-        _audio.PlayOneShot(footstepSFX);
+    {       
+        _audio.PlayOneShot(footstepSFX);        
     }
 
     private Entity tempTarget; //because we need to pass the target entity to the attack end state

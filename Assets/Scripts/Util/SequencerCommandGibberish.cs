@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections;
 using PixelCrushers.DialogueSystem;
 
@@ -16,6 +17,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
         private int nextClipIndex = 2;
         private AudioClip currentClip = null;
         private AudioClip originalClip = null;
+        private AudioMixerGroup originalMixerGroup;
 
         public IEnumerator Start()
         {
@@ -40,9 +42,11 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
             }
             else {
                 originalClip = audioSource.clip;
+                originalMixerGroup = audioSource.outputAudioMixerGroup;
                 stopTime = DialogueTime.time + 1; // Give time for yield return null.
                 yield return null;
                 originalClip = audioSource.clip;
+                originalMixerGroup = audioSource.outputAudioMixerGroup;
                 TryAudioClip(audioClipName);
             }
         }
@@ -65,10 +69,12 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
                         if (DialogueDebug.LogInfo) Debug.Log(string.Format("{0}: Sequencer: Gibberish(): playing '{1}'.", new System.Object[] { DialogueDebug.Prefix, audioClipName }));
                         currentClip = audioClip;
                         audioSource.clip = audioClip;
+                        AudioMixer mixer = audioSource.outputAudioMixerGroup.audioMixer;
+                        audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Dialogue")[0];
                         audioSource.Play();
                     }
                 }
-                stopTime = DialogueTime.time + audioClip.length;
+                stopTime = DialogueTime.time + Sequencer.SubtitleEndTime;
             }
             catch (System.Exception)
             {
@@ -112,6 +118,7 @@ namespace PixelCrushers.DialogueSystem.SequencerCommands
                     audioSource.Stop();
                 }
                 audioSource.clip = originalClip;
+                audioSource.outputAudioMixerGroup = originalMixerGroup;
             }
         }
 

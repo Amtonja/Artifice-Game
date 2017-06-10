@@ -51,9 +51,9 @@ MonoBehaviour:
       value: True
       type: 2
       typeString: CustomFieldType_Boolean
-    portrait: {fileID: 2800000, guid: 71ca35d7737870d4aa3468ad81effbdd, type: 3}
+    portrait: {fileID: 2800000, guid: a3eb6d6c94931a94fbaa732e6f231c2c, type: 3}
     alternatePortraits:
-    - {fileID: 2800000, guid: 30339778d763943478b8aeb8ea368872, type: 3}
+    - {fileID: 2800000, guid: 9abe65e131fd2064994fe44f241124ca, type: 3}
   - id: 2
     fields:
     - title: Name
@@ -72,9 +72,9 @@ MonoBehaviour:
       value: False
       type: 2
       typeString: CustomFieldType_Boolean
-    portrait: {fileID: 2800000, guid: bb6f9b526c57e244ba0e3f4531cf4ac0, type: 3}
+    portrait: {fileID: 2800000, guid: ec12b9ad51980a74ab6266079fa61f0b, type: 3}
     alternatePortraits:
-    - {fileID: 2800000, guid: f291d79ea134e0943afcafa4cdc41dde, type: 3}
+    - {fileID: 2800000, guid: 8dd7f41a080c72542abbce7bf37fcb08, type: 3}
   - id: 3
     fields:
     - title: Name
@@ -411,7 +411,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 120
+        y: 119
         width: 160
         height: 30
     - id: 3
@@ -10847,6 +10847,8 @@ MonoBehaviour:
         typeString: 
       - title: Sequence
         value: 'SetPortrait(Evans, pic=2);
+
+          Gibberish(entrytag);
 
           SendMessage(DialogueComplete,,Scene 1b Trigger)@{{end}};
 
