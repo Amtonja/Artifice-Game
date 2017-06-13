@@ -17,6 +17,7 @@
               <xs:element name="evasion" type="xs:unsignedByte" />
               <xs:element name="speed" type="xs:unsignedByte" />
               <xs:element name="max_health" type="xs:unsignedInt"/>
+              <xs:element name="xp_value" type="xs:unsignedInt" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

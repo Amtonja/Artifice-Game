@@ -17,6 +17,7 @@ namespace Artifice.Characters
         private int magic, baseMagic;
         private int magicDefense, baseMagicDefense;
         private int accuracy, baseAccuracy;
+        private int xpValue;
         //private int loyalty, baseLoyalty; // not used
 
         public CombatStats() { }
@@ -63,7 +64,7 @@ namespace Artifice.Characters
             BaseEvasion = GetSingleStat(character, "evasion");
             BaseSpeed = GetSingleStat(character, "speed");
             BaseMaxHealth = GetSingleStat(character, "max_health");
-
+            XpValue = GetSingleStat(character, "xp_value");
         }
 
         /// <summary>
@@ -123,6 +124,10 @@ namespace Artifice.Characters
 
             value.Append("Max Health: ");
             value.Append(BaseMaxHealth);
+            value.Append("\n");
+
+            value.Append("XP Value: ");
+            value.Append(XpValue);
             value.Append("\n");
 
             return value.ToString();
@@ -229,6 +234,19 @@ namespace Artifice.Characters
         {
             get { return baseAccuracy; }
             set { baseAccuracy = value; }
+        }
+
+        public int XpValue
+        {
+            get
+            {
+                return xpValue;
+            }
+
+            set
+            {
+                xpValue = value;
+            }
         }
         #endregion
     }
