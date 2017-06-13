@@ -680,4 +680,26 @@ public class Movement : MonoBehaviour
             return bForceLock;
         }
     }
+
+	//Lets other scripts know what vector we're pointing. MoveDir really should have been a vector2 rather than an enum
+	public Vector2 DirVector
+	{
+		get {
+			if (moveDir == directions.Up) {
+				return Vector2.up;
+			} else if (moveDir == directions.Left) {
+				return Vector2.left;
+			} else if (moveDir == directions.Right) {
+				return  Vector2.right;
+			} else if (moveDir == directions.Down) {
+				return Vector2.down;
+			} else {
+				return Vector2.zero;
+				Debug.Log ("DirVector not found!");
+			}
+
+		}
+
+
+	}
 }

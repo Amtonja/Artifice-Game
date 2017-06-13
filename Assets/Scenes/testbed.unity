@@ -741,7 +741,8 @@ GameObject:
   m_Component:
   - component: {fileID: 170236040}
   - component: {fileID: 170236039}
-  m_Layer: 9
+  - component: {fileID: 170236041}
+  m_Layer: 10
   m_Name: Collision test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,6 +776,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &170236041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 170236038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d69f7ec89ecf74c9ddde12156dd3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passTarget: {fileID: 0}
 --- !u!1 &172675475
 GameObject:
   m_ObjectHideFlags: 0
@@ -4931,12 +4944,12 @@ Prefab:
         type: 2}
       propertyPath: party.Array.data[0]
       value: 
-      objectReference: {fileID: 212613955}
+      objectReference: {fileID: 1879785055}
     - target: {fileID: 114672948340293816, guid: b406117de1af4464ca68d8573fdcf81d,
         type: 2}
       propertyPath: party.Array.data[1]
       value: 
-      objectReference: {fileID: 1879785055}
+      objectReference: {fileID: 212613955}
     - target: {fileID: 114672948340293816, guid: b406117de1af4464ca68d8573fdcf81d,
         type: 2}
       propertyPath: combatGrid

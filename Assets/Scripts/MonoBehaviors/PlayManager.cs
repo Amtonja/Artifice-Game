@@ -91,6 +91,20 @@ public class PlayManager : MonoBehaviour
 	void Update(){
 		//This update loop contributes exclusively towards combat and combat-related processes.
 		if (exploreMode) {
+			if(Input.GetKeyDown(KeyCode.Return)){
+				InteractCheck ();
+			}
+
+//			Player target = party [0];
+//			Transform basePoint = target.transform.FindChild ("Base");
+//			var ray = new Vector2 (0, 0);
+//			ray = new Vector2 (basePoint.transform.position.x, basePoint.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
+//			//Get delta
+//			Vector2 delta = target.GetComponent<Movement>().DirVector;
+//			//get position. This should be pulled out of this for optimisation later
+//
+//			Debug.DrawRay( ray, delta * 0.2f, Color.red );
+
 			return;
 		}
 
@@ -144,6 +158,30 @@ public class PlayManager : MonoBehaviour
 			EncounterComplete();
 		}
 
+	}
+
+	/// <summary>
+	/// Checks to see if there's an interactive CM object in front of us. If so, send it a pulse.
+	/// Holy crap this needs to be optimised later but time is an issue right now.
+	/// </summary>
+	private void InteractCheck(){
+		Player target = party [0];
+		Transform basePoint = target.transform.FindChild ("Base");
+		var ray = new Vector2 (0, 0);
+		ray = new Vector2 (basePoint.transform.position.x, basePoint.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
+		//Get delta
+		Vector2 delta = target.GetComponent<Movement>().DirVector;
+		//get position. This should be pulled out of this for optimisation later
+
+		Debug.DrawRay( ray, delta * 0.2f, Color.red );
+
+		LayerMask mask = (1 << 10);
+		RaycastHit2D _raycastHit;
+		_raycastHit = Physics2D.Raycast( ray, delta, 0.2f, mask); //9 is interact layer, ~ means only focus on that
+		if (_raycastHit) {
+			Debug.Log ("We hit " + _raycastHit.collider.name.ToString () + " and its layer is " + _raycastHit.collider.gameObject.layer.ToString());
+			_raycastHit.collider.gameObject.SendMessage ("Activate");
+		} 
 	}
 
 
