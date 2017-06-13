@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PixelCrushers.DialogueSystem;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -76,6 +77,8 @@ public class PlayManager : MonoBehaviour
     /// The current scene's background image.
     /// </summary>
     public SpriteRenderer background;
+
+    public int experiencePool;
 
     void Start()
     {
@@ -217,6 +220,8 @@ public class PlayManager : MonoBehaviour
 		state = combatState.Init;
 
         MusicManager.instance.StartCoroutine("PlayCombatMusic");
+
+        experiencePool = 0;
     }
 
     /// <summary>
@@ -269,16 +274,30 @@ public class PlayManager : MonoBehaviour
 
         MusicManager.instance.PlayCombatEnding();
 
+        DisplayCombatRewards();
+
         for (int i = 0; i < party.Length; i++)
         {
             party[i].ExitCombat();
-			//turn off combat UI
-
+            party[i].AddExperience(experiencePool);   
 			//Reset characters following lead character
 //			if (i != 0) {
 //				GameObject dude = party [i].gameObject;
 //				dude.gameObject.GetComponent<Movement> ().FollowTarget = party [0];
 //			}
+        }
+
+        //turn off combat UI
+        combatUI.DeactivatePlayerUI();
+        experiencePool = 0;
+    }
+
+    public void DisplayCombatRewards()
+    {
+        float messageDuration = 2f;
+        for (int i = 0; i < party.Length; i++)
+        {
+            DialogueManager.ShowAlert(party[i].name + " gained " + experiencePool + " XP!", messageDuration);
         }
     }
 

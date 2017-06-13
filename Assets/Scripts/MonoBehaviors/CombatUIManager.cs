@@ -38,4 +38,12 @@ public class CombatUIManager : MonoBehaviour {
 		combatUI.SetActive(true);        
         combatUI.GetComponent<CombatPlayerUI>().ActivePlayer = p;
 	}
+
+    public void DeactivatePlayerUI()
+    {
+        for (int i = 0; i < combatants.Count; i++)
+        {
+            combatants[i].gameObject.SetActive(false);
+        }
+    }
 }

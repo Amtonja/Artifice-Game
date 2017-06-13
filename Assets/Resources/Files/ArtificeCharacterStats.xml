@@ -13,6 +13,7 @@
     <evasion>10</evasion>
     <speed>8</speed>
     <max_health>135</max_health>
+    <xp_value>0</xp_value>
   </character>
   <character>
     <id>_evans_</id>
@@ -26,6 +27,7 @@
     <evasion>12</evasion>
     <speed>10</speed>
     <max_health>115</max_health>
+    <xp_value>0</xp_value>
   </character>
   <character>
     <id>_stanz_</id>
@@ -39,6 +41,7 @@
     <evasion>10</evasion>
     <speed>6</speed>
     <max_health>175</max_health>
+    <xp_value>0</xp_value>
   </character>
   <character>
     <id>_russo_</id>
@@ -52,6 +55,7 @@
     <evasion>6</evasion>
     <speed>6</speed>
     <max_health>100</max_health>
+    <xp_value>0</xp_value>
   </character>
   
   <!-- NPCs -->
@@ -67,6 +71,7 @@
     <evasion>10</evasion>
     <speed>8</speed>
     <max_health>80</max_health>
+    <xp_value>50</xp_value>
   </character>
   
   <!-- CREATURES -->
@@ -82,6 +87,7 @@
     <evasion>12</evasion>
     <speed>5</speed>
     <max_health>60</max_health>
+    <xp_value>50</xp_value>
   </character>
   <character>
     <id>_komodo_</id>
@@ -95,5 +101,20 @@
     <evasion>15</evasion>
     <speed>9</speed>
     <max_health>50</max_health>
+    <xp_value>50</xp_value>
+  </character>
+  <character>
+    <id>_scorpio_</id>
+    <name>Scorpio</name>
+    <level>1</level>
+    <attack>12</attack>
+    <defense>2</defense>
+    <accuracy>15</accuracy>
+    <magic>12</magic>
+    <magic_defense>3</magic_defense>
+    <evasion>15</evasion>
+    <speed>9</speed>
+    <max_health>50</max_health>
+    <xp_value>50</xp_value>
   </character>
 </characters>

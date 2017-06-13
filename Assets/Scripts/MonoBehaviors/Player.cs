@@ -39,7 +39,9 @@ public class Player : Entity
     [SerializeField]
     private AudioClip meleeSFX, rangedSFX, footstepSFX, takeDamageSFX;
 
-    private AudioSource _audio; 
+    private AudioSource _audio;
+
+    private int experienceTotal;
 
     // Use this for initialization
     void Start()
@@ -463,6 +465,11 @@ public class Player : Entity
 		PlayManager.instance.RemoveEnemy (this);
     }
 
+    public void AddExperience(int xp)
+    {
+        experienceTotal += xp;
+    }
+
     public delegate void CombatAction(Entity target);
     public delegate void SpellDelegate(Entity target);
 
@@ -476,7 +483,7 @@ public class Player : Entity
     public override void Die()
     {
         Debug.Log(gameObject.name + " Died!");
-
+        PlayManager.instance.experiencePool += Stats.XpValue;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         StartCoroutine(FadeOut(sr));   
     }
