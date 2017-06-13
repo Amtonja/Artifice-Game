@@ -167,8 +167,13 @@ MonoBehaviour:
   spellOrigin: {x: 0.19, y: 0.057}
   characterName: Russo
   characterID: _russo_
-  meleeSFX: {fileID: 0}
-  rangedSFX: {fileID: 0}
+  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
+  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
+  footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
+  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
+  attackMultiplier: 2
+  magicMultiplier: 2
+  accuracyMultiplier: 2
 --- !u!212 &212978801610733208
 SpriteRenderer:
   m_ObjectHideFlags: 1

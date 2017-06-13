@@ -43,6 +43,9 @@ public class Player : Entity
 
     private int experienceTotal;
 
+    // Consider these temporary variables standing in for actual equipment values
+    public int attackMultiplier, magicMultiplier, accuracyMultiplier;
+
     // Use this for initialization
     void Start()
     {
@@ -200,7 +203,7 @@ public class Player : Entity
     public void EndMeleeAttack()
     {
         _audio.PlayOneShot(meleeSFX);
-        int damage = Stats.Attack - tempTarget.Stats.Defense; // TODO: Multiply in weapon dmg multiplier when available
+        int damage = (Stats.Attack * attackMultiplier) - tempTarget.Stats.Defense; // TODO: Multiply in weapon dmg multiplier when available
         if (CalculateHit(tempTarget))
         {
             tempTarget.TakeDamage(damage);
@@ -222,7 +225,7 @@ public class Player : Entity
     public void EndRangedAttack()
     {
         _audio.PlayOneShot(rangedSFX);
-        int damage = Stats.Accuracy - tempTarget.Stats.Defense; // TODO: Multiply in weapon dmg multiplier when available
+        int damage = Stats.Accuracy * accuracyMultiplier - tempTarget.Stats.Defense; // TODO: Multiply in weapon dmg multiplier when available
         if (CalculateHit(tempTarget))
         {
             tempTarget.TakeDamage(damage);
@@ -271,7 +274,7 @@ public class Player : Entity
         PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
         
-        int damage = Stats.Magic - target.Stats.MagicDefense; // TODO: Multiply in weapon magic multiplier when available
+        int damage = Stats.Magic * magicMultiplier - target.Stats.MagicDefense; // TODO: Multiply in weapon magic multiplier when available
         target.TakeDamage(damage);
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
