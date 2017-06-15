@@ -69,6 +69,8 @@ public class Movement : MonoBehaviour
 
     private bool bForceLock = false; //Locks controls. Used by AreaTransition, etc?
 
+	private bool bAnimating = false; //If this character is being forced to animate
+
 
 
     /// <summary>
@@ -98,7 +100,7 @@ public class Movement : MonoBehaviour
     {
 
         //If we're in combat or a cutscene, skip everything
-        if (bForceLock) { return; }
+		if (bForceLock || bAnimating) { return; }
 
         //		if (PlayManager.instance.ExploreMode) {
         //			return;
@@ -658,6 +660,16 @@ public class Movement : MonoBehaviour
     //
     //	}
 
+
+	//Forces a character to play a specific animation. Currently called by CM_PlayAnimation
+	public void PlayAnimation(string str){
+		_animator.Play(Animator.StringToHash(str));
+		bAnimating = true;
+	}
+
+	public void EndAnimation(){
+		bAnimating = false;
+	}
 
 
     //properties
