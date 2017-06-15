@@ -12,13 +12,12 @@ namespace Artifice.Characters
         private int attack, baseAttack;
         private int defense, baseDefense;
         private int speed, baseSpeed;
-        private int evasion, baseEvasion;
+        //private int evasion, baseEvasion;
         private int maxHealth, baseMaxHealth;
         private int magic, baseMagic;
         private int magicDefense, baseMagicDefense;
-        private int accuracy, baseAccuracy;
+        //private int accuracy, baseAccuracy;
         private int xpValue;
-        //private int loyalty, baseLoyalty; // not used
 
         public CombatStats() { }
 
@@ -58,10 +57,10 @@ namespace Artifice.Characters
 
             BaseAttack = GetSingleStat(character, "attack");
             BaseDefense = GetSingleStat(character, "defense");
-            BaseAccuracy = GetSingleStat(character, "accuracy");
+            //BaseAccuracy = GetSingleStat(character, "accuracy");
             BaseMagic = GetSingleStat(character, "magic");
             BaseMagicDefense = GetSingleStat(character, "magic_defense");
-            BaseEvasion = GetSingleStat(character, "evasion");
+            //BaseEvasion = GetSingleStat(character, "evasion");
             BaseSpeed = GetSingleStat(character, "speed");
             BaseMaxHealth = GetSingleStat(character, "max_health");
             XpValue = GetSingleStat(character, "xp_value");
@@ -102,20 +101,12 @@ namespace Artifice.Characters
             value.Append(BaseDefense);
             value.Append("\n");
 
-            value.Append("Accuracy: ");
-            value.Append(BaseAccuracy);
-            value.Append("\n");
-
             value.Append("Magic: ");
             value.Append(BaseMagic);
             value.Append("\n");
 
             value.Append("Magic Defense: ");
             value.Append(BaseMagicDefense);
-            value.Append("\n");
-
-            value.Append("Evasion: ");
-            value.Append(BaseEvasion);
             value.Append("\n");
 
             value.Append("Speed: ");
@@ -174,19 +165,7 @@ namespace Artifice.Characters
         {
             get { return baseSpeed; }
             set { baseSpeed = value; }
-        }
-
-        public int Evasion
-        {
-            get { return evasion; }
-            set { evasion = value; }
-        }
-
-        public int BaseEvasion
-        {
-            get { return baseEvasion; }
-            set { baseEvasion = value; }
-        }
+        }        
 
         public int MaxHealth
         {
@@ -224,18 +203,6 @@ namespace Artifice.Characters
             set { baseMagicDefense = value; }
         }
 
-        public int Accuracy
-        {
-            get { return accuracy; }
-            set { accuracy = value; }
-        }
-
-        public int BaseAccuracy
-        {
-            get { return baseAccuracy; }
-            set { baseAccuracy = value; }
-        }
-
         public int XpValue
         {
             get
@@ -248,6 +215,7 @@ namespace Artifice.Characters
                 xpValue = value;
             }
         }
+        
         #endregion
     }
 }

@@ -14,6 +14,7 @@ namespace Artifice.Characters
         protected CharacterRace race;
         protected float actionBarValue = 0f;
         protected float actionBarTarget;
+        private int defenseValue, magicDefenseValue;
         private bool isMyTurn = false;
 
         private bool healthChanged = false;
@@ -27,6 +28,7 @@ namespace Artifice.Characters
             HealthChanged = true;
             if (_damage < 0) { _damage = 0; }
             health -= _damage;
+            health = Mathf.Clamp(health, 0, stats.MaxHealth);
             Debug.Log(title + " took " + _damage + " and is at " + health + " HP out of " + stats.MaxHealth + " HP");
             PlayManager.instance.CreatePopupText(_damage.ToString(), transform, Color.red);
             if (health <= 0) Die();
@@ -37,12 +39,19 @@ namespace Artifice.Characters
         public virtual void Heal(int _health)
         {
             HealthChanged = true;
+            if (health <= 0)
+            {
+                Revive();
+            }
+
             health += _health;
             health = Mathf.Clamp(health, 0, stats.MaxHealth);
             PlayManager.instance.CreatePopupText(_health.ToString(), transform, Color.green);
         }
 
         public abstract void Die();
+
+        public abstract void Revive();
 
         public virtual void EnterCombat()
         {
@@ -145,6 +154,32 @@ namespace Artifice.Characters
             set
             {
                 isMyTurn = value;
+            }
+        }
+
+        public int DefenseValue
+        {
+            get
+            {
+                return defenseValue;
+            }
+
+            set
+            {
+                defenseValue = value;
+            }
+        }
+
+        public int MagicDefenseValue
+        {
+            get
+            {
+                return magicDefenseValue;
+            }
+
+            set
+            {
+                magicDefenseValue = value;
             }
         }
         #endregion

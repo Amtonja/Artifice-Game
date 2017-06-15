@@ -10,11 +10,9 @@
               <xs:element name="name" type="xs:string" />
               <xs:element name="level" type="xs:unsignedByte" />
               <xs:element name="attack" type="xs:unsignedByte" />
-              <xs:element name="defense" type="xs:unsignedByte" />
-              <xs:element name="accuracy" type="xs:unsignedByte" />
+              <xs:element name="defense" type="xs:unsignedByte" />             
               <xs:element name="magic" type="xs:unsignedByte" />
-              <xs:element name="magic_defense" type="xs:unsignedByte" />
-              <xs:element name="evasion" type="xs:unsignedByte" />
+              <xs:element name="magic_defense" type="xs:unsignedByte" />              
               <xs:element name="speed" type="xs:unsignedByte" />
               <xs:element name="max_health" type="xs:unsignedInt"/>
               <xs:element name="xp_value" type="xs:unsignedInt" />
