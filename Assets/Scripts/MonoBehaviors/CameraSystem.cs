@@ -41,44 +41,45 @@ public class CameraSystem : MonoBehaviour {
 
 
 	void LateUpdate(){
-		if (bHoldCam) {
+		if (bHoldCam) { //Holds the camera in a specific spot and won't move with the player. Also allows outside forces to move it.
 			return;
 		}
 
 		if (PlayManager.instance.ExploreMode) {
-
-
-			Vector3 fixedLocation = new Vector3(PlayManager.instance.party[0].transform.position.x, PlayManager.instance.party[0].transform.position.y, this.transform.position.z);
-
-			//check to see if we're going to head outside bounds of the x range. 
-			//5 is added to x checks to have the camera's center not be the exact edge.
-			//3 is added to y checks for the same reason. Note that because this is 16 by 9, y checks
-			//do not perfectly line up with vertical edges, because the camera can't anyway.
-
-			if(PlayManager.instance.party[0].transform.position.x < currentArea.minX + 5f){
-				fixedLocation.x = currentArea.minX + 5f;
-			}
-			if(PlayManager.instance.party[0].transform.position.x > currentArea.maxX - 5F){
-				fixedLocation.x = currentArea.maxX - 5f;
-			}
-			if(PlayManager.instance.party[0].transform.position.y < currentArea.minY + 3f){
-				fixedLocation.y = currentArea.minY + 3f;
-			}
-			if(PlayManager.instance.party[0].transform.position.y > currentArea.maxY - 3f){
-				fixedLocation.y = currentArea.maxY - 3f;
-			}
-
-			this.transform.position = fixedLocation;
-
-
-
+			FollowPlayer ();
 		}
 
 
 
 	}
 
-	//manually resets position. Called by AreaTransition to recenter on character
+	//Standard camera movement following the lead player around a map.
+	private void FollowPlayer(){
+
+		Vector3 fixedLocation = new Vector3(PlayManager.instance.party[0].transform.position.x, PlayManager.instance.party[0].transform.position.y, this.transform.position.z);
+
+		//check to see if we're going to head outside bounds of the x range. 
+		//5 is added to x checks to have the camera's center not be the exact edge.
+		//3 is added to y checks for the same reason. Note that because this is 16 by 9, y checks
+		//do not perfectly line up with vertical edges, because the camera can't anyway.
+
+		if(PlayManager.instance.party[0].transform.position.x < currentArea.minX + 5f){
+			fixedLocation.x = currentArea.minX + 5f;
+		}
+		if(PlayManager.instance.party[0].transform.position.x > currentArea.maxX - 5F){
+			fixedLocation.x = currentArea.maxX - 5f;
+		}
+		if(PlayManager.instance.party[0].transform.position.y < currentArea.minY + 3f){
+			fixedLocation.y = currentArea.minY + 3f;
+		}
+		if(PlayManager.instance.party[0].transform.position.y > currentArea.maxY - 3f){
+			fixedLocation.y = currentArea.maxY - 3f;
+		}
+
+		this.transform.position = fixedLocation;
+	}
+
+	//manually resets position. Called by AreaTransition to recenter on character. This is a hard/snap focus with no transition.
 	public void ResetPos(){
 		Vector3 fixedLocation = new Vector3(PlayManager.instance.party[0].transform.position.x, PlayManager.instance.party[0].transform.position.y, this.transform.position.z);
 

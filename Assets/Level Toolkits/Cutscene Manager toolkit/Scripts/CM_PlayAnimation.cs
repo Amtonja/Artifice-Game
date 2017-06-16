@@ -30,9 +30,4 @@ public class CM_PlayAnimation : MonoBehaviour {
 		}
 	}
 
-	public void BATMANS(){
-
-
-	}
-
 }
