@@ -6,9 +6,12 @@ public class CM_MoveCamera : MonoBehaviour {
 
 	//Moves camera around to specific locations. Will need CM_HoldCam to be used beforehand. 
 
-	public Transform endPos;
+	public GameObject targetPos;
+	private Vector3 endPos;
 	public float moveSpeed = 3f;
 	public bool bMoveToPlayer = false;
+
+	public Vector2 buffer; //when moving, manually account for screen edges
 
 	public GameObject passTarget;
 
@@ -18,13 +21,16 @@ public class CM_MoveCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cam = GameObject.FindGameObjectWithTag("MainCamera");
+		if (!bMoveToPlayer) {
+			endPos = new Vector3 (targetPos.transform.position.x + buffer.x, targetPos.transform.position.y + buffer.y, -10);
+		}
 	}
 	
 	// The camera needs to be moved during LateUpdate or it'll look choppy. 
 	void LateUpdate () {
 		if (bRunning) {
-			if (Vector3.Distance(cam.transform.position, new Vector3(endPos.position.x, endPos.position.y, -10f)) > 0.1f){ //always needs to be -10 z!
-				Vector3 moveDelta = new Vector3(endPos.position.x, endPos.position.y, -10f) - cam.transform.position;
+			if (Vector3.Distance(cam.transform.position, new Vector3(endPos.x, endPos.y, -10f)) > 0.1f){ //always needs to be -10 z!
+				Vector3 moveDelta = new Vector3(endPos.x, endPos.y, -10f) - cam.transform.position;
 				cam.transform.Translate((moveDelta.normalized * moveSpeed) * Time.deltaTime);
 			} else {
 				Debug.Log("Camera at position!");
@@ -36,7 +42,10 @@ public class CM_MoveCamera : MonoBehaviour {
 
 	public void Activate(){
 		if (bMoveToPlayer) {
-			endPos = PlayManager.instance.party [0].transform;
+			endPos = PlayManager.instance.party [0].transform.position;
+//			endPos.position.x += buffer.x;
+//			endPos.position.y += buffer.y;
+			endPos = new Vector3 (endPos.x + buffer.x, endPos.y + buffer.y, -10);
 		}
 		bRunning = true;
 	}

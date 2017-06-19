@@ -7,7 +7,7 @@ public class WinterController : MonoBehaviour {
 
 	//0 Activation -> 1 Leg raise -> 2 change leg layer order -> 3 move -> 4 hammer down -> 5 Pass to passtarget -> 6 End
 
-	public GameObject passTarget;
+
 	public GameObject attackLeg;
 
 	public Transform movePos;
@@ -15,6 +15,8 @@ public class WinterController : MonoBehaviour {
 	private int state = 0;
 
 	private float moveSpeed = 8.0f;
+
+	public GameObject passTarget;
 
 	// Use this for initialization
 	void Start () {
