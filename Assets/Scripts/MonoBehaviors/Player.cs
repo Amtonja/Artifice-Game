@@ -202,6 +202,10 @@ public class Player : Entity
         {
             tempTarget.TakeDamage(damage);
         }
+        else
+        {
+            PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray);
+        }
     }
 
     public void RangedAttack(Entity target)
@@ -223,6 +227,10 @@ public class Player : Entity
         if (CalculateHit(tempTarget))
         {
             tempTarget.TakeDamage(damage);
+        }
+        else
+        {
+            PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray);
         }
     }
 

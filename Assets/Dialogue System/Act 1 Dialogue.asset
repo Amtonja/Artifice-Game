@@ -605,9 +605,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 'SendMessage(DialogueComplete,,Scene 1 Trigger)@{{end}};
+        value: 'required SendMessage(DialogueComplete,,Scene 1 Trigger)@{{end}};
 
-          SendMessage(ClearFollowTarget,,Russo)@{{end}};
+          required SendMessage(ClearFollowTarget,,Russo)@{{end}};
 
           Delay({{end}});'
         type: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 26
+        x: 25
         y: 270
         width: 160
         height: 30
@@ -1125,7 +1125,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 6
@@ -1174,7 +1174,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "Here we are at the \"scenic\" Oran\r\nReliquary. What do you think,
+        value: "Here we are at the \"scenic\" Oran\r Reliquary. What do you think,
           kid?"
         type: 0
         typeString: 
@@ -1290,8 +1290,8 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 30
-        y: 120
+        x: 33
+        y: 124
         width: 160
         height: 30
     - id: 3
@@ -1321,8 +1321,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "Speechless, huh? Just wait until we\r\nget inside. This could go on
-          for\r\nmiles underground. Who knows?"
+        value: "Speechless, huh? Just wait until we\r get inside. This could go on
+          for\r miles underground. Who knows?"
         type: 0
         typeString: 
       - title: Parenthetical
@@ -1395,8 +1395,8 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "The reliquaries have been sealed\r\nfor decades, but this one\u2019s
-          been\r\nsurveyed before. I have a map that\r\nshould speed up our search."
+        value: "The reliquaries have been sealed\r for decades, but this one\u2019s
+          been\r surveyed before. I have a map that\r should speed up our search."
         type: 0
         typeString: 
       - title: Parenthetical
@@ -1469,7 +1469,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "How do you know whoever made that\r\nmap didn\u2019t snatch our prize?"
+        value: "How do you know whoever made that\r map didn\u2019t snatch our prize?"
         type: 0
         typeString: 
       - title: Parenthetical
@@ -10850,11 +10850,11 @@ MonoBehaviour:
 
           Gibberish(entrytag);
 
-          SendMessage(DialogueComplete,,Scene 1b Trigger)@{{end}};
+          required SendMessage(DialogueComplete,,Scene 1b Trigger)@{{end}};
 
-          SendMessage(SetFollowTarget, Russo, Hurley)@{{end}};
+          required SendMessage(SetFollowTarget, Russo, Hurley)@{{end}};
 
-          SendMessage(SetFollowTarget, Hurley, Evans)@{{end}};
+          required SendMessage(SetFollowTarget, Hurley, Evans)@{{end}};
 
           Delay({{end}});'
         type: 0
