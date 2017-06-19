@@ -27,6 +27,7 @@ public class CM_StartOnLoad : MonoBehaviour {
 		currentTimer += Time.deltaTime;
 		if (currentTimer >= timer) {
 			passTarget.SendMessage ("Activate");
+			bOn = false;
 		}
 	}
 

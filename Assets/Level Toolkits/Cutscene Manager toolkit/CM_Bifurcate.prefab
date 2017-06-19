@@ -9,48 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1982712765542080}
+  m_RootGameObject: {fileID: 1183221706573548}
   m_IsPrefabParent: 1
---- !u!1 &1982712765542080
+--- !u!1 &1183221706573548
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4580790440195844}
-  - component: {fileID: 114704820951407268}
+  - component: {fileID: 4633155954375942}
+  - component: {fileID: 114913673388917996}
   m_Layer: 0
-  m_Name: CM_ForceTransitionClose
+  m_Name: CM_Bifurcate
   m_TagString: Untagged
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4580790440195844
+--- !u!4 &4633155954375942
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1982712765542080}
+  m_GameObject: {fileID: 1183221706573548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0435355, y: -2.1605208, z: 0}
+  m_LocalPosition: {x: -22.406563, y: 44.95148, z: -7.9609375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114704820951407268
+--- !u!114 &114913673388917996
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1982712765542080}
+  m_GameObject: {fileID: 1183221706573548}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14a811934da75f46b40dc4444b7c3df, type: 3}
+  m_Script: {fileID: 11500000, guid: 25ce2aa3f19f02d44bdffbaf366bd95b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 0}
-  newArea: {fileID: 0}
-  passTarget: {fileID: 0}
+  passTargetA: {fileID: 0}
+  passTargetB: {fileID: 0}

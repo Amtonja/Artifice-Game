@@ -11,7 +11,12 @@ public class CM_Teleport : MonoBehaviour {
 	public GameObject target;
 	public GameObject newPos;
 	public Vector3 corrections;
+
+	public bool bUsePlayer = false;
+	public int playerNumber;
 	public GameObject passTarget;
+
+
 
 	public void Activate()
 	{
@@ -26,8 +31,11 @@ public class CM_Teleport : MonoBehaviour {
 			tempPos.z = corrections.z;
 		}
 
-
-		target.transform.position = tempPos;
+		if (!bUsePlayer) {
+			target.transform.position = tempPos;
+		} else {
+			PlayManager.instance.party [playerNumber].transform.position = tempPos;
+		}
 		passTarget.SendMessage ("Activate");
 	}
 
