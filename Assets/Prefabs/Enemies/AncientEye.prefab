@@ -68,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 1535301156841234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.566, y: 17.63, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4859846550973756}
   m_Father: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
     name: Republic Eye
     id: _republiceye_
     combatStats:
-      strength: 1
+      attack: 0
       defense: 1
       magic: 1
       speed: 7
@@ -134,6 +134,14 @@ MonoBehaviour:
   spellOrigin: {x: 0, y: 0}
   characterName: Republic Eye
   characterID: _republiceye_
+  meleeSFX: {fileID: 0}
+  rangedSFX: {fileID: 0}
+  footstepSFX: {fileID: 0}
+  takeDamageSFX: {fileID: 0}
+  addedMeleeAttackValue: 0
+  addedRangedAttackValue: 0
+  addedMagicAttackValue: 0
+  armorValue: 0
 --- !u!114 &114556999746847378
 MonoBehaviour:
   m_ObjectHideFlags: 1

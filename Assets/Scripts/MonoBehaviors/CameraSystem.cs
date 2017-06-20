@@ -45,9 +45,9 @@ public class CameraSystem : MonoBehaviour {
 			return;
 		}
 
-		if (PlayManager.instance.ExploreMode) {
+//		if (PlayManager.instance.ExploreMode) { //later combat needs its own camera positioning
 			FollowPlayer ();
-		}
+//		}
 
 
 

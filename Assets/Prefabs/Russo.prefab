@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114435887976355722}
   - component: {fileID: 61247496284781636}
   - component: {fileID: 50843508790481082}
+  - component: {fileID: 82567731228766328}
   m_Layer: 0
   m_Name: Russo
   m_TagString: Player
@@ -108,6 +109,87 @@ BoxCollider2D:
   m_Offset: {x: 0.0016651154, y: 0.0016643405}
   serializedVersion: 2
   m_Size: {x: 0.16382387, y: 0.42691278}
+--- !u!82 &82567731228766328
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873920067709384}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 243799806139890284, guid: 7652fa45c00f79041b9560d48b4dfb06,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95506769802377936
 Animator:
   serializedVersion: 3
@@ -153,7 +235,7 @@ MonoBehaviour:
     name: 
     id: 
     combatStats:
-      strength: 0
+      attack: 0
       defense: 0
       magic: 0
       speed: 0
@@ -171,9 +253,10 @@ MonoBehaviour:
   rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
   footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
   takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
-  attackMultiplier: 2
-  magicMultiplier: 2
-  accuracyMultiplier: 2
+  addedMeleeAttackValue: 0
+  addedRangedAttackValue: 0
+  addedMagicAttackValue: 0
+  armorValue: 0
 --- !u!212 &212978801610733208
 SpriteRenderer:
   m_ObjectHideFlags: 1

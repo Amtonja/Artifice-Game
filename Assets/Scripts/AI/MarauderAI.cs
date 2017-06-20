@@ -5,7 +5,7 @@ using Artifice.Interfaces;
 
 namespace Artifice.Characters
 {
-	public class ScorpioAI : MonoBehaviour
+	public class MarauderAI : MonoBehaviour
 	{
 
 		//Temporary komodo script
@@ -38,17 +38,13 @@ namespace Artifice.Characters
 				}
 				Entity target = person.GetComponent<Entity>();
 
-				//                if (randB < 0.5f)
-				//                {
-				//                    //_player.MeleeAttack(target);
-				                    _player.MyCombatAction = _player.MeleeAttack;                    
-				//                }
-				//                else
-				//                {
-				//_player.FireBreath(target);
-//				_player.MySpell = _player.FireBreath;
-//				_player.MyCombatAction = _player.BeginSpellCast;
-				//                }
+				if (randB < 0.5f) {
+					//                    //_player.MeleeAttack(target);
+					_player.MyCombatAction = _player.MeleeAttack;
+				} else {
+					_player.MyCombatAction = _player.RangedAttack;
+				}
+
 
 				_player.MyCombatAction(target);
 			}

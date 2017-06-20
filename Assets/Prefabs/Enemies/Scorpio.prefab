@@ -68,7 +68,7 @@ Transform:
   m_GameObject: {fileID: 1841612056227444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.99, y: -1.59, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4139383804420768}
   m_Father: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
     name: Scorpio
     id: _scorpio_
     combatStats:
-      strength: 15
+      attack: 0
       defense: 1
       magic: 17
       speed: 11
@@ -136,6 +136,12 @@ MonoBehaviour:
   characterID: _scorpio_
   meleeSFX: {fileID: 0}
   rangedSFX: {fileID: 0}
+  footstepSFX: {fileID: 0}
+  takeDamageSFX: {fileID: 0}
+  addedMeleeAttackValue: 0
+  addedRangedAttackValue: 0
+  addedMagicAttackValue: 0
+  armorValue: 0
 --- !u!114 &114939850832385646
 MonoBehaviour:
   m_ObjectHideFlags: 1
