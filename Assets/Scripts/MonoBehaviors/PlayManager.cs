@@ -274,7 +274,7 @@ public class PlayManager : MonoBehaviour
 
         MusicManager.instance.PlayCombatEnding();
 
-        DisplayCombatRewards();
+        DisplayCombatRewards(2f);
 
         for (int i = 0; i < party.Length; i++)
         {
@@ -292,13 +292,13 @@ public class PlayManager : MonoBehaviour
         experiencePool = 0;
     }
 
-    public void DisplayCombatRewards()
+    public void DisplayCombatRewards(float messageDuration)
     {
-        float messageDuration = 2f;
+        //float messageDuration = 2f;
         for (int i = 0; i < party.Length; i++)
         {
             DialogueManager.ShowAlert(party[i].name + " gained " + experiencePool + " XP!", messageDuration);
-        }
+        }        
     }
 
     public void PauseGame()

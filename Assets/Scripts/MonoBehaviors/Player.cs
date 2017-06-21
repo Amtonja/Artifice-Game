@@ -205,6 +205,7 @@ public class Player : Entity
         else
         {
             PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray);
+            PlayManager.instance.UpdateAttacked();            
         }
     }
 
@@ -231,6 +232,7 @@ public class Player : Entity
         else
         {
             PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray);
+            PlayManager.instance.UpdateAttacked();
         }
     }
 
@@ -293,6 +295,8 @@ public class Player : Entity
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
         _animator.SetBool("SpellComplete", true);
+
+        PlayManager.instance.UpdateAttacked();
     }
 
     public void BoltSpell(Entity target)
