@@ -50,7 +50,8 @@ AudioSource:
   m_GameObject: {fileID: 1735259775036120}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243799806139890284, guid: 7652fa45c00f79041b9560d48b4dfb06,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: b9bfb7fdfe83bda42a7be6bca1239749, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -636,7 +637,7 @@ ParticleSystem:
     radius: 0.01
     angle: 10
     length: 5
-    boxX: 0.8
+    boxX: 0.52
     boxY: 1
     boxZ: 0.1
     arc: 360

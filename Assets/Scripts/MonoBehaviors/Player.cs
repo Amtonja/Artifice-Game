@@ -176,6 +176,7 @@ public class Player : Entity
         if (attackRoll <= 5)
         {
             isAHit = false;
+            Debug.Log(characterName + " missed!");
         }
         
         return isAHit;
