@@ -37,7 +37,7 @@ public class Player : Entity
     private string characterName, characterID;
 
     [SerializeField]
-    private AudioClip meleeSFX, rangedSFX, footstepSFX, takeDamageSFX;
+    private AudioClip meleeSFX, rangedSFX, footstepSFX, takeDamageSFX, deathSFX;
 
     private AudioSource _audio;
 
@@ -87,7 +87,7 @@ public class Player : Entity
         AgilityBarTarget = agilityBarDefaultTarget - (agilityBarDefaultTarget * stats.Speed / 100f);
         MagicBarTarget = magicBarDefaultTarget - (magicBarDefaultTarget * stats.Speed / 100f);
 
-        v3spellOrigin = new Vector3(spellOrigin.x * transform.localScale.x, spellOrigin.y * transform.localScale.y, 0f);
+        v3spellOrigin = new Vector3(spellOrigin.x * transform.localScale.x, spellOrigin.y * transform.localScale.y, 0f);        
     }
 
     void Update()
@@ -488,6 +488,8 @@ public class Player : Entity
     public override void Die()
     {
         Debug.Log(gameObject.name + " Died!");
+
+        _audio.PlayOneShot(deathSFX);
 
         if (gameObject.CompareTag("Enemy"))
         {

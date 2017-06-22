@@ -288,7 +288,8 @@ public class CombatPlayerUI : MonoBehaviour
             activePlayer = value;
             playerName.text = activePlayer.Name;
             playerLevel.text = activePlayer.Stats.Level.ToString("00");
-            transform.position = activePlayer.transform.position + Vector3.up / 2f; //+ Vector3.up * 2f + Vector3.right / 2f;
+            transform.position = activePlayer.transform.position + Vector3.left; //+ Vector3.up * 2f + Vector3.right / 2f;
+            iconCanvas.transform.position = activePlayer.transform.position + Vector3.down / 2f;
         }
         get
         {
