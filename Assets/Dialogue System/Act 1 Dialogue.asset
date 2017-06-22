@@ -2835,7 +2835,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: required SendMessage(DialogueComplete,,Scene 6 Trigger)@{{end}};
+        value: 'required SendMessage(DialogueComplete,,Scene 6 Trigger)@{{end}};
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 9
@@ -2856,7 +2858,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 28.734177
-        y: 120
+        y: 120.97087
         width: 160
         height: 30
   - id: 10
@@ -3309,7 +3311,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: required SendMessage(DialogueComplete,,Scene 7 Trigger)@{{end}};
+        value: 'required SendMessage(DialogueComplete,,Scene 7 Trigger)@{{end}};
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 10
@@ -4185,7 +4189,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: required SendMessage(DialogueComplete,,Scene 8 Trigger)@{{end}};
+        value: 'required SendMessage(DialogueComplete,,Scene 8 Trigger)@{{end}};
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 12
@@ -10891,7 +10897,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: required SendMessage(DialogueComplete,,Scene 6b Trigger)@{{end}};
+        value: 'required SendMessage(DialogueComplete,,Scene 6b Trigger)@{{end}};
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 2
