@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d5a1de795e29b5945b1589faab058321
+timeCreated: 1498247797
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ModeSeven
+  fontNames:
+  - ModeSeven
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
