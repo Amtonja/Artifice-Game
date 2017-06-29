@@ -54,14 +54,14 @@ public class Player : Entity
         _footPos = transform.Find("Base").localPosition;
 
         //TODO: This will be loaded in via XML reader later
-        title = characterName;
+        title = CharacterName;
         id = characterID;
 
         if (useXMLStats)
         {
             stats = new CombatStats(1, id); // for reading stats from XML
             
-            Debug.Log("Stats loaded for " + characterName);
+            Debug.Log("Stats loaded for " + CharacterName);
             Debug.Log(stats.ToString());
         }        
         else
@@ -176,7 +176,7 @@ public class Player : Entity
         if (attackRoll <= 5)
         {
             isAHit = false;
-            Debug.Log(characterName + " missed!");
+            Debug.Log(CharacterName + " missed!");
         }
         
         return isAHit;
@@ -676,6 +676,19 @@ public class Player : Entity
             _spell = value;
         }
     }
-       
+
+    public string CharacterName
+    {
+        get
+        {
+            return characterName;
+        }
+
+        set
+        {
+            characterName = value;
+        }
+    }
+
     #endregion
 }

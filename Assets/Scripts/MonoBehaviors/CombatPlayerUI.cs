@@ -24,7 +24,7 @@ public class CombatPlayerUI : MonoBehaviour
     /// Time (in seconds) it takes for the health bar "delta" to animate
     /// when health changes.
     /// </summary>
-    public float healthBarDeltaTime;
+    //public float healthBarDeltaTime;
 
     public enum PlayerUIState
     {
@@ -38,6 +38,7 @@ public class CombatPlayerUI : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
+        /*
         playerName = transform.FindChild("PlayerName").GetComponent<Text>();
         playerLevel = transform.FindChild("PlayerLevel").GetComponent<Text>();
 
@@ -50,6 +51,7 @@ public class CombatPlayerUI : MonoBehaviour
         healthBarDelta = transform.FindChild("HealthBar/DeltaOverlay").GetComponent<Image>();
 
         healthBarDelta.fillAmount = 1.0f;
+        */
 
         iconCanvas = GetComponentInChildren<Canvas>();
         iconCanvas.enabled = false;
@@ -81,18 +83,22 @@ public class CombatPlayerUI : MonoBehaviour
                 return;
             }
             // Update the five bars
+            /*
             actionBar.fillAmount = ActivePlayer.ActionBarTimer / ActivePlayer.ActionBarTargetTime;
             agilityBar.fillAmount = ActivePlayer.AgilityBarValue / ActivePlayer.AgilityBarTarget;
             magicBar.fillAmount = ActivePlayer.MagicBarValue / ActivePlayer.MagicBarTarget;
             rageBar.fillAmount = ActivePlayer.RageBarValue / ActivePlayer.RageBarTarget;
             specialBar.fillAmount = ActivePlayer.SpecialBarValue / ActivePlayer.SpecialBarTarget;
+            */
         }        
 
         // Happening in any state
+        /*
         if (ActivePlayer.HealthChanged)
         {
             UpdateHealthBar();
         }
+        */
 
         if (State == PlayerUIState.ENEMY_SELECT)
         {
@@ -153,33 +159,33 @@ public class CombatPlayerUI : MonoBehaviour
     /// Update the ActivePlayer's health bar, changing the green bar
     /// immediately and the red delta bar gradually
     /// </summary>
-    private void UpdateHealthBar()
-    {
-        float oldFillAmount = healthBar.fillAmount;
-        healthBar.fillAmount = (float)ActivePlayer.Health / (float)ActivePlayer.Stats.MaxHealth;
-        StartCoroutine(AnimateHealthBarDelta(oldFillAmount, healthBar.fillAmount, healthBarDeltaTime));
-        ActivePlayer.HealthChanged = false;
-    }
+    //private void UpdateHealthBar()
+    //{
+    //    float oldFillAmount = healthBar.fillAmount;
+    //    healthBar.fillAmount = (float)ActivePlayer.Health / (float)ActivePlayer.Stats.MaxHealth;
+    //    StartCoroutine(AnimateHealthBarDelta(oldFillAmount, healthBar.fillAmount, healthBarDeltaTime));
+    //    ActivePlayer.HealthChanged = false;
+    //}
 
-    /// <summary>
-    /// Coroutine to change the value of the health delta bar over (time) seconds
-    /// </summary>
-    /// <param name="startValue">Initial fill amount of the bar</param>
-    /// <param name="endValue">Target fill amount of the bar</param>
-    /// <param name="time">Total time in seconds the change will take</param>
-    /// <returns></returns>
-    private IEnumerator AnimateHealthBarDelta(float startValue, float endValue, float time)
-    {
-        float elapsedTime = 0f;
-        healthBarDelta.fillAmount = startValue;
+    ///// <summary>
+    ///// Coroutine to change the value of the health delta bar over (time) seconds
+    ///// </summary>
+    ///// <param name="startValue">Initial fill amount of the bar</param>
+    ///// <param name="endValue">Target fill amount of the bar</param>
+    ///// <param name="time">Total time in seconds the change will take</param>
+    ///// <returns></returns>
+    //private IEnumerator AnimateHealthBarDelta(float startValue, float endValue, float time)
+    //{
+    //    float elapsedTime = 0f;
+    //    healthBarDelta.fillAmount = startValue;
 
-        while (elapsedTime < time)
-        {
-            healthBarDelta.fillAmount = Mathf.Lerp(healthBarDelta.fillAmount, endValue, (elapsedTime / time));
-            elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-    }
+    //    while (elapsedTime < time)
+    //    {
+    //        healthBarDelta.fillAmount = Mathf.Lerp(healthBarDelta.fillAmount, endValue, (elapsedTime / time));
+    //        elapsedTime += Time.deltaTime;
+    //        yield return new WaitForEndOfFrame();
+    //    }
+    //}
 
     public void OpenSubmenu(GameObject icon)
     {
@@ -286,9 +292,9 @@ public class CombatPlayerUI : MonoBehaviour
         set
         {
             activePlayer = value;
-            playerName.text = activePlayer.Name;
-            playerLevel.text = activePlayer.Stats.Level.ToString("00");
-            transform.position = activePlayer.transform.position + Vector3.left; //+ Vector3.up * 2f + Vector3.right / 2f;
+            //playerName.text = activePlayer.Name;
+            //playerLevel.text = activePlayer.Stats.Level.ToString("00");
+            //transform.position = activePlayer.transform.position + Vector3.left; //+ Vector3.up * 2f + Vector3.right / 2f;
             iconCanvas.transform.position = activePlayer.transform.position + Vector3.down / 2f;
         }
         get
