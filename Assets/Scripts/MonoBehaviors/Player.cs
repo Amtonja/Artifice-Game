@@ -22,9 +22,9 @@ public class Player : Entity
 
     private Vector3 v3spellOrigin;
 
-    private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
-    private float agilityBarTarget, magicBarTarget, rageBarTarget = 20f, specialBarTarget = 20f;
-    private float actionBarDefaultTarget = 6f, agilityBarDefaultTarget = 22.7f, magicBarDefaultTarget = 37.5f;
+    private int agilityBarValue = 0, magicBarValue = 0, rageBarValue = 0, specialBarValue = 0;
+    private int agilityBarTarget = 3, magicBarTarget = 5, rageBarTarget = 10, specialBarTarget;
+    private float actionBarDefaultTarget = 6f;
 
     private Vector3 _footPos;
 
@@ -84,8 +84,8 @@ public class Player : Entity
         // The time for a character's action bar to fill is equal to the default time minus a percentage equal to their Speed stat
         // Likewise for the other bars
         ActionBarTargetTime = actionBarDefaultTarget - (actionBarDefaultTarget * stats.Speed / 100f);
-        AgilityBarTarget = agilityBarDefaultTarget - (agilityBarDefaultTarget * stats.Speed / 100f);
-        MagicBarTarget = magicBarDefaultTarget - (magicBarDefaultTarget * stats.Speed / 100f);
+        //AgilityBarTarget = agilityBarDefaultTarget - (agilityBarDefaultTarget * stats.Speed / 100f);
+        //MagicBarTarget = magicBarDefaultTarget - (magicBarDefaultTarget * stats.Speed / 100f);
 
         v3spellOrigin = new Vector3(spellOrigin.x * transform.localScale.x, spellOrigin.y * transform.localScale.y, 0f);        
     }
@@ -126,31 +126,12 @@ public class Player : Entity
             {
                 // take a turn
                 IsMyTurn = true;
+                AgilityBarValue++;
+                MagicBarValue++;
+                RageBarValue++;
+                
                 PlayManager.instance.PauseGame();
-
-            }
-
-            // Update the other four bars
-            if (AgilityBarValue < AgilityBarTarget)
-            {
-                AgilityBarValue += Time.deltaTime;
-            }
-
-            if (MagicBarValue < MagicBarTarget)
-            {
-                MagicBarValue += Time.deltaTime;
-            }
-
-            if (RageBarValue < RageBarTarget)
-            {
-                RageBarValue += Time.deltaTime;
-            }
-
-            if (SpecialBarValue < SpecialBarTarget)
-            {
-                // Loyalty not a thing -- find out real stat used
-                //SpecialBarValue += (Stats.Loyalty / 10.0f) * Time.deltaTime; // Look, just get real formulas for these
-            }
+            }            
         }
     }
 
@@ -539,7 +520,7 @@ public class Player : Entity
     #endregion
 
     #region C# Properties
-    public float AgilityBarValue
+    public int AgilityBarValue
     {
         get
         {
@@ -552,7 +533,7 @@ public class Player : Entity
         }
     }
 
-    public float MagicBarValue
+    public int MagicBarValue
     {
         get
         {
@@ -565,7 +546,7 @@ public class Player : Entity
         }
     }
 
-    public float RageBarValue
+    public int RageBarValue
     {
         get
         {
@@ -578,7 +559,7 @@ public class Player : Entity
         }
     }
 
-    public float SpecialBarValue
+    public int SpecialBarValue
     {
         get
         {
@@ -591,7 +572,7 @@ public class Player : Entity
         }
     }
 
-    public float AgilityBarTarget
+    public int AgilityBarTarget
     {
         get
         {
@@ -604,7 +585,7 @@ public class Player : Entity
         }
     }
 
-    public float MagicBarTarget
+    public int MagicBarTarget
     {
         get
         {
@@ -617,7 +598,7 @@ public class Player : Entity
         }
     }
 
-    public float RageBarTarget
+    public int RageBarTarget
     {
         get
         {
@@ -630,7 +611,7 @@ public class Player : Entity
         }
     }
 
-    public float SpecialBarTarget
+    public int SpecialBarTarget
     {
         get
         {

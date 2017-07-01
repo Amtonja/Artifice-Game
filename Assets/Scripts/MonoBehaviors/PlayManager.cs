@@ -7,6 +7,7 @@ using UnityEngine;
 /// The singleton manager for the current play session
 /// This is more specific than the GameManager and non-persistent
 /// </summary>
+[RequireComponent(typeof(Canvas))]
 public class PlayManager : MonoBehaviour
 {
 
@@ -27,7 +28,7 @@ public class PlayManager : MonoBehaviour
     /// begins, the UI will automatically show all the characters info.
     /// </summary>
     public CombatUIManager playerCombatUI;
-    public RectTransform groupCombatUI;
+    public GameObject groupCombatUI;
 
     /// <summary>
     /// Reference to the CombatGrid object so that it can be
@@ -222,7 +223,7 @@ public class PlayManager : MonoBehaviour
         }
 
         // For new UI: display box
-        groupCombatUI.gameObject.SetActive(true);
+        groupCombatUI.SetActive(true);
 
         //move to correct combat state
         state = combatState.Init;
@@ -234,10 +235,14 @@ public class PlayManager : MonoBehaviour
 
     public void CreatePopupText(string text, Transform location, Color textColor)
     {
-        PopupText popup = Instantiate(popupTextPrefab, groupCombatUI.transform.Find("Canvas"), false);
+        PopupText popup = Instantiate(popupTextPrefab);
         popup.GetComponentInChildren<UnityEngine.UI.Text>().text = text;
         popup.GetComponentInChildren<UnityEngine.UI.Text>().color = textColor;
-        popup.transform.position = location.position;
+        popup.transform.SetParent(transform, false);
+
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(location.position);
+
+        popup.transform.position = screenPos;
     }
 
     /// <summary>
@@ -265,7 +270,7 @@ public class PlayManager : MonoBehaviour
         // turn off player combat UI
         playerCombatUI.DeactivatePlayerUI();
         // for new UI: Hide box
-        groupCombatUI.gameObject.SetActive(false);
+        groupCombatUI.SetActive(false);
         experiencePool = 0;
     }
 

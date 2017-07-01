@@ -16,9 +16,10 @@ public class PartyUIElement : MonoBehaviour
     {
         int playerIndex = 0;
         bool result = int.TryParse(name.Substring(name.Length - 1), out playerIndex);
+        
         if (result)
         {
-            player = PlayManager.instance.Party[playerIndex];
+            player = PlayManager.instance.party[playerIndex];
         }
         else
         {
