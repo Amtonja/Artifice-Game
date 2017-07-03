@@ -16,6 +16,7 @@ public class Battleground : MonoBehaviour {
 //	public List enemies;
 
 	public Transform[] playerPosList;
+	public bool bPlayersFightRight = true;
 	public Transform[] enemyPosList;
 
 	public List<Player> enemies;
@@ -68,13 +69,34 @@ public class Battleground : MonoBehaviour {
 		readyCount++;
 		if (readyCount == totalReadyCount) {
 			Debug.Log ("Errybody ready to party!");
+
+			//Make sure everything is facing the right direction
+			for (int i = 0; i < party.Length; i++) {
+				if (bPlayersFightRight) {
+					party [i].transform.localScale = new Vector3 (1, 1, 1);
+				} else {
+					party [i].transform.localScale = new Vector3 (-1, 1, 1);
+				}
+
+			}
+			//Later change to send the AI script a message to tel them what direction they need to face to attack for when they wander
+			for (int i = 0; i < enemies.Count; i++) {
+				if (!bPlayersFightRight) {
+					enemies [i].transform.localScale = new Vector3 (1, 1, 1);
+				} else {
+					enemies [i].transform.localScale = new Vector3 (-1, 1, 1);
+					Debug.Log ("Enemies facing left!");
+				}
+
+			}
+
 			//Have everyone in party do into animations
 			PlayManager.instance.EnemyEncountered();
 		}
 
 	}
 
-	//Called by 
+	//Called by ???
 	public void ChangeHeroFormation(int num){
 
 

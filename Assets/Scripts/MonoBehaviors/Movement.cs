@@ -159,7 +159,8 @@ public class Movement : MonoBehaviour
             }
             else if (moveDir == directions.Left)
             {
-                _animator.Play(Animator.StringToHash("IdleLeft"));
+//                _animator.Play(Animator.StringToHash("IdleLeft"));
+				_animator.Play(Animator.StringToHash("IdleRight"));
             }
 
             return;
@@ -185,12 +186,16 @@ public class Movement : MonoBehaviour
         {
             moveDelta += Vector2.right;
             _animator.Play(Animator.StringToHash("GoRight"));
+			this.transform.localScale = new Vector3(1, 1, 1);
             moveDir = directions.Right;
         }
         else if (Input.GetAxis("Horizontal") < -0.5f)
         {
             moveDelta += Vector2.left;
-            _animator.Play(Animator.StringToHash("GoLeft"));
+//            _animator.Play(Animator.StringToHash("GoLeft"));
+			_animator.Play(Animator.StringToHash("GoRight"));
+			this.transform.localScale = new Vector3(-1, 1, 1);
+
             moveDir = directions.Left;
         }
 
@@ -264,7 +269,8 @@ public class Movement : MonoBehaviour
                 }
                 else if (moveDir == directions.Left)
                 {
-                    _animator.Play(Animator.StringToHash("IdleLeft"));
+//                    _animator.Play(Animator.StringToHash("IdleLeft"));
+					_animator.Play(Animator.StringToHash("IdleRight"));
                 }
             }
 
@@ -324,12 +330,15 @@ public class Movement : MonoBehaviour
             {// && Mathf.Abs(moveDelta.x) > Mathf.Abs(moveDelta.y)) {
              //				moveDelta += Vector2.right;
                 _animator.Play(Animator.StringToHash("GoRight"));
+				this.transform.localScale = new Vector3(1, 1, 1);
                 moveDir = directions.Right;
             }
             else if (moveDelta.x < -0f)
             {// && Mathf.Abs(moveDelta.x) > Mathf.Abs(moveDelta.y)) {
              //				moveDelta += Vector2.left;
-                _animator.Play(Animator.StringToHash("GoLeft"));
+//                _animator.Play(Animator.StringToHash("GoLeft"));
+				_animator.Play(Animator.StringToHash("GoRight"));
+				this.transform.localScale = new Vector3(-1, 1, 1);
                 moveDir = directions.Left;
             }
 
@@ -376,12 +385,15 @@ public class Movement : MonoBehaviour
             {// && Mathf.Abs(moveDelta.x) > Mathf.Abs(moveDelta.y)) {
              //				moveDelta += Vector2.right;
                 _animator.Play(Animator.StringToHash("GoRight"));
+				this.transform.localScale = new Vector3(1, 1, 1);
                 moveDir = directions.Right;
             }
             else if (moveDelta.x < -0f)
             {// && Mathf.Abs(moveDelta.x) > Mathf.Abs(moveDelta.y)) {
              //				moveDelta += Vector2.left;
-                _animator.Play(Animator.StringToHash("GoLeft"));
+//                _animator.Play(Animator.StringToHash("GoLeft"));
+				_animator.Play(Animator.StringToHash("GoRight"));
+				this.transform.localScale = new Vector3(-1, 1, 1);
                 moveDir = directions.Left;
             }
 
@@ -405,10 +417,13 @@ public class Movement : MonoBehaviour
                 else if (moveDir == directions.Right)
                 {
                     _animator.Play(Animator.StringToHash("IdleRight"));
+					this.transform.localScale = new Vector3(1, 1, 1);
                 }
                 else if (moveDir == directions.Left)
                 {
-                    _animator.Play(Animator.StringToHash("IdleLeft"));
+//                    _animator.Play(Animator.StringToHash("IdleLeft"));
+					_animator.Play(Animator.StringToHash("IdleRight"));
+					this.transform.localScale = new Vector3(-1, 1, 1);
                 }
             }
 
@@ -470,10 +485,13 @@ public class Movement : MonoBehaviour
         else if (fDir.x == 1)
         {
             _animator.Play(Animator.StringToHash("IdleRight"));
+			this.transform.localScale = new Vector3(1, 1, 1);
         }
         else if (fDir.x == -1)
         {
-            _animator.Play(Animator.StringToHash("IdleLeft"));
+//            _animator.Play(Animator.StringToHash("IdleLeft"));
+			_animator.Play(Animator.StringToHash("IdleRight"));
+			this.transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 

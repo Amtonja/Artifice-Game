@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: fcbee76fd25b0ab4b8abff29142b0977
-timeCreated: 1496852803
+timeCreated: 1499103567
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -64,7 +64,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -157,12 +157,12 @@ TextureImporter:
       name: Scorpio_Idle1
       rect:
         serializedVersion: 2
-        x: 322
+        x: 332
         y: 330
         width: 56
         height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.35, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -222,12 +222,12 @@ TextureImporter:
       name: Scorpio_Idle2
       rect:
         serializedVersion: 2
-        x: 322
+        x: 332
         y: 265
         width: 56
         height: 58
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.35, y: 0.52}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -287,12 +287,12 @@ TextureImporter:
       name: Scorpio_Hit
       rect:
         serializedVersion: 2
-        x: 325
+        x: 335
         y: 204
         width: 50
         height: 57
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.37, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -365,12 +365,12 @@ TextureImporter:
       name: Scorpio_Melee1
       rect:
         serializedVersion: 2
-        x: 13
-        y: 79
-        width: 56
-        height: 58
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 26
+        y: 80
+        width: 58
+        height: 60
+      alignment: 9
+      pivot: {x: 0.34, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -378,12 +378,12 @@ TextureImporter:
       name: Scorpio_Melee2
       rect:
         serializedVersion: 2
-        x: 93
+        x: 97
         y: 78
         width: 58
-        height: 59
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 60
+      alignment: 9
+      pivot: {x: 0.39, y: 0.56}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -391,12 +391,12 @@ TextureImporter:
       name: Scorpio_Melee3
       rect:
         serializedVersion: 2
-        x: 171
-        y: 79
-        width: 56
+        x: 179
+        y: 80
+        width: 58
         height: 60
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.35, y: 0.54}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -404,12 +404,12 @@ TextureImporter:
       name: Scorpio_Melee4
       rect:
         serializedVersion: 2
-        x: 247
-        y: 79
-        width: 56
-        height: 58
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 261
+        y: 80
+        width: 58
+        height: 60
+      alignment: 9
+      pivot: {x: 0.35, y: 0.54}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
