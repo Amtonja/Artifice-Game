@@ -355,7 +355,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    //Forces a character to move in a direction.
+    //Forces a character to move to a location.
     private void ForceMove()
     {
         if (Vector3.Distance(this.transform.position, new Vector3(intendedPosition.x, intendedPosition.y, 0)) > 0.1f)
@@ -433,7 +433,7 @@ public class Movement : MonoBehaviour
         else {
             Debug.Log("Finished moving!");
             this.transform.position = intendedPosition;
-            StopForcedMove();
+			StopForcedMove(true);
             //            inputDelay = 0.3f;
         }
 
@@ -451,13 +451,15 @@ public class Movement : MonoBehaviour
         Debug.Log("Forced movement starting!");
     }
 
-    //stops forced movement process.
-    private void StopForcedMove()
+    //stops forced movement process. Callback sends... well, a callback towards whatever stopped it. 
+	public void StopForcedMove( bool bCallback)
     {
         bForceMove = false;
         intendedPosition = new Vector2(0, 0);
         //        forcedSender.GetComponent<CM_ForceMove>().NextTarget();
-        forcedSender.SendMessage("MoveComplete");
+		if (bCallback) {
+			forcedSender.SendMessage ("MoveComplete");
+		}
 
 
     }

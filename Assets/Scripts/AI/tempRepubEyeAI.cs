@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Artifice.Interfaces;
 
-namespace Artifice.Characters {
-	public class tempRepubEyeAI : MonoBehaviour {
+namespace Artifice.Characters 
+{
+	public class tempRepubEyeAI : AIBase //MonoBehaviour 
+	{
 
 		//Temporary republic eye script
 
-		private Player _player; //ref to our Player script
-
-
-		// Use this for initialization
-		void Start () {
-			_player = GetComponent<Player> ();
-		}
+//		private Player _player; //ref to our Player script
+//
+//
+//		// Use this for initialization
+//		void Start () {
+//			_player = GetComponent<Player> ();
+//		}
 
 		// Update is called once per frame
-		void Update () {
+		public override void CombatUpdate () {
 			if (_player.IsMyTurn) {
 				Debug.Log (gameObject.name.ToString () + "'s turn!");
 

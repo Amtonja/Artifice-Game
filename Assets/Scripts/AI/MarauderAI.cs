@@ -5,21 +5,21 @@ using Artifice.Interfaces;
 
 namespace Artifice.Characters
 {
-	public class MarauderAI : MonoBehaviour
+	public class MarauderAI : AIBase//MonoBehaviour
 	{
 
 		//Temporary komodo script
 
-		private Player _player; //ref to our Player script
-
-		// Use this for initialization
-		void Start()
-		{
-			_player = GetComponent<Player>();
-		}
+//		private Player _player; //ref to our Player script
+//
+//		// Use this for initialization
+//		void Start()
+//		{
+//			_player = GetComponent<Player>();
+//		}
 
 		// Update is called once per frame
-		void Update()
+		void CombatUpdate()
 		{
 			if (_player.IsMyTurn)
 			{

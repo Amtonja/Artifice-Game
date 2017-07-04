@@ -5,21 +5,21 @@ using Artifice.Interfaces;
 
 namespace Artifice.Characters
 {
-	public class ScorpioAI : MonoBehaviour
+	public class ScorpioAI : AIBase//MonoBehaviour
 	{
 
 		//Temporary komodo script
 
-		private Player _player; //ref to our Player script
-
-		// Use this for initialization
-		void Start()
-		{
-			_player = GetComponent<Player>();
-		}
+//		private Player _player; //ref to our Player script
+//
+//		// Use this for initialization
+//		void Start()
+//		{
+//			_player = GetComponent<Player>();
+//		}
 
 		// Update is called once per frame
-		void Update()
+		public override void CombatUpdate()
 		{
 			if (_player.IsMyTurn)
 			{
@@ -41,7 +41,7 @@ namespace Artifice.Characters
 				//                if (randB < 0.5f)
 				//                {
 				//                    //_player.MeleeAttack(target);
-				                    _player.MyCombatAction = _player.MeleeAttack;                    
+				_player.MyCombatAction = _player.MeleeAttack;                    
 				//                }
 				//                else
 				//                {
