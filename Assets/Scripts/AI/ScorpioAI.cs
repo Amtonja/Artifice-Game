@@ -41,7 +41,7 @@ namespace Artifice.Characters
 				//                if (randB < 0.5f)
 				//                {
 				//                    //_player.MeleeAttack(target);
-				_player.MyCombatAction = _player.MeleeAttack;                    
+				_player.MyCombatAction = _player.BluntAttack;                    
 				//                }
 				//                else
 				//                {

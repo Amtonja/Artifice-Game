@@ -220,6 +220,44 @@ public class Player : Entity
         }
     }
 
+
+	public void BluntAttack(Entity target)
+	{
+		Debug.Log("Blunt attack on " + target.name);
+		tempTarget = target;
+		_animator.Play(Animator.StringToHash("SwordAttack"));
+		ActionBarTimer = 0f;
+		IsMyTurn = false;
+		//        PlayManager.instance.UnpauseGame();
+		PlayManager.instance.SendAttackCount(1);
+		PlayManager.instance.StartingAttack ();
+	}
+
+	//Called by animator. Ensures damage is dealt on the correct attack frame
+	public void EndBluntAttack()
+	{
+		_audio.PlayOneShot(meleeSFX);
+		int damage = Stats.Attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue; 
+		if (CalculateHit(tempTarget))
+		{
+			//check for resistance and weaknesses
+			if (tempTarget.MyRes.bBlunt) {
+				damage = (int)((float)damage * 0.75f);
+			} else if (tempTarget.MyWeak.bBlunt) {
+				damage = (int)((float)damage * 1.5f);
+			}
+
+			tempTarget.TakeDamage(damage);
+		}
+		else
+		{
+			PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray);
+			PlayManager.instance.UpdateAttacked();            
+		}
+	}
+
+
+
     public void RangedAttack(Entity target)
     {
         tempTarget = target;

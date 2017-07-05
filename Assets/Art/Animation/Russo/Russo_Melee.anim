@@ -70,7 +70,7 @@ AnimationClip:
   m_IsEmpty: 0
   m_Events:
   - time: 0.25
-    functionName: EndMeleeAttack
+    functionName: EndBluntAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
