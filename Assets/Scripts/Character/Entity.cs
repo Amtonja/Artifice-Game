@@ -23,6 +23,39 @@ namespace Artifice.Characters
 
         protected float alphaColor = 1.0f; //for temporary blink
 
+		//Damage resistance types for this character. [System.Serializable] to expose to editor for testing purposes.
+		[System.Serializable]
+		public struct Resistances {
+			public bool bBlunt;
+			public bool bPeircing;
+			public bool bProjectile;
+
+			public bool bWind;
+			public bool bFire;
+			public bool bLightning;
+			public bool bIce;
+			public bool bForce;
+		}
+
+		public Resistances myRes;
+
+		[System.Serializable]
+		public struct Weaknesses {
+			public bool bBlunt;
+			public bool bPeircing;
+			public bool bProjectile;
+
+			public bool bWind;
+			public bool bFire;
+			public bool bLightning;
+			public bool bIce;
+			public bool bForce;
+		}
+
+
+		public Weaknesses myWeak;
+
+
         public virtual void TakeDamage(int _damage)
         {
             HealthChanged = true;
@@ -182,6 +215,21 @@ namespace Artifice.Characters
                 magicDefenseValue = value;
             }
         }
+
+
+		public Resistances MyRes {
+			get
+			{
+				return myRes;
+			}
+		}
+
+		public Weaknesses MyWeak{
+			get
+			{
+				return myWeak;
+			}
+		}
         #endregion
     }
 }

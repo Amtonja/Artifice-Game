@@ -19,7 +19,7 @@ namespace Artifice.Characters
 //		}
 
 		// Update is called once per frame
-		void CombatUpdate()
+		public override void CombatUpdate()
 		{
 			if (_player.IsMyTurn)
 			{

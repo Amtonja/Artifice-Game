@@ -46,6 +46,9 @@ public class Player : Entity
     // Consider these temporary variables standing in for actual equipment values
     public int addedMeleeAttackValue, addedRangedAttackValue, addedMagicAttackValue, armorValue;
 
+
+
+
     // Use this for initialization
     void Start()
     {
@@ -201,6 +204,13 @@ public class Player : Entity
         int damage = Stats.Attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue; 
         if (CalculateHit(tempTarget))
         {
+			//check for resistance and weaknesses
+			if (tempTarget.MyRes.bPeircing) {
+				damage = (int)((float)damage * 0.75f);
+			} else if (tempTarget.MyWeak.bPeircing) {
+				damage = (int)((float)damage * 1.5f);
+			}
+
             tempTarget.TakeDamage(damage);
         }
         else
@@ -228,6 +238,13 @@ public class Player : Entity
         int damage = Stats.Attack + addedRangedAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue;
         if (CalculateHit(tempTarget))
         {
+			//check for resistance and weaknesses
+			if (tempTarget.MyRes.bProjectile) {
+				damage = (int)((float)damage * 0.75f);
+			} else if (tempTarget.MyWeak.bProjectile) {
+				damage = (int)((float)damage * 1.5f);
+			}
+
             tempTarget.TakeDamage(damage);
         }
         else
@@ -273,13 +290,13 @@ public class Player : Entity
     /// <param name="spellVisual">Game object instantiated for the spell's visual effect.</param>
     /// <param name="spellDuration">Duration in seconds of the visual effect.</param>
     /// <returns></returns>
-    public IEnumerator DealSpellDamage(Entity target, GameObject spellVisual, float spellDuration)
+	public IEnumerator DealSpellDamage(Entity target, GameObject spellVisual, float spellDuration, int damage)
     {
         Debug.Log(name + " casts " + spellVisual.name + "at " + target.name + "!");
         PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
 
-        int damage = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue; 
+//        int damage = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue; 
         target.TakeDamage(damage);
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
@@ -310,8 +327,17 @@ public class Player : Entity
         lbs.StartPosition = v3spellOrigin;
         lbs.EndObject = target.gameObject;
 
+		int damage = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+
+		//check for resistance and weaknesses
+		if (target.MyRes.bLightning) {
+			damage = (int)((float)damage * 0.75f);
+		} else if (target.MyWeak.bLightning) {
+			damage = (int)((float)damage * 1.5f);
+		}
+
         float duration = lbs.GetComponent<AudioSource>().clip.length * 2;
-        StartCoroutine(DealSpellDamage(target, lightningBolt, duration));       
+		StartCoroutine(DealSpellDamage(target, lightningBolt, duration, damage));       
 //        PlayManager.instance.UnpauseGame();
     }
 
@@ -355,8 +381,17 @@ public class Player : Entity
             rotToTarget,
             transform) as GameObject;
 
+		int damage = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+
+		//check for resistance and weaknesses
+		if (target.MyRes.bFire) {
+			damage = (int)((float)damage * 0.75f);
+		} else if (target.MyWeak.bFire) {
+			damage = (int)((float)damage * 1.5f);
+		}
+
         float duration = firebreath.GetComponent<AudioSource>().clip.length;
-        StartCoroutine(DealSpellDamage(target, firebreath, duration));
+		StartCoroutine(DealSpellDamage(target, firebreath, duration, damage));
 
         //int damage = Stats.Magic;
         //target.TakeDamage(damage - target.Stats.MagicDefense);
@@ -365,7 +400,7 @@ public class Player : Entity
         //PlayManager.instance.UnpauseGame();
     }
 
-    public void EyeLaser(Entity target)
+    public void EyeLaser(Entity target) //I'm assuming this uses Force?
     {
         GameObject eyeLaser = Instantiate(Resources.Load("Prefabs/EyeLaser", typeof(GameObject)), transform) as GameObject;
         LineRenderer lr = eyeLaser.GetComponent<LineRenderer>();
@@ -373,7 +408,17 @@ public class Player : Entity
         lr.numPositions = 2;
         Vector3[] positions = { transform.position + v3spellOrigin, target.transform.position };
         lr.SetPositions(positions);
-        StartCoroutine(DealSpellDamage(target, eyeLaser, 1.5f));
+
+		int damage = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+
+		//check for resistance and weaknesses
+		if (target.MyRes.bForce) {
+			damage = (int)((float)damage * 0.75f);
+		} else if (target.MyWeak.bForce) {
+			damage = (int)((float)damage * 1.5f);
+		}
+
+		StartCoroutine(DealSpellDamage(target, eyeLaser, 1.5f, damage));
     }
 
     /// <summary>
@@ -676,6 +721,8 @@ public class Player : Entity
             _spell = value;
         }
     }
+
+
        
     #endregion
 }
