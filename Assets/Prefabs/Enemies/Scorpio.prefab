@@ -198,6 +198,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRes:
+    bBlunt: 0
+    bPeircing: 0
+    bProjectile: 0
+    bWind: 0
+    bFire: 0
+    bLightning: 0
+    bIce: 0
+    bForce: 0
+  myWeak:
+    bBlunt: 0
+    bPeircing: 0
+    bProjectile: 1
+    bWind: 0
+    bFire: 0
+    bLightning: 0
+    bIce: 0
+    bForce: 0
   entityInfo:
     name: Scorpio
     id: _scorpio_
@@ -249,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe02e7efa7e57d46bf460de319622ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderPos: {x: 0, y: 0}
 --- !u!212 &212547942948823268
 SpriteRenderer:
   m_ObjectHideFlags: 1

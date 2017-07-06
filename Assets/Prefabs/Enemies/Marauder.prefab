@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5c75945247a134c92d6dba0f463062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderPos: {x: 0, y: 0}
 --- !u!114 &114141640679596544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,6 +223,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRes:
+    bBlunt: 0
+    bPeircing: 0
+    bProjectile: 0
+    bWind: 0
+    bFire: 0
+    bLightning: 0
+    bIce: 0
+    bForce: 0
+  myWeak:
+    bBlunt: 1
+    bPeircing: 0
+    bProjectile: 0
+    bWind: 0
+    bFire: 0
+    bLightning: 0
+    bIce: 0
+    bForce: 0
   entityInfo:
     name: Marauder
     id: _marauder_

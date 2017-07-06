@@ -198,6 +198,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myRes:
+    bBlunt: 0
+    bPeircing: 0
+    bProjectile: 0
+    bWind: 0
+    bFire: 0
+    bLightning: 0
+    bIce: 0
+    bForce: 0
+  myWeak:
+    bBlunt: 0
+    bPeircing: 1
+    bProjectile: 0
+    bWind: 0
+    bFire: 0
+    bLightning: 1
+    bIce: 0
+    bForce: 0
   entityInfo:
     name: Republic Eye
     id: _republiceye_
@@ -236,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac304f6b3e8d8a418bbb1f1d590e9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wanderPos: {x: 0, y: 0}
 --- !u!114 &114666518476865346
 MonoBehaviour:
   m_ObjectHideFlags: 1
