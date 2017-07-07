@@ -221,7 +221,7 @@ MonoBehaviour:
   myRes:
     bBlunt: 0
     bPeircing: 0
-    bProjectile: 0
+    bProjectile: 1
     bWind: 0
     bFire: 0
     bLightning: 0

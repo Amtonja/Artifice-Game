@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRes:
-    bBlunt: 0
+    bBlunt: 1
     bPeircing: 0
     bProjectile: 0
     bWind: 0
