@@ -17,6 +17,8 @@ namespace Artifice.Characters
         private int defenseValue, magicDefenseValue;
         private bool isMyTurn = false;
 
+		public bool bIsEnemy = false; //Used for AI
+
         private bool healthChanged = false;
 
         public abstract void Interact();

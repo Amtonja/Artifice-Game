@@ -18,12 +18,15 @@ namespace Artifice.Characters
 //			_player = GetComponent<Player>();
 //		}
 
+
+		private float waitForWander = 2f; //Need to wait for combat to be ready before wandering
+		private float waitForWanderCurrent = 0f;
+
 		// Update is called once per frame
 		public override void CombatUpdate()
 		{
-			if (_player.IsMyTurn)
-			{
-				Debug.Log(gameObject.name.ToString() + "'s turn!");
+			if (_player.IsMyTurn) {
+				Debug.Log (gameObject.name.ToString () + "'s turn!");
 
 				float randA = Random.value; //which target
 				float randB = Random.value; //which attack
@@ -36,7 +39,7 @@ namespace Artifice.Characters
 				} else {
 					person = GameObject.Find ("Russo");
 				}
-				Entity target = person.GetComponent<Entity>();
+				Entity target = person.GetComponent<Entity> ();
 
 				//                if (randB < 0.5f)
 				//                {
@@ -50,7 +53,12 @@ namespace Artifice.Characters
 //				_player.MyCombatAction = _player.BeginSpellCast;
 				//                }
 
-				_player.MyCombatAction(target);
+				_player.MyCombatAction (target);
+			} else {
+				waitForWanderCurrent += Time.deltaTime;
+				if (waitForWanderCurrent >= waitForWander) {
+					Wander ();
+				}
 			}
 		}
 	}

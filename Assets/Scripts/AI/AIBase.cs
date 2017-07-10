@@ -13,6 +13,7 @@ public class AIBase : MonoBehaviour {
 
 	private bool bWander = true;
 
+	[System.Serializable] //temporary for debugging purposes
 	private struct WanderBoundaries
 	{
 		public float maxX;
@@ -23,12 +24,19 @@ public class AIBase : MonoBehaviour {
 
 	private WanderBoundaries bounds;
 
+	private Vector2 oldBounds; //For resuming the original boundaries if the player runs away
+
 	private int wanderState = 0;
 	private float waitTimer = 1f;
 	private float waitTimerCurrent = 0f;
 
 	private float moveTimer = 1.5f; //extra timer in case it's running straight into a wall or otherwise can't physically get to its location
 	private float moveTimerCurrent = 0f;
+
+	private float hitTimer = 1f;
+	private float hitTimerCurrent = 0f;
+
+	private bool bForceUp, bForceDown, bForceLeft, bForceRight = false; //to keep them off of borders
 
 	// Use this for initialization
 	void Start()
@@ -40,7 +48,7 @@ public class AIBase : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (_player.InCombat || !bWander) {
-			waitTimer = 0;
+			
 			CombatUpdate ();
 		} else {
 			Wander ();
@@ -59,6 +67,26 @@ public class AIBase : MonoBehaviour {
 		bounds.maxY = originLocation.y + newBounds.y;
 		bounds.minY = originLocation.y - newBounds.y;
 
+		//to keep the original input. Yes, this is needlessly recursive
+		oldBounds = newBounds;
+	}
+
+	public void SetCombatBoundaries(bool bFaceLeft){
+
+		if (bFaceLeft) {
+			bounds.minX = originLocation.x;
+		} else {
+			bounds.maxX = originLocation.x;
+
+		}
+
+	}
+
+	//Called by thhe player script to stop wandering
+	public void Stun(){
+		waitTimerCurrent = 0;
+		wanderState = 2;
+		GetComponent<Movement> ().StopForcedMove (false);
 	}
 
 
@@ -68,45 +96,53 @@ public class AIBase : MonoBehaviour {
 	//2 wait timer
 
 	public Vector2 wanderPos;
-	private void Wander(){
+	public void Wander(){
 		if (wanderState == 0) {
 			int dir = Random.Range(0, 4); //4 is how far it can go? And it can't go to 4? Welp, okay
 //			Debug.Log ("random int is " + dir.ToString ());
 			wanderPos = this.transform.position;
 
 			//Chose direction
-			if (dir == 0) {
+			if (dir == 0 || bForceUp) {
 				//go up
 				//Make sure we're not about to go send it out of bounds
 				if (wanderPos.y + 1 > bounds.maxY) {
 					wanderPos.y = bounds.maxY;
+					bForceDown = true;
 				} else {
 					wanderPos.y += 1;
 				}
+				bForceUp = false;
 
-			} else if (dir == 1) {
+			} else if (dir == 1 || bForceRight) {
 				//go right
 				if (wanderPos.x + 1 > bounds.maxX) {
 					wanderPos.x = bounds.maxX;
+					bForceLeft = true;
 				} else {
 					wanderPos.x += 1;
 				}
+				bForceRight = false;
 
-			} else if (dir == 2) {
+			} else if (dir == 2 || bForceDown) {
 				//go down
 				if (wanderPos.y - 1 < bounds.minY) {
 					wanderPos.y = bounds.minY;
+					bForceUp = true;
 				} else {
 					wanderPos.y -= 1;
 				}
+				bForceDown = false;
 
-			} else if (dir == 3) {
+			} else if (dir == 3 || bForceLeft) {
 				//go left
 				if (wanderPos.x - 1 < bounds.minX) {
 					wanderPos.x = bounds.minX;
+					bForceRight = true;
 				} else {
 					wanderPos.x -= 1;
 				}
+				bForceLeft = false;
 			} else { 
 				Debug.Log ("AI wandering direction out of range, what the heck");
 			}
@@ -122,6 +158,7 @@ public class AIBase : MonoBehaviour {
 			if (moveTimerCurrent >= moveTimer) {
 				//we're trying to move to an inaccessable location, so continue from here
 				moveTimerCurrent = 0f;
+	
 				_movement.StopForcedMove (false);
 				wanderState = 2;
 			}
@@ -129,7 +166,7 @@ public class AIBase : MonoBehaviour {
 		} else if (wanderState == 2) {
 			waitTimerCurrent += Time.deltaTime;
 			if (waitTimerCurrent >= waitTimer) {
-				waitTimerCurrent = 0;
+				waitTimerCurrent = 0f;
 				wanderState = 0;
 			}
 
@@ -143,11 +180,15 @@ public class AIBase : MonoBehaviour {
 		wanderState = 2;
 	}
 
-	public void CombatStart(){
+	//Called by Battleground
+	public void CombatStart(bool enemyFaceDirection){
 		//Turn of wandering
 		bWander = false;
 		//stop forced movement
 		_movement.StopForcedMove(false); //if we set this to true it'll activate MoveComplete
+		//update borders for combat
+		SetCombatBoundaries (enemyFaceDirection);
+
 	}
 
 	//Overwritten by specific AI

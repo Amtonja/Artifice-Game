@@ -18,6 +18,9 @@ namespace Artifice.Characters
 //			_player = GetComponent<Player>();
 //		}
 
+		private float waitForWander = 2f; //Need to wait for combat to be ready before wandering
+		private float waitForWanderCurrent = 0f;
+
 		// Update is called once per frame
 		public override void CombatUpdate()
 		{
@@ -47,6 +50,11 @@ namespace Artifice.Characters
 
 
 				_player.MyCombatAction(target);
+			}else {
+				waitForWanderCurrent += Time.deltaTime;
+				if (waitForWanderCurrent >= waitForWander) {
+					Wander ();
+				}
 			}
 		}
 	}

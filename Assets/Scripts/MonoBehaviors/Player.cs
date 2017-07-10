@@ -615,6 +615,11 @@ public class Player : Entity
 
     public override void TakeDamage(int _damage)
     {
+		//
+		if (bIsEnemy) {
+			this.GetComponent<AIBase> ().Stun ();
+		}
+
         base.TakeDamage(_damage);
         _audio.PlayOneShot(takeDamageSFX);
     }

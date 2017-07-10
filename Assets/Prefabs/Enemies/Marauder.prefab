@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bIsEnemy: 1
   myRes:
     bBlunt: 0
     bPeircing: 1
