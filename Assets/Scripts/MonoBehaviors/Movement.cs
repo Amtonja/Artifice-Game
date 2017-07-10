@@ -200,11 +200,11 @@ public class Movement : MonoBehaviour
         }
 
 		//If we detect collision in a direction we want to move, nuke momentum on that axis
-		if(Mathf.Abs(Input.GetAxis("Vertical")) > 0f && CollideCheck(0f, moveDelta.y)){
+		if(Mathf.Abs(Input.GetAxis("Vertical")) > 0f && CollideCheck(0.0f, moveDelta.y, 0.05f, 0f) && CollideCheck(0.0f, moveDelta.y, -0.05f, 0f)){
 			moveDelta.y = 0;
 		}
 
-		if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0f && CollideCheck(moveDelta.x, 0f)){
+		if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0f && CollideCheck(moveDelta.x, 0f, 0f, 0.05f) && CollideCheck(moveDelta.x, 0f, 0f, -0.05f)){
 			moveDelta.x = 0;
 		}
 
@@ -219,13 +219,13 @@ public class Movement : MonoBehaviour
 	private RaycastHit2D _raycastHit;
 	//
 
-	bool CollideCheck(float x, float y){
+	bool CollideCheck(float x, float y, float originOffsetX, float originOffsetY){
 
 		var ray = new Vector2 (0, 0);
 		if (basePoint != null) {
-			ray = new Vector2 (basePoint.transform.position.x, basePoint.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
+			ray = new Vector2 (basePoint.transform.position.x + originOffsetX, basePoint.transform.position.y + originOffsetY); //the base transform is the bottom of feet, need offset
 		} else {
-			ray = new Vector2 (this.transform.position.x, this.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
+			ray = new Vector2 (this.transform.position.x, this.transform.position.y); //the base transform is the bottom of feet, need offset
 		}
 
 		Vector2 delta = new Vector2 (x, y);
@@ -343,11 +343,11 @@ public class Movement : MonoBehaviour
             }
 
 			//If we detect collision in a direction we want to move, nuke momentum on that axis
-			if(Mathf.Abs(moveDelta.y) > 0f && CollideCheck(0f, moveDelta.y)){
+			if(Mathf.Abs(moveDelta.y) > 0f && CollideCheck(0f, moveDelta.y,0f,0f)){
 				moveDelta.y = 0;
 			}
 
-			if(Mathf.Abs(moveDelta.x) > 0f && CollideCheck(moveDelta.x, 0f)){
+			if(Mathf.Abs(moveDelta.x) > 0f && CollideCheck(moveDelta.x, 0f,0f,0f)){
 				moveDelta.x = 0;
 			}
 
