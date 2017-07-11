@@ -14,7 +14,8 @@ public class CombatPlayerUI : MonoBehaviour
     private Image actionBar, specialBar, rageBar, magicBar, agilityBar, healthBar, healthBarDelta;
     private Text playerName, playerLevel;
 
-    private Canvas iconCanvas;
+    //private Canvas iconCanvas;
+    private GameObject iconPanel;
     private GameObject cursor;
     private List<Player> enemiesList;
     private Player[] partyList;
@@ -53,15 +54,17 @@ public class CombatPlayerUI : MonoBehaviour
         healthBarDelta.fillAmount = 1.0f;
         */
 
-        iconCanvas = GetComponentInChildren<Canvas>();
-        iconCanvas.enabled = false;
+        //iconCanvas = GetComponentInChildren<Canvas>();
+        //iconCanvas.enabled = false;
+        iconPanel = transform.Find("IconPanel").gameObject;
+        iconPanel.SetActive(false);
 
         cursor = transform.Find("Cursor").gameObject;
 
         enemiesList = PlayManager.instance.EnemyCombatants;
         partyList = PlayManager.instance.party;
         selectedEnemy = enemiesList[0];
-        selectedPlayer = partyList[0];
+        selectedPlayer = partyList[0];        
 
         State = PlayerUIState.WAITING_FOR_ACTION;
     }
@@ -69,10 +72,11 @@ public class CombatPlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//reset enemy cursor position if that enemy is dead
-		if (enemiesList.Count != 0 && !enemiesList.Contains (selectedEnemy)) {
-			selectedEnemy = enemiesList [0];
-		}
+        //reset enemy cursor position if that enemy is dead
+        if (enemiesList.Count != 0 && !enemiesList.Contains(selectedEnemy))
+        {
+            selectedEnemy = enemiesList[0];
+        }
 
 
         if (State == PlayerUIState.WAITING_FOR_ACTION)
@@ -90,7 +94,7 @@ public class CombatPlayerUI : MonoBehaviour
             rageBar.fillAmount = ActivePlayer.RageBarValue / ActivePlayer.RageBarTarget;
             specialBar.fillAmount = ActivePlayer.SpecialBarValue / ActivePlayer.SpecialBarTarget;
             */
-        }        
+        }
 
         // Happening in any state
         /*
@@ -187,27 +191,28 @@ public class CombatPlayerUI : MonoBehaviour
     //    }
     //}
 
-    public void OpenSubmenu(GameObject icon)
-    {
-        GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
-        if (submenu != null) submenu.SetActive(true);
-    }
+     
+    //public void OpenSubmenu(GameObject icon)
+    //{
+    //    GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
+    //    if (submenu != null) submenu.SetActive(true);
+    //}
 
-    public void CloseSubmenu(GameObject icon)
-    {
-        GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
-        if (submenu != null) submenu.SetActive(false);
-    }
+    //public void CloseSubmenu(GameObject icon)
+    //{
+    //    GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
+    //    if (submenu != null) submenu.SetActive(false);
+    //}
 
     public void CloseAllSubmenus()
     {
-        Transform icons = iconCanvas.transform;
+        Transform icons = iconPanel.transform;
         for (int i = 0; i < icons.childCount; i++)
         {
             Transform currentIcon = icons.GetChild(i);
             if (currentIcon.Find("OptionPanel") != null)
             {
-                CloseSubmenu(currentIcon.gameObject);
+                currentIcon.GetComponent<ActionHex>().CloseSubmenu();
             }
         }
     }
@@ -217,22 +222,22 @@ public class CombatPlayerUI : MonoBehaviour
     /// 5 top-level icons horizontally.
     /// </summary>
     /// <param name="eventData">Data of the Move event sent by the event system.</param>
-    public void OnMoveIcon(BaseEventData eventData)
-    {
-        AxisEventData axisData = eventData as AxisEventData;
-        MoveDirection moveDir = axisData.moveDir;
-        if (moveDir == MoveDirection.Left)
-        {
-            // Here's hoping this nightmare is a workaround for EventSystem.current.lastSelectedGameObject
-            // Point is, close the submenu of whichever icon we are moving AWAY FROM
-            CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnRight().gameObject);
-        }
-        else if (moveDir == MoveDirection.Right)
-        {
-            // Same, but opposite direction
-            CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnLeft().gameObject);
-        }
-    }
+    //public void OnMoveIcon(BaseEventData eventData)
+    //{
+    //    AxisEventData axisData = eventData as AxisEventData;
+    //    MoveDirection moveDir = axisData.moveDir;
+    //    if (moveDir == MoveDirection.Left)
+    //    {
+    //        // Here's hoping this nightmare is a workaround for EventSystem.current.lastSelectedGameObject
+    //        // Point is, close the submenu of whichever icon we are moving AWAY FROM
+    //        CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnRight().gameObject);
+    //    }
+    //    else if (moveDir == MoveDirection.Right)
+    //    {
+    //        // Same, but opposite direction
+    //        CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnLeft().gameObject);
+    //    }
+    //}
 
     public void OnMelee()
     {
@@ -292,10 +297,7 @@ public class CombatPlayerUI : MonoBehaviour
         set
         {
             activePlayer = value;
-            //playerName.text = activePlayer.Name;
-            //playerLevel.text = activePlayer.Stats.Level.ToString("00");
-            //transform.position = activePlayer.transform.position + Vector3.left; //+ Vector3.up * 2f + Vector3.right / 2f;
-            iconCanvas.transform.position = activePlayer.transform.position + Vector3.down / 2f;
+            transform.position = Camera.main.WorldToScreenPoint(ActivePlayer.transform.position);
         }
         get
         {
@@ -320,9 +322,9 @@ public class CombatPlayerUI : MonoBehaviour
                 {
                     case PlayerUIState.ACTION_SELECT:
                         cursor.SetActive(false);
-                        iconCanvas.enabled = true;
+                        iconPanel.SetActive(true);
                         EventSystem.current.sendNavigationEvents = true;
-                        EventSystem.current.SetSelectedGameObject(iconCanvas.transform.Find("ActionIcon").gameObject);
+                        EventSystem.current.SetSelectedGameObject(iconPanel.transform.Find("AttackIcon").gameObject);
                         break;
                     case PlayerUIState.ENEMY_SELECT:
                         EventSystem.current.sendNavigationEvents = false;
@@ -336,7 +338,7 @@ public class CombatPlayerUI : MonoBehaviour
                         break;
                     case PlayerUIState.WAITING_FOR_ACTION:
                         CloseAllSubmenus();
-                        iconCanvas.enabled = false;
+                        iconPanel.SetActive(false);
                         EventSystem.current.sendNavigationEvents = true;
                         cursor.SetActive(false);
                         break;

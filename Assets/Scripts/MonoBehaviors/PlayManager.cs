@@ -86,9 +86,7 @@ public class PlayManager : MonoBehaviour
     {
         exploreMode = true;
         instance = this;
-        combatantEnemies = new List<Player>();
-        //        combatGrid = GameObject.FindGameObjectWithTag("CombatGrid").GetComponent<CombatGrid>();        
-        //        combatGrid.gameObject.SetActive(false);
+        combatantEnemies = new List<Player>();        
     }
 
 
