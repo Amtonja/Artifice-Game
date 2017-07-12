@@ -517,11 +517,13 @@ public class Movement : MonoBehaviour
         }
         else if (moveDir == directions.Right)
         {
-            _animator.Play(Animator.StringToHash("IdleRight"));
+			_animator.Play(Animator.StringToHash("IdleRight"));
+			this.transform.localScale = new Vector3(1, 1, 1);
         }
         else if (moveDir == directions.Left)
         {
-            _animator.Play(Animator.StringToHash("IdleLeft"));
+			_animator.Play(Animator.StringToHash("IdleRight"));
+			this.transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
