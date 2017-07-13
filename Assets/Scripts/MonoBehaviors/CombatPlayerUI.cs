@@ -29,6 +29,7 @@ public class CombatPlayerUI : MonoBehaviour
     {
         WAITING_FOR_TURN,
         ACTION_SELECT,
+        SUB_ACTION_SELECT,
         ENEMY_SELECT,
         PLAYER_SELECT
     }
@@ -39,23 +40,6 @@ public class CombatPlayerUI : MonoBehaviour
     // Use this for initialization
     void OnEnable()
     {
-        /*
-        playerName = transform.FindChild("PlayerName").GetComponent<Text>();
-        playerLevel = transform.FindChild("PlayerLevel").GetComponent<Text>();
-
-        actionBar = transform.FindChild("ActionBar/ActionBarOverlay").GetComponent<Image>();
-        specialBar = transform.FindChild("SpecialBar/SpecialBarOverlay").GetComponent<Image>();
-        rageBar = transform.FindChild("RageBar/SpecialBarOverlay").GetComponent<Image>();
-        magicBar = transform.FindChild("MagicBar/SpecialBarOverlay").GetComponent<Image>();
-        agilityBar = transform.FindChild("AgilityBar/SpecialBarOverlay").GetComponent<Image>();
-        healthBar = transform.FindChild("HealthBar/GreenOverlay").GetComponent<Image>();
-        healthBarDelta = transform.FindChild("HealthBar/DeltaOverlay").GetComponent<Image>();
-
-        healthBarDelta.fillAmount = 1.0f;
-        */
-
-        //iconCanvas = GetComponentInChildren<Canvas>();
-        //iconCanvas.enabled = false;
         iconPanel = transform.Find("IconPanel").gameObject;
         iconPanel.SetActive(false);
 
@@ -86,24 +70,8 @@ public class CombatPlayerUI : MonoBehaviour
             {
                 State = PlayerUIState.ACTION_SELECT;
                 return;
-            }
-            // Update the five bars
-            /*
-            actionBar.fillAmount = ActivePlayer.ActionBarTimer / ActivePlayer.ActionBarTargetTime;
-            agilityBar.fillAmount = ActivePlayer.AgilityBarValue / ActivePlayer.AgilityBarTarget;
-            magicBar.fillAmount = ActivePlayer.MagicBarValue / ActivePlayer.MagicBarTarget;
-            rageBar.fillAmount = ActivePlayer.RageBarValue / ActivePlayer.RageBarTarget;
-            specialBar.fillAmount = ActivePlayer.SpecialBarValue / ActivePlayer.SpecialBarTarget;
-            */
-        }
-
-        // Happening in any state
-        /*
-        if (ActivePlayer.HealthChanged)
-        {
-            UpdateHealthBar();
-        }
-        */
+            }            
+        }        
 
         if (State == PlayerUIState.ENEMY_SELECT)
         {
@@ -132,7 +100,7 @@ public class CombatPlayerUI : MonoBehaviour
 
             if (Input.GetButtonDown("Cancel"))
             {
-                State = PlayerUIState.ACTION_SELECT;
+                State = PlayerUIState.SUB_ACTION_SELECT;
             }
         }
 
@@ -163,7 +131,7 @@ public class CombatPlayerUI : MonoBehaviour
 
             if (Input.GetButtonDown("Cancel"))
             {
-                State = PlayerUIState.ACTION_SELECT;
+                State = PlayerUIState.SUB_ACTION_SELECT;
             }
         }
     }
@@ -273,15 +241,18 @@ public class CombatPlayerUI : MonoBehaviour
                         EventSystem.current.sendNavigationEvents = true;
                         EventSystem.current.SetSelectedGameObject(iconPanel.transform.Find("AttackIcon").gameObject);
                         break;
+                    case PlayerUIState.SUB_ACTION_SELECT:
+                        cursor.SetActive(false);
+                        iconPanel.SetActive(true);
+                        EventSystem.current.sendNavigationEvents = true;                        
+                        break;
                     case PlayerUIState.ENEMY_SELECT:
-                        EventSystem.current.sendNavigationEvents = false;
-                        //cursor.transform.position = Camera.main.WorldToScreenPoint(selectedEnemy.transform.position);
+                        EventSystem.current.sendNavigationEvents = false;                        
                         cursor.SetActive(true);
                         MoveCursor(selectedEnemy);                       
                         break;
                     case PlayerUIState.PLAYER_SELECT:
                         EventSystem.current.sendNavigationEvents = false;
-                        //cursor.transform.position = Camera.main.WorldToScreenPoint(selectedPlayer.transform.position);
                         cursor.SetActive(true);
                         MoveCursor(selectedPlayer);                  
                         break;

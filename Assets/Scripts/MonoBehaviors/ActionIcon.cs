@@ -29,8 +29,6 @@ public class ActionIcon : MonoBehaviour
 
         parentUI = GetComponentInParent<CombatPlayerUI>();
 
-        //subActions = new List<Button>();
-
         // TESTING
         AddSubAction("Cure", "OnCure");
         AddSubAction("Gust", "OnGust");
@@ -72,7 +70,7 @@ public class ActionIcon : MonoBehaviour
     public void ArrangeSubActions()
     {
         float angle = 2f * Mathf.PI / subActions.Count;
-        float radius = 100f;        
+        float radius = 120f;        
 
         for (int i = 0; i < subActions.Count; i++)
         {

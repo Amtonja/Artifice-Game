@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class SubAction : MonoBehaviour, ICancelHandler, ISubmitHandler
 {
     private ActionIcon _actionIcon;
-    private CombatPlayerUI parentUI;    
+    private CombatPlayerUI parentUI;
+    private TextMeshProUGUI textmesh;    
 
     public string methodName;
 
