@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SubAction : MonoBehaviour, ICancelHandler
+public class SubAction : MonoBehaviour, ICancelHandler, ISubmitHandler
 {
-    private ActionHex _actionHex;
+    private ActionIcon _actionIcon;
+    private CombatPlayerUI parentUI;    
+
+    public string methodName;
 
     // Use this for initialization
     void Start()
     {
-        _actionHex = GetComponentInParent<ActionHex>();
+        _actionIcon = GetComponentInParent<ActionIcon>();
+        parentUI = GetComponentInParent<CombatPlayerUI>();        
     }
 
     // Update is called once per frame
@@ -21,6 +25,11 @@ public class SubAction : MonoBehaviour, ICancelHandler
 
     public void OnCancel(BaseEventData eventData)
     {
-        _actionHex.CloseSubmenu();
+        _actionIcon.CloseSubmenu();
+    }
+
+    public void OnSubmit(BaseEventData eventData)
+    {
+        parentUI.Invoke(methodName, 0);
     }
 }

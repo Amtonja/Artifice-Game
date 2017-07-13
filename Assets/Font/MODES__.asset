@@ -1152,7 +1152,7 @@ Material:
       second: {r: 0, g: 0, b: 32767, a: 32767}
     - first:
         name: _OutlineColor
-      second: {r: 0.875, g: 0.875, b: 0.875, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 1}
     - first:
         name: _ReflectFaceColor
       second: {r: 0, g: 0, b: 0, a: 1}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class CombatPlayerUI : MonoBehaviour
 {
@@ -21,20 +22,19 @@ public class CombatPlayerUI : MonoBehaviour
     private Player[] partyList;
     private Player selectedEnemy, selectedPlayer;
 
-    /// <summary>
-    /// Time (in seconds) it takes for the health bar "delta" to animate
-    /// when health changes.
-    /// </summary>
-    //public float healthBarDeltaTime;
-
+    private float targetSelectionTimer;
+    public float targetSelectionDelay;
+    
     public enum PlayerUIState
     {
-        WAITING_FOR_ACTION,
+        WAITING_FOR_TURN,
         ACTION_SELECT,
         ENEMY_SELECT,
         PLAYER_SELECT
     }
     private PlayerUIState state;
+
+    public float verticalOffset;
 
     // Use this for initialization
     void OnEnable()
@@ -66,7 +66,7 @@ public class CombatPlayerUI : MonoBehaviour
         selectedEnemy = enemiesList[0];
         selectedPlayer = partyList[0];        
 
-        State = PlayerUIState.WAITING_FOR_ACTION;
+        State = PlayerUIState.WAITING_FOR_TURN;
     }
 
     // Update is called once per frame
@@ -76,10 +76,11 @@ public class CombatPlayerUI : MonoBehaviour
         if (enemiesList.Count != 0 && !enemiesList.Contains(selectedEnemy))
         {
             selectedEnemy = enemiesList[0];
+            //MoveCursor(selectedEnemy);
         }
 
 
-        if (State == PlayerUIState.WAITING_FOR_ACTION)
+        if (State == PlayerUIState.WAITING_FOR_TURN)
         {
             if (ActivePlayer.IsMyTurn)
             {
@@ -106,24 +107,27 @@ public class CombatPlayerUI : MonoBehaviour
 
         if (State == PlayerUIState.ENEMY_SELECT)
         {
-            //if (Input.GetAxisRaw("Vertical") < 0f)
-            if (Input.GetKeyDown(KeyCode.DownArrow)) // only for video recording
+            targetSelectionTimer += Time.deltaTime;
+
+            if (Input.GetAxisRaw("Vertical") < 0f && targetSelectionTimer >= targetSelectionDelay)
             {
                 selectedEnemy = enemiesList[(enemiesList.IndexOf(selectedEnemy) + 1) % enemiesList.Count];
-                cursor.transform.position = selectedEnemy.transform.position;
+                MoveCursor(selectedEnemy);
+                targetSelectionTimer = 0;
             }
 
-            //if (Input.GetAxisRaw("Vertical") > 0f)
-            if (Input.GetKeyDown(KeyCode.UpArrow)) // Same
+            if (Input.GetAxisRaw("Vertical") > 0f && targetSelectionTimer >= targetSelectionDelay)
             {
-                selectedEnemy = enemiesList[Mathf.Abs((enemiesList.IndexOf(selectedEnemy) - 1) % enemiesList.Count)];
-                cursor.transform.position = selectedEnemy.transform.position;
+                selectedEnemy = enemiesList.IndexOf(selectedEnemy) == 0 ? 
+                    enemiesList[enemiesList.Count - 1] : enemiesList[enemiesList.IndexOf(selectedEnemy) - 1];
+                MoveCursor(selectedEnemy);
+                targetSelectionTimer = 0;
             }
 
             if (Input.GetButtonDown("Submit"))
             {
                 ActivePlayer.MyCombatAction(selectedEnemy);
-                State = PlayerUIState.WAITING_FOR_ACTION;
+                State = PlayerUIState.WAITING_FOR_TURN;
             }
 
             if (Input.GetButtonDown("Cancel"))
@@ -134,22 +138,27 @@ public class CombatPlayerUI : MonoBehaviour
 
         if (State == PlayerUIState.PLAYER_SELECT)
         {
-            if (Input.GetAxisRaw("Vertical") < 0f)
+            targetSelectionTimer += Time.deltaTime;
+
+            if (Input.GetAxisRaw("Vertical") < 0f && targetSelectionTimer >= targetSelectionDelay)
             {
                 selectedPlayer = partyList[(System.Array.IndexOf(partyList, selectedPlayer) + 1) % partyList.Length];
-                cursor.transform.position = selectedPlayer.transform.position;
+                MoveCursor(selectedPlayer);
+                targetSelectionTimer = 0;
             }
 
-            if (Input.GetAxisRaw("Vertical") > 0f)
+            if (Input.GetAxisRaw("Vertical") > 0f && targetSelectionTimer >= targetSelectionDelay)
             {
-                selectedPlayer = partyList[Mathf.Abs((System.Array.IndexOf(partyList, selectedPlayer) - 1) % partyList.Length)];
-                cursor.transform.position = selectedPlayer.transform.position;
+                selectedPlayer = System.Array.IndexOf(partyList, selectedPlayer) == 0 ?
+                    partyList[partyList.Length - 1] : partyList[System.Array.IndexOf(partyList, selectedPlayer) - 1];
+                MoveCursor(selectedPlayer);
+                targetSelectionTimer = 0;
             }
 
             if (Input.GetButtonDown("Submit"))
             {
                 ActivePlayer.MyCombatAction(selectedPlayer);
-                State = PlayerUIState.WAITING_FOR_ACTION;
+                State = PlayerUIState.WAITING_FOR_TURN;
             }
 
             if (Input.GetButtonDown("Cancel"))
@@ -159,50 +168,10 @@ public class CombatPlayerUI : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Update the ActivePlayer's health bar, changing the green bar
-    /// immediately and the red delta bar gradually
-    /// </summary>
-    //private void UpdateHealthBar()
-    //{
-    //    float oldFillAmount = healthBar.fillAmount;
-    //    healthBar.fillAmount = (float)ActivePlayer.Health / (float)ActivePlayer.Stats.MaxHealth;
-    //    StartCoroutine(AnimateHealthBarDelta(oldFillAmount, healthBar.fillAmount, healthBarDeltaTime));
-    //    ActivePlayer.HealthChanged = false;
-    //}
-
-    ///// <summary>
-    ///// Coroutine to change the value of the health delta bar over (time) seconds
-    ///// </summary>
-    ///// <param name="startValue">Initial fill amount of the bar</param>
-    ///// <param name="endValue">Target fill amount of the bar</param>
-    ///// <param name="time">Total time in seconds the change will take</param>
-    ///// <returns></returns>
-    //private IEnumerator AnimateHealthBarDelta(float startValue, float endValue, float time)
-    //{
-    //    float elapsedTime = 0f;
-    //    healthBarDelta.fillAmount = startValue;
-
-    //    while (elapsedTime < time)
-    //    {
-    //        healthBarDelta.fillAmount = Mathf.Lerp(healthBarDelta.fillAmount, endValue, (elapsedTime / time));
-    //        elapsedTime += Time.deltaTime;
-    //        yield return new WaitForEndOfFrame();
-    //    }
-    //}
-
-     
-    //public void OpenSubmenu(GameObject icon)
-    //{
-    //    GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
-    //    if (submenu != null) submenu.SetActive(true);
-    //}
-
-    //public void CloseSubmenu(GameObject icon)
-    //{
-    //    GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
-    //    if (submenu != null) submenu.SetActive(false);
-    //}
+    void MoveCursor(Player target)
+    {
+        cursor.GetComponent<CombatCursor>().SelectedCharacter = target;
+    }
 
     public void CloseAllSubmenus()
     {
@@ -212,32 +181,10 @@ public class CombatPlayerUI : MonoBehaviour
             Transform currentIcon = icons.GetChild(i);
             if (currentIcon.Find("OptionPanel") != null)
             {
-                currentIcon.GetComponent<ActionHex>().CloseSubmenu();
+                currentIcon.GetComponent<ActionIcon>().CloseSubmenu();
             }
         }
     }
-
-    /// <summary>
-    /// Handles the UI event of focus moving FROM one of the 
-    /// 5 top-level icons horizontally.
-    /// </summary>
-    /// <param name="eventData">Data of the Move event sent by the event system.</param>
-    //public void OnMoveIcon(BaseEventData eventData)
-    //{
-    //    AxisEventData axisData = eventData as AxisEventData;
-    //    MoveDirection moveDir = axisData.moveDir;
-    //    if (moveDir == MoveDirection.Left)
-    //    {
-    //        // Here's hoping this nightmare is a workaround for EventSystem.current.lastSelectedGameObject
-    //        // Point is, close the submenu of whichever icon we are moving AWAY FROM
-    //        CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnRight().gameObject);
-    //    }
-    //    else if (moveDir == MoveDirection.Right)
-    //    {
-    //        // Same, but opposite direction
-    //        CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnLeft().gameObject);
-    //    }
-    //}
 
     public void OnMelee()
     {
@@ -297,7 +244,7 @@ public class CombatPlayerUI : MonoBehaviour
         set
         {
             activePlayer = value;
-            transform.position = Camera.main.WorldToScreenPoint(ActivePlayer.transform.position);
+            transform.position = Camera.main.WorldToScreenPoint(ActivePlayer.transform.position + Vector3.down * verticalOffset) ;
         }
         get
         {
@@ -328,15 +275,17 @@ public class CombatPlayerUI : MonoBehaviour
                         break;
                     case PlayerUIState.ENEMY_SELECT:
                         EventSystem.current.sendNavigationEvents = false;
-                        cursor.transform.position = selectedEnemy.transform.position;
+                        //cursor.transform.position = Camera.main.WorldToScreenPoint(selectedEnemy.transform.position);
                         cursor.SetActive(true);
+                        MoveCursor(selectedEnemy);                       
                         break;
                     case PlayerUIState.PLAYER_SELECT:
                         EventSystem.current.sendNavigationEvents = false;
-                        cursor.transform.position = selectedPlayer.transform.position;
+                        //cursor.transform.position = Camera.main.WorldToScreenPoint(selectedPlayer.transform.position);
                         cursor.SetActive(true);
+                        MoveCursor(selectedPlayer);                  
                         break;
-                    case PlayerUIState.WAITING_FOR_ACTION:
+                    case PlayerUIState.WAITING_FOR_TURN:
                         CloseAllSubmenus();
                         iconPanel.SetActive(false);
                         EventSystem.current.sendNavigationEvents = true;
