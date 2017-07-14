@@ -38,6 +38,8 @@ public class AIBase : MonoBehaviour {
 
 	private bool bForceUp, bForceDown, bForceLeft, bForceRight = false; //to keep them off of borders
 
+	private bool bHold = false; //used to completely freeze the bot
+
 	// Use this for initialization
 	void Start()
 	{
@@ -47,6 +49,10 @@ public class AIBase : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (bHold) {
+			return;
+		}
+
 		if (_player.InCombat || !bWander) {
 			
 			CombatUpdate ();
@@ -191,8 +197,21 @@ public class AIBase : MonoBehaviour {
 
 	}
 
+	//called to reset behavior if player runs from fight
+	public void Reset(){
+
+		bWander = true;
+		SetBoundries (oldBounds);
+	}
+
 	//Overwritten by specific AI
 	public virtual void CombatUpdate(){
 
+	}
+
+	public bool BHold {
+		set {
+			bHold = value;
+		}
 	}
 }

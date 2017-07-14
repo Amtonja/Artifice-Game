@@ -62,6 +62,8 @@ public class PlayManager : MonoBehaviour
 	private enum combatState {Init, CombatLoop, WaitForAttackConfirmation, Formation, EndCombat};
 	private combatState state = combatState.Init;
 
+	private Battleground currentBattleground;
+
 	//When characters attack, they send this script the number of characters being attacked, so we can wait until they're all damaged
 	//Not exactly needed yet, but this is where we'd hook in having AoE attacks later.
 	private int attackedCountMax = 99999;
@@ -292,6 +294,32 @@ public class PlayManager : MonoBehaviour
         experiencePool = 0;
     }
 
+	//Run option. 
+	public void RunFromCombat(){
+		Debug.Log ("Running from combat!");
+		exploreMode = true;
+
+		MusicManager.instance.PlayCombatEnding();
+
+		for (int i = 0; i < party.Length; i++)
+		{
+			party[i].ExitCombat();
+
+		}
+
+		for (int i = 0; i < combatantEnemies.Count; i++)
+		{
+			combatantEnemies[i].ExitCombat();
+
+		}
+
+		//turn off combat UI
+		combatUI.DeactivatePlayerUI();
+		//Tell Battleground players are running, so set up blinking and then reset collider
+		currentBattleground.RunAway ();
+
+	}
+
     public void DisplayCombatRewards(float messageDuration)
     {
         //float messageDuration = 2f;
@@ -406,5 +434,15 @@ public class PlayManager : MonoBehaviour
 			pauseCombat = value;
 		}
 	}
+
+	public Battleground CurrentBattleground {
+		get { 
+			return currentBattleground;
+		}
+		set {
+			currentBattleground = value;
+		}
+	}
+			
     #endregion
 }

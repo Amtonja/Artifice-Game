@@ -29,6 +29,12 @@ public class Battleground : MonoBehaviour {
 
 	private Vector2 range; //limitations of this battleground's borders, for purposes of pre-combat wandering functionality
 
+	private bool bRunning = false; //used for resetting battleground so player can walk out of its collision
+	private int blinkTotal = 7;
+	private int blinkCurrent = 0;
+
+	private float alphaColor = 1.0f; //for temporary blink
+
 	// Use this for initialization
 	void Start () {
 		//Get boundaries, send to AI for idle wandering
@@ -45,8 +51,11 @@ public class Battleground : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (bRunning) {
+			Resetting ();
+		}
 	}
+
 
 
 	//Called by a player object when they collide with a battleground's trigger.
@@ -60,6 +69,8 @@ public class Battleground : MonoBehaviour {
 		PlayManager.instance.ExploreMode = false;
 		party = PlayManager.instance.Party;
 
+		PlayManager.instance.CurrentBattleground = this;
+
 		totalReadyCount = party.Length + enemies.Count; //Later, should be party + enemies
 
 		//Move everything into their spaces
@@ -72,6 +83,49 @@ public class Battleground : MonoBehaviour {
 			enemies [i].GetComponent<AIBase> ().CombatStart (bPlayersFightRight);// tells to stop wandering
 			enemies [i].GetComponent<Movement> ().GetForcedSender (this.gameObject);
 			enemies [i].GetComponent<Movement> ().StartForcedMove (enemyPosList [i].transform.position);
+		}
+
+	}
+
+	//Run command sent from players, to PlayManager, that ends up here to pause and then re-enable the combat collision.
+	public void RunAway(){
+		bRunning = true;
+		for (int i = 0; i < enemies.Count; i++) {
+			enemies [i].GetComponent<AIBase> ().BHold = true;// tells to stop wandering
+		}
+		alphaColor = 0.1f;
+
+	}
+
+	private void Resetting(){
+		//Make them blink
+		if (blinkCurrent < blinkTotal) {
+			Color newColor = Color.white;//new Color(255/4, 255/4, 255, alphaColor);
+			newColor [3] = alphaColor;
+
+			for (int i = 0; i < enemies.Count; i++) {
+				enemies [i].GetComponent<SpriteRenderer> ().color = newColor;//.a = alphaColor;
+			}
+
+			alphaColor = alphaColor + alphaColor * 0.07f;
+			if (alphaColor >= 1.0f) { 
+				alphaColor = 0.1f;
+//				this.gameObject.GetComponent<SpriteRenderer> ().color = Color.white;
+				blinkCurrent++;
+
+	
+//				_animator.Play (Animator.StringToHash ("Idle"));
+			}
+		} else {
+			for (int i = 0; i < enemies.Count; i++) {
+				enemies [i].GetComponent<SpriteRenderer> ().color = Color.white;
+				enemies [i].GetComponent<AIBase> ().BHold = false; //resume
+				enemies [i].GetComponent<AIBase> ().Reset();
+
+				bRunning = false;
+				this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+			}
+			Debug.Log ("Done blinking!");
 		}
 
 	}
