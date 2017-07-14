@@ -80,6 +80,7 @@ public class Battleground : MonoBehaviour {
 		}
 
 		for (int i = 0; i < enemies.Count; i++) {
+			enemies [i].GetComponent<Movement> ().StopForcedMove (false);
 			enemies [i].GetComponent<AIBase> ().CombatStart (bPlayersFightRight);// tells to stop wandering
 			enemies [i].GetComponent<Movement> ().GetForcedSender (this.gameObject);
 			enemies [i].GetComponent<Movement> ().StartForcedMove (enemyPosList [i].transform.position);

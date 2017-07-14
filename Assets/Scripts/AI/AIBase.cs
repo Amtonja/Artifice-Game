@@ -53,12 +53,21 @@ public class AIBase : MonoBehaviour {
 			return;
 		}
 
-		if (_player.InCombat || !bWander) {
-			
+//		if (_player.InCombat || !bWander) {
+//			
+//			CombatUpdate ();
+//		} else {
+//			Wander ();
+//		}
+		if (_player.InCombat) {
+						
 			CombatUpdate ();
-		} else {
+		} else if (bWander) {
 			Wander ();
+		} else {
+			//do nothing
 		}
+			
 	}
 
 	//Central point of battleground
@@ -202,6 +211,7 @@ public class AIBase : MonoBehaviour {
 
 		bWander = true;
 		SetBoundries (oldBounds);
+		GetComponent<Movement> ().StopForcedMove (false);
 	}
 
 	//Overwritten by specific AI
@@ -212,6 +222,12 @@ public class AIBase : MonoBehaviour {
 	public bool BHold {
 		set {
 			bHold = value;
+		}
+	}
+
+	public bool BWander {
+		set {
+			bWander = value;
 		}
 	}
 }
