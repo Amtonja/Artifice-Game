@@ -318,6 +318,8 @@ public class PlayManager : MonoBehaviour
 		//Tell Battleground players are running, so set up blinking and then reset collider
 		currentBattleground.RunAway ();
 
+		MusicManager.instance.StopAllCoroutines (); //to stop the battle music 
+
 	}
 
     public void DisplayCombatRewards(float messageDuration)

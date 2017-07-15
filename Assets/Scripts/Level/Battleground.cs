@@ -125,6 +125,8 @@ public class Battleground : MonoBehaviour {
 
 				bRunning = false;
 				this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+				readyCount = 0;
+				blinkCurrent = 0;
 			}
 			Debug.Log ("Done blinking!");
 		}
