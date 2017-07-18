@@ -30,10 +30,10 @@ public class ActionIcon : MonoBehaviour
         parentUI = GetComponentInParent<CombatPlayerUI>();
 
         // TESTING
-        AddSubAction("Cure", "OnCure");
-        AddSubAction("Gust", "OnGust");
-        AddSubAction("Bolt", "OnBolt");
-        AddSubAction("Scorch", "OnScorch");
+        AddSubAction("Cure");
+        AddSubAction("Gust");
+        AddSubAction("Bolt");
+        AddSubAction("Scorch");
         //ArrangeSubActions();
         // TESTING
     }
@@ -58,12 +58,11 @@ public class ActionIcon : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
-    public void AddSubAction(string label, string methodName)
+    public void AddSubAction(string name)
     {
         GameObject newAction = Instantiate(subActionPrefab, subActionPanel.transform, false);
-        newAction.name = label;
-        newAction.GetComponent<TextMeshProUGUI>().text = label;
-        newAction.GetComponent<SubAction>().methodName = methodName;
+        newAction.GetComponent<SubAction>().actionName = name;
+        newAction.GetComponent<TextMeshProUGUI>().text = name;        
         subActions.Add(newAction); 
     }
 

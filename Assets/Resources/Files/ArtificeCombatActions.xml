@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ArtificeCombatActions.xsd">
+  <!-- SPELLS -->
+  <action>
+    <id>1</id>
+    <name>Gust</name>
+    <description>Deals wind-aspected damage to target enemy.</description>
+    <methodname>OnGust</methodname>
+  </action>
+  <action>
+    <id>2</id>
+    <name>Bolt</name>
+    <description>Deals lightning-aspected damage to target enemy.</description>
+    <methodname>OnBolt</methodname>
+  </action>
+  <action>
+    <id>3</id>
+    <name>Scorch</name>
+    <description>Deals fire-aspected damage to target enemy.</description>
+    <methodname>OnScorch</methodname>
+  </action>
+  <action>
+    <id>4</id>
+    <name>Frost</name>
+    <description>Deals ice-aspected damage to target enemy.</description>
+    <methodname>OnFrost</methodname>
+  </action>
+  <action>
+    <id>5</id>
+    <name>Gravity</name>
+    <description>Deals force damage to target enemy.</description>
+    <methodname>OnGravity</methodname>
+  </action>
+  <action>
+    <id>6</id>
+    <name>Cure</name>
+    <description>Restores health to target ally.</description>
+    <methodname>OnCure</methodname>
+  </action>
+</actions>
