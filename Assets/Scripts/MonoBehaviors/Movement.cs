@@ -1,4 +1,5 @@
-﻿using Artifice.Data;
+﻿using Artifice.Characters;
+using Artifice.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

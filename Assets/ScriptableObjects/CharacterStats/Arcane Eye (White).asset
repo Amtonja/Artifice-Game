@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa109aed74cfb540882bec758fd36d8, type: 3}
+  m_Name: Arcane Eye (White)
+  m_EditorClassIdentifier: 
+  characterName: Arcane Eye
+  startingLevel: 1
+  attack: 8
+  defense: 7
+  magic: 8
+  magicDefense: 10
+  speed: 9
+  maxHealth: 35
+  xpValue: 50
+  primaryDamage: 2
+  secondaryDamage: 2
+  damageWeakness: 1
+  spells: []
