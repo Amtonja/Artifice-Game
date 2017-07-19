@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using Artifice.Characters;
 
 public class CombatPlayerUI : MonoBehaviour
 {

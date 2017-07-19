@@ -13,7 +13,7 @@ public class HealthDisplay : PartyUIElement
     {
         base.Start();
         healthDisplay = GetComponent<Text>();
-        healthDisplay.text = player.Health + "/" + player.Stats.MaxHealth;
+        healthDisplay.text = player.Health + "/" + player.Stats.maxHealth;
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class HealthDisplay : PartyUIElement
     {
         if (player.HealthChanged)
         {
-            healthDisplay.text = player.Health + "/" + player.Stats.MaxHealth;
+            healthDisplay.text = player.Health + "/" + player.Stats.maxHealth;
         }
     }    
 }

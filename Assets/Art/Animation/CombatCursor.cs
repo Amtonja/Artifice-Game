@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Artifice.Characters;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class CombatCursor : MonoBehaviour

@@ -9,18 +9,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfa109aed74cfb540882bec758fd36d8, type: 3}
-  m_Name: Hurley
+  m_Name: Raving Imp
   m_EditorClassIdentifier: 
-  characterName: Hurley
+  characterName: Raving Imp
   startingLevel: 1
-  attack: 10
-  defense: 11
-  magic: 9
-  magicDefense: 9
-  speed: 7
-  maxHealth: 600
+  attack: 7
+  defense: 7
+  magic: 0
+  magicDefense: 8
+  speed: 8
+  maxHealth: 40
+  xpValue: 50
   primaryDamage: 1
-  secondaryDamage: 2
+  secondaryDamage: 1
   damageWeakness: 0
-  spells:
-  - {fileID: 0}
+  spells: []

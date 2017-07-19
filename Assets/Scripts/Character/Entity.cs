@@ -8,8 +8,7 @@ namespace Artifice.Characters
         protected string title;
         protected string id;
         protected bool canInteract;
-        protected bool inCombat;
-        protected CombatStats stats;
+        protected bool inCombat;       
         protected int health;
         protected CharacterRace race;
         protected float actionBarValue = 0f;
@@ -19,7 +18,10 @@ namespace Artifice.Characters
 
         private bool healthChanged = false;
 
-        public abstract void Interact();
+        public CharacterStats baseStats;
+        private CharacterStats currentStats;
+
+        public abstract void Interact();        
 
         protected float alphaColor = 1.0f; //for temporary blink
 
@@ -28,8 +30,8 @@ namespace Artifice.Characters
             HealthChanged = true;
             if (_damage < 0) { _damage = 0; }
             health -= _damage;
-            health = Mathf.Clamp(health, 0, stats.MaxHealth);
-            Debug.Log(title + " took " + _damage + " and is at " + health + " HP out of " + stats.MaxHealth + " HP");
+            health = Mathf.Clamp(health, 0, Stats.maxHealth);
+            Debug.Log(Stats.characterName + " took " + _damage + " and is at " + health + " HP out of " + Stats.maxHealth + " HP");
             PlayManager.instance.CreatePopupText(_damage.ToString(), transform, Color.red);
             if (health <= 0) Die();
 
@@ -45,7 +47,7 @@ namespace Artifice.Characters
             }
 
             health += _health;
-            health = Mathf.Clamp(health, 0, stats.MaxHealth);
+            health = Mathf.Clamp(health, 0, Stats.maxHealth);
             PlayManager.instance.CreatePopupText(_health.ToString(), transform, Color.green);
         }
 
@@ -89,9 +91,10 @@ namespace Artifice.Characters
             set { inCombat = value; }
         }
 
-        public CombatStats Stats
+        public CharacterStats Stats
         {
-            get { return stats; }
+            get { return currentStats; }
+            set { currentStats = value; }
         }
 
         public int Health

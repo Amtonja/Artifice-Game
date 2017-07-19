@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1002287157204096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57, y: -3.82, z: 0}
+  m_LocalPosition: {x: -1.5784373, y: 0.87603205, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4702878770921528}
@@ -220,21 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityInfo:
-    name: Hurley
-    id: _hurley_
-    combatStats:
-      attack: 0
-      defense: 12
-      magic: 8
-      speed: 9
-      evasion: 10
-      accuracy: 6
-      magicDefense: 6
-      luck: 5
-      maxHealth: 150
-    race: 0
-  useXMLStats: 1
+  baseStats: {fileID: 11400000, guid: cb09dc9a25132fd47b787dede7821bd6, type: 2}
   spellOrigin: {x: 0.211, y: 0.015}
   characterName: Hurley
   characterID: _hurley_

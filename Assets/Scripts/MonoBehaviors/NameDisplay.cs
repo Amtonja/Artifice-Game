@@ -13,7 +13,7 @@ public class NameDisplay : PartyUIElement
     {
         base.Start();
         nameDisplay = GetComponent<Text>();
-        nameDisplay.text = player.CharacterName;
+        nameDisplay.text = player.Stats.characterName;
     }    
 
     // Update is called once per frame

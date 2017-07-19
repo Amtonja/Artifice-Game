@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using Artifice.Characters;
 
 public class ActionIcon : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class ActionIcon : MonoBehaviour
     private GameObject subActionPanel;
     private GameObject subActionPrefab;
     private CombatPlayerUI parentUI;
-
+    private Player player;    
+    
     // Use this for initialization
     void Start()
     {
@@ -26,30 +28,20 @@ public class ActionIcon : MonoBehaviour
         }
 
         subActionPrefab = Resources.Load("Prefabs/SubActionPrefab") as GameObject;
-
         parentUI = GetComponentInParent<CombatPlayerUI>();
+        player = parentUI.ActivePlayer;        
 
-        // TESTING
-        AddSubAction("Cure");
-        AddSubAction("Gust");
-        AddSubAction("Bolt");
-        AddSubAction("Scorch");
-        //ArrangeSubActions();
-        // TESTING
+        GetPlayerActions();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-   
 
     public void OpenSubmenu()
     {
         ArrangeSubActions();
         if (subActionPanel != null) subActionPanel.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(subActions[0].gameObject);
+        if (subActions.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(subActions[0].gameObject);
+        }
     }
 
     public void CloseSubmenu()
@@ -58,18 +50,19 @@ public class ActionIcon : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
-    public void AddSubAction(string name)
+    public void AddSubAction(CombatAction action)
     {
         GameObject newAction = Instantiate(subActionPrefab, subActionPanel.transform, false);
-        newAction.GetComponent<SubAction>().actionName = name;
-        newAction.GetComponent<TextMeshProUGUI>().text = name;        
-        subActions.Add(newAction); 
+        //newAction.GetComponent<SubActionButton>().actionName = name;
+        newAction.GetComponent<SubActionButton>().action = action;
+        newAction.GetComponent<TextMeshProUGUI>().text = action.name;
+        subActions.Add(newAction);
     }
 
     public void ArrangeSubActions()
     {
         float angle = 2f * Mathf.PI / subActions.Count;
-        float radius = 120f;        
+        float radius = 120f;
 
         for (int i = 0; i < subActions.Count; i++)
         {
@@ -81,6 +74,22 @@ public class ActionIcon : MonoBehaviour
             navigation.selectOnRight = i == 0 ? subActions[subActions.Count - 1].GetComponent<Button>() : subActions[i - 1].GetComponent<Button>();
             navigation.selectOnLeft = subActions[(i + 1) % subActions.Count].GetComponent<Button>();
             subActions[i].GetComponent<Button>().navigation = navigation;
+        }
+    }
+
+    public void GetPlayerActions()
+    {
+        if (name == "AttackIcon")
+        {
+            
+        }
+
+        if (name == "MagicIcon")
+        {
+            foreach (Spell spell in player.Stats.spells)
+            {
+                AddSubAction(spell);
+            }
         }
     }
 }

@@ -2,23 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Artifice
+namespace Artifice.Characters
 {
-    public enum PhysicalDamageType
-    {
-        Blunt, Piercing, Projectile
-    }
-
     [CreateAssetMenu]
     public class CharacterStats : ScriptableObject
     {
         public string characterName;
         public int startingLevel;
 
-        public int attack, defense, magic, magicDefense, speed, maxHealth;
+        public int attack, defense, magic, magicDefense, speed, maxHealth, xpValue;
 
         public PhysicalDamageType primaryDamage, secondaryDamage, damageWeakness;
 
-        public List<SubAction> spells;
+        public List<Spell> spells;
     }
 }
