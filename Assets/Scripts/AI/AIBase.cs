@@ -219,6 +219,8 @@ public class AIBase : MonoBehaviour {
 
 	}
 
+	public virtual void ResumeWander(){}
+
 	public bool BHold {
 		set {
 			bHold = value;
