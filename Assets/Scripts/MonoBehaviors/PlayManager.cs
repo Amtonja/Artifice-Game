@@ -28,13 +28,7 @@ public class PlayManager : MonoBehaviour
     /// </summary>
     public CombatUIManager combatUI;
 
-    public GameObject groupCombatUI;
-
-    /// <summary>
-    /// Reference to the CombatGrid object so that it can be
-    /// inactive initially and activated when combat begins.
-    /// </summary>
-    private CombatGrid combatGrid;
+    public GameObject groupCombatUI;    
 
     /// <summary>
     /// Prefab used to display damage/healing in combat.
@@ -89,8 +83,9 @@ public class PlayManager : MonoBehaviour
         exploreMode = true;
         instance = this;
         combatantEnemies = new List<Player>();
-//        combatGrid = GameObject.FindGameObjectWithTag("CombatGrid").GetComponent<CombatGrid>();        
-//        combatGrid.gameObject.SetActive(false);
+        groupCombatUI = Instantiate(Resources.Load("Prefabs/PartyCombatUI")) as GameObject;
+        GameObject playerActionUI = Instantiate(Resources.Load("Prefabs/PlayerActionUI")) as GameObject;
+        combatUI = playerActionUI.GetComponent<CombatUIManager>();
     }
 
 

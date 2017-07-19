@@ -191,7 +191,7 @@ namespace Artifice.Characters
 
             set
             {
-                isMyTurn = value;
+                isMyTurn = value;                
             }
         }
 

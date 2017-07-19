@@ -7,16 +7,6 @@ using System;
 
 public class Player : Entity
 {
-
-    ///// <summary>
-    ///// This field is temporary, and will be replaced by the XML reader
-    ///   Comment out again when switching back to XML
-    ///// </summary>
-    [SerializeField]
-    private EntityInfo entityInfo;
-
-    public bool useXMLStats;
-
     [SerializeField]
     private Vector2 spellOrigin;
 
@@ -32,10 +22,8 @@ public class Player : Entity
     private SpellDelegate _spell;
 
     private Animator _animator;
-
-    //[SerializeField]
-    //private string characterName, characterID;
-
+    private Movement _movement;
+    
     [SerializeField]
     private AudioClip meleeSFX, rangedSFX, footstepSFX, takeDamageSFX, deathSFX;
 
@@ -53,43 +41,18 @@ public class Player : Entity
     void Start()
     {
         _animator = GetComponent<Animator>();
+        _movement = GetComponent<Movement>();
         _audio = GetComponent<AudioSource>();
         _footPos = transform.Find("Base").localPosition;
-
-        ////TODO: This will be loaded in via XML reader later
-        //title = characterName;
-        //id = characterID;
-
-        //if (useXMLStats)
-        //{
-        //    stats = new CombatStats(1, id); // for reading stats from XML
-            
-        //    Debug.Log("Stats loaded for " + characterName);
-        //    Debug.Log(stats.ToString());
-        //}        
-        //else
-        //{
-        //    stats = new CombatStats(); // default constructor for reading stats from entityInfo
-        //    stats.Level = 1;            
-        //    stats.BaseDefense = entityInfo.combatStats.defense;            
-        //    stats.BaseMagic = entityInfo.combatStats.magic;
-        //    stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
-        //    stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
-        //    stats.BaseSpeed = entityInfo.combatStats.speed;
-        //    stats.BaseAttack = entityInfo.combatStats.attack;
-        //}        
-
+        
         ResetStats();
         health = Stats.maxHealth;
         DefenseValue = Mathf.FloorToInt((Stats.defense + armorValue) * 0.2f);
         MagicDefenseValue = Mathf.FloorToInt((Stats.magicDefense + armorValue) * 0.2f);    
 
         // The time for a character's action bar to fill is equal to the default time minus a percentage equal to their Speed stat
-        // Likewise for the other bars
         ActionBarTargetTime = actionBarDefaultTarget - (actionBarDefaultTarget * Stats.speed / 100f);
-        //AgilityBarTarget = agilityBarDefaultTarget - (agilityBarDefaultTarget * Stats.Speed / 100f);
-        //MagicBarTarget = magicBarDefaultTarget - (magicBarDefaultTarget * Stats.Speed / 100f);
-
+        
         v3spellOrigin = new Vector3(spellOrigin.x * transform.localScale.x, spellOrigin.y * transform.localScale.y, 0f);        
     }
 
@@ -280,6 +243,7 @@ public class Player : Entity
     /// <param name="target">The target of the spell.</param>
     public void BeginSpellCast(Entity target)
     {
+        //_movement.ForceLock(true);
         Debug.Log(name + " begins casting a spell...");
         tempTarget = target;
         _animator.SetBool("SpellComplete", false);
@@ -320,6 +284,7 @@ public class Player : Entity
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
         _animator.SetBool("SpellComplete", true);
+        //_movement.ForceLock(false);
     }
 
     public IEnumerator DealSpellHealing(Entity target, GameObject spellVisual, float spellDuration)
@@ -334,6 +299,8 @@ public class Player : Entity
         _animator.SetBool("SpellComplete", true);
 
         PlayManager.instance.UpdateAttacked();
+
+        //_movement.ForceLock(false);
     }
 
     public void BoltSpell(Entity target)
@@ -437,7 +404,8 @@ public class Player : Entity
 			damage = (int)((float)damage * 1.5f);
 		}
 
-		StartCoroutine(DealSpellDamage(target, eyeLaser, 1.5f, damage));
+        float duration = eyeLaser.GetComponent<AudioSource>().clip.length;
+		StartCoroutine(DealSpellDamage(target, eyeLaser, duration, damage));
     }
 
     /// <summary>

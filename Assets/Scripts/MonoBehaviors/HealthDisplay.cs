@@ -9,17 +9,28 @@ public class HealthDisplay : PartyUIElement
     private Text healthDisplay;
 
     // Use this for initialization
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        healthDisplay = GetComponent<Text>();
-        healthDisplay.text = player.Health + "/" + player.Stats.maxHealth;
+        base.Awake();
+        healthDisplay = GetComponent<Text>();        
+    }
+
+    void OnEnable()
+    {
+        if (player != null)
+        {
+            healthDisplay.text = player.Health + "/" + player.Stats.maxHealth;
+        }
+        else
+        {
+            healthDisplay.text = "";
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.HealthChanged)
+        if (player != null && player.HealthChanged)
         {
             healthDisplay.text = player.Health + "/" + player.Stats.maxHealth;
         }

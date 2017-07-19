@@ -9,12 +9,23 @@ public class NameDisplay : PartyUIElement
     private Text nameDisplay;
 
     // Use this for initialization
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        nameDisplay = GetComponent<Text>();
-        nameDisplay.text = player.Stats.characterName;
+        base.Awake();        
+        nameDisplay = GetComponent<Text>();        
     }    
+
+    void OnEnable()
+    {
+        if (player != null)
+        {
+            nameDisplay.text = player.Stats.characterName;
+        }
+        else
+        {
+            nameDisplay.text = "";
+        }
+    }
 
     // Update is called once per frame
     void Update()

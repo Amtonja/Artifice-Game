@@ -10,6 +10,11 @@ public class PartyUIElement : MonoBehaviour
     // Use this for initialization
     protected virtual void Start()
     {
+        //FindPlayer();
+    }
+
+    protected virtual void Awake()
+    {
         FindPlayer();
     }
 
@@ -17,20 +22,20 @@ public class PartyUIElement : MonoBehaviour
     {
         int playerIndex = 0;
         bool result = int.TryParse(name.Substring(name.Length - 1), out playerIndex);
-        
-        if (result)
+
+        if (result && playerIndex <= PlayManager.instance.party.Length - 1)
         {
             player = PlayManager.instance.party[playerIndex];
         }
-        else
-        {
-            Debug.LogError(name + ": Couldn't find a player index; make sure object name ends in an array index");
-        }
+        //else
+        //{
+        //    Debug.LogError(name + ": Couldn't find a player index; make sure object name ends in an array index");
+        //}
 
-        if (player == null)
-        {
-            Debug.LogError(name + ": Couldn't find a party member of index " + playerIndex + " in the party list");
-        }
+        //if (player == null)
+        //{
+        //    Debug.LogError(name + ": Couldn't find a party member of index " + playerIndex + " in the party list");
+        //}
     }
 
     // Update is called once per frame

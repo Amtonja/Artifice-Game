@@ -243,6 +243,7 @@ public class CombatPlayerUI : MonoBehaviour
                 switch (value)
                 {
                     case PlayerUIState.ACTION_SELECT:
+                        Debug.Log(ActivePlayer.Stats.characterName + " taking a turn");
                         cursor.SetActive(false);
                         iconPanel.SetActive(true);
                         EventSystem.current.sendNavigationEvents = true;
