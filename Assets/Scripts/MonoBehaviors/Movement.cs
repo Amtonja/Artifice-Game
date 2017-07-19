@@ -79,7 +79,11 @@ public class Movement : MonoBehaviour
     public bool bNPC = false;
 
     private bool bFollowing = false; //used for new following code.
-    private float followDist = 1.5f;
+    private float followDist = 0.5f;
+
+	private ArrayList followPointList; 
+	private float followTimer = 0.1f; //Every time this dings, a new position is added
+	private float followTimerCurrent = 0.1f;
 
 
 	private Transform basePoint; //The base of the feet. Used for collision checks
@@ -94,6 +98,8 @@ public class Movement : MonoBehaviour
         _animator = GetComponent<Animator>(); //Might need to be in Awake
 
 		basePoint = transform.FindChild ("Base");
+
+		followPointList = new ArrayList();
     }
 
     void Update()
@@ -209,7 +215,7 @@ public class Movement : MonoBehaviour
 		}
 
 //		if(!CollideCheck(moveDelta)){
-        	transform.Translate((moveDelta * moveSpeed) * Time.deltaTime);
+		transform.Translate((moveDelta.normalized * moveSpeed) * Time.deltaTime);
 //		}
 
 
@@ -251,7 +257,7 @@ public class Movement : MonoBehaviour
             if (Vector2.Distance(this.transform.position, followTarget.transform.position) > followDist)
             {
                 bFollowing = true;
-
+				followPointList.Add(new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, 0f));
             }
             else {
                 //We're idle, so set idle pose
@@ -277,9 +283,10 @@ public class Movement : MonoBehaviour
         }
         else {
             //We need to follow
-            if (Vector2.Distance(this.transform.position, followTarget.transform.position) < followDist - 0.5f)
+            if (Vector2.Distance(this.transform.position, followTarget.transform.position) < followDist)
             {
                 bFollowing = false;
+				followPointList = new ArrayList ();
                 return;
             }
             //			float step = moveSpeed * Time.deltaTime;
@@ -308,7 +315,20 @@ public class Movement : MonoBehaviour
             //
             //			this.transform.position = followDir;// Transform.translate with facingDir for easier collision detection?
 
-            Vector3 moveDelta = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, 0f) - this.transform.position;
+			followTimerCurrent += Time.deltaTime;
+			if (followTimerCurrent >= followTimer) {
+				followPointList.Add(new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, 0f));
+
+				followTimerCurrent = 0f;
+
+
+			}
+
+
+			Debug.DrawLine(this.transform.position, (Vector3)followPointList[0]);
+
+//            Vector3 moveDelta = new Vector3(followTarget.transform.position.x, followTarget.transform.position.y, 0f) - this.transform.position;
+			Vector3 moveDelta = (Vector3)followPointList[0] - this.transform.position;
 
             if (moveDelta.y > 0f && Mathf.Abs(moveDelta.y) > Mathf.Abs(moveDelta.x))
             {
@@ -352,6 +372,11 @@ public class Movement : MonoBehaviour
 			}
 
             transform.Translate((moveDelta.normalized * moveSpeed) * Time.deltaTime);
+
+			if (Vector3.Distance (this.transform.position, (Vector3)followPointList [0]) < 0.2f) {
+				followPointList.RemoveAt (0);
+
+			}
         }
     }
 
@@ -729,7 +754,7 @@ public class Movement : MonoBehaviour
 				return Vector2.down;
 			} else {
 				return Vector2.zero;
-				Debug.Log ("DirVector not found!");
+//				Debug.Log ("DirVector not found!");
 			}
 
 		}
