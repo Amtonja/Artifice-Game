@@ -70,7 +70,7 @@ AnimationClip:
   m_IsEmpty: 0
   m_Events:
   - time: 0.75
-    functionName: EndMeleeAttack
+    functionName: EndPiercingAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

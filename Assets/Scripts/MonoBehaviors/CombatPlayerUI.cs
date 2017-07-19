@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
+using Artifice.Characters;
 
 public class CombatPlayerUI : MonoBehaviour
 {
@@ -14,231 +16,162 @@ public class CombatPlayerUI : MonoBehaviour
     private Image actionBar, specialBar, rageBar, magicBar, agilityBar, healthBar, healthBarDelta;
     private Text playerName, playerLevel;
 
-    private Canvas iconCanvas;
+    //private Canvas iconCanvas;
+    private GameObject iconPanel;
     private GameObject cursor;
     private List<Player> enemiesList;
     private Player[] partyList;
     private Player selectedEnemy, selectedPlayer;
 
-    /// <summary>
-    /// Time (in seconds) it takes for the health bar "delta" to animate
-    /// when health changes.
-    /// </summary>
-    public float healthBarDeltaTime;
-
+    private float targetSelectionTimer;
+    public float targetSelectionDelay;
+    
     public enum PlayerUIState
     {
-        WAITING_FOR_ACTION,
+        WAITING_FOR_TURN,
         ACTION_SELECT,
+        SUB_ACTION_SELECT,
         ENEMY_SELECT,
         PLAYER_SELECT
     }
     private PlayerUIState state;
 
+    public float verticalOffset;
+
     // Use this for initialization
     void OnEnable()
     {
-        playerName = transform.FindChild("PlayerName").GetComponent<Text>();
-        playerLevel = transform.FindChild("PlayerLevel").GetComponent<Text>();
-
-        actionBar = transform.FindChild("ActionBar/ActionBarOverlay").GetComponent<Image>();
-        specialBar = transform.FindChild("SpecialBar/SpecialBarOverlay").GetComponent<Image>();
-        rageBar = transform.FindChild("RageBar/SpecialBarOverlay").GetComponent<Image>();
-        magicBar = transform.FindChild("MagicBar/SpecialBarOverlay").GetComponent<Image>();
-        agilityBar = transform.FindChild("AgilityBar/SpecialBarOverlay").GetComponent<Image>();
-        healthBar = transform.FindChild("HealthBar/GreenOverlay").GetComponent<Image>();
-        healthBarDelta = transform.FindChild("HealthBar/DeltaOverlay").GetComponent<Image>();
-
-        healthBarDelta.fillAmount = 1.0f;
-
-        iconCanvas = GetComponentInChildren<Canvas>();
-        iconCanvas.enabled = false;
+        iconPanel = transform.Find("IconPanel").gameObject;
+        iconPanel.SetActive(false);
 
         cursor = transform.Find("Cursor").gameObject;
 
         enemiesList = PlayManager.instance.EnemyCombatants;
         partyList = PlayManager.instance.party;
         selectedEnemy = enemiesList[0];
-        selectedPlayer = partyList[0];
+        selectedPlayer = partyList[0];        
 
-        State = PlayerUIState.WAITING_FOR_ACTION;
+        State = PlayerUIState.WAITING_FOR_TURN;
     }
 
     // Update is called once per frame
     void Update()
     {
-		//reset enemy cursor position if that enemy is dead
-		if (enemiesList.Count != 0 && !enemiesList.Contains (selectedEnemy)) {
-			selectedEnemy = enemiesList [0];
-		}
+        //reset enemy cursor position if that enemy is dead
+        if (enemiesList.Count != 0 && !enemiesList.Contains(selectedEnemy))
+        {
+            selectedEnemy = enemiesList[0];
+            //MoveCursor(selectedEnemy);
+        }
 
 
-        if (State == PlayerUIState.WAITING_FOR_ACTION)
+        if (State == PlayerUIState.WAITING_FOR_TURN)
         {
             if (ActivePlayer.IsMyTurn)
             {
                 State = PlayerUIState.ACTION_SELECT;
                 return;
-            }
-            // Update the five bars
-            actionBar.fillAmount = ActivePlayer.ActionBarTimer / ActivePlayer.ActionBarTargetTime;
-            agilityBar.fillAmount = ActivePlayer.AgilityBarValue / ActivePlayer.AgilityBarTarget;
-            magicBar.fillAmount = ActivePlayer.MagicBarValue / ActivePlayer.MagicBarTarget;
-            rageBar.fillAmount = ActivePlayer.RageBarValue / ActivePlayer.RageBarTarget;
-            specialBar.fillAmount = ActivePlayer.SpecialBarValue / ActivePlayer.SpecialBarTarget;
+            }            
         }        
-
-        // Happening in any state
-        if (ActivePlayer.HealthChanged)
-        {
-            UpdateHealthBar();
-        }
 
         if (State == PlayerUIState.ENEMY_SELECT)
         {
-            //if (Input.GetAxisRaw("Vertical") < 0f)
-            if (Input.GetKeyDown(KeyCode.DownArrow)) // only for video recording
+            targetSelectionTimer += Time.deltaTime;
+
+            if (Input.GetAxisRaw("Vertical") < 0f && targetSelectionTimer >= targetSelectionDelay)
             {
                 selectedEnemy = enemiesList[(enemiesList.IndexOf(selectedEnemy) + 1) % enemiesList.Count];
-                cursor.transform.position = selectedEnemy.transform.position;
+                MoveCursor(selectedEnemy);
+                targetSelectionTimer = 0;
             }
 
-            //if (Input.GetAxisRaw("Vertical") > 0f)
-            if (Input.GetKeyDown(KeyCode.UpArrow)) // Same
+            if (Input.GetAxisRaw("Vertical") > 0f && targetSelectionTimer >= targetSelectionDelay)
             {
-                selectedEnemy = enemiesList[Mathf.Abs((enemiesList.IndexOf(selectedEnemy) - 1) % enemiesList.Count)];
-                cursor.transform.position = selectedEnemy.transform.position;
+                selectedEnemy = enemiesList.IndexOf(selectedEnemy) == 0 ? 
+                    enemiesList[enemiesList.Count - 1] : enemiesList[enemiesList.IndexOf(selectedEnemy) - 1];
+                MoveCursor(selectedEnemy);
+                targetSelectionTimer = 0;
             }
 
             if (Input.GetButtonDown("Submit"))
             {
                 ActivePlayer.MyCombatAction(selectedEnemy);
-                State = PlayerUIState.WAITING_FOR_ACTION;
+                State = PlayerUIState.WAITING_FOR_TURN;
             }
 
             if (Input.GetButtonDown("Cancel"))
             {
-                State = PlayerUIState.ACTION_SELECT;
+                State = PlayerUIState.SUB_ACTION_SELECT;
             }
         }
 
         if (State == PlayerUIState.PLAYER_SELECT)
         {
-            if (Input.GetAxisRaw("Vertical") < 0f)
+            targetSelectionTimer += Time.deltaTime;
+
+            if (Input.GetAxisRaw("Vertical") < 0f && targetSelectionTimer >= targetSelectionDelay)
             {
                 selectedPlayer = partyList[(System.Array.IndexOf(partyList, selectedPlayer) + 1) % partyList.Length];
-                cursor.transform.position = selectedPlayer.transform.position;
+                MoveCursor(selectedPlayer);
+                targetSelectionTimer = 0;
             }
 
-            if (Input.GetAxisRaw("Vertical") > 0f)
+            if (Input.GetAxisRaw("Vertical") > 0f && targetSelectionTimer >= targetSelectionDelay)
             {
-                selectedPlayer = partyList[Mathf.Abs((System.Array.IndexOf(partyList, selectedPlayer) - 1) % partyList.Length)];
-                cursor.transform.position = selectedPlayer.transform.position;
+                selectedPlayer = System.Array.IndexOf(partyList, selectedPlayer) == 0 ?
+                    partyList[partyList.Length - 1] : partyList[System.Array.IndexOf(partyList, selectedPlayer) - 1];
+                MoveCursor(selectedPlayer);
+                targetSelectionTimer = 0;
             }
 
             if (Input.GetButtonDown("Submit"))
             {
                 ActivePlayer.MyCombatAction(selectedPlayer);
-                State = PlayerUIState.WAITING_FOR_ACTION;
+                State = PlayerUIState.WAITING_FOR_TURN;
             }
 
             if (Input.GetButtonDown("Cancel"))
             {
-                State = PlayerUIState.ACTION_SELECT;
+                State = PlayerUIState.SUB_ACTION_SELECT;
             }
         }
     }
 
-    /// <summary>
-    /// Update the ActivePlayer's health bar, changing the green bar
-    /// immediately and the red delta bar gradually
-    /// </summary>
-    private void UpdateHealthBar()
+    void MoveCursor(Player target)
     {
-        float oldFillAmount = healthBar.fillAmount;
-        healthBar.fillAmount = (float)ActivePlayer.Health / (float)ActivePlayer.Stats.MaxHealth;
-        StartCoroutine(AnimateHealthBarDelta(oldFillAmount, healthBar.fillAmount, healthBarDeltaTime));
-        ActivePlayer.HealthChanged = false;
-    }
-
-    /// <summary>
-    /// Coroutine to change the value of the health delta bar over (time) seconds
-    /// </summary>
-    /// <param name="startValue">Initial fill amount of the bar</param>
-    /// <param name="endValue">Target fill amount of the bar</param>
-    /// <param name="time">Total time in seconds the change will take</param>
-    /// <returns></returns>
-    private IEnumerator AnimateHealthBarDelta(float startValue, float endValue, float time)
-    {
-        float elapsedTime = 0f;
-        healthBarDelta.fillAmount = startValue;
-
-        while (elapsedTime < time)
-        {
-            healthBarDelta.fillAmount = Mathf.Lerp(healthBarDelta.fillAmount, endValue, (elapsedTime / time));
-            elapsedTime += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-    }
-
-    public void OpenSubmenu(GameObject icon)
-    {
-        GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
-        if (submenu != null) submenu.SetActive(true);
-    }
-
-    public void CloseSubmenu(GameObject icon)
-    {
-        GameObject submenu = icon.transform.Find("OptionPanel").gameObject;
-        if (submenu != null) submenu.SetActive(false);
+        cursor.GetComponent<CombatCursor>().SelectedCharacter = target;
     }
 
     public void CloseAllSubmenus()
     {
-        Transform icons = iconCanvas.transform;
+        Transform icons = iconPanel.transform;
         for (int i = 0; i < icons.childCount; i++)
         {
             Transform currentIcon = icons.GetChild(i);
             if (currentIcon.Find("OptionPanel") != null)
             {
-                CloseSubmenu(currentIcon.gameObject);
+                currentIcon.GetComponent<ActionIcon>().CloseSubmenu();
             }
         }
     }
 
-    /// <summary>
-    /// Handles the UI event of focus moving FROM one of the 
-    /// 5 top-level icons horizontally.
-    /// </summary>
-    /// <param name="eventData">Data of the Move event sent by the event system.</param>
-    public void OnMoveIcon(BaseEventData eventData)
-    {
-        AxisEventData axisData = eventData as AxisEventData;
-        MoveDirection moveDir = axisData.moveDir;
-        if (moveDir == MoveDirection.Left)
-        {
-            // Here's hoping this nightmare is a workaround for EventSystem.current.lastSelectedGameObject
-            // Point is, close the submenu of whichever icon we are moving AWAY FROM
-            CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnRight().gameObject);
-        }
-        else if (moveDir == MoveDirection.Right)
-        {
-            // Same, but opposite direction
-            CloseSubmenu(axisData.selectedObject.GetComponent<Button>().FindSelectableOnLeft().gameObject);
-        }
-    }
-
-    public void OnMelee()
-    {
-        Debug.Log("You have selected: Melee Attack");
-        ActivePlayer.MyCombatAction = ActivePlayer.MeleeAttack;
+    public void OnPiercing()
+    {        
+        ActivePlayer.MyCombatAction = ActivePlayer.PiercingAttack;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
 
-    public void OnRanged()
+    public void OnProjectile()
     {
-        ActivePlayer.MyCombatAction = ActivePlayer.RangedAttack;
+        ActivePlayer.MyCombatAction = ActivePlayer.ProjectileAttack;
+        Input.ResetInputAxes();
+        State = PlayerUIState.ENEMY_SELECT;
+    }
+
+    public void OnBlunt()
+    {
+        ActivePlayer.MyCombatAction = ActivePlayer.BluntAttack;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
@@ -273,7 +206,7 @@ public class CombatPlayerUI : MonoBehaviour
         ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
         Input.ResetInputAxes();
         State = PlayerUIState.PLAYER_SELECT;
-    }
+    }    
 
     #region C# Properties
     /// <summary>
@@ -286,10 +219,7 @@ public class CombatPlayerUI : MonoBehaviour
         set
         {
             activePlayer = value;
-            playerName.text = activePlayer.Name;
-            playerLevel.text = activePlayer.Stats.Level.ToString("00");
-            transform.position = activePlayer.transform.position + Vector3.left; //+ Vector3.up * 2f + Vector3.right / 2f;
-            iconCanvas.transform.position = activePlayer.transform.position + Vector3.down / 2f;
+            transform.position = Camera.main.WorldToScreenPoint(ActivePlayer.transform.position + Vector3.down * verticalOffset) ;
         }
         get
         {
@@ -314,23 +244,28 @@ public class CombatPlayerUI : MonoBehaviour
                 {
                     case PlayerUIState.ACTION_SELECT:
                         cursor.SetActive(false);
-                        iconCanvas.enabled = true;
+                        iconPanel.SetActive(true);
                         EventSystem.current.sendNavigationEvents = true;
-                        EventSystem.current.SetSelectedGameObject(iconCanvas.transform.Find("ActionIcon").gameObject);
+                        EventSystem.current.SetSelectedGameObject(iconPanel.transform.Find("AttackIcon").gameObject);
+                        break;
+                    case PlayerUIState.SUB_ACTION_SELECT:
+                        cursor.SetActive(false);
+                        iconPanel.SetActive(true);
+                        EventSystem.current.sendNavigationEvents = true;                        
                         break;
                     case PlayerUIState.ENEMY_SELECT:
-                        EventSystem.current.sendNavigationEvents = false;
-                        cursor.transform.position = selectedEnemy.transform.position;
+                        EventSystem.current.sendNavigationEvents = false;                        
                         cursor.SetActive(true);
+                        MoveCursor(selectedEnemy);                       
                         break;
                     case PlayerUIState.PLAYER_SELECT:
                         EventSystem.current.sendNavigationEvents = false;
-                        cursor.transform.position = selectedPlayer.transform.position;
                         cursor.SetActive(true);
+                        MoveCursor(selectedPlayer);                  
                         break;
-                    case PlayerUIState.WAITING_FOR_ACTION:
+                    case PlayerUIState.WAITING_FOR_TURN:
                         CloseAllSubmenus();
-                        iconCanvas.enabled = false;
+                        iconPanel.SetActive(false);
                         EventSystem.current.sendNavigationEvents = true;
                         cursor.SetActive(false);
                         break;

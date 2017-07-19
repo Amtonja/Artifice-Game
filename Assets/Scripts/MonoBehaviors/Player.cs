@@ -23,8 +23,8 @@ public class Player : Entity
     private Vector3 v3spellOrigin;
 
     private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
-    private float agilityBarTarget, magicBarTarget, rageBarTarget = 20f, specialBarTarget = 20f;
-    private float actionBarDefaultTarget = 6f, agilityBarDefaultTarget = 22.7f, magicBarDefaultTarget = 37.5f;
+    private float agilityBarTarget = 1f, magicBarTarget = 1f, rageBarTarget = 1f, specialBarTarget = 1f;
+    private float actionBarDefaultTarget = 6f;
 
     private Vector3 _footPos;
 
@@ -33,8 +33,8 @@ public class Player : Entity
 
     private Animator _animator;
 
-    [SerializeField]
-    private string characterName, characterID;
+    //[SerializeField]
+    //private string characterName, characterID;
 
     [SerializeField]
     private AudioClip meleeSFX, rangedSFX, footstepSFX, takeDamageSFX, deathSFX;
@@ -56,39 +56,39 @@ public class Player : Entity
         _audio = GetComponent<AudioSource>();
         _footPos = transform.Find("Base").localPosition;
 
-        //TODO: This will be loaded in via XML reader later
-        title = characterName;
-        id = characterID;
+        ////TODO: This will be loaded in via XML reader later
+        //title = characterName;
+        //id = characterID;
 
-        if (useXMLStats)
-        {
-            stats = new CombatStats(1, id); // for reading stats from XML
+        //if (useXMLStats)
+        //{
+        //    stats = new CombatStats(1, id); // for reading stats from XML
             
-            Debug.Log("Stats loaded for " + characterName);
-            Debug.Log(stats.ToString());
-        }        
-        else
-        {
-            stats = new CombatStats(); // default constructor for reading stats from entityInfo
-            stats.Level = 1;            
-            stats.BaseDefense = entityInfo.combatStats.defense;            
-            stats.BaseMagic = entityInfo.combatStats.magic;
-            stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
-            stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
-            stats.BaseSpeed = entityInfo.combatStats.speed;
-            stats.BaseAttack = entityInfo.combatStats.attack;
-        }        
+        //    Debug.Log("Stats loaded for " + characterName);
+        //    Debug.Log(stats.ToString());
+        //}        
+        //else
+        //{
+        //    stats = new CombatStats(); // default constructor for reading stats from entityInfo
+        //    stats.Level = 1;            
+        //    stats.BaseDefense = entityInfo.combatStats.defense;            
+        //    stats.BaseMagic = entityInfo.combatStats.magic;
+        //    stats.BaseMagicDefense = entityInfo.combatStats.magicDefense;
+        //    stats.BaseMaxHealth = entityInfo.combatStats.maxHealth;
+        //    stats.BaseSpeed = entityInfo.combatStats.speed;
+        //    stats.BaseAttack = entityInfo.combatStats.attack;
+        //}        
 
         ResetStats();
-        health = Stats.MaxHealth;
-        DefenseValue = Mathf.FloorToInt((Stats.Defense + armorValue) * 0.2f);
-        MagicDefenseValue = Mathf.FloorToInt((Stats.MagicDefense + armorValue) * 0.2f);    
+        health = Stats.maxHealth;
+        DefenseValue = Mathf.FloorToInt((Stats.defense + armorValue) * 0.2f);
+        MagicDefenseValue = Mathf.FloorToInt((Stats.magicDefense + armorValue) * 0.2f);    
 
         // The time for a character's action bar to fill is equal to the default time minus a percentage equal to their Speed stat
         // Likewise for the other bars
-        ActionBarTargetTime = actionBarDefaultTarget - (actionBarDefaultTarget * stats.Speed / 100f);
-        AgilityBarTarget = agilityBarDefaultTarget - (agilityBarDefaultTarget * stats.Speed / 100f);
-        MagicBarTarget = magicBarDefaultTarget - (magicBarDefaultTarget * stats.Speed / 100f);
+        ActionBarTargetTime = actionBarDefaultTarget - (actionBarDefaultTarget * Stats.speed / 100f);
+        //AgilityBarTarget = agilityBarDefaultTarget - (agilityBarDefaultTarget * Stats.Speed / 100f);
+        //MagicBarTarget = magicBarDefaultTarget - (magicBarDefaultTarget * Stats.Speed / 100f);
 
         v3spellOrigin = new Vector3(spellOrigin.x * transform.localScale.x, spellOrigin.y * transform.localScale.y, 0f);        
     }
@@ -129,31 +129,12 @@ public class Player : Entity
             {
                 // take a turn
                 IsMyTurn = true;
+                RageBarValue += 0.1f;
+                MagicBarValue += 0.2f;
+                AgilityBarValue += 1f / 3f;
                 PlayManager.instance.PauseGame();
 
-            }
-
-            // Update the other four bars
-            if (AgilityBarValue < AgilityBarTarget)
-            {
-                AgilityBarValue += Time.deltaTime;
-            }
-
-            if (MagicBarValue < MagicBarTarget)
-            {
-                MagicBarValue += Time.deltaTime;
-            }
-
-            if (RageBarValue < RageBarTarget)
-            {
-                RageBarValue += Time.deltaTime;
-            }
-
-            if (SpecialBarValue < SpecialBarTarget)
-            {
-                // Loyalty not a thing -- find out real stat used
-                //SpecialBarValue += (Stats.Loyalty / 10.0f) * Time.deltaTime; // Look, just get real formulas for these
-            }
+            }            
         }
     }
 
@@ -179,15 +160,15 @@ public class Player : Entity
         if (attackRoll <= 5)
         {
             isAHit = false;
-            Debug.Log(characterName + " missed!");
+            Debug.Log(Stats.characterName + " missed!");
         }
         
         return isAHit;
     }
 
-    public void MeleeAttack(Entity target)
+    public void PiercingAttack(Entity target)
     {
-        Debug.Log("Melee attack on " + target.name);
+        Debug.Log("Piercing attack on " + target.name);
         tempTarget = target;
         _animator.Play(Animator.StringToHash("SwordAttack"));
         ActionBarTimer = 0f;
@@ -198,14 +179,14 @@ public class Player : Entity
     }
 
     //Called by animator. Ensures damage is dealt on the correct attack frame
-    public void EndMeleeAttack()
+    public void EndPiercingAttack()
     {
         _audio.PlayOneShot(meleeSFX);
-        int damage = Stats.Attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue; 
+        int damage = Stats.attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue; 
         if (CalculateHit(tempTarget))
         {
 			//check for resistance and weaknesses
-			if (tempTarget.MyRes.bPeircing) {
+			if (tempTarget.MyRes.bPiercing) {
 				damage = (int)((float)damage * 0.75f);
 			} else if (tempTarget.MyWeak.bPeircing) {
 				damage = (int)((float)damage * 1.5f);
@@ -237,7 +218,7 @@ public class Player : Entity
 	public void EndBluntAttack()
 	{
 		_audio.PlayOneShot(meleeSFX);
-		int damage = Stats.Attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue; 
+		int damage = Stats.attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue; 
 		if (CalculateHit(tempTarget))
 		{
 			//check for resistance and weaknesses
@@ -258,7 +239,7 @@ public class Player : Entity
 
 
 
-    public void RangedAttack(Entity target)
+    public void ProjectileAttack(Entity target)
     {
         tempTarget = target;
         _animator.Play(Animator.StringToHash("GunAttack"));
@@ -270,10 +251,10 @@ public class Player : Entity
     }
 
     //Called by animator. Ensures damage is dealt on the correct attack frame
-    public void EndRangedAttack()
+    public void EndProjectileAttack()
     {
         _audio.PlayOneShot(rangedSFX);
-        int damage = Stats.Attack + addedRangedAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue;
+        int damage = Stats.attack + addedRangedAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue;
         if (CalculateHit(tempTarget))
         {
 			//check for resistance and weaknesses
@@ -346,7 +327,7 @@ public class Player : Entity
         PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
 
-        int healing = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7); 
+        int healing = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7); 
         target.Heal(healing);
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
@@ -365,7 +346,7 @@ public class Player : Entity
         lbs.StartPosition = v3spellOrigin;
         lbs.EndObject = target.gameObject;
 
-		int damage = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+		int damage = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
 
 		//check for resistance and weaknesses
 		if (target.MyRes.bLightning) {
@@ -383,8 +364,8 @@ public class Player : Entity
     public void GustSpell(Entity target)
     {
 		//_animator.Play(Animator.StringToHash("CastSpell"));
-        int damage = Stats.Magic; // Get real formula
-        target.TakeDamage(damage - target.Stats.MagicDefense); // Get real formula       
+        int damage = Stats.magic; // Get real formula
+        target.TakeDamage(damage - target.Stats.magicDefense); // Get real formula               
 //        PlayManager.instance.UnpauseGame();
     }
 
@@ -419,7 +400,7 @@ public class Player : Entity
             rotToTarget,
             transform) as GameObject;
 
-		int damage = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+		int damage = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
 
 		//check for resistance and weaknesses
 		if (target.MyRes.bFire) {
@@ -447,7 +428,7 @@ public class Player : Entity
         Vector3[] positions = { transform.position + v3spellOrigin, target.transform.position };
         lr.SetPositions(positions);
 
-		int damage = Stats.Magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+		int damage = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
 
 		//check for resistance and weaknesses
 		if (target.MyRes.bForce) {
@@ -528,13 +509,8 @@ public class Player : Entity
     /// Used for initialization or when all modifying effects are removed.
     /// </summary>
     void ResetStats()
-    {        
-        Stats.Defense = Stats.BaseDefense;
-        Stats.Magic = Stats.BaseMagic;
-        Stats.MagicDefense = Stats.BaseMagicDefense;
-        Stats.MaxHealth = Stats.BaseMaxHealth;
-        Stats.Speed = Stats.BaseSpeed;
-        Stats.Attack = Stats.BaseAttack;
+    {
+        Stats = Instantiate(baseStats);
     }
 
     IEnumerator FadeOut(SpriteRenderer sr)
@@ -576,7 +552,7 @@ public class Player : Entity
 
         if (gameObject.CompareTag("Enemy"))
         {
-            PlayManager.instance.experiencePool += Stats.XpValue;
+            PlayManager.instance.experiencePool += Stats.xpValue;
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             StartCoroutine(FadeOut(sr));
         }

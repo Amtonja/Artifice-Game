@@ -3,7 +3,7 @@
         void EnterCombat();
         void ExitCombat();
 
-        Characters.CombatStats Stats { get; }
+        Characters.CharacterStats Stats { get; }
         bool InCombat { get; set; }
     }
 }

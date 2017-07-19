@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bIsEnemy: 0
+  baseStats: {fileID: 11400000, guid: cb09dc9a25132fd47b787dede7821bd6, type: 2}
   myRes:
     bBlunt: 0
     bPeircing: 1
@@ -254,8 +256,6 @@ MonoBehaviour:
     race: 0
   useXMLStats: 1
   spellOrigin: {x: 0.211, y: 0.015}
-  characterName: Hurley
-  characterID: _hurley_
   meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
   rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
   footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}

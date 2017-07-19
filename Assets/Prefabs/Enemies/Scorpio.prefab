@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bIsEnemy: 1
+  baseStats: {fileID: 11400000, guid: 1560c2feb53aba74ba0d4953a8863ac3, type: 2}
   myRes:
     bBlunt: 1
     bPeircing: 0
@@ -233,8 +234,6 @@ MonoBehaviour:
     race: 7
   useXMLStats: 1
   spellOrigin: {x: -0.348, y: 0.022}
-  characterName: Scorpio
-  characterID: _scorpio_
   meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
   rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
   footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}

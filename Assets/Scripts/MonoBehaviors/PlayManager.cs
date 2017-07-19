@@ -28,6 +28,8 @@ public class PlayManager : MonoBehaviour
     /// </summary>
     public CombatUIManager combatUI;
 
+    public GameObject groupCombatUI;
+
     /// <summary>
     /// Reference to the CombatGrid object so that it can be
     /// inactive initially and activated when combat begins.
@@ -199,14 +201,6 @@ public class PlayManager : MonoBehaviour
 	public void EnemyEncountered()//Player enemy)
     {
         exploreMode = false;
-//        combatGrid.gameObject.SetActive(true);
-
-//        GameObject[] enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
-//        foreach (GameObject e in enemiesInScene)
-//        {
-//            combatantEnemies.Add(e.GetComponent<Player>());
-//        }
-//        SetupCombatPositions(combatantEnemies);
 
         for (int i = 0; i < combatantEnemies.Count; i++)
         {
@@ -220,43 +214,10 @@ public class PlayManager : MonoBehaviour
 
 		//move to correct combat state
 		state = combatState.Init;
-
+        groupCombatUI.SetActive(true);
         MusicManager.instance.StartCoroutine("PlayCombatMusic");
 
         experiencePool = 0;
-    }
-
-    /// <summary>
-    /// Moves the players and combatants to their appropriate battle positions as
-    /// set up in the CombatGrid script. 
-	/// 
-	/// Now completely uneeded, as this is handled via each Battleground script, since positions are local 
-	/// to that script's instance.
-    /// </summary>
-    /// <param name="enemy">Enemy.</param>
-    private void SetupCombatPositions(List<Player> enemies)
-    {        
-//        combatGrid.GenerateGrid();
-//        combatGrid.gameObject.SetActive(true);
-
-        // Set each player's position to the given cell of the grid, offset for their sprite's height        
-//        for (int i = 0; i < party.Length; i++)
-//        {
-//            Vector3 startPosition =
-//                new Vector3(combatGrid.playerStartPositions[i].x * combatGrid.CellSizeX, 
-//                combatGrid.playerStartPositions[i].y * combatGrid.CellSizeY - party[i].FootPos.y);
-//            party[i].transform.position = combatGrid.transform.position + startPosition;
-//        }        
-//		party[1].
-
-        // Do the same as above for the enemies
-//        for (int i = 0; i < enemies.Count; i++)
-//        {
-//            Vector3 startPosition =
-//                new Vector3(combatGrid.enemyStartPositions[i].x * combatGrid.CellSizeX, 
-//                combatGrid.enemyStartPositions[i].y * combatGrid.CellSizeY - enemies[i].FootPos.y);
-//            enemies[i].transform.position = combatGrid.transform.position + startPosition; 
-//        }
     }
 
     public void CreatePopupText(string text, Transform location, Color textColor)
@@ -264,7 +225,7 @@ public class PlayManager : MonoBehaviour
         PopupText popup = Instantiate(popupTextPrefab, combatUI.transform.Find("Canvas"), false);   
         popup.GetComponentInChildren<UnityEngine.UI.Text>().text = text;
         popup.GetComponentInChildren<UnityEngine.UI.Text>().color = textColor;
-        popup.transform.position = location.position;
+        popup.transform.position = Camera.main.WorldToScreenPoint(location.position);
     }
 
     /// <summary>
@@ -291,6 +252,7 @@ public class PlayManager : MonoBehaviour
 
         //turn off combat UI
         combatUI.DeactivatePlayerUI();
+        groupCombatUI.SetActive(false);
         experiencePool = 0;
     }
 
