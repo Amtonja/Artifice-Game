@@ -53,7 +53,6 @@ public class ActionIcon : MonoBehaviour
     public void AddSubAction(CombatAction action)
     {
         GameObject newAction = Instantiate(subActionPrefab, subActionPanel.transform, false);
-        //newAction.GetComponent<SubActionButton>().actionName = name;
         newAction.GetComponent<SubActionButton>().action = action;
         newAction.GetComponent<TextMeshProUGUI>().text = action.name;
         subActions.Add(newAction);
@@ -81,7 +80,10 @@ public class ActionIcon : MonoBehaviour
     {
         if (name == "AttackIcon")
         {
-            
+            foreach (WeaponAttack attack in player.Stats.weaponAttacks)
+            {
+                AddSubAction(attack);
+            }
         }
 
         if (name == "MagicIcon")

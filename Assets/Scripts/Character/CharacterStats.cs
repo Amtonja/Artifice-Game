@@ -14,6 +14,7 @@ namespace Artifice.Characters
 
         public PhysicalDamageType primaryDamage, secondaryDamage, damageWeakness;
 
+        public List<WeaponAttack> weaponAttacks;
         public List<Spell> spells;
     }
 }

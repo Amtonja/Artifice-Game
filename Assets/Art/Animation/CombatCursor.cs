@@ -20,7 +20,7 @@ public class CombatCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        transform.position = Camera.main.WorldToScreenPoint(SelectedCharacter.transform.position + Vector3.up * verticalOffset);
     }
 
     void MoveToSelectedCharacter()

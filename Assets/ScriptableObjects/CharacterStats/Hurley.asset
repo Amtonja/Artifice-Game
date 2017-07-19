@@ -23,5 +23,8 @@ MonoBehaviour:
   primaryDamage: 1
   secondaryDamage: 2
   damageWeakness: 0
+  weaponAttacks:
+  - {fileID: 11400000, guid: 62ef59384f6635c42a8727edc3fe938e, type: 2}
+  - {fileID: 11400000, guid: 557dd084b399a7f4c8fec967e2242ae7, type: 2}
   spells:
   - {fileID: 11400000, guid: 0efdc25a9eede58488797a0707aaf937, type: 2}

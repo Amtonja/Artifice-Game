@@ -31,7 +31,7 @@ namespace Artifice.Characters
 		[System.Serializable]
 		public struct Resistances {
 			public bool bBlunt;
-			public bool bPeircing;
+			public bool bPiercing;
 			public bool bProjectile;
 
 			public bool bWind;

@@ -155,17 +155,23 @@ public class CombatPlayerUI : MonoBehaviour
         }
     }
 
-    public void OnMelee()
-    {
-        Debug.Log("You have selected: Melee Attack");
-        ActivePlayer.MyCombatAction = ActivePlayer.MeleeAttack;
+    public void OnPiercing()
+    {        
+        ActivePlayer.MyCombatAction = ActivePlayer.PiercingAttack;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
 
-    public void OnRanged()
+    public void OnProjectile()
     {
-        ActivePlayer.MyCombatAction = ActivePlayer.RangedAttack;
+        ActivePlayer.MyCombatAction = ActivePlayer.ProjectileAttack;
+        Input.ResetInputAxes();
+        State = PlayerUIState.ENEMY_SELECT;
+    }
+
+    public void OnBlunt()
+    {
+        ActivePlayer.MyCombatAction = ActivePlayer.BluntAttack;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
@@ -200,7 +206,7 @@ public class CombatPlayerUI : MonoBehaviour
         ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
         Input.ResetInputAxes();
         State = PlayerUIState.PLAYER_SELECT;
-    }
+    }    
 
     #region C# Properties
     /// <summary>
