@@ -124,8 +124,13 @@ public class Battleground : MonoBehaviour {
 				enemies [i].GetComponent<AIBase> ().BHold = false; //resume
 				enemies [i].GetComponent<AIBase> ().Reset();
 
+				//reset health
+				enemies [i].GetComponent<Player>().Heal(99999);
+
 				bRunning = false;
 				this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+				readyCount = 0;
+				blinkCurrent = 0;
 			}
 			Debug.Log ("Done blinking!");
 		}
