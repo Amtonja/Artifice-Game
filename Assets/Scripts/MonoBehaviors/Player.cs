@@ -284,7 +284,12 @@ public class Player : Entity
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
         _animator.SetBool("SpellComplete", true);
-        //_movement.ForceLock(false);
+
+		//send to AI
+		if (bIsEnemy) {
+			this.GetComponent<AIBase> ().ResumeWander ();
+		}
+
     }
 
     public IEnumerator DealSpellHealing(Entity target, GameObject spellVisual, float spellDuration)

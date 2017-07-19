@@ -21,6 +21,8 @@ namespace Artifice.Characters
 		private float waitForWander = 2f; //Need to wait for combat to be ready before wandering
 		private float waitForWanderCurrent = 0f;
 
+		private bool bHold = false;
+
 		// Update is called once per frame
 		public override void CombatUpdate () {
 			if (_player.IsMyTurn) {
@@ -44,13 +46,20 @@ namespace Artifice.Characters
 				_player.MyCombatAction = _player.BeginSpellCast;
 
 				_player.MyCombatAction(target);
+				bHold = true;
 
-			}else {
+
+			}else if (!bHold){
 				waitForWanderCurrent += Time.deltaTime;
 				if (waitForWanderCurrent >= waitForWander) {
 					Wander ();
 				}
 			}
+		}
+
+
+		public override void ResumeWander(){
+			bHold = false;
 		}
 	}
 }
