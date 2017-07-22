@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
+[RequireComponent(typeof(Slider))]
 public class ActionBar : PartyUIElement
 {
-    private Image barImage;
-    private GameObject barBorder;
+    private Slider barSlider;
+    public Image barBorder;
 
     // Use this for initialization
     protected override void Awake()
     {
         base.Awake();
-        barImage = GetComponent<Image>();
-        barImage.fillAmount = 0f;
-        barBorder = transform.GetChild(0).gameObject;
+        barSlider = GetComponent<Slider>();
+        barSlider.value = 0f;
+        //barBorder = transform.GetChild(0).gameObject;
     }
 
     void OnEnable()
     {
         if (player == null)
         {
-            barImage.enabled = false;
-            barBorder.SetActive(false);
+            barSlider.enabled = false;
+            barBorder.enabled = false;
         }
         else
         {
-            barImage.enabled = true;
-            barBorder.SetActive(true);
+            barSlider.enabled = true;
+            barBorder.enabled = true;
         }
     }
 
@@ -37,7 +37,7 @@ public class ActionBar : PartyUIElement
     {
         if (player != null)
         {
-            barImage.fillAmount = player.ActionBarTimer / player.ActionBarTargetTime;
+            barSlider.value = player.ActionBarTimer / player.ActionBarTargetTime;
         }
     }
 }

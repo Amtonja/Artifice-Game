@@ -3,31 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
+[RequireComponent(typeof(Slider))]
 public class RageBar : PartyUIElement
 {
-    private Image barImage;
-    private GameObject barBorder;
+    private Slider barSlider;
+    public Image barBorder;
 
     // Use this for initialization
     protected override void Awake()
     {
         base.Awake();
-        barImage = GetComponent<Image>();
-        barBorder = transform.GetChild(0).gameObject;
+        barSlider = GetComponent<Slider>();
     }
 
     void OnEnable()
     {
         if (player == null)
         {
-            barImage.enabled = false;
-            barBorder.SetActive(false);
+            barSlider.enabled = false;
+            barBorder.enabled = false;
         }
         else
         {
-            barImage.enabled = true;
-            barBorder.SetActive(true);
+            barSlider.enabled = true;
+            barBorder.enabled = true;
         }
     }
 
@@ -36,7 +35,7 @@ public class RageBar : PartyUIElement
     {
         if (player != null)
         {
-            barImage.fillAmount = (float)player.RageBarValue / (float)player.RageBarTarget;
+            barSlider.value = (float)player.RageBarValue / (float)player.RageBarTarget;
         }
     }
 }

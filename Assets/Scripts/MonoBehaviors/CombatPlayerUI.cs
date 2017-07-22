@@ -208,6 +208,11 @@ public class CombatPlayerUI : MonoBehaviour
         State = PlayerUIState.PLAYER_SELECT;
     }    
 
+    public void OnFlee()
+    {
+        PlayManager.instance.RunFromCombat();
+    }
+
     #region C# Properties
     /// <summary>
     /// Sets the active player, and also updates the

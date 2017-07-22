@@ -93,5 +93,11 @@ public class ActionIcon : MonoBehaviour
                 AddSubAction(spell);
             }
         }
+
+        if (name == "UtilityIcon")
+        {
+            CombatAction flee = Resources.Load("ScriptableObjects/Flee") as CombatAction;
+            AddSubAction(flee);
+        }
     }
 }
