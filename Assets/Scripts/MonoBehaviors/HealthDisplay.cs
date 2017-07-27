@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-[RequireComponent(typeof(Text))]
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class HealthDisplay : PartyUIElement
 {
-    private Text healthDisplay;
+    private TextMeshProUGUI healthDisplay;
 
     // Use this for initialization
     protected override void Awake()
     {
         base.Awake();
-        healthDisplay = GetComponent<Text>();        
+        healthDisplay = GetComponent<TextMeshProUGUI>();        
     }
 
     void OnEnable()

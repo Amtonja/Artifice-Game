@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-[RequireComponent(typeof(Text))]
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class NameDisplay : PartyUIElement
 {
-    private Text nameDisplay;
+    private TextMeshProUGUI nameDisplay;
 
     // Use this for initialization
     protected override void Awake()
     {
         base.Awake();        
-        nameDisplay = GetComponent<Text>();        
+        nameDisplay = GetComponent<TextMeshProUGUI>();        
     }    
 
     void OnEnable()

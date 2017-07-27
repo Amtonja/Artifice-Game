@@ -19,6 +19,7 @@ public class CombatPlayerUI : MonoBehaviour
     //private Canvas iconCanvas;
     private GameObject iconPanel;
     private GameObject cursor;
+    private Button firstSelectedIcon;
     private List<Player> enemiesList;
     private Player[] partyList;
     private Player selectedEnemy, selectedPlayer;
@@ -45,6 +46,7 @@ public class CombatPlayerUI : MonoBehaviour
         iconPanel.SetActive(false);
 
         cursor = transform.Find("Cursor").gameObject;
+        firstSelectedIcon = iconPanel.transform.Find("AttackIcon").GetComponent<Button>();
 
         enemiesList = PlayManager.instance.EnemyCombatants;
         partyList = PlayManager.instance.party;
@@ -251,8 +253,9 @@ public class CombatPlayerUI : MonoBehaviour
                         Debug.Log(ActivePlayer.Stats.characterName + " taking a turn");
                         cursor.SetActive(false);
                         iconPanel.SetActive(true);
+                        //EventSystem.current.SetSelectedGameObject(firstSelectedIcon);
+                        firstSelectedIcon.Select();
                         EventSystem.current.sendNavigationEvents = true;
-                        EventSystem.current.SetSelectedGameObject(iconPanel.transform.Find("AttackIcon").gameObject);
                         break;
                     case PlayerUIState.SUB_ACTION_SELECT:
                         cursor.SetActive(false);

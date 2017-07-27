@@ -86,6 +86,8 @@ public class PlayManager : MonoBehaviour
         groupCombatUI = Instantiate(Resources.Load("Prefabs/PartyCombatUI")) as GameObject;
         GameObject playerActionUI = Instantiate(Resources.Load("Prefabs/PlayerActionUI")) as GameObject;
         combatUI = playerActionUI.GetComponent<CombatUIManager>();
+
+        groupCombatUI.SetActive(false);
     }
 
 

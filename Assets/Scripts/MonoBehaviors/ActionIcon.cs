@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 using Artifice.Characters;
 
 public class ActionIcon : MonoBehaviour
-{
+{ 
     private List<GameObject> subActions = new List<GameObject>();
     private GameObject subActionPanel;
     private GameObject subActionPrefab;
@@ -17,15 +17,7 @@ public class ActionIcon : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        subActionPanel = transform.Find("OptionPanel").gameObject;
-        if (subActionPanel == null)
-        {
-            Debug.LogError("Action icon " + name + " lacks a child panel for sub-actions");
-        }
-        else
-        {
-            CloseSubmenu();
-        }
+        subActionPanel = transform.Find("OptionPanel").gameObject;        
 
         subActionPrefab = Resources.Load("Prefabs/SubActionPrefab") as GameObject;
         parentUI = GetComponentInParent<CombatPlayerUI>();

@@ -17,12 +17,17 @@ public class SubActionButton : MonoBehaviour, ICancelHandler, ISubmitHandler, IS
 
     public CombatAction action;
 
+    void Awake()
+    {
+        descriptionDisplay = PlayManager.instance.groupCombatUI.transform.Find("Canvas/Panel/ActionInfo/ActionDescription").gameObject;
+    }
+
     // Use this for initialization
     void Start()
     {
         _actionIcon = GetComponentInParent<ActionIcon>();
         parentUI = GetComponentInParent<CombatPlayerUI>();
-        descriptionDisplay = PlayManager.instance.groupCombatUI.transform.Find("Canvas/Panel/ActionInfo/ActionDescription").gameObject;
+        //descriptionDisplay = PlayManager.instance.groupCombatUI.transform.Find("Canvas/Panel/ActionInfo/ActionDescription").gameObject;
     }
 
     public void OnCancel(BaseEventData eventData)
