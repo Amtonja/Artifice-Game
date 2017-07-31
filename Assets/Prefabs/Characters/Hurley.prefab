@@ -23,9 +23,7 @@ GameObject:
   - component: {fileID: 95928917623304604}
   - component: {fileID: 114469851435398964}
   - component: {fileID: 114551961529728186}
-  - component: {fileID: 114814993479263588}
   - component: {fileID: 61698954228227954}
-  - component: {fileID: 114962635086556694}
   - component: {fileID: 50844562761748164}
   - component: {fileID: 82287076827496750}
   m_Layer: 0
@@ -70,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1002287157204096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57, y: -3.82, z: 0}
+  m_LocalPosition: {x: -4.453, y: -1.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702878770921528}
@@ -224,7 +222,7 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: cb09dc9a25132fd47b787dede7821bd6, type: 2}
   myRes:
     bBlunt: 0
-    bPeircing: 1
+    bPiercing: 0
     bProjectile: 0
     bWind: 0
     bFire: 0
@@ -240,21 +238,6 @@ MonoBehaviour:
     bLightning: 0
     bIce: 0
     bForce: 0
-  entityInfo:
-    name: Hurley
-    id: _hurley_
-    combatStats:
-      attack: 0
-      defense: 12
-      magic: 8
-      speed: 9
-      evasion: 10
-      accuracy: 6
-      magicDefense: 6
-      luck: 5
-      maxHealth: 150
-    race: 0
-  useXMLStats: 1
   spellOrigin: {x: 0.211, y: 0.015}
   meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
   rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
@@ -278,68 +261,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   bNPC: 0
---- !u!114 &114814993479263588
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002287157204096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6f25f20d0ae6b419f6ebfade5ecc81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useDefaultGUI: 1
-  guiSkin: {fileID: 0}
-  guiStyleName: label
-  alignment: 1
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  textStyle: 1
-  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
-  defaultUseMessage: (spacebar to interact)
-  useKey: 32
-  useButton: Fire2
-  enableTouch: 0
-  touchArea:
-    origin: 0
-    alignment: 0
-    x:
-      scale: 0
-      value: 0
-    y:
-      scale: 0
-      value: 0
-    width:
-      scale: 0
-      value: 0
-    height:
-      scale: 0
-      value: 0
-    minPixelWidth: 0
-    minPixelHeight: 0
-  broadcastToChildren: 1
-  actorTransform: {fileID: 0}
---- !u!114 &114962635086556694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002287157204096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a805898d10649184f945ca231075aafd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainGraphic: {fileID: 0}
-  nameText: {fileID: 0}
-  useMessageText: {fileID: 0}
-  inRangeColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  outOfRangeColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  reticleInRange: {fileID: 0}
-  reticleOutOfRange: {fileID: 0}
-  animationTransitions:
-    showTrigger: Show
-    hideTrigger: Hide
 --- !u!212 &212771996872743772
 SpriteRenderer:
   m_ObjectHideFlags: 1
