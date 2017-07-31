@@ -11,8 +11,8 @@ public class AreaInfo : MonoBehaviour {
 
 	public float minX, maxX, minY, maxY;
     
-	private bool bManual = false; //stub for cutscene manager camera controls
-	private bool bTransition = false; //stub for transitioning from cutscene camera positions to default
+//	private bool bManual = false; //stub for cutscene manager camera controls
+//	private bool bTransition = false; //stub for transitioning from cutscene camera positions to default
 
 	// Use this for initialization
 	void Start () {

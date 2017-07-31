@@ -8,7 +8,7 @@ public class CM_MoveObject : MonoBehaviour {
 
 
 	public GameObject target;
-	private Vector3 startPosition;
+//	private Vector3 startPosition;
 	public bool bMovePlayer = false;
 	public GameObject endLocation;
 	public float moveSpeed;
@@ -79,7 +79,7 @@ public class CM_MoveObject : MonoBehaviour {
 	}
 
 	public void Activate(){
-		startPosition = target.transform.position;
+//		startPosition = target.transform.position;
 		bRunning = true;
 	}
 }

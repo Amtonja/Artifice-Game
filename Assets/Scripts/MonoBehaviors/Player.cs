@@ -22,7 +22,7 @@ public class Player : Entity
     private SpellDelegate _spell;
 
     private Animator _animator;
-    private Movement _movement;
+//    private Movement _movement;
     
     [SerializeField]
     private AudioClip meleeSFX, rangedSFX, footstepSFX, takeDamageSFX, deathSFX;
@@ -41,7 +41,7 @@ public class Player : Entity
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _movement = GetComponent<Movement>();
+//        _movement = GetComponent<Movement>();
         _audio = GetComponent<AudioSource>();
         _footPos = transform.Find("Base").localPosition;
         

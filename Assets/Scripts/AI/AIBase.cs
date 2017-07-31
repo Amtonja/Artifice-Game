@@ -33,8 +33,8 @@ public class AIBase : MonoBehaviour {
 	private float moveTimer = 1.5f; //extra timer in case it's running straight into a wall or otherwise can't physically get to its location
 	private float moveTimerCurrent = 0f;
 
-	private float hitTimer = 1f;
-	private float hitTimerCurrent = 0f;
+//	private float hitTimer = 1f;
+//	private float hitTimerCurrent = 0f;
 
 	private bool bForceUp, bForceDown, bForceLeft, bForceRight = false; //to keep them off of borders
 

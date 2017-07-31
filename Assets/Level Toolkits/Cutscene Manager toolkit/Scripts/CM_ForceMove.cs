@@ -83,13 +83,13 @@ public class CM_ForceMove : MonoBehaviour {
 		target.GetComponent<Movement> ().StartForcedMove (newDir);
 		target.GetComponent<Movement> ().GetForcedSender (this.gameObject);
 
-		Debug.Log ("ForceMove activated!");
+//		Debug.Log ("ForceMove activated!");
 	}
 
 	//called by the character's movement script to signal it is done forcing a move
 	public void MoveComplete(){
 		passTarget.SendMessage ("Activate");
-		Debug.Log ("Force move complete! Next target!");
+//		Debug.Log ("Force move complete! Next target!");
 	}
 
 	void OnDrawGizmos(){
