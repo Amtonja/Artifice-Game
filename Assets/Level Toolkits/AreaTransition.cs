@@ -51,6 +51,7 @@ public class AreaTransition : MonoBehaviour {
 		//lock character input
 		for (int i = 0; i < PlayManager.instance.party.Length; i++) {
 			PlayManager.instance.party [i].GetComponent<Movement> ().ForceLock (true);
+			PlayManager.instance.party [i].GetComponent<Movement> ().ResetFollowList ();
 		}
 		//Send notification to AreaTransitionEffect to begin the effect
 //		effect.Begin(this);

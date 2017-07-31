@@ -21,6 +21,8 @@ namespace Artifice.Characters
 		private float waitForWander = 2f; //Need to wait for combat to be ready before wandering
 		private float waitForWanderCurrent = 0f;
 
+		private bool bHoldPos = false;
+
 		// Update is called once per frame
 		public override void CombatUpdate () {
 			if (_player.IsMyTurn) {
@@ -31,26 +33,38 @@ namespace Artifice.Characters
 				GameObject person;
 				if (randA < 0.3f) {
 					person = GameObject.Find ("Evans");
+					Debug.Log ("Scorpio attacking Evans!");
 				} else if (randA < 0.6f) {
 					person = GameObject.Find ("Hurley");
+					Debug.Log ("Scorpio attacking Hurley!");
 				} else {
 					person = GameObject.Find ("Russo");
+					Debug.Log ("Scorpio attacking Russo!");
 				}
 				Entity target = person.GetComponent<Entity> ();
 
-                //				_player.MeleeAttack (target);
-                //_player.MyCombatAction = _player.MeleeAttack; 
-                _player.MySpell = _player.EyeLaser;
-                _player.MyCombatAction = _player.BeginSpellCast;
+				//				_player.MeleeAttack (target);
+				//_player.MyCombatAction = _player.MeleeAttack; 
+				_player.MySpell = _player.EyeLaser;
+				_player.MyCombatAction = _player.BeginSpellCast;
+
+				Debug.Log("Target = " + target.name.ToString());
 
 				_player.MyCombatAction(target);
+				bHoldPos = true;
+				waitForWanderCurrent = 0;
 
-			}else {
+			}else if (!bHoldPos){
 				waitForWanderCurrent += Time.deltaTime;
 				if (waitForWanderCurrent >= waitForWander) {
 					Wander ();
 				}
 			}
+		}
+
+
+		public override void ResumeWander(){
+			bHoldPos = false;
 		}
 	}
 }

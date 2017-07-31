@@ -89,6 +89,8 @@ public class Movement : MonoBehaviour
 
 	private Transform basePoint; //The base of the feet. Used for collision checks
 
+	private bool bIgnoreFollow = false;
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -136,7 +138,7 @@ public class Movement : MonoBehaviour
             HandleMove();
 
         }
-        else if (followTarget != null && !player.InCombat && !bNPC && !bForceMove)
+		else if (followTarget != null && !player.InCombat && !bNPC && !bForceMove && !bIgnoreFollow)
         {
 
             FollowMove();
@@ -381,6 +383,13 @@ public class Movement : MonoBehaviour
         }
     }
 
+
+	public void ResetFollowList(){
+
+		followPointList = new ArrayList ();
+		bFollowing = false;
+	}
+
     //Forces a character to move to a location.
     private void ForceMove()
     {
@@ -457,10 +466,12 @@ public class Movement : MonoBehaviour
 
         }
         else {
-            Debug.Log("Finished moving!");
+//            Debug.Log("Finished moving!");
             this.transform.position = intendedPosition;
 			StopForcedMove(true);
             //            inputDelay = 0.3f;
+			ResetFollowList(); //to make sure we stay at our position
+
         }
 
     }
@@ -474,7 +485,7 @@ public class Movement : MonoBehaviour
         //        intendedPosition = new Vector2(this.transform.position.x + spaces.x, this.transform.position.y + spaces.y);
         intendedPosition = spaces;
         bForceMove = true;
-        Debug.Log("Forced movement starting!");
+//        Debug.Log("Forced movement starting!");
     }
 
     //stops forced movement process. Callback sends... well, a callback towards whatever stopped it. 
@@ -740,6 +751,14 @@ public class Movement : MonoBehaviour
             return bForceLock;
         }
     }
+
+	public bool BIgnoreFollow
+	{
+		set
+		{
+			bIgnoreFollow = value;
+		}
+	}
 
 	//Lets other scripts know what vector we're pointing. MoveDir really should have been a vector2 rather than an enum
 	public Vector2 DirVector

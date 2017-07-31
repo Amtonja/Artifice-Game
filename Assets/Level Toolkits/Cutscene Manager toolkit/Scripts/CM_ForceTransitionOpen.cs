@@ -93,6 +93,11 @@ public class CM_ForceTransitionOpen : MonoBehaviour {
 		state = transitionState.waiting;
 		passTarget.SendMessage ("Activate");
 
+		//reset positions of following characters so they don't just walk back offscreen
+		for (int i = 0; i < PlayManager.instance.party.Length; i++) {
+			PlayManager.instance.party [i].GetComponent<Movement> ().ResetFollowList ();
+		}
+
 		effect.Reset (); //reset position to start position
 	}
 

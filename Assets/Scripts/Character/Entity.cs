@@ -66,7 +66,7 @@ namespace Artifice.Characters
             if (_damage < 0) { _damage = 0; }
             health -= _damage;
             health = Mathf.Clamp(health, 0, Stats.maxHealth);
-            Debug.Log(Stats.characterName + " took " + _damage + " and is at " + health + " HP out of " + Stats.maxHealth + " HP");
+//            Debug.Log(Stats.characterName + " took " + _damage + " and is at " + health + " HP out of " + Stats.maxHealth + " HP");
             PlayManager.instance.CreatePopupText(_damage.ToString(), transform, Color.red);
             if (health <= 0) Die();
 

@@ -73,7 +73,7 @@ AnimationClip:
   m_IsEmpty: 0
   m_Events:
   - time: 0.5
-    functionName: EndMeleeAttack
+    functionName: EndSpellCast
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

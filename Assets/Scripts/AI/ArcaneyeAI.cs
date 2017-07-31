@@ -45,9 +45,11 @@ namespace Artifice.Characters
 				_player.MySpell = _player.EyeLaser;
 				_player.MyCombatAction = _player.BeginSpellCast;
 
+				Debug.Log("Target = " + target.name.ToString());
+
 				_player.MyCombatAction(target);
 				bHold = true;
-
+				waitForWanderCurrent = 0;
 
 			}else if (!bHold){
 				waitForWanderCurrent += Time.deltaTime;

@@ -78,6 +78,7 @@ public class Battleground : MonoBehaviour {
 		for (int i = 0; i < party.Length; i++) {
 			party [i].GetComponent<Movement> ().GetForcedSender (this.gameObject);
 			party [i].GetComponent<Movement> ().StartForcedMove (playerPosList [i].transform.position);
+			party [i].GetComponent<Movement> ().BIgnoreFollow = true;
 		}
 
 		for (int i = 0; i < enemies.Count; i++) {
@@ -96,7 +97,9 @@ public class Battleground : MonoBehaviour {
 			enemies [i].GetComponent<AIBase> ().BHold = true;// tells to stop wandering
 		}
 		alphaColor = 0.1f;
-
+		for (int i = 0; i < party.Length; i++) {
+			party [i].GetComponent<Movement> ().BIgnoreFollow = false;
+		}
 	}
 
 	private void Resetting(){

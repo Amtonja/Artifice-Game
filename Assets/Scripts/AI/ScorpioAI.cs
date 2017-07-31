@@ -34,10 +34,13 @@ namespace Artifice.Characters
 				GameObject person;
 				if (randA < 0.3f) {
 					person = GameObject.Find ("Evans");
+					Debug.Log ("Scorpio attacking Evans!");
 				} else if (randA < 0.6f) {
 					person = GameObject.Find ("Hurley");
+					Debug.Log ("Scorpio attacking Hurley!");
 				} else {
 					person = GameObject.Find ("Russo");
+					Debug.Log ("Scorpio attacking Russo!");
 				}
 				Entity target = person.GetComponent<Entity> ();
 
@@ -53,7 +56,10 @@ namespace Artifice.Characters
 //				_player.MyCombatAction = _player.BeginSpellCast;
 				//                }
 
+				Debug.Log("Target = " + target.name.ToString());
+
 				_player.MyCombatAction (target);
+				waitForWanderCurrent = 0;
 			} else {
 				waitForWanderCurrent += Time.deltaTime;
 				if (waitForWanderCurrent >= waitForWander) {

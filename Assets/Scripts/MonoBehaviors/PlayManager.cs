@@ -209,8 +209,7 @@ public class PlayManager : MonoBehaviour
             combatUI.SetupPlayerUI(party[i]);
         }        
 
-		//move to correct combat state
-		state = combatState.Init;
+
         groupCombatUI.SetActive(true);
         MusicManager.instance.StartCoroutine("PlayCombatMusic");
 
@@ -240,13 +239,17 @@ public class PlayManager : MonoBehaviour
         {
             party[i].ExitCombat();
             party[i].AddExperience(experiencePool);   
+			party [i].GetComponent<Movement> ().BIgnoreFollow = false;
 			//Reset characters following lead character
 //			if (i != 0) {
 //				GameObject dude = party [i].gameObject;
 //				dude.gameObject.GetComponent<Movement> ().FollowTarget = party [0];
 //			}
+			//Reset following 
+			party[i].GetComponent<Movement>().ResetFollowList();
         }
-
+		//Reset state. Need to reset here specifically
+		state = combatState.Init;
         //turn off combat UI
         combatUI.DeactivatePlayerUI();
         groupCombatUI.SetActive(false);

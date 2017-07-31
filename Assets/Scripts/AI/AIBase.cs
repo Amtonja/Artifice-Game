@@ -191,7 +191,7 @@ public class AIBase : MonoBehaviour {
 	}
 	//Called by Movement to signify we hit the end of a position
 	private void MoveComplete(){
-		Debug.Log ("Wandered into position!");
+//		Debug.Log ("Wandered into position!");
 		wanderState = 2;
 	}
 
