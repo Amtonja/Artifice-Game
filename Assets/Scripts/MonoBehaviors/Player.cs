@@ -180,6 +180,7 @@ public class Player : Entity
 	//Called by animator. Ensures damage is dealt on the correct attack frame
 	public void EndBluntAttack()
 	{
+		Debug.Log ("Ending blunt attack!");
 		_audio.PlayOneShot(meleeSFX);
 		int damage = Stats.attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue; 
 		if (CalculateHit(tempTarget))
@@ -190,7 +191,7 @@ public class Player : Entity
 			} else if (tempTarget.MyWeak.bBlunt) {
 				damage = (int)((float)damage * 1.5f);
 			}
-
+			Debug.Log ("Sending TakeDamage from blunt!");
 			tempTarget.TakeDamage(damage);
 		}
 		else
@@ -260,7 +261,7 @@ public class Player : Entity
     /// </summary>
     public void EndSpellCast()
     {
-        //Debug.Log(name + " finishes casting " + MySpell.Method);
+        Debug.Log(name + " finishes casting " + MySpell.Method);
         MySpell(tempTarget);
     }
 

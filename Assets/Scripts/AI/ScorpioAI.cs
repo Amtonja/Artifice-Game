@@ -22,6 +22,8 @@ namespace Artifice.Characters
 		private float waitForWander = 2f; //Need to wait for combat to be ready before wandering
 		private float waitForWanderCurrent = 0f;
 
+		private bool bHoldPos = false;
+
 		// Update is called once per frame
 		public override void CombatUpdate()
 		{
@@ -60,12 +62,18 @@ namespace Artifice.Characters
 
 				_player.MyCombatAction (target);
 				waitForWanderCurrent = 0;
-			} else {
-				waitForWanderCurrent += Time.deltaTime;
-				if (waitForWanderCurrent >= waitForWander) {
-					Wander ();
-				}
+			} else if(!bHoldPos){
+//				waitForWanderCurrent += Time.deltaTime;
+//				if (waitForWanderCurrent >= waitForWander) {
+//					Wander ();
+//				}
 			}
+		}
+
+
+		public override void ResumeWander(){
+			bHoldPos = false;
+			waitForWanderCurrent = 0;
 		}
 	}
 }

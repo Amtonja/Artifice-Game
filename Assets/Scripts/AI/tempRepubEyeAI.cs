@@ -18,7 +18,7 @@ namespace Artifice.Characters
 //			_player = GetComponent<Player> ();
 //		}
 
-		private float waitForWander = 2f; //Need to wait for combat to be ready before wandering
+		private float waitForWander = 3f; //Need to wait for combat to be ready before wandering
 		private float waitForWanderCurrent = 0f;
 
 		private bool bHoldPos = false;
@@ -55,16 +55,17 @@ namespace Artifice.Characters
 				waitForWanderCurrent = 0;
 
 			}else if (!bHoldPos){
-				waitForWanderCurrent += Time.deltaTime;
-				if (waitForWanderCurrent >= waitForWander) {
-					Wander ();
-				}
+//				waitForWanderCurrent += Time.deltaTime;
+//				if (waitForWanderCurrent >= waitForWander) {
+//					Wander ();
+//				}
 			}
 		}
 
 
 		public override void ResumeWander(){
 			bHoldPos = false;
+			waitForWanderCurrent = 0;
 		}
 	}
 }

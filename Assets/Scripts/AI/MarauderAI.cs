@@ -51,10 +51,10 @@ namespace Artifice.Characters
 
 				_player.MyCombatAction(target);
 			}else {
-				waitForWanderCurrent += Time.deltaTime;
-				if (waitForWanderCurrent >= waitForWander) {
-					Wander ();
-				}
+//				waitForWanderCurrent += Time.deltaTime;
+//				if (waitForWanderCurrent >= waitForWander) {
+//					Wander ();
+//				}
 			}
 		}
 	}
