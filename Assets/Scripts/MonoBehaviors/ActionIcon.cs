@@ -91,5 +91,11 @@ public class ActionIcon : MonoBehaviour
             CombatAction flee = Resources.Load("ScriptableObjects/Flee") as CombatAction;
             AddSubAction(flee);
         }
+
+        if (name == "DefenseIcon")
+        {
+            CombatAction defend = Resources.Load("ScriptableObjects/Defend") as CombatAction;
+            AddSubAction(defend);
+        }
     }
 }

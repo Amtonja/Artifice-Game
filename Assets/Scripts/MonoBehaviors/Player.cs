@@ -95,6 +95,7 @@ public class Player : Entity
                 RageBarValue += 0.1f;
                 MagicBarValue += 0.2f;
                 AgilityBarValue += 1f / 3f;
+                defending = false;
                 PlayManager.instance.PauseGame();
 
             }            
@@ -235,6 +236,22 @@ public class Player : Entity
             PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray);
             PlayManager.instance.UpdateAttacked();
         }
+    }
+
+    public void Defend()
+    {
+        Debug.Log(Stats.characterName + " defends");
+        RageBarValue += 0.1f;
+        MagicBarValue += 0.2f;
+        AgilityBarValue += 1f / 3f;
+        defending = true;
+        ActionBarTimer = 0f;
+        IsMyTurn = false;
+
+        // Pretend this was an attack, I guess
+        PlayManager.instance.SendAttackCount(1);
+        PlayManager.instance.StartingAttack();
+        PlayManager.instance.UpdateAttacked();
     }
 
     /// <summary>

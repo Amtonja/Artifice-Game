@@ -8,14 +8,15 @@ namespace Artifice.Characters
         protected string title;
         protected string id;
         protected bool canInteract;
-        protected bool inCombat;       
+        protected bool inCombat;
+        protected bool defending;
         protected int health;
         protected CharacterRace race;
         protected float actionBarValue = 0f;
         protected float actionBarTarget;
         private int defenseValue, magicDefenseValue;
         private bool isMyTurn = false;
-
+        
 		public bool bIsEnemy = false; //Used for AI
 
         private bool healthChanged = false;
@@ -64,6 +65,10 @@ namespace Artifice.Characters
         {
             HealthChanged = true;
             if (_damage < 0) { _damage = 0; }
+            if (defending)
+            {
+                _damage /= 2;
+            }
             health -= _damage;
             health = Mathf.Clamp(health, 0, Stats.maxHealth);
 //            Debug.Log(Stats.characterName + " took " + _damage + " and is at " + health + " HP out of " + Stats.maxHealth + " HP");

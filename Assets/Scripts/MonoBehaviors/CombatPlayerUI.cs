@@ -215,6 +215,12 @@ public class CombatPlayerUI : MonoBehaviour
         PlayManager.instance.RunFromCombat();
     }
 
+    public void OnDefend()
+    {
+        ActivePlayer.Defend();
+        State = PlayerUIState.WAITING_FOR_TURN;
+    }
+
     #region C# Properties
     /// <summary>
     /// Sets the active player, and also updates the
