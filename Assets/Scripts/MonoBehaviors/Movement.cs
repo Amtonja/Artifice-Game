@@ -575,7 +575,9 @@ public class Movement : MonoBehaviour
     /// <param name="target">The name of the object to follow.</param>
     public void SetFollowTarget(string target)
     {
+        //Debug.Log("Trying to have " + name + " follow " + target);
         FollowTarget = GameObject.Find(target).GetComponent<Movement>();
+        //Debug.Log(name + " is now following " + FollowTarget.name);
     }
 
     //Old, tile-based movement. Unused, and just here for reference.
