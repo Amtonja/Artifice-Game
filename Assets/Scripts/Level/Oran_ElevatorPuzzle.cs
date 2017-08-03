@@ -53,6 +53,7 @@ public class Oran_ElevatorPuzzle : MonoBehaviour {
 		if (bNodes [0] && bNodes [6]) {
 			passTarget.SendMessage ("Activate");
 			Debug.Log ("Puzzle done! Elevator ready!");
+            PixelCrushers.DialogueSystem.QuestLog.SetQuestState("Oran Elevator Puzzle", PixelCrushers.DialogueSystem.QuestState.Success);
 		}
 
 	}

@@ -76,7 +76,7 @@ AnimationClip:
   m_IsEmpty: 0
   m_Events:
   - time: 0.5
-    functionName: EndRangedAttack
+    functionName: EndProjectileAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

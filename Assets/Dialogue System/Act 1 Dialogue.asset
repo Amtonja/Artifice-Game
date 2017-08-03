@@ -135,7 +135,37 @@ MonoBehaviour:
       typeString: 
     portrait: {fileID: 0}
     alternatePortraits: []
-  items: []
+  items:
+  - id: 1
+    fields:
+    - title: Name
+      value: Oran Elevator Puzzle
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Pictures
+      value: '[]'
+      type: 3
+      typeString: CustomFieldType_Files
+    - title: Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Success Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Failure Description
+      value: 
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: State
+      value: unassigned
+      type: 0
+      typeString: CustomFieldType_QuestState
+    - title: Is Item
+      value: False
+      type: 2
+      typeString: CustomFieldType_Boolean
   locations: []
   variables:
   - id: 1
@@ -4892,7 +4922,7 @@ MonoBehaviour:
         type: 5
         typeString: 
       - title: Conversant
-        value: 4
+        value: 2
         type: 5
         typeString: 
       - title: Menu Text
@@ -4924,7 +4954,7 @@ MonoBehaviour:
       isGroup: 0
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks:
       - originConversationID: 12
@@ -4965,7 +4995,7 @@ MonoBehaviour:
         type: 5
         typeString: 
       - title: Conversant
-        value: 4
+        value: 2
         type: 5
         typeString: 
       - title: Menu Text
@@ -5103,7 +5133,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Actor
-        value: 4
+        value: 2
         type: 5
         typeString: 
       - title: Conversant
@@ -13141,8 +13171,8 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 30
-        y: 170
+        x: 31.176468
+        y: 171.17648
         width: 160
         height: 30
     - id: 4

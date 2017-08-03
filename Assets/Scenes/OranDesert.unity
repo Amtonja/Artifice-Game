@@ -3877,6 +3877,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 190
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &323126204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 323126207}
+  - component: {fileID: 323126206}
+  - component: {fileID: 323126205}
+  m_Layer: 0
+  m_Name: Scene 5 Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &323126205
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323126204}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.014133453, y: -0.531353}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.96808565}
+--- !u!114 &323126206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323126204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 567319595, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  once: 1
+  conversation: Scene 5
+  condition:
+    luaConditions: []
+    questConditions:
+    - questName: Oran Elevator Puzzle
+      questState: 4
+    acceptedTags: []
+    acceptedGameObjects:
+    - {fileID: 1718280029}
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  skipIfNoValidEntries: 0
+  exclusive: 0
+  conversant: {fileID: 399995028}
+  useConversationTitlePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: 0330dd0daf98e764689ef2d22f2d3531, type: 2}
+  actor: {fileID: 98787752}
+  trigger: 8
+  stopConversationOnTriggerExit: 1
+--- !u!4 &323126207
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323126204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -42.988, y: 18.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 254
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &324416923
 GameObject:
   m_ObjectHideFlags: 0
@@ -11960,9 +12035,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: -0.014133453, y: 1.9846039}
+  m_Offset: {x: -0.014133453, y: -0.531353}
   serializedVersion: 2
-  m_Size: {x: 10, y: 6}
+  m_Size: {x: 10, y: 0.96808565}
 --- !u!114 &909041068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13175,7 +13250,7 @@ Prefab:
     - target: {fileID: 224167229634152252, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 932
+      value: 806
       objectReference: {fileID: 0}
     - target: {fileID: 224167229634152252, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13200,7 +13275,7 @@ Prefab:
     - target: {fileID: 224589218564753190, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 932
+      value: 806
       objectReference: {fileID: 0}
     - target: {fileID: 224589218564753190, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13225,7 +13300,7 @@ Prefab:
     - target: {fileID: 224828170721583266, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 932
+      value: 806
       objectReference: {fileID: 0}
     - target: {fileID: 224828170721583266, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13250,7 +13325,7 @@ Prefab:
     - target: {fileID: 224153925721938160, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 932
+      value: 806
       objectReference: {fileID: 0}
     - target: {fileID: 224153925721938160, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13359,7 +13434,7 @@ Prefab:
     - target: {fileID: 224533191593826216, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 602
+      value: 539
       objectReference: {fileID: 0}
     - target: {fileID: 224533191593826216, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13369,7 +13444,7 @@ Prefab:
     - target: {fileID: 224533191593826216, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 948
+      value: 822
       objectReference: {fileID: 0}
     - target: {fileID: 224533191593826216, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -24511,6 +24586,79 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b842af9c73f2a6941b3608b5e24141c6, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1734909435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1734909438}
+  - component: {fileID: 1734909437}
+  - component: {fileID: 1734909436}
+  m_Layer: 0
+  m_Name: Scene 2b Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1734909436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1734909435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 567319595, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  once: 1
+  conversation: Scene 2b
+  condition:
+    luaConditions: []
+    questConditions: []
+    acceptedTags: []
+    acceptedGameObjects:
+    - {fileID: 1873920067709384, guid: 12eada5303bcf004c90d768e8ef21aa8, type: 2}
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  skipIfNoValidEntries: 0
+  exclusive: 0
+  conversant: {fileID: 98787752}
+  useConversationTitlePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: 0330dd0daf98e764689ef2d22f2d3531, type: 2}
+  actor: {fileID: 399995028}
+  trigger: 8
+  stopConversationOnTriggerExit: 0
+--- !u!61 &1734909437
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1734909435}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1}
+--- !u!4 &1734909438
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1734909435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11, y: 40.842, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 252
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1739627207
 GameObject:
   m_ObjectHideFlags: 0
@@ -26685,6 +26833,106 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 97
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1884270333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1884270337}
+  - component: {fileID: 1884270336}
+  - component: {fileID: 1884270335}
+  - component: {fileID: 1884270334}
+  m_Layer: 0
+  m_Name: Scene 4 Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1884270334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884270333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1866253743, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 2
+  once: 1
+  selectedDatabase: {fileID: 0}
+  onStart: []
+  onEnd:
+  - condition:
+      luaConditions: []
+      questConditions: []
+      acceptedTags: []
+      acceptedGameObjects: []
+      luaWizardIndex: 0
+      lastEvaluationValue: 0
+    questName: Oran Elevator Puzzle
+    questState: 2
+    alertMessage: 
+--- !u!61 &1884270335
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884270333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.014133453, y: -0.531353}
+  serializedVersion: 2
+  m_Size: {x: 10, y: 0.96808565}
+--- !u!114 &1884270336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884270333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 567319595, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  once: 1
+  conversation: Scene 4
+  condition:
+    luaConditions: []
+    questConditions: []
+    acceptedTags: []
+    acceptedGameObjects:
+    - {fileID: 1718280029}
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  skipIfNoValidEntries: 0
+  exclusive: 0
+  conversant: {fileID: 399995028}
+  useConversationTitlePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: 0330dd0daf98e764689ef2d22f2d3531, type: 2}
+  actor: {fileID: 98787752}
+  trigger: 8
+  stopConversationOnTriggerExit: 1
+--- !u!4 &1884270337
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1884270333}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -42.988, y: 18.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 253
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1886036467
 GameObject:
