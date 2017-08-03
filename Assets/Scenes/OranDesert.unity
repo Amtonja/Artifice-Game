@@ -2978,9 +2978,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: 38
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1001 &264892027
 Prefab:
@@ -7416,9 +7416,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: -82
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1 &565743942
 GameObject:
@@ -9585,9 +9585,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1001 &733800862
 Prefab:
@@ -11216,9 +11216,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: 26
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1001 &843165943
 Prefab:
@@ -11450,9 +11450,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: -444
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1 &862404968
 GameObject:
@@ -13250,7 +13250,7 @@ Prefab:
     - target: {fileID: 224167229634152252, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 806
+      value: 932
       objectReference: {fileID: 0}
     - target: {fileID: 224167229634152252, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13275,7 +13275,7 @@ Prefab:
     - target: {fileID: 224589218564753190, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 806
+      value: 932
       objectReference: {fileID: 0}
     - target: {fileID: 224589218564753190, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13300,7 +13300,7 @@ Prefab:
     - target: {fileID: 224828170721583266, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 806
+      value: 932
       objectReference: {fileID: 0}
     - target: {fileID: 224828170721583266, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13325,7 +13325,7 @@ Prefab:
     - target: {fileID: 224153925721938160, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 806
+      value: 932
       objectReference: {fileID: 0}
     - target: {fileID: 224153925721938160, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13379,7 +13379,7 @@ Prefab:
     - target: {fileID: 224525354244703760, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 224525354244703760, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13389,7 +13389,7 @@ Prefab:
     - target: {fileID: 224525354244703760, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 224302842214965214, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13434,7 +13434,7 @@ Prefab:
     - target: {fileID: 224533191593826216, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 539
+      value: 602
       objectReference: {fileID: 0}
     - target: {fileID: 224533191593826216, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -13444,7 +13444,7 @@ Prefab:
     - target: {fileID: 224533191593826216, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 822
+      value: 948
       objectReference: {fileID: 0}
     - target: {fileID: 224533191593826216, guid: 08477495c4841334c9156461532ba91e,
         type: 2}
@@ -21822,9 +21822,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: -39
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1001 &1522375583
 Prefab:
@@ -23337,9 +23337,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: 122
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1001 &1617966134
 Prefab:
@@ -24088,9 +24088,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: 97
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1 &1692649520 stripped
 GameObject:
@@ -27954,9 +27954,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1014269967
   m_SortingOrder: -399
-  m_Sprite: {fileID: 21300000, guid: da010f9ddc514dd4cbbd855ce9f017f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34a4ee36b8a319d4a9c5442ad2e99714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
 --- !u!1001 &1944747608
 Prefab:
