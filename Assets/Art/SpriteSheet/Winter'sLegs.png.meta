@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6e407bfc6357d4c4ea5e431accf19d5d
-timeCreated: 1497553399
+timeCreated: 1501796423
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -138,8 +138,8 @@ TextureImporter:
       name: Winter'sLegs_4
       rect:
         serializedVersion: 2
-        x: 1100
-        y: 104
+        x: 1086
+        y: 136
         width: 179
         height: 281
       alignment: 9
