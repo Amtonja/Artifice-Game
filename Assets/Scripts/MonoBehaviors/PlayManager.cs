@@ -216,12 +216,12 @@ public class PlayManager : MonoBehaviour
         experiencePool = 0;
     }
 
-    public void CreatePopupText(string text, Transform location, Color textColor)
+    public void CreatePopupText(string text, Transform location, Color textColor, Vector3 offset)
     {
         PopupText popup = Instantiate(popupTextPrefab, combatUI.transform.Find("Canvas"), false);   
         popup.GetComponentInChildren<UnityEngine.UI.Text>().text = text;
         popup.GetComponentInChildren<UnityEngine.UI.Text>().color = textColor;
-        popup.transform.position = Camera.main.WorldToScreenPoint(location.position);
+        popup.transform.position = Camera.main.WorldToScreenPoint(location.position + offset);
     }
 
     /// <summary>

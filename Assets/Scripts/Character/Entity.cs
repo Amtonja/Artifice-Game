@@ -47,7 +47,7 @@ namespace Artifice.Characters
 		[System.Serializable]
 		public struct Weaknesses {
 			public bool bBlunt;
-			public bool bPeircing;
+			public bool bPiercing;
 			public bool bProjectile;
 
 			public bool bWind;
@@ -72,7 +72,7 @@ namespace Artifice.Characters
             health -= _damage;
             health = Mathf.Clamp(health, 0, Stats.maxHealth);
 //            Debug.Log(Stats.characterName + " took " + _damage + " and is at " + health + " HP out of " + Stats.maxHealth + " HP");
-            PlayManager.instance.CreatePopupText(_damage.ToString(), transform, Color.red);
+            PlayManager.instance.CreatePopupText(_damage.ToString(), transform, Color.red, Vector3.zero);
             if (health <= 0) Die();
 
             alphaColor = 0.1f;
@@ -88,7 +88,7 @@ namespace Artifice.Characters
 
             health += _health;
             health = Mathf.Clamp(health, 0, Stats.maxHealth);
-            PlayManager.instance.CreatePopupText(_health.ToString(), transform, Color.green);
+            PlayManager.instance.CreatePopupText(_health.ToString(), transform, Color.green, Vector3.zero);
         }
 
         public abstract void Die();
