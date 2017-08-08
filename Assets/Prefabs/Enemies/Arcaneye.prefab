@@ -224,37 +224,22 @@ MonoBehaviour:
     bForce: 0
   myWeak:
     bBlunt: 0
-    bPeircing: 1
+    bPiercing: 0
     bProjectile: 0
     bWind: 0
     bFire: 0
     bLightning: 1
     bIce: 0
     bForce: 0
-  entityInfo:
-    name: Republic Eye
-    id: _republiceye_
-    combatStats:
-      attack: 0
-      defense: 1
-      magic: 1
-      speed: 7
-      evasion: 1
-      accuracy: 1
-      magicDefense: 1
-      luck: 1
-      maxHealth: 200
-    race: 7
-  useXMLStats: 1
   spellOrigin: {x: 0, y: 0}
   meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
   rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
   footstepSFX: {fileID: 8300000, guid: cdebbd691d1e7c748955b62cef466831, type: 3}
   takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
   deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  addedMeleeAttackValue: 0
-  addedRangedAttackValue: 0
-  addedMagicAttackValue: 0
+  addedMeleeAttackValue: 20
+  addedRangedAttackValue: 20
+  addedMagicAttackValue: 20
   armorValue: 0
 --- !u!114 &114430191313619486
 MonoBehaviour:

@@ -373,14 +373,26 @@ public class Player : Entity
         StartCoroutine(DealSpellDamage(target, lightningBolt, duration, damage));
         //        PlayManager.instance.UnpauseGame();
     }
-
-    // Assuming these will eventually be different
+    
     public void GustSpell(Entity target)
     {
-        //_animator.Play(Animator.StringToHash("CastSpell"));
-        int damage = Stats.magic; // Get real formula
-        target.TakeDamage(damage - target.Stats.magicDefense); // Get real formula               
-                                                               //        PlayManager.instance.UnpauseGame();
+        GameObject gust = Instantiate(Resources.Load("Prefabs/Gust")) as GameObject;
+        gust.transform.position = target.transform.position;
+
+        int damage = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+        //check for resistance and weaknesses
+        if (target.MyRes.bWind)
+        {
+            damage = (int)((float)damage * 0.75f);
+            ShowWeakText(tempTarget);
+        }
+        else if (target.MyWeak.bWind)
+        {
+            damage = (int)((float)damage * 1.5f);
+            ShowStrongText(tempTarget);
+        }
+        float duration = 1.5f;
+        StartCoroutine(DealSpellDamage(target, gust, duration, damage));
     }
 
     public void CureSpell(Entity target)

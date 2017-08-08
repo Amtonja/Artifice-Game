@@ -15,5 +15,6 @@ MonoBehaviour:
   methodName: OnGust
   description: Deals wind-aspected damage to target enemy.
   damageType: 0
-  visualEffect: {fileID: 0}
+  visualEffect: {fileID: 1553567686507428, guid: 2faa086bdf7f10946950464c2e618965,
+    type: 2}
   soundEffect: {fileID: 0}

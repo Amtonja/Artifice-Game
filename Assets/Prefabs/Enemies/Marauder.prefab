@@ -227,7 +227,7 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: 659a8f015d26d2340b17ddc532c873f5, type: 2}
   myRes:
     bBlunt: 0
-    bPeircing: 1
+    bPiercing: 0
     bProjectile: 0
     bWind: 0
     bFire: 0
@@ -236,37 +236,22 @@ MonoBehaviour:
     bForce: 0
   myWeak:
     bBlunt: 1
-    bPeircing: 0
+    bPiercing: 0
     bProjectile: 0
     bWind: 0
     bFire: 0
     bLightning: 0
     bIce: 0
     bForce: 0
-  entityInfo:
-    name: Marauder
-    id: _marauder_
-    combatStats:
-      attack: 0
-      defense: 1
-      magic: 17
-      speed: 11
-      evasion: 1
-      accuracy: 1
-      magicDefense: 1
-      luck: 1
-      maxHealth: 50
-    race: 0
-  useXMLStats: 1
   spellOrigin: {x: -0.348, y: 0.022}
   meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
   rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
   footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
   takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
   deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  addedMeleeAttackValue: 0
-  addedRangedAttackValue: 0
-  addedMagicAttackValue: 0
+  addedMeleeAttackValue: 20
+  addedRangedAttackValue: 20
+  addedMagicAttackValue: 20
   armorValue: 0
 --- !u!212 &212580860635875204
 SpriteRenderer:
