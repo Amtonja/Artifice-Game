@@ -200,6 +200,9 @@ public class AIBase : MonoBehaviour {
 		//Turn of wandering
 		bWander = false;
 		//stop forced movement
+		if (_movement == null) { //in case we added this script after the fact, meaning Start didn't run
+			_movement = GetComponent<Movement> ();
+		}
 		_movement.StopForcedMove(false); //if we set this to true it'll activate MoveComplete
 		//update borders for combat
 		SetCombatBoundaries (enemyFaceDirection);

@@ -91,6 +91,11 @@ namespace Artifice.Characters
             PlayManager.instance.CreatePopupText(_health.ToString(), transform, Color.green, Vector3.zero);
         }
 
+		//Quietly resets to max health without a popup. Useful for, say, resetting Evans' health before he turns on his party in Oran
+		public virtual void ResetHealth(){
+			health = Stats.maxHealth;
+		}
+
         public abstract void Die();
 
         public abstract void Revive();

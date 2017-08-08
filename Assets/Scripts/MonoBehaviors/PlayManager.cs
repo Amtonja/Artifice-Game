@@ -280,8 +280,33 @@ public class PlayManager : MonoBehaviour
 		//Tell Battleground players are running, so set up blinking and then reset collider
 		currentBattleground.RunAway ();
 
+		groupCombatUI.SetActive(false);
 		MusicManager.instance.StopAllCoroutines (); //to stop the battle music 
 
+	}
+
+	//Straight-up cancel combat. Only used to bail on combat for cutscenes.
+	public void CancelCombat(){
+		exploreMode = true;
+
+		MusicManager.instance.PlayCombatEnding();
+
+		for (int i = 0; i < party.Length; i++)
+		{
+			party[i].ExitCombat();
+
+		}
+
+		for (int i = 0; i < combatantEnemies.Count; i++)
+		{
+			combatantEnemies[i].ExitCombat();
+
+		}
+
+		//turn off combat UI
+		combatUI.DeactivatePlayerUI();
+		groupCombatUI.SetActive(false);
+		MusicManager.instance.StopAllCoroutines (); //to stop the battle music 
 	}
 
     public void DisplayCombatRewards(float messageDuration)
