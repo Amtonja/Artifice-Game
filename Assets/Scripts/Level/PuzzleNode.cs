@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class PuzzleNode : MonoBehaviour {
 
 	/// <summary>
@@ -12,9 +13,11 @@ public class PuzzleNode : MonoBehaviour {
 	public GameObject puzzleController; //who to send notifications to
 	public int number; //which number in the puzzle this object corresponds to
 	public bool bToggle; //whether or not this can be toggled on and off
+    public AudioClip clickSound;
 
 	private bool bOn = false; //whether or not this has been activated
 	private SpriteRenderer spr;
+    private AudioSource _audio;
 
 	// Use this for initialization
 	void Start () {
@@ -34,13 +37,15 @@ public class PuzzleNode : MonoBehaviour {
 			puzzleController.SendMessage ("UpdateMe", number);
 			Debug.Log ("Node activated!");
 			spr.enabled = true;
+            _audio.PlayOneShot(clickSound);
 		} else {
 			if (bToggle) {
 				puzzleController.SendMessage ("UpdateMe", number);
 				Debug.Log ("Node deactivated!");
 				spr.enabled = false;
 				bOn = false;
-			}
+                _audio.PlayOneShot(clickSound);
+            }
 
 		}
 

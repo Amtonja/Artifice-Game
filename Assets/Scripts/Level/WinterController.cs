@@ -2,124 +2,159 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WinterController : MonoBehaviour {
+public class WinterController : MonoBehaviour
+{
 
 
-	//0 Activation -> 1 Leg raise -> 2 change leg layer order -> 3 move -> 4 hammer down -> 5 Pass to passtarget -> 6 End
+    //0 Activation -> 1 Leg raise -> 2 change leg layer order -> 3 move -> 4 hammer down -> 5 Pass to passtarget -> 6 End
 
 
-	public GameObject attackLeg;
+    public GameObject attackLeg;
 
-	public Transform movePos;
+    public Transform movePos;
 
-	private int state = 0;
+    private int state = 0;
 
-	private float moveSpeed = 8.0f;
+    private float moveSpeed = 8.0f;
 
-	public GameObject passTarget;
+    private AudioSource _audio;
 
-	public GameObject passTargetB; //for second part
-	private bool bStepTwo = false;
+    public GameObject passTarget;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (state == 0) {
-//			if (Input.GetKeyDown (KeyCode.Space)) {
-//				state = 1;
-//				attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
-//				Debug.Log ("Waiting on leg!");
-//			}
+    public GameObject passTargetB; //for second part
+    private bool bStepTwo = false;
 
-		} else if (state == 1) {
-			//Waiting on leg
+    public AudioClip movementSound, stompSound, voiceSound;
 
+    // Use this for initialization
+    void Start()
+    {
+        _audio = GetComponent<AudioSource>();
+    }
 
-		} else if (state == 2) {
-			attackLeg.GetComponent<SpriteRenderer> ().sortingLayerName = "ObscureChars";
-			state = 3;
+    // Update is called once per frame
+    void Update()
+    {
+        if (state == 0)
+        {
+            //			if (Input.GetKeyDown (KeyCode.Space)) {
+            //				state = 1;
+            //				attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
+            //				Debug.Log ("Waiting on leg!");
+            //			}
 
-		} else if (state == 3) {
-			if (Vector3.Distance (this.transform.position, new Vector3 (movePos.position.x, movePos.position.y, 0)) > 0.1f) {
-
-				//			float step = moveSpeed * Time.deltaTime;
-				//			Vector2 moveDelta = Vector2.MoveTowards (this.transform.position, intendedPosition, step);
-				Vector3 moveDelta = new Vector3 (movePos.position.x, movePos.position.y, 0f) - this.transform.position;
-
-				transform.Translate ((moveDelta.normalized * moveSpeed) * Time.deltaTime);
-
-			} else {
-				Debug.Log ("We're there!");
-				Debug.Log ("Passing to first target!");
-				passTarget.SendMessage ("Activate");
-				state = 6;
-			}
-
-		} else if (state == 4) {
-			attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("Attack"));
-
-		} else if (state == 5) {
-			Debug.Log ("Passing to second target!");
-			passTargetB.SendMessage ("Activate");
-			state = 6;
-
-		} else if(state == 6) {
-			//do nothing
-		}
+        }
+        else if (state == 1)
+        {
+            //Waiting on leg
 
 
+        }
+        else if (state == 2)
+        {
+            attackLeg.GetComponent<SpriteRenderer>().sortingLayerName = "ObscureChars";
+            _audio.clip = movementSound;
+            _audio.loop = true;
+            _audio.Play();
+            state = 3;
 
-	}
+        }
+        else if (state == 3)
+        {
+            if (Vector3.Distance(this.transform.position, new Vector3(movePos.position.x, movePos.position.y, 0)) > 0.1f)
+            {
 
-	public void LegUp(){
-		state = 2;
-	}
+                //			float step = moveSpeed * Time.deltaTime;
+                //			Vector2 moveDelta = Vector2.MoveTowards (this.transform.position, intendedPosition, step);
+                Vector3 moveDelta = new Vector3(movePos.position.x, movePos.position.y, 0f) - this.transform.position;
 
-	public void FinishedAttack (){
-		state = 5;
-	}
+                transform.Translate((moveDelta.normalized * moveSpeed) * Time.deltaTime);
+            }
+            else
+            {
+                Debug.Log("We're there!");
+                Debug.Log("Passing to first target!");
+                passTarget.SendMessage("Activate");
+                _audio.Stop();
+                state = 6;
+            }
+
+        }
+        else if (state == 4)
+        {
+            attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("Attack"));
+
+        }
+        else if (state == 5)
+        {
+            Debug.Log("Passing to second target!");
+            passTargetB.SendMessage("Activate");
+            state = 6;
+
+        }
+        else if (state == 6)
+        {
+            //do nothing
+        }
 
 
-	public void Activate(){
-		if (!bStepTwo) {
-			state = 1;
-			attackLeg.GetComponent<Animator> ().Play (Animator.StringToHash ("LegUp"));
-			Debug.Log ("Waiting on leg!");
-			bStepTwo = true;
-		} else {
-			state = 4;
 
-		}
-	}
+    }
+
+    public void LegUp()
+    {
+        state = 2;
+    }
+
+    public void FinishedAttack()
+    {
+        state = 5;
+        _audio.PlayOneShot(stompSound);
+    }
+
+    public void Activate()
+    {
+        if (!bStepTwo)
+        {
+            _audio.PlayOneShot(voiceSound);
+            state = 1;
+            attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
+            Debug.Log("Waiting on leg!");
+            bStepTwo = true;
+        }
+        else
+        {
+            state = 4;           
+        }
+    }
 
 
 
-	void OnDrawGizmos(){
-		//	void OnDrawGizmosSelected(){
-		//		if(targetList != null){
-		if(passTarget != null){
-			//			foreach(GameObject target in targetList){
+    void OnDrawGizmos()
+    {
+        //	void OnDrawGizmosSelected(){
+        //		if(targetList != null){
+        if (passTarget != null)
+        {
+            //			foreach(GameObject target in targetList){
 
-			//draw a line from our position to it
-			Gizmos.color = Color.green;
-			Gizmos.DrawLine(this.transform.position, passTarget.transform.position);
+            //draw a line from our position to it
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(this.transform.position, passTarget.transform.position);
 
-			//			}
+            //			}
 
-		}
-		if(passTargetB != null){
-			//			foreach(GameObject target in targetList){
+        }
+        if (passTargetB != null)
+        {
+            //			foreach(GameObject target in targetList){
 
-			//draw a line from our position to it
-			Gizmos.color = Color.green;
-			Gizmos.DrawLine(this.transform.position, passTargetB.transform.position);
+            //draw a line from our position to it
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(this.transform.position, passTargetB.transform.position);
 
-			//			}
+            //			}
 
-		}
-	}
+        }
+    }
 }
