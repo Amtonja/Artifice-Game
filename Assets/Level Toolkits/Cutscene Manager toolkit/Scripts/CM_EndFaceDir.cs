@@ -15,6 +15,8 @@ public class CM_EndFaceDir : MonoBehaviour {
 	/// </summary>
 	public GameObject target;
 
+	public GameObject passTarget;
+
 	/// <summary>
 	/// The move reference, for convenience.
 	/// </summary>
@@ -27,12 +29,28 @@ public class CM_EndFaceDir : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.G)) {
-			Activate ();
-		}
+//		if (Input.GetKeyDown (KeyCode.G)) {
+//			Activate ();
+//		}
 	}
 
 	public void Activate(){
 		target.GetComponent<Movement> ().StopFaceDir ();
+		passTarget.SendMessage ("Activate");
+	}
+
+	void OnDrawGizmos(){
+		//	void OnDrawGizmosSelected(){
+		//		if(targetList != null){
+		if(passTarget != null){
+			//			foreach(GameObject target in targetList){
+
+			//draw a line from our position to it
+			Gizmos.color = Color.green;
+			Gizmos.DrawLine(this.transform.position, passTarget.transform.position);
+
+			//			}
+
+		}
 	}
 }
