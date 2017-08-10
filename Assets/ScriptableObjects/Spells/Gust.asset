@@ -17,4 +17,5 @@ MonoBehaviour:
   damageType: 0
   visualEffect: {fileID: 1553567686507428, guid: 2faa086bdf7f10946950464c2e618965,
     type: 2}
-  soundEffect: {fileID: 0}
+  soundEffect: {fileID: 82063657018036692, guid: 2faa086bdf7f10946950464c2e618965,
+    type: 2}
