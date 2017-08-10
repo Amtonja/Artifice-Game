@@ -43,9 +43,10 @@ public class Battleground : MonoBehaviour {
 		range.x = box.bounds.size.x /2; //needs to be half the value
 		range.y = box.bounds.size.y /2;
 		for (int i = 0; i < enemies.Count; i++) {
-			enemies [i].GetComponent<AIBase> ().SetOrigin(this.transform.position);
-			enemies [i].GetComponent<AIBase> ().SetBoundries (range);
-
+			if (enemies [i].GetComponent<AIBase> () != null) {
+				enemies [i].GetComponent<AIBase> ().SetOrigin (this.transform.position);
+				enemies [i].GetComponent<AIBase> ().SetBoundries (range);
+			}
 		}
 		
 	}

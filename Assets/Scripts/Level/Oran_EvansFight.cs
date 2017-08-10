@@ -22,9 +22,9 @@ namespace Artifice.Characters
 		
 		// Update is called once per frame
 		void Update () {
-			if (Input.GetKeyDown (KeyCode.Space)) {
-				Begin ();
-			}
+//			if (Input.GetKeyDown (KeyCode.Space)) {
+//				Begin ();
+//			}
 		}
 
 
@@ -57,6 +57,9 @@ namespace Artifice.Characters
 			evansBattleground.Begin();
 		}
 
+		public void Activate(){
+			Begin ();
+		}
 
 
 		void OnDrawGizmos(){

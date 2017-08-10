@@ -18,6 +18,9 @@ public class WinterController : MonoBehaviour {
 
 	public GameObject passTarget;
 
+	public GameObject passTargetB; //for second part
+	private bool bStepTwo = false;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -26,11 +29,11 @@ public class WinterController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (state == 0) {
-			if (Input.GetKeyDown (KeyCode.Space)) {
-				state = 1;
-				attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
-				Debug.Log ("Waiting on leg!");
-			}
+//			if (Input.GetKeyDown (KeyCode.Space)) {
+//				state = 1;
+//				attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
+//				Debug.Log ("Waiting on leg!");
+//			}
 
 		} else if (state == 1) {
 			//Waiting on leg
@@ -51,15 +54,17 @@ public class WinterController : MonoBehaviour {
 
 			} else {
 				Debug.Log ("We're there!");
-				state = 4;
+				Debug.Log ("Passing to first target!");
+				passTarget.SendMessage ("Activate");
+				state = 6;
 			}
 
 		} else if (state == 4) {
 			attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("Attack"));
 
 		} else if (state == 5) {
-			Debug.Log ("Passing to next target!");
-			passTarget.SendMessage ("Activate");
+			Debug.Log ("Passing to second target!");
+			passTargetB.SendMessage ("Activate");
 			state = 6;
 
 		} else if(state == 6) {
@@ -80,10 +85,15 @@ public class WinterController : MonoBehaviour {
 
 
 	public void Activate(){
-		state = 1;
-		attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
-		Debug.Log ("Waiting on leg!");
+		if (!bStepTwo) {
+			state = 1;
+			attackLeg.GetComponent<Animator> ().Play (Animator.StringToHash ("LegUp"));
+			Debug.Log ("Waiting on leg!");
+			bStepTwo = true;
+		} else {
+			state = 4;
 
+		}
 	}
 
 
@@ -97,6 +107,16 @@ public class WinterController : MonoBehaviour {
 			//draw a line from our position to it
 			Gizmos.color = Color.green;
 			Gizmos.DrawLine(this.transform.position, passTarget.transform.position);
+
+			//			}
+
+		}
+		if(passTargetB != null){
+			//			foreach(GameObject target in targetList){
+
+			//draw a line from our position to it
+			Gizmos.color = Color.green;
+			Gizmos.DrawLine(this.transform.position, passTargetB.transform.position);
 
 			//			}
 
