@@ -8,6 +8,7 @@ public class CM_MoveObject : MonoBehaviour {
 
 
 	public GameObject target;
+    
 //	private Vector3 startPosition;
 	public bool bMovePlayer = false;
 	public GameObject endLocation;
@@ -26,7 +27,7 @@ public class CM_MoveObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        
 	}
 	
 	// Update is called once per frame
