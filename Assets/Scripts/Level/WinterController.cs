@@ -11,6 +11,8 @@ public class WinterController : MonoBehaviour
 
     public GameObject attackLeg;
 
+	public GameObject eye;
+
     public Transform movePos;
 
     private int state = 0;
@@ -35,31 +37,28 @@ public class WinterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (state == 0)
-        {
-            //			if (Input.GetKeyDown (KeyCode.Space)) {
-            //				state = 1;
-            //				attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
-            //				Debug.Log ("Waiting on leg!");
-            //			}
+		if (state == 0) {
+			//			if (Input.GetKeyDown (KeyCode.Space)) {
+			//				state = 1;
+			//				attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
+			//				Debug.Log ("Waiting on leg!");
+			//			}
 
-        }
-        else if (state == 1)
-        {
-            //Waiting on leg
+		} else if (state == 1) {
+			//Waiting on Eyes
 
 
-        }
-        else if (state == 2)
-        {
+		} else if (state == 2) {
+			//Waiting on leg
+		} else if (state == 3) {
             attackLeg.GetComponent<SpriteRenderer>().sortingLayerName = "ObscureChars";
             _audio.clip = movementSound;
             _audio.loop = true;
             _audio.Play();
-            state = 3;
+            state = 4;
 
         }
-        else if (state == 3)
+        else if (state == 4)
         {
             if (Vector3.Distance(this.transform.position, new Vector3(movePos.position.x, movePos.position.y, 0)) > 0.1f)
             {
@@ -76,23 +75,23 @@ public class WinterController : MonoBehaviour
                 Debug.Log("Passing to first target!");
                 passTarget.SendMessage("Activate");
                 _audio.Stop();
-                state = 6;
+                state = 7;
             }
-
-        }
-        else if (state == 4)
-        {
-            attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("Attack"));
 
         }
         else if (state == 5)
         {
-            Debug.Log("Passing to second target!");
-            passTargetB.SendMessage("Activate");
-            state = 6;
+            attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("Attack"));
 
         }
         else if (state == 6)
+        {
+            Debug.Log("Passing to second target!");
+            passTargetB.SendMessage("Activate");
+            state = 7;
+
+        }
+        else if (state == 7)
         {
             //do nothing
         }
@@ -103,12 +102,12 @@ public class WinterController : MonoBehaviour
 
     public void LegUp()
     {
-        state = 2;
+        state = 3;
     }
 
     public void FinishedAttack()
     {
-        state = 5;
+        state = 6;
         _audio.PlayOneShot(stompSound);
     }
 
@@ -118,16 +117,22 @@ public class WinterController : MonoBehaviour
         {
             _audio.PlayOneShot(voiceSound);
             state = 1;
-            attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
-            Debug.Log("Waiting on leg!");
+			eye.GetComponent<Animator>().Play(Animator.StringToHash("LookDown"));
+            
             bStepTwo = true;
         }
         else
         {
-            state = 4;           
+            state = 5;           
         }
     }
 
+
+	public void EyeMoved(){
+		attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("LegUp"));
+		state = 2;
+		Debug.Log("Waiting on leg!");
+	}
 
 
     void OnDrawGizmos()
