@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 993f93057b0098a48a73606c75297aa2
-timeCreated: 1496868060
+timeCreated: 1502740063
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -117,6 +117,8 @@ TextureImporter:
     21300220: Hurley_Victory2
     21300222: Hurley_Victory3
     21300224: Hurley_Victory4
+    21300226: Hurley_EmoteB1
+    21300228: Hurley_EmoteB2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -166,23 +168,23 @@ TextureImporter:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
-    textureFormat: 4
-    textureCompression: 1
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
   - buildTarget: Android
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -837,6 +839,32 @@ TextureImporter:
         height: 44
       alignment: 9
       pivot: {x: 0.53, y: 0.51}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hurley_EmoteB1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 222
+        width: 18
+        height: 45
+      alignment: 9
+      pivot: {x: 0.52, y: 0.48}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Hurley_EmoteB2
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 221
+        width: 18
+        height: 45
+      alignment: 9
+      pivot: {x: 0.52, y: 0.48}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
