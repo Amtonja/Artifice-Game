@@ -14,7 +14,7 @@ public class Oran_Door : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		bNodes = new bool[2];
+		bNodes = new bool[1];
 	}
 	
 	// Update is called once per frame
@@ -25,7 +25,7 @@ public class Oran_Door : MonoBehaviour {
 	//Called by nodes to update their status
 	public void UpdateMe(int num){
 		bNodes [num] = !bNodes [num];
-		if (bNodes [0] && bNodes [1]) {
+		if (bNodes [0]){// && bNodes [1]) {
 			passTarget.SendMessage ("Activate");
 			Debug.Log ("Puzzle done! Opening door!");
 		}

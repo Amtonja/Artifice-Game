@@ -37,7 +37,7 @@ public class PuzzleNode : MonoBehaviour {
 			puzzleController.SendMessage ("UpdateMe", number);
 			Debug.Log ("Node activated!");
 			spr.enabled = true;
-            _audio.PlayOneShot(clickSound);
+//            _audio.PlayOneShot(clickSound);
 		} else {
 			if (bToggle) {
 				puzzleController.SendMessage ("UpdateMe", number);
