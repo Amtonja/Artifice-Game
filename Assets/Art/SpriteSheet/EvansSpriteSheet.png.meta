@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bb44fa4b3a78b8042b6cbed7d2bc1962
-timeCreated: 1496764571
+timeCreated: 1502812029
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -65,6 +65,20 @@ TextureImporter:
     21300116: Evans_Death1
     21300118: Evans_Death2
     21300120: Evans_Death3
+    21300122: Evans_Left3
+    21300124: Evans_Left4
+    21300126: Evans_HitFrame
+    21300128: Evans_Victory3
+    21300130: Evans_Emote1
+    21300132: Evans_Emote2
+    21300134: Evans_Emote3
+    21300136: Evans_Emote4
+    21300138: Evans_Emote5
+    21300140: Evans_Emote6
+    21300142: Evans_Emote7
+    21300144: Evans_Emote8
+    21300146: Evans_Emote9
+    21300148: Evans_Emote10
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -114,7 +128,7 @@ TextureImporter:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,7 +136,7 @@ TextureImporter:
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -130,7 +144,7 @@ TextureImporter:
   - buildTarget: Android
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -142,10 +156,10 @@ TextureImporter:
       name: Evans_IdleDown
       rect:
         serializedVersion: 2
-        x: 33
-        y: 651
-        width: 16
-        height: 42
+        x: 0
+        y: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +169,10 @@ TextureImporter:
       name: Evans_Down1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 650
-        width: 16
-        height: 42
+        x: 64
+        y: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,10 +182,10 @@ TextureImporter:
       name: Evans_Down2
       rect:
         serializedVersion: 2
-        x: 162
-        y: 649
-        width: 16
-        height: 43
+        x: 128
+        y: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +195,10 @@ TextureImporter:
       name: Evans_Down3
       rect:
         serializedVersion: 2
-        x: 224
-        y: 649
-        width: 16
-        height: 42
+        x: 192
+        y: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,101 +208,10 @@ TextureImporter:
       name: Evans_Down4
       rect:
         serializedVersion: 2
-        x: 288
-        y: 649
-        width: 16
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Evans_Victory1
-      rect:
-        serializedVersion: 2
-        x: 338
-        y: 647
-        width: 40
-        height: 43
-      alignment: 9
-      pivot: {x: 0.45, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Evans_Victory2
-      rect:
-        serializedVersion: 2
-        x: 401
-        y: 647
-        width: 40
-        height: 44
-      alignment: 9
-      pivot: {x: 0.475, y: 0.49}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Evans_Up1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 585
-        width: 17
-        height: 41
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Evans_Up2
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 584
-        width: 17
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Evans_Up3
-      rect:
-        serializedVersion: 2
-        x: 162
-        y: 583
-        width: 17
-        height: 43
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Evans_Up4
-      rect:
-        serializedVersion: 2
-        x: 223
-        y: 585
-        width: 17
-        height: 41
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Evans_IdleUp
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 585
-        width: 17
-        height: 42
+        x: 256
+        y: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -298,10 +221,10 @@ TextureImporter:
       name: Evans_IdleLeft
       rect:
         serializedVersion: 2
-        x: 32
-        y: 525
-        width: 17
-        height: 41
+        x: 320
+        y: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -311,10 +234,75 @@ TextureImporter:
       name: Evans_IdleRight
       rect:
         serializedVersion: 2
-        x: 95
-        y: 525
-        width: 17
-        height: 41
+        x: 384
+        y: 640
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Up1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Up2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Up3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Up4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 576
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_IdleUp
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 576
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,10 +312,10 @@ TextureImporter:
       name: Evans_Left1
       rect:
         serializedVersion: 2
-        x: 160
-        y: 524
-        width: 23
-        height: 43
+        x: 320
+        y: 576
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -337,10 +325,10 @@ TextureImporter:
       name: Evans_Left2
       rect:
         serializedVersion: 2
-        x: 222
-        y: 524
-        width: 23
-        height: 43
+        x: 384
+        y: 576
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,10 +338,10 @@ TextureImporter:
       name: Evans_Left3
       rect:
         serializedVersion: 2
-        x: 289
-        y: 523
-        width: 21
-        height: 43
+        x: 0
+        y: 512
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,10 +351,10 @@ TextureImporter:
       name: Evans_Left4
       rect:
         serializedVersion: 2
-        x: 346
-        y: 523
-        width: 20
-        height: 43
+        x: 64
+        y: 512
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,10 +364,10 @@ TextureImporter:
       name: Evans_Right1
       rect:
         serializedVersion: 2
-        x: 411
-        y: 522
-        width: 20
-        height: 43
+        x: 128
+        y: 512
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -389,10 +377,10 @@ TextureImporter:
       name: Evans_Right2
       rect:
         serializedVersion: 2
-        x: 30
-        y: 460
-        width: 21
-        height: 43
+        x: 192
+        y: 512
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -402,10 +390,10 @@ TextureImporter:
       name: Evans_Right3
       rect:
         serializedVersion: 2
-        x: 95
-        y: 461
-        width: 23
-        height: 43
+        x: 256
+        y: 512
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,10 +403,10 @@ TextureImporter:
       name: Evans_Right4
       rect:
         serializedVersion: 2
-        x: 157
-        y: 461
-        width: 23
-        height: 43
+        x: 320
+        y: 512
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,12 +416,12 @@ TextureImporter:
       name: Evans_GunDraw1
       rect:
         serializedVersion: 2
-        x: 212
-        y: 461
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.48, y: 0.44}
+        x: 0
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -441,12 +429,12 @@ TextureImporter:
       name: Evans_GunDraw2
       rect:
         serializedVersion: 2
-        x: 278
-        y: 463
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.46, y: 0.44}
+        x: 64
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -454,12 +442,12 @@ TextureImporter:
       name: Evans_GunDraw3
       rect:
         serializedVersion: 2
-        x: 336
-        y: 462
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.48, y: 0.44}
+        x: 128
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -467,12 +455,12 @@ TextureImporter:
       name: Evans_GunDraw4
       rect:
         serializedVersion: 2
-        x: 402
-        y: 461
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44}
+        x: 192
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -480,12 +468,12 @@ TextureImporter:
       name: Evans_GunDraw5
       rect:
         serializedVersion: 2
-        x: 20
-        y: 396
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.52, y: 0.44}
+        x: 256
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -493,12 +481,12 @@ TextureImporter:
       name: Evans_GunDraw6
       rect:
         serializedVersion: 2
-        x: 87
-        y: 397
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44}
+        x: 320
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -506,12 +494,12 @@ TextureImporter:
       name: Evans_GunDraw7
       rect:
         serializedVersion: 2
-        x: 147
-        y: 397
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44}
+        x: 384
+        y: 448
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -519,12 +507,12 @@ TextureImporter:
       name: Evans_GunDraw8
       rect:
         serializedVersion: 2
-        x: 208
-        y: 395
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.65, y: 0.44}
+        x: 0
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -532,12 +520,12 @@ TextureImporter:
       name: Evans_GunDraw9
       rect:
         serializedVersion: 2
-        x: 281
-        y: 392
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44}
+        x: 64
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -545,12 +533,12 @@ TextureImporter:
       name: Evans_GunDraw10
       rect:
         serializedVersion: 2
-        x: 341
-        y: 395
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.44, y: 0.44}
+        x: 128
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -558,12 +546,12 @@ TextureImporter:
       name: Evans_GunDraw11
       rect:
         serializedVersion: 2
-        x: 405
-        y: 395
-        width: 46
-        height: 48
-      alignment: 9
-      pivot: {x: 0.46, y: 0.44}
+        x: 192
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -571,11 +559,11 @@ TextureImporter:
       name: Evans_Idle1
       rect:
         serializedVersion: 2
-        x: 23
-        y: 330
-        width: 40
-        height: 43
-      alignment: 9
+        x: 256
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -584,12 +572,12 @@ TextureImporter:
       name: Evans_Idle2
       rect:
         serializedVersion: 2
-        x: 91
-        y: 331
-        width: 40
-        height: 43
-      alignment: 9
-      pivot: {x: 0.46, y: 0.5}
+        x: 320
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -597,12 +585,12 @@ TextureImporter:
       name: Evans_Idle3
       rect:
         serializedVersion: 2
-        x: 156
-        y: 332
-        width: 40
-        height: 43
-      alignment: 9
-      pivot: {x: 0.44, y: 0.5}
+        x: 384
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -610,12 +598,12 @@ TextureImporter:
       name: Evans_Ranged1
       rect:
         serializedVersion: 2
-        x: 216
-        y: 331
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.48, y: 0.45}
+        x: 0
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -623,12 +611,12 @@ TextureImporter:
       name: Evans_Ranged2
       rect:
         serializedVersion: 2
-        x: 273
-        y: 331
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.67, y: 0.45}
+        x: 64
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -636,12 +624,12 @@ TextureImporter:
       name: Evans_Ranged3
       rect:
         serializedVersion: 2
-        x: 321
-        y: 332
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.88, y: 0.45}
+        x: 128
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -649,12 +637,12 @@ TextureImporter:
       name: Evans_Ranged4
       rect:
         serializedVersion: 2
-        x: 408
-        y: 333
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.38, y: 0.49}
+        x: 192
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -662,12 +650,12 @@ TextureImporter:
       name: Evans_Ranged5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 269
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.17, y: 0.45}
+        x: 256
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -675,23 +663,23 @@ TextureImporter:
       name: Evans_Ranged6
       rect:
         serializedVersion: 2
-        x: 95
-        y: 269
-        width: 48
-        height: 48
-      alignment: 9
-      pivot: {x: 0.21, y: 0.45}
+        x: 320
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Evans_Hit
+      name: Evans_HitFrame
       rect:
         serializedVersion: 2
-        x: 153
-        y: 270
-        width: 41
-        height: 43
+        x: 384
+        y: 320
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -701,12 +689,12 @@ TextureImporter:
       name: Evans_MeleeIdle1
       rect:
         serializedVersion: 2
-        x: 208
-        y: 270
-        width: 51
-        height: 42
-      alignment: 9
-      pivot: {x: 0.72, y: 0.5}
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -714,12 +702,12 @@ TextureImporter:
       name: Evans_MeleeIdle2
       rect:
         serializedVersion: 2
-        x: 270
-        y: 269
-        width: 51
-        height: 42
-      alignment: 9
-      pivot: {x: 0.68, y: 0.5}
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -727,12 +715,12 @@ TextureImporter:
       name: Evans_MeleeIdle3
       rect:
         serializedVersion: 2
-        x: 328
-        y: 272
-        width: 51
-        height: 41
-      alignment: 9
-      pivot: {x: 0.66, y: 0.515}
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -740,12 +728,12 @@ TextureImporter:
       name: Evans_MeleeAttack1
       rect:
         serializedVersion: 2
-        x: 393
-        y: 271
-        width: 51
-        height: 41
-      alignment: 9
-      pivot: {x: 0.63, y: 0.54}
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -753,12 +741,12 @@ TextureImporter:
       name: Evans_MeleeAttack2
       rect:
         serializedVersion: 2
-        x: 5
-        y: 209
-        width: 51
-        height: 44
-      alignment: 9
-      pivot: {x: 0.785, y: 0.48}
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -766,12 +754,12 @@ TextureImporter:
       name: Evans_MeleeAttack3
       rect:
         serializedVersion: 2
-        x: 74
-        y: 210
-        width: 51
-        height: 44
-      alignment: 9
-      pivot: {x: 0.55, y: 0.48}
+        x: 320
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -779,12 +767,12 @@ TextureImporter:
       name: Evans_MeleeAttack4
       rect:
         serializedVersion: 2
-        x: 154
-        y: 208
-        width: 51
-        height: 44
-      alignment: 9
-      pivot: {x: 0.23, y: 0.48}
+        x: 384
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -792,12 +780,12 @@ TextureImporter:
       name: Evans_MeleeAttack5
       rect:
         serializedVersion: 2
-        x: 219
-        y: 205
-        width: 51
-        height: 44
-      alignment: 9
-      pivot: {x: 0.25, y: 0.6}
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -805,12 +793,12 @@ TextureImporter:
       name: Evans_MeleeAttack6
       rect:
         serializedVersion: 2
-        x: 270
-        y: 207
-        width: 51
-        height: 44
-      alignment: 9
-      pivot: {x: 0.6, y: 0.5}
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -818,12 +806,12 @@ TextureImporter:
       name: Evans_MeleeAttack7
       rect:
         serializedVersion: 2
-        x: 327
-        y: 208
-        width: 51
-        height: 44
-      alignment: 9
-      pivot: {x: 0.62, y: 0.48}
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -831,12 +819,12 @@ TextureImporter:
       name: Evans_MeleeAttack8
       rect:
         serializedVersion: 2
-        x: 392
-        y: 209
-        width: 51
-        height: 44
-      alignment: 9
-      pivot: {x: 0.6, y: 0.48}
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -844,12 +832,12 @@ TextureImporter:
       name: Evans_Cast1
       rect:
         serializedVersion: 2
-        x: 23
-        y: 143
-        width: 39
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44}
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -857,12 +845,12 @@ TextureImporter:
       name: Evans_Cast2
       rect:
         serializedVersion: 2
-        x: 79
-        y: 144
-        width: 39
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44}
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -870,12 +858,12 @@ TextureImporter:
       name: Evans_Cast3
       rect:
         serializedVersion: 2
-        x: 144
-        y: 145
-        width: 39
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44}
+        x: 384
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -883,12 +871,12 @@ TextureImporter:
       name: Evans_Cast4
       rect:
         serializedVersion: 2
-        x: 210
-        y: 144
-        width: 39
-        height: 48
-      alignment: 9
-      pivot: {x: 0.5, y: 0.44}
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -896,12 +884,12 @@ TextureImporter:
       name: Evans_Death1
       rect:
         serializedVersion: 2
-        x: 281
-        y: 144
-        width: 39
-        height: 43
-      alignment: 9
-      pivot: {x: 0.22, y: 0.5}
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -909,12 +897,12 @@ TextureImporter:
       name: Evans_Death2
       rect:
         serializedVersion: 2
-        x: 337
-        y: 143
-        width: 39
-        height: 43
-      alignment: 9
-      pivot: {x: 0.22, y: 0.5}
+        x: 128
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -922,12 +910,181 @@ TextureImporter:
       name: Evans_Death3
       rect:
         serializedVersion: 2
-        x: 401
-        y: 149
-        width: 39
-        height: 43
-      alignment: 9
-      pivot: {x: 0.22, y: 0.5}
+        x: 192
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Victory1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Victory2
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Victory3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote6
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Emote10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
