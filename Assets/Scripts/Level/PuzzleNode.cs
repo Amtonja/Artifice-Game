@@ -21,7 +21,8 @@ public class PuzzleNode : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		spr = this.GetComponent<SpriteRenderer> ();
+		spr = GetComponent<SpriteRenderer>();
+        _audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -37,7 +38,7 @@ public class PuzzleNode : MonoBehaviour {
 			puzzleController.SendMessage ("UpdateMe", number);
 			Debug.Log ("Node activated!");
 			spr.enabled = true;
-//            _audio.PlayOneShot(clickSound);
+            _audio.PlayOneShot(clickSound);
 		} else {
 			if (bToggle) {
 				puzzleController.SendMessage ("UpdateMe", number);
