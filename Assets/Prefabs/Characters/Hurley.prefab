@@ -231,7 +231,7 @@ MonoBehaviour:
     bForce: 0
   myWeak:
     bBlunt: 1
-    bPeircing: 0
+    bPiercing: 0
     bProjectile: 0
     bWind: 0
     bFire: 0

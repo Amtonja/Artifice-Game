@@ -233,7 +233,7 @@ public class PlayManager : MonoBehaviour
 
         MusicManager.instance.PlayCombatEnding();
 
-        DisplayCombatRewards(2f);
+        //DisplayCombatRewards(2f);
 
         for (int i = 0; i < party.Length; i++)
         {
