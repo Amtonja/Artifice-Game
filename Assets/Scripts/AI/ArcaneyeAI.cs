@@ -52,10 +52,10 @@ namespace Artifice.Characters
 				waitForWanderCurrent = 0;
 
 			}else if (!bHold){
-				waitForWanderCurrent += Time.deltaTime;
-				if (waitForWanderCurrent >= waitForWander) {
-					Wander ();
-				}
+//				waitForWanderCurrent += Time.deltaTime;
+//				if (waitForWanderCurrent >= waitForWander) {
+//					Wander ();
+//				}
 			}
 		}
 
