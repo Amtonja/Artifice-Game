@@ -78,9 +78,12 @@ MonoBehaviour:
       value: False
       type: 2
       typeString: CustomFieldType_Boolean
-    portrait: {fileID: 2800000, guid: ec12b9ad51980a74ab6266079fa61f0b, type: 3}
+    portrait: {fileID: 2800000, guid: ae0191e3ec3bdfc4f882c0082cd24426, type: 3}
     alternatePortraits:
-    - {fileID: 2800000, guid: 8dd7f41a080c72542abbce7bf37fcb08, type: 3}
+    - {fileID: 2800000, guid: bb8383b2be8ed2d4eb4288c945d2dfdd, type: 3}
+    - {fileID: 2800000, guid: f0f533bffca57754c939336a5abec7b6, type: 3}
+    - {fileID: 2800000, guid: 19595a92f98967a4ebbfddaf467c038b, type: 3}
+    - {fileID: 2800000, guid: 2e52a8f51a0efcc468f1056196e40a1d, type: 3}
   - id: 3
     fields:
     - title: Name
@@ -495,7 +498,7 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=1);
 
-          Gibberish(entrytag)@{{end}}'
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 4
@@ -521,8 +524,8 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 28
-        y: 223
+        x: 31.125
+        y: 226.125
         width: 160
         height: 30
     - id: 5
@@ -592,7 +595,7 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 28.4375
         y: 418.93616
         width: 160
         height: 30
@@ -642,7 +645,7 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=6);
 
-          Gibberish(entrytag)@{{end}}'
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 4
@@ -1049,7 +1052,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetPortrait(Evans, pic=1);
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 5
@@ -1148,7 +1153,7 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 28.437515
         y: 120
         width: 160
         height: 30
@@ -1270,7 +1275,7 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=6);
 
-          Gibberish(entrytag)@{{end}}'
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 5
@@ -1290,7 +1295,7 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 30.970871
+        x: 29.907043
         y: 370
         width: 160
         height: 30
@@ -1770,7 +1775,7 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 31.5625
         y: 120
         width: 160
         height: 30
@@ -2323,7 +2328,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetPortrait(Evans, pic=2);
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 6
@@ -2585,7 +2592,7 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=1);
 
-          Gibberish(entrytag)@{{end}}'
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 7
@@ -2658,7 +2665,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetPortrait(Evans, pic=1);
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 7
@@ -3354,7 +3363,7 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=6);
 
-          Gibberish(entrytag)@{{end}}'
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 8
@@ -11286,7 +11295,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 30
-        y: 320
+        y: 318.4375
         width: 160
         height: 30
     - id: 15
@@ -11407,7 +11416,7 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=6);
 
-          Gibberish(entrytag)@{{end}}'
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 1
@@ -11482,7 +11491,9 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=1);
 
-          Gibberish(entrytag)@{{end}}'
+          SetPortrait(Evans, pic=2);
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 1
@@ -11817,7 +11828,7 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=6);
 
-          Gibberish(entrytag)@{{end}}'
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 2
@@ -12110,7 +12121,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetPortrait(Evans, pic=2);
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 2
@@ -12257,6 +12270,8 @@ MonoBehaviour:
         typeString: 
       - title: Sequence
         value: 'required SendMessage(DialogueComplete,,Scene 6b Trigger)@{{end}};
+
+          SetPortrait(Evans, pic=2);
 
           Gibberish(entrytag);'
         type: 0
@@ -12546,7 +12561,7 @@ MonoBehaviour:
       - title: Sequence
         value: 'SetPortrait(Hurley, pic=1);
 
-          Gibberish(entrytag)@{{end}}'
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 2
@@ -12791,7 +12806,7 @@ MonoBehaviour:
           PublicKeyToken=null
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 31.5625
         y: 720
         width: 160
         height: 30
@@ -12838,7 +12853,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetPortrait(Evans, pic=1);
+
+          Gibberish(entrytag);'
         type: 0
         typeString: 
       conversationID: 2
