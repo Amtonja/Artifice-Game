@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 61698954228227954}
   - component: {fileID: 50844562761748164}
   - component: {fileID: 82287076827496750}
+  - component: {fileID: 114951257367780930}
   m_Layer: 0
   m_Name: Hurley
   m_TagString: Player
@@ -261,6 +262,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   bNPC: 0
+--- !u!114 &114951257367780930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002287157204096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1005983785, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideActorName: 
+  recordCurrentLevel: 1
+  restoreCurrentLevelPosition: 1
 --- !u!212 &212771996872743772
 SpriteRenderer:
   m_ObjectHideFlags: 1
