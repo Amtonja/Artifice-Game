@@ -30,6 +30,7 @@ public class Player : Entity
     private AudioSource _audio;
 
     private int experienceTotal;
+    private int characterLevel;
 
     // Consider these temporary variables standing in for actual equipment values
     public int addedMeleeAttackValue, addedRangedAttackValue, addedMagicAttackValue, armorValue;
@@ -582,7 +583,7 @@ public class Player : Entity
 
     public void AddExperience(int xp)
     {
-        experienceTotal += xp;
+        ExperienceTotal += xp;
     }
 
     public delegate void CombatAction(Entity target);
@@ -790,6 +791,32 @@ public class Player : Entity
         set
         {
             _spell = value;
+        }
+    }
+
+    public int ExperienceTotal
+    {
+        get
+        {
+            return experienceTotal;
+        }
+
+        set
+        {
+            experienceTotal = value;
+        }
+    }
+
+    public int CharacterLevel
+    {
+        get
+        {
+            return characterLevel;
+        }
+
+        set
+        {
+            characterLevel = value;
         }
     }
 

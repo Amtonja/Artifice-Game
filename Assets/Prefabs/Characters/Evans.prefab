@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 50919755712382930}
   - component: {fileID: 82720999272192888}
   - component: {fileID: 114488556634105976}
+  - component: {fileID: 114352583391713522}
   m_Layer: 0
   m_Name: Evans
   m_TagString: Player
@@ -208,6 +209,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114352583391713522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431489070619788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f41f9399641d74ba3b35dcd9ca2a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114353809896882622
 MonoBehaviour:
   m_ObjectHideFlags: 1
