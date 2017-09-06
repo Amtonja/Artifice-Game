@@ -76,6 +76,19 @@ public class CameraSystem : MonoBehaviour {
 			fixedLocation.y = currentArea.maxY - 3f;
 		}
 
+		//override for exactly one screen-sized rooms not displaying properly on the y axis
+		if (currentArea.maxY - currentArea.minY < 6.0f) { //technically this would be exactly 5.6f but yeah
+//			float adjustedY = currentArea.maxY - currentArea.minY;
+			fixedLocation.y = currentArea.minY + 2.8f;
+
+		}
+
+		if (currentArea.maxX - currentArea.minX < 10.0f) { //technically this would be exactly 9.9f but yeah
+			//			float adjustedY = currentArea.maxY - currentArea.minY;
+			fixedLocation.x = currentArea.minX + 5f;
+
+		}
+
 		this.transform.position = fixedLocation;
 	}
 
