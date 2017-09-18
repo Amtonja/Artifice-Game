@@ -5511,7 +5511,7 @@ Prefab:
     - target: {fileID: 114672948340293816, guid: b406117de1af4464ca68d8573fdcf81d,
         type: 2}
       propertyPath: party.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4918358318175634, guid: b406117de1af4464ca68d8573fdcf81d, type: 2}
       propertyPath: m_LocalPosition.x
@@ -6419,7 +6419,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1841612056227444, guid: ae03343ea21fde144a749d64dd73a631, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114198727807754866, guid: ae03343ea21fde144a749d64dd73a631,
         type: 2}
@@ -11433,6 +11433,10 @@ Prefab:
       propertyPath: followTarget
       value: 
       objectReference: {fileID: 1749567204}
+    - target: {fileID: 1431489070619788, guid: d2f01571c47d1f24f87b436f571b9d94, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2f01571c47d1f24f87b436f571b9d94, type: 2}
   m_IsPrefabParent: 0
@@ -13292,7 +13296,7 @@ GameObject:
   - component: {fileID: 2019905025}
   - component: {fileID: 2019905027}
   m_Layer: 0
-  m_Name: EvansBattleground
+  m_Name: Burtlegrund
   m_TagString: Battleground
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -13304,7 +13308,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2019905024}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -13348,7 +13352,7 @@ MonoBehaviour:
   - {fileID: 264826348}
   enemies:
   - {fileID: 1567622568}
-  - {fileID: 1879785055}
+  - {fileID: 2023817814}
   secondPlayerPosList:
   - {fileID: 192323202}
   - {fileID: 1491130382}
@@ -13393,7 +13397,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1841612056227444, guid: ae03343ea21fde144a749d64dd73a631, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841612056227444, guid: ae03343ea21fde144a749d64dd73a631, type: 2}
       propertyPath: m_Name
@@ -13407,6 +13411,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae03343ea21fde144a749d64dd73a631, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2023817814 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114198727807754866, guid: ae03343ea21fde144a749d64dd73a631,
+    type: 2}
+  m_PrefabInternal: {fileID: 2023817813}
+  m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
 --- !u!1 &2054129631
 GameObject:
   m_ObjectHideFlags: 0

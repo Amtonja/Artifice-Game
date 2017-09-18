@@ -84,7 +84,8 @@ public class Battleground : MonoBehaviour {
 
 		for (int i = 0; i < enemies.Count; i++) {
 			enemies [i].GetComponent<Movement> ().StopForcedMove (false);
-			enemies [i].GetComponent<AIBase> ().CombatStart (bPlayersFightRight);// tells to stop wandering
+			enemies [i].GetComponent<AIBase> ().CombatStart (bPlayersFightRight);// tells facing direction
+			enemies [i].GetComponent<AIBase> ().BWaitingOnCombatStart = true; //get them to not wander
 			enemies [i].GetComponent<Movement> ().GetForcedSender (this.gameObject);
 			enemies [i].GetComponent<Movement> ().StartForcedMove (enemyPosList [i].transform.position);
 		}
@@ -162,6 +163,7 @@ public class Battleground : MonoBehaviour {
 					enemies [i].transform.localScale = new Vector3 (1, 1, 1);
 				} else {
 					enemies [i].transform.localScale = new Vector3 (-1, 1, 1);
+					enemies [i].GetComponent<AIBase> ().BWaitingOnCombatStart = false;
 					Debug.Log ("Enemies facing left!");
 				}
 

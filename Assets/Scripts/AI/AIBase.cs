@@ -40,6 +40,9 @@ public class AIBase : MonoBehaviour {
 
 	private bool bHold = false; //used to completely freeze the bot
 
+
+	private bool bWaitingOnCombatStart = false; //for when going to position and waiting on the combat to start. Prevents wandering overlapping
+
 	// Use this for initialization
 	void Start()
 	{
@@ -59,6 +62,11 @@ public class AIBase : MonoBehaviour {
 //		} else {
 //			Wander ();
 //		}
+		//To prevent wandering overlap
+		if (bWaitingOnCombatStart) {
+			return;
+		}
+
 		if (_player.InCombat) {
 						
 			CombatUpdate ();
@@ -233,6 +241,12 @@ public class AIBase : MonoBehaviour {
 	public bool BWander {
 		set {
 			bWander = value;
+		}
+	}
+
+	public bool BWaitingOnCombatStart {
+		set {
+			bWaitingOnCombatStart = value;
 		}
 	}
 }
