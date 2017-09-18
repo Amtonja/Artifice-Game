@@ -62,6 +62,10 @@ namespace Artifice.Characters
 
 				_player.MyCombatAction (target);
 				waitForWanderCurrent = 0;
+
+				//Hold until animation is complete
+				bHoldPos = true;
+
 			} else if(!bHoldPos){
 				waitForWanderCurrent += Time.deltaTime;
 				if (waitForWanderCurrent >= waitForWander) {

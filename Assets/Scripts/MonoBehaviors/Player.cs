@@ -172,6 +172,12 @@ public class Player : Entity
             PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
             PlayManager.instance.UpdateAttacked();
         }
+
+		//send to AI
+		if (bIsEnemy)
+		{
+			this.GetComponent<AIBase>().ResumeWander();
+		}
     }
 
 
@@ -214,6 +220,12 @@ public class Player : Entity
             PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
             PlayManager.instance.UpdateAttacked();
         }
+
+		//send to AI
+		if (bIsEnemy)
+		{
+			this.GetComponent<AIBase>().ResumeWander();
+		}
     }
 
 
@@ -255,6 +267,12 @@ public class Player : Entity
             PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
             PlayManager.instance.UpdateAttacked();
         }
+
+		//send to AI
+		if (bIsEnemy)
+		{
+			this.GetComponent<AIBase>().ResumeWander();
+		}
     }
 
     public void Defend()
