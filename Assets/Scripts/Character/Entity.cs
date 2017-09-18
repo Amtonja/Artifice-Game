@@ -145,6 +145,7 @@ namespace Artifice.Characters
         public int Health
         {
             get { return health; }
+            set { health = value; }
         }
 
         public CharacterRace Race

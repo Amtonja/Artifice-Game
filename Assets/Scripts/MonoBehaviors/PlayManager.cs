@@ -1,6 +1,8 @@
 ﻿using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 /// <summary>
@@ -28,7 +30,7 @@ public class PlayManager : MonoBehaviour
     /// </summary>
     public CombatUIManager combatUI;
 
-    public GameObject groupCombatUI;    
+    public GameObject groupCombatUI;
 
     /// <summary>
     /// Prefab used to display damage/healing in combat.
@@ -44,32 +46,32 @@ public class PlayManager : MonoBehaviour
     /// The enemies the player is currently engaged with.
     /// Usually this list is empty unless in combat.
     /// </summary>
-    private List<Player> combatantEnemies;    
+    private List<Player> combatantEnemies;
 
-	/// <summary>
-	/// Game's timescale for combat. Used instead of modifying Time.timescale so we can pause things during combat
-	/// but still have timers and such moving.
-	/// </summary>
-	private bool pauseCombat = true;
+    /// <summary>
+    /// Game's timescale for combat. Used instead of modifying Time.timescale so we can pause things during combat
+    /// but still have timers and such moving.
+    /// </summary>
+    private bool pauseCombat = true;
 
-	/// <summary>
-	/// Combat states for... well, combat.
-	/// </summary>
-	private enum combatState {Init, CombatLoop, WaitForAttackConfirmation, Formation, EndCombat};
-	private combatState state = combatState.Init;
+    /// <summary>
+    /// Combat states for... well, combat.
+    /// </summary>
+    private enum combatState { Init, CombatLoop, WaitForAttackConfirmation, Formation, EndCombat };
+    private combatState state = combatState.Init;
 
-	private Battleground currentBattleground;
+    private Battleground currentBattleground;
 
-	//When characters attack, they send this script the number of characters being attacked, so we can wait until they're all damaged
-	//Not exactly needed yet, but this is where we'd hook in having AoE attacks later.
-	private int attackedCountMax = 99999;
-	private int attackedCountCurrent = 0;
+    //When characters attack, they send this script the number of characters being attacked, so we can wait until they're all damaged
+    //Not exactly needed yet, but this is where we'd hook in having AoE attacks later.
+    private int attackedCountMax = 99999;
+    private int attackedCountCurrent = 0;
 
-	/// <summary>
-	/// Small buffer after something gets hit to slow things down a bit.
-	/// </summary>
-	private float hitWaitTimer = 1f;
-	private float hitWaitCurrent = 0f;
+    /// <summary>
+    /// Small buffer after something gets hit to slow things down a bit.
+    /// </summary>
+    private float hitWaitTimer = 1f;
+    private float hitWaitCurrent = 0f;
 
     /// <summary>
     /// The current scene's background image.
@@ -92,101 +94,113 @@ public class PlayManager : MonoBehaviour
 
 
 
-	void Update(){
-		//This update loop contributes exclusively towards combat and combat-related processes.
-		if (exploreMode) {
-			if(Input.GetKeyDown(KeyCode.Return)){
-				InteractCheck ();
-			}
+    void Update()
+    {
+        //This update loop contributes exclusively towards combat and combat-related processes.
+        if (exploreMode)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                InteractCheck();
+            }
 
-//			Player target = party [0];
-//			Transform basePoint = target.transform.FindChild ("Base");
-//			var ray = new Vector2 (0, 0);
-//			ray = new Vector2 (basePoint.transform.position.x, basePoint.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
-//			//Get delta
-//			Vector2 delta = target.GetComponent<Movement>().DirVector;
-//			//get position. This should be pulled out of this for optimisation later
-//
-//			Debug.DrawRay( ray, delta * 0.2f, Color.red );
+            //			Player target = party [0];
+            //			Transform basePoint = target.transform.FindChild ("Base");
+            //			var ray = new Vector2 (0, 0);
+            //			ray = new Vector2 (basePoint.transform.position.x, basePoint.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
+            //			//Get delta
+            //			Vector2 delta = target.GetComponent<Movement>().DirVector;
+            //			//get position. This should be pulled out of this for optimisation later
+            //
+            //			Debug.DrawRay( ray, delta * 0.2f, Color.red );
 
-			return;
-		}
+            return;
+        }
 
-		if (state == combatState.Init) {
-			//Init phase. Anything pre-combat goes here. Mostly a stub, as things are currently set up by Enemy Encountered when 
-			//a Battleground is ready.
-
-
-			//turn on combat
-			pauseCombat = false;
-			state = combatState.CombatLoop;
-		}
-
-		//standard combat loop. Each character is slowly building up their ATB.
-		//At present, it kind of just waits here until outside forces (the interface and Player.cs commands)
-		//tell it to do otherwise.
-		else if (state == combatState.CombatLoop) {
+        if (state == combatState.Init)
+        {
+            //Init phase. Anything pre-combat goes here. Mostly a stub, as things are currently set up by Enemy Encountered when 
+            //a Battleground is ready.
 
 
+            //turn on combat
+            pauseCombat = false;
+            state = combatState.CombatLoop;
+        }
 
-		}
-
-		//Waiting for the attack to resolve - animations, hit frame, and damage. Checks for downed monsters, removes them from attackable list.
-		//If attackabl list is now zero, moves ro end combat. Otherwise goes to combat loop.
-		 else if (state == combatState.WaitForAttackConfirmation) {
-			if (attackedCountCurrent >= attackedCountMax) {
-				hitWaitCurrent += Time.deltaTime;
-				if (hitWaitCurrent >= hitWaitTimer) {
-					hitWaitCurrent = 0f;
-					pauseCombat = false;                   
-					state = combatState.CombatLoop;
-				}
-			}
-
-
-		}
-
-		//Waiting for confirmation from Battleground instance that a new formation position has been set. Returns to CombatLoop.
-		else if (state == combatState.Formation) {
+        //standard combat loop. Each character is slowly building up their ATB.
+        //At present, it kind of just waits here until outside forces (the interface and Player.cs commands)
+        //tell it to do otherwise.
+        else if (state == combatState.CombatLoop)
+        {
 
 
 
-		}
+        }
 
-		else if (state == combatState.EndCombat) {
-			//ends combat. Gives players EXP, items, whatever, and returns to explore mode.
-			exploreMode = true;
-//			foreach (Player dudebro in Party) {
-//				dudebro.ExitCombat ();
-//			}
-			EncounterComplete();
-		}
+        //Waiting for the attack to resolve - animations, hit frame, and damage. Checks for downed monsters, removes them from attackable list.
+        //If attackabl list is now zero, moves ro end combat. Otherwise goes to combat loop.
+        else if (state == combatState.WaitForAttackConfirmation)
+        {
+            if (attackedCountCurrent >= attackedCountMax)
+            {
+                hitWaitCurrent += Time.deltaTime;
+                if (hitWaitCurrent >= hitWaitTimer)
+                {
+                    hitWaitCurrent = 0f;
+                    pauseCombat = false;
+                    state = combatState.CombatLoop;
+                }
+            }
 
-	}
 
-	/// <summary>
-	/// Checks to see if there's an interactive CM object in front of us. If so, send it a pulse.
-	/// Holy crap this needs to be optimised later but time is an issue right now.
-	/// </summary>
-	private void InteractCheck(){
-		Player target = party [0];
-		Transform basePoint = target.transform.FindChild ("Base");
-		var ray = new Vector2 (0, 0);
-		ray = new Vector2 (basePoint.transform.position.x, basePoint.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
-		//Get delta
-		Vector2 delta = target.GetComponent<Movement>().DirVector;
-		//get position. This should be pulled out of this for optimisation later
+        }
 
-		Debug.DrawRay( ray, delta * 0.2f, Color.red );
+        //Waiting for confirmation from Battleground instance that a new formation position has been set. Returns to CombatLoop.
+        else if (state == combatState.Formation)
+        {
 
-		LayerMask mask = (1 << 10);
-		RaycastHit2D _raycastHit;
-		_raycastHit = Physics2D.Raycast( ray, delta, 0.2f, mask); //9 is interact layer, ~ means only focus on that
-		if (_raycastHit) {
-			Debug.Log ("We hit " + _raycastHit.collider.name.ToString () + " and its layer is " + _raycastHit.collider.gameObject.layer.ToString());
-			_raycastHit.collider.gameObject.SendMessage ("Activate");
-		} 
-	}
+
+
+        }
+
+        else if (state == combatState.EndCombat)
+        {
+            //ends combat. Gives players EXP, items, whatever, and returns to explore mode.
+            exploreMode = true;
+            //			foreach (Player dudebro in Party) {
+            //				dudebro.ExitCombat ();
+            //			}
+            EncounterComplete();
+        }
+
+    }
+
+    /// <summary>
+    /// Checks to see if there's an interactive CM object in front of us. If so, send it a pulse.
+    /// Holy crap this needs to be optimised later but time is an issue right now.
+    /// </summary>
+    private void InteractCheck()
+    {
+        Player target = party[0];
+        Transform basePoint = target.transform.FindChild("Base");
+        var ray = new Vector2(0, 0);
+        ray = new Vector2(basePoint.transform.position.x, basePoint.transform.position.y + 0.1f); //the base transform is the bottom of feet, need offset
+                                                                                                  //Get delta
+        Vector2 delta = target.GetComponent<Movement>().DirVector;
+        //get position. This should be pulled out of this for optimisation later
+
+        Debug.DrawRay(ray, delta * 0.2f, Color.red);
+
+        LayerMask mask = (1 << 10);
+        RaycastHit2D _raycastHit;
+        _raycastHit = Physics2D.Raycast(ray, delta, 0.2f, mask); //9 is interact layer, ~ means only focus on that
+        if (_raycastHit)
+        {
+            Debug.Log("We hit " + _raycastHit.collider.name.ToString() + " and its layer is " + _raycastHit.collider.gameObject.layer.ToString());
+            _raycastHit.collider.gameObject.SendMessage("Activate");
+        }
+    }
 
 
     /// <summary>
@@ -207,7 +221,7 @@ public class PlayManager : MonoBehaviour
         {
             party[i].EnterCombat();
             combatUI.SetupPlayerUI(party[i]);
-        }        
+        }
 
 
         groupCombatUI.SetActive(true);
@@ -218,7 +232,7 @@ public class PlayManager : MonoBehaviour
 
     public void CreatePopupText(string text, Transform location, Color textColor, Vector3 offset)
     {
-        PopupText popup = Instantiate(popupTextPrefab, combatUI.transform.Find("Canvas"), false);   
+        PopupText popup = Instantiate(popupTextPrefab, combatUI.transform.Find("Canvas"), false);
         popup.GetComponentInChildren<UnityEngine.UI.Text>().text = text;
         popup.GetComponentInChildren<UnityEngine.UI.Text>().color = textColor;
         popup.transform.position = Camera.main.WorldToScreenPoint(location.position + offset);
@@ -238,76 +252,78 @@ public class PlayManager : MonoBehaviour
         for (int i = 0; i < party.Length; i++)
         {
             party[i].ExitCombat();
-            party[i].AddExperience(experiencePool);   
-			party [i].GetComponent<Movement> ().BIgnoreFollow = false;
-			//Reset characters following lead character
-//			if (i != 0) {
-//				GameObject dude = party [i].gameObject;
-//				dude.gameObject.GetComponent<Movement> ().FollowTarget = party [0];
-//			}
-			//Reset following 
-			party[i].GetComponent<Movement>().ResetFollowList();
+            party[i].AddExperience(experiencePool);
+            party[i].GetComponent<Movement>().BIgnoreFollow = false;
+            //Reset characters following lead character
+            //			if (i != 0) {
+            //				GameObject dude = party [i].gameObject;
+            //				dude.gameObject.GetComponent<Movement> ().FollowTarget = party [0];
+            //			}
+            //Reset following 
+            party[i].GetComponent<Movement>().ResetFollowList();
         }
-		//Reset state. Need to reset here specifically
-		state = combatState.Init;
+        //Reset state. Need to reset here specifically
+        state = combatState.Init;
         //turn off combat UI
         combatUI.DeactivatePlayerUI();
         groupCombatUI.SetActive(false);
         experiencePool = 0;
     }
 
-	//Run option. 
-	public void RunFromCombat(){
-		Debug.Log ("Running from combat!");
-		exploreMode = true;
+    //Run option. 
+    public void RunFromCombat()
+    {
+        Debug.Log("Running from combat!");
+        exploreMode = true;
 
-		MusicManager.instance.PlayCombatEnding();
+        MusicManager.instance.PlayCombatEnding();
 
-		for (int i = 0; i < party.Length; i++)
-		{
-			party[i].ExitCombat();
+        for (int i = 0; i < party.Length; i++)
+        {
+            party[i].ExitCombat();
 
-		}
+        }
 
-		for (int i = 0; i < combatantEnemies.Count; i++)
-		{
-			combatantEnemies[i].ExitCombat();
+        for (int i = 0; i < combatantEnemies.Count; i++)
+        {
+            combatantEnemies[i].ExitCombat();
 
-		}
+        }
 
-		//turn off combat UI
-		combatUI.DeactivatePlayerUI();
-		//Tell Battleground players are running, so set up blinking and then reset collider
-		currentBattleground.RunAway ();
+        //turn off combat UI
+        combatUI.DeactivatePlayerUI();
+        //Tell Battleground players are running, so set up blinking and then reset collider
+        currentBattleground.RunAway();
 
-		groupCombatUI.SetActive(false);
-		MusicManager.instance.StopAllCoroutines (); //to stop the battle music 
+        groupCombatUI.SetActive(false);
+        MusicManager.instance.StopAllCoroutines(); //to stop the battle music 
 
-	}
+    }
 
-	//Straight-up cancel combat. Only used to bail on combat for cutscenes.
-	public void CancelCombat(){
-		exploreMode = true;
+    //Straight-up cancel combat. Only used to bail on combat for cutscenes.
+    public void CancelCombat()
+    {
+        exploreMode = true;
 
-		MusicManager.instance.PlayCombatEnding();
+        MusicManager.instance.PlayCombatEnding();
 
-		for (int i = 0; i < party.Length; i++)
-		{
-			party[i].ExitCombat();
+        for (int i = 0; i < party.Length; i++)
+        {
+            party[i].ExitCombat();
 
-		}
+        }
 
-		for (int i = 0; i < combatantEnemies.Count; i++)
-		{
-			combatantEnemies[i].ExitCombat();
+        for (int i = 0; i < combatantEnemies.Count; i++)
+        {
+            combatantEnemies[i].ExitCombat();
 
-		}
+        }
 
-		//turn off combat UI
-		combatUI.DeactivatePlayerUI();
-		groupCombatUI.SetActive(false);
-		MusicManager.instance.StopAllCoroutines (); //to stop the battle music 
-	}
+        //turn off combat UI
+        combatUI.DeactivatePlayerUI();
+        groupCombatUI.SetActive(false);
+        MusicManager.instance.StopAllCoroutines(); //to stop the battle music 
+    }
 
     public void DisplayCombatRewards(float messageDuration)
     {
@@ -315,42 +331,44 @@ public class PlayManager : MonoBehaviour
         for (int i = 0; i < party.Length; i++)
         {
             DialogueManager.ShowAlert(party[i].name + " gained " + experiencePool + " XP!", messageDuration);
-        }        
+        }
     }
 
     public void PauseGame()
     {
-//        Time.timeScale = 0f;
-//		combatTimeScale = 0.00000001f; //you probably don't want this to be zero
-		//combat
-		pauseCombat = true;
+        //        Time.timeScale = 0f;
+        //		combatTimeScale = 0.00000001f; //you probably don't want this to be zero
+        //combat
+        pauseCombat = true;
 
     }
 
     public void UnpauseGame()
     {
-//        Time.timeScale = 1f;
-//		combatTimeScale = 1f;
-		pauseCombat = false;
+        //        Time.timeScale = 1f;
+        //		combatTimeScale = 1f;
+        pauseCombat = false;
     }
 
-	//when a character attacks, it sends how many characters it's attacking. This is mostly a stub for fure AoE attacks
-	public void SendAttackCount(int count){
-		attackedCountMax = count;
-		attackedCountCurrent = 0;
-
-	}
-	//called by a character when it is attacked
-	public void UpdateAttacked()
+    //when a character attacks, it sends how many characters it's attacking. This is mostly a stub for fure AoE attacks
+    public void SendAttackCount(int count)
     {
-		attackedCountCurrent++;
-	}
+        attackedCountMax = count;
+        attackedCountCurrent = 0;
 
-	//called when a character's ATB is full to change states into WaitingForAttackConfirmation
-	public void StartingAttack(){
-		state = combatState.WaitForAttackConfirmation;
+    }
+    //called by a character when it is attacked
+    public void UpdateAttacked()
+    {
+        attackedCountCurrent++;
+    }
 
-	}
+    //called when a character's ATB is full to change states into WaitingForAttackConfirmation
+    public void StartingAttack()
+    {
+        state = combatState.WaitForAttackConfirmation;
+
+    }
 
     /// <summary>
     /// Called to darken or un-darken the background image of this scene to increase/restore contrast with foreground
@@ -368,20 +386,33 @@ public class PlayManager : MonoBehaviour
             background.color = Color.white;
         }
     }
-	//Called when an enemy's HP is at zero
-	public void RemoveEnemy(Player enemy){
-		EnemyCombatants.Remove (enemy);
-		if (EnemyCombatants.Count == 0) {
+    //Called when an enemy's HP is at zero
+    public void RemoveEnemy(Player enemy)
+    {
+        EnemyCombatants.Remove(enemy);
+        if (EnemyCombatants.Count == 0)
+        {
 
-			Debug.Log ("Enemies killed!");
-			state = combatState.EndCombat;
-		}
+            Debug.Log("Enemies killed!");
+            state = combatState.EndCombat;
+        }
 
-	}
-	//Called when a player's HP is at zero
-	public void HeroDown(Player hero){
+    }
+    //Called when a player's HP is at zero
+    public void HeroDown(Player hero)
+    {
 
-	}
+    }
+
+    public IEnumerator LoadScene(string sceneName)
+    {
+        PersistentDataManager.Record();
+        PersistentDataManager.LevelWillBeUnloaded();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        yield return new WaitForEndOfFrame();
+
+        PersistentDataManager.Apply();
+    }   
 
     #region C# Properties
     public List<Player> EnemyCombatants
@@ -390,9 +421,10 @@ public class PlayManager : MonoBehaviour
         {
             return combatantEnemies;
         }
-		set{
-			combatantEnemies = value;
-		}
+        set
+        {
+            combatantEnemies = value;
+        }
     }
 
     public bool ExploreMode
@@ -401,37 +433,47 @@ public class PlayManager : MonoBehaviour
         {
             return exploreMode;
         }
-		set {
-			exploreMode = value;
-		}
-    }    
+        set
+        {
+            exploreMode = value;
+        }
+    }
 
-	public Player[] Party {
-		get {
-			return party;
-		}
-		set {
-			party = value;
-		}
-	}
+    public Player[] Party
+    {
+        get
+        {
+            return party;
+        }
+        set
+        {
+            party = value;
+        }
+    }
 
-	public bool PauseCombat {
-		get {
-			return pauseCombat;
-		}
-		set {
-			pauseCombat = value;
-		}
-	}
+    public bool PauseCombat
+    {
+        get
+        {
+            return pauseCombat;
+        }
+        set
+        {
+            pauseCombat = value;
+        }
+    }
 
-	public Battleground CurrentBattleground {
-		get { 
-			return currentBattleground;
-		}
-		set {
-			currentBattleground = value;
-		}
-	}
-			
+    public Battleground CurrentBattleground
+    {
+        get
+        {
+            return currentBattleground;
+        }
+        set
+        {
+            currentBattleground = value;
+        }
+    }
+
     #endregion
 }

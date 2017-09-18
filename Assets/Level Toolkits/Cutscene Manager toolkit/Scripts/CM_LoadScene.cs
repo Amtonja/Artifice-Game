@@ -10,7 +10,8 @@ public class CM_LoadScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Activate(){
-//		Application.LoadLevel (scene);
-		UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+        //		Application.LoadLevel (scene);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+        StartCoroutine(PlayManager.instance.LoadScene(scene));
 	}
 }

@@ -109,19 +109,19 @@ MonoBehaviour:
     - title: Name
       value: Russo
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Pictures
       value: '[]'
       type: 3
-      typeString: 
+      typeString: CustomFieldType_Files
     - title: Description
       value: 
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: IsPlayer
       value: False
       type: 2
-      typeString: 
+      typeString: CustomFieldType_Boolean
     portrait: {fileID: 2800000, guid: aaf3ce720418f8b448492a1d7e02ffc5, type: 3}
     alternatePortraits: []
   - id: 5

@@ -889,7 +889,7 @@ MonoBehaviour:
     asyncGameObjectBatchSize: 1000
     asyncDialogueEntryBatchSize: 100
   allowSimultaneousConversations: 0
-  includeSimStatus: 0
+  includeSimStatus: 1
   preloadResources: 0
   dontDestroyOnLoad: 1
   allowOnlyOneInstance: 1
