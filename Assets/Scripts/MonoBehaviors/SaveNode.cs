@@ -7,8 +7,7 @@ public class SaveNode : MonoBehaviour
 {
     public void Activate()
     {
-        string saveGameData = PersistentDataManager.GetSaveData();
-        PlayManager.instance.OutputSaveGame(saveGameData);
+        SaveManager.instance.OpenMenu();
     }
 
     // Use this for initialization

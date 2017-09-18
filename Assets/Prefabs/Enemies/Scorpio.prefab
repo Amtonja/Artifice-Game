@@ -41,6 +41,9 @@ GameObject:
   - component: {fileID: 114939850832385646}
   - component: {fileID: 114949001461488516}
   - component: {fileID: 82081404201445042}
+  - component: {fileID: 114747084416056130}
+  - component: {fileID: 114892446073432352}
+  - component: {fileID: 114558668778288678}
   m_Layer: 0
   m_Name: Scorpio
   m_TagString: Enemy
@@ -228,6 +231,45 @@ MonoBehaviour:
   addedRangedAttackValue: 20
   addedMagicAttackValue: 20
   armorValue: 0
+--- !u!114 &114558668778288678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841612056227444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1981088f45054349954e84366b8a2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordOn: 0
+  variableName: 
+  spawnWhenDestroyed: {fileID: 0}
+--- !u!114 &114747084416056130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841612056227444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1005983785, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideActorName: 
+  recordCurrentLevel: 1
+  restoreCurrentLevelPosition: 1
+--- !u!114 &114892446073432352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841612056227444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f41f9399641d74ba3b35dcd9ca2a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114939850832385646
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,6 +26,9 @@ GameObject:
   - component: {fileID: 114052828545168000}
   - component: {fileID: 114121018603597948}
   - component: {fileID: 82103848772281790}
+  - component: {fileID: 114804657336593886}
+  - component: {fileID: 114776951557776196}
+  - component: {fileID: 114472500977105518}
   m_Layer: 0
   m_Name: Marauder
   m_TagString: Enemy
@@ -253,6 +256,45 @@ MonoBehaviour:
   addedRangedAttackValue: 20
   addedMagicAttackValue: 20
   armorValue: 0
+--- !u!114 &114472500977105518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310366724581956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1981088f45054349954e84366b8a2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordOn: 0
+  variableName: 
+  spawnWhenDestroyed: {fileID: 0}
+--- !u!114 &114776951557776196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310366724581956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f41f9399641d74ba3b35dcd9ca2a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114804657336593886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310366724581956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1005983785, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideActorName: 
+  recordCurrentLevel: 1
+  restoreCurrentLevelPosition: 1
 --- !u!212 &212580860635875204
 SpriteRenderer:
   m_ObjectHideFlags: 1

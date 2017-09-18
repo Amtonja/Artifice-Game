@@ -41,6 +41,9 @@ GameObject:
   - component: {fileID: 61522266148563566}
   - component: {fileID: 114430191313619486}
   - component: {fileID: 82566656619629358}
+  - component: {fileID: 114769498418872686}
+  - component: {fileID: 114640176037657058}
+  - component: {fileID: 114519146500613510}
   m_Layer: 0
   m_Name: Arcaneye
   m_TagString: Enemy
@@ -253,6 +256,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderPos: {x: 0, y: 0}
+--- !u!114 &114519146500613510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873516945820432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1981088f45054349954e84366b8a2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordOn: 0
+  variableName: 
+  spawnWhenDestroyed: {fileID: 0}
+--- !u!114 &114640176037657058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873516945820432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f41f9399641d74ba3b35dcd9ca2a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114769498418872686
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873516945820432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1005983785, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideActorName: 
+  recordCurrentLevel: 1
+  restoreCurrentLevelPosition: 1
 --- !u!212 &212190289401128060
 SpriteRenderer:
   m_ObjectHideFlags: 1

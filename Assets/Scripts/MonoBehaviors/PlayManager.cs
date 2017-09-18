@@ -96,11 +96,6 @@ public class PlayManager : MonoBehaviour
 
     void Update()
     {
-        // Absolutely do not leave this in
-        if (Input.GetKeyDown(KeyCode.F9))
-        {
-            LoadSaveGame();
-        }
         //This update loop contributes exclusively towards combat and combat-related processes.
         if (exploreMode)
         {
@@ -417,38 +412,7 @@ public class PlayManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         PersistentDataManager.Apply();
-    }
-
-    public void OutputSaveGame(string saveData)
-    {
-        if (!Directory.Exists("Saves"))
-        {
-            Directory.CreateDirectory("Saves");
-        }
-
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Create("Saves/save.binary");
-
-        formatter.Serialize(saveFile, saveData);
-
-        saveFile.Close();
-
-        Debug.Log("The game has been saved");
-    }
-
-    public void LoadSaveGame()
-    {
-        BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Open("Saves/save.binary", FileMode.Open);
-
-        string saveData = formatter.Deserialize(saveFile) as string;
-
-        PersistentDataManager.ApplySaveData(saveData);
-
-        saveFile.Close();
-
-        Debug.Log("The saved game has been loaded");
-    }
+    }   
 
     #region C# Properties
     public List<Player> EnemyCombatants
