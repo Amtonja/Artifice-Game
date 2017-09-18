@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 95627289049998174}
   - component: {fileID: 114353809896882622}
   - component: {fileID: 114539703176097850}
+  - component: {fileID: 114094493688975514}
   - component: {fileID: 61400534968174820}
   - component: {fileID: 50919755712382930}
   - component: {fileID: 82720999272192888}
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431489070619788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37, y: -3.82, z: 0}
+  m_LocalPosition: {x: -3.001, y: -1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4205745771281234}
@@ -207,6 +208,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114094493688975514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1431489070619788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10af1cb89b6f6e544b4cffcc4bf1132f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114353809896882622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,7 +234,7 @@ MonoBehaviour:
   baseStats: {fileID: 11400000, guid: e1434575958c89c4abed59332f414cfa, type: 2}
   myRes:
     bBlunt: 0
-    bPeircing: 0
+    bPiercing: 0
     bProjectile: 1
     bWind: 0
     bFire: 0
@@ -231,28 +243,13 @@ MonoBehaviour:
     bForce: 0
   myWeak:
     bBlunt: 0
-    bPeircing: 1
+    bPiercing: 0
     bProjectile: 0
     bWind: 0
     bFire: 0
     bLightning: 0
     bIce: 0
     bForce: 0
-  entityInfo:
-    name: Evans
-    id: _evans_
-    combatStats:
-      attack: 0
-      defense: 0
-      magic: 0
-      speed: 0
-      evasion: 0
-      accuracy: 0
-      magicDefense: 0
-      luck: 0
-      maxHealth: 0
-    race: 0
-  useXMLStats: 1
   spellOrigin: {x: 0.19, y: 0.057}
   meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
   rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}

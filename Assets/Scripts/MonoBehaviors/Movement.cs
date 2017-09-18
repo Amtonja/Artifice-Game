@@ -209,12 +209,31 @@ public class Movement : MonoBehaviour
         }
 
 		//If we detect collision in a direction we want to move, nuke momentum on that axis
-		if(Mathf.Abs(Input.GetAxis("Vertical")) > 0f && CollideCheck(0.0f, moveDelta.y, 0.05f, 0f) && CollideCheck(0.0f, moveDelta.y, -0.05f, 0f)){
-			moveDelta.y = 0;
+//		if(Mathf.Abs(Input.GetAxis("Vertical")) > 0f && CollideCheck(0.0f, moveDelta.y, 0.05f, 0f) && CollideCheck(0.0f, moveDelta.y, -0.05f, 0f)){
+//			moveDelta.y = 0;
+//		}
+		//collision range is -0.05 to 0.05
+
+		float step = 0.0f;
+		for (int i = 0; i <= 7; i++) {
+			if (CollideCheck (0f, moveDelta.y, -0.05f + step, 0f)) {
+				moveDelta.y = 0;
+			}
+//			Debug.Log("Step is " + (-0.05f + step).ToString());
+			step += 0.02f;
 		}
 
-		if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0f && CollideCheck(moveDelta.x, 0f, 0f, 0.05f) && CollideCheck(moveDelta.x, 0f, 0f, -0.05f)){
-			moveDelta.x = 0;
+
+//		if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0f && CollideCheck(moveDelta.x, 0f, 0f, 0.05f) && CollideCheck(moveDelta.x, 0f, 0f, -0.05f)){
+//			moveDelta.x = 0;
+//		}
+		float stepB = 0.0f;
+		for (int i = 0; i <= 7; i++) {
+			if (CollideCheck (moveDelta.x, 0f, 0f, -0.05f + stepB)) {
+				moveDelta.x = 0;
+			}
+			//			Debug.Log("StepB is " + (-0.05f + stepB).ToString());
+			stepB += 0.02f;
 		}
 
 //		if(!CollideCheck(moveDelta)){
@@ -396,8 +415,6 @@ public class Movement : MonoBehaviour
         if (Vector3.Distance(this.transform.position, new Vector3(intendedPosition.x, intendedPosition.y, 0)) > 0.1f)
         {
 
-            //			float step = moveSpeed * Time.deltaTime;
-            //			Vector2 moveDelta = Vector2.MoveTowards (this.transform.position, intendedPosition, step);
             Vector3 moveDelta = new Vector3(intendedPosition.x, intendedPosition.y, 0f) - this.transform.position;
 
             if (moveDelta.y > 0f && Mathf.Abs(moveDelta.y) > Mathf.Abs(moveDelta.x))
