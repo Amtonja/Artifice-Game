@@ -33,10 +33,7 @@ public class Player : Entity
     private int characterLevel;
 
     // Consider these temporary variables standing in for actual equipment values
-    public int addedMeleeAttackValue, addedRangedAttackValue, addedMagicAttackValue, armorValue;
-
-
-
+    //public int addedMeleeAttackValue, addedRangedAttackValue, addedMagicAttackValue, armorValue;
 
     // Use this for initialization
     void Start()
@@ -48,8 +45,8 @@ public class Player : Entity
 
         ResetStats();
         health = Stats.maxHealth;
-        DefenseValue = Mathf.FloorToInt((Stats.defense + armorValue) * 0.2f);
-        MagicDefenseValue = Mathf.FloorToInt((Stats.magicDefense + armorValue) * 0.2f);
+        DefenseValue = Mathf.FloorToInt(Stats.defense * tempArmorValue * 0.8f);
+        MagicDefenseValue = Mathf.FloorToInt(Stats.magicDefense * tempArmorValue * 0.8f);
 
         // The time for a character's action bar to fill is equal to the default time minus a percentage equal to their Speed stat
         ActionBarTargetTime = actionBarDefaultTarget - (actionBarDefaultTarget * Stats.speed / 100f);
@@ -112,6 +109,7 @@ public class Player : Entity
     }
 
     private Entity tempTarget; //because we need to pass the target entity to the attack end state
+    public float tempWeaponAttackValue, tempWeaponMagicValue, tempArmorValue;
 
     /// <summary>
     /// Determine if an attack will hit by comparing accuracy vs. evasion
@@ -134,6 +132,21 @@ public class Player : Entity
         return isAHit;
     }
 
+    /// <summary>
+    /// Damage calculation.
+    /// </summary>
+    /// <param name="target">The entity targeted by the attack</param>
+    /// <returns></returns>
+    private int CalculateAttackDamage(Entity target)
+    {
+        return Mathf.FloorToInt((Stats.attack * tempWeaponAttackValue) + UnityEngine.Random.Range(0, 7) - target.DefenseValue);
+    }
+
+    private int CalculateMagicDamage(Entity target)
+    {
+        return Mathf.FloorToInt((Stats.attack * tempWeaponMagicValue) + UnityEngine.Random.Range(0, 7) - target.DefenseValue);
+    }
+
     public void PiercingAttack(Entity target)
     {
         Debug.Log("Piercing attack on " + target.name);
@@ -150,7 +163,7 @@ public class Player : Entity
     public void EndPiercingAttack()
     {
         _audio.PlayOneShot(meleeSFX);
-        int damage = Stats.attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue;
+        int damage = CalculateAttackDamage(tempTarget);
         if (CalculateHit(tempTarget))
         {
             //check for resistance and weaknesses
@@ -198,7 +211,7 @@ public class Player : Entity
     {
         Debug.Log("Ending blunt attack!");
         _audio.PlayOneShot(meleeSFX);
-        int damage = Stats.attack + addedMeleeAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue;
+        int damage = CalculateAttackDamage(tempTarget);
         if (CalculateHit(tempTarget))
         {
             //check for resistance and weaknesses
@@ -245,7 +258,7 @@ public class Player : Entity
     public void EndProjectileAttack()
     {
         _audio.PlayOneShot(rangedSFX);
-        int damage = Stats.attack + addedRangedAttackValue + UnityEngine.Random.Range(0, 7) - tempTarget.DefenseValue;
+        int damage = CalculateAttackDamage(tempTarget);
         if (CalculateHit(tempTarget))
         {
             //check for resistance and weaknesses
@@ -353,7 +366,7 @@ public class Player : Entity
         PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
 
-        int healing = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7);
+        int healing = Mathf.FloorToInt(Stats.magic * tempWeaponMagicValue + UnityEngine.Random.Range(0, 7));
         target.Heal(healing);
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
@@ -374,7 +387,7 @@ public class Player : Entity
         lbs.StartPosition = v3spellOrigin;
         lbs.EndObject = target.gameObject;
 
-        int damage = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+        int damage = CalculateMagicDamage(tempTarget);
 
         //check for resistance and weaknesses
         if (target.MyRes.bLightning)
@@ -398,7 +411,7 @@ public class Player : Entity
         GameObject gust = Instantiate(Resources.Load("Prefabs/Gust")) as GameObject;
         gust.transform.position = target.transform.position;
 
-        int damage = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+        int damage = CalculateMagicDamage(tempTarget);
         //check for resistance and weaknesses
         if (target.MyRes.bWind)
         {
@@ -445,7 +458,7 @@ public class Player : Entity
             rotToTarget,
             transform) as GameObject;
 
-        int damage = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+        int damage = CalculateMagicDamage(tempTarget);
 
         //check for resistance and weaknesses
         if (target.MyRes.bFire)
@@ -478,7 +491,7 @@ public class Player : Entity
         Vector3[] positions = { transform.position + v3spellOrigin, target.transform.position };
         lr.SetPositions(positions);
 
-        int damage = Stats.magic + addedMagicAttackValue + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue;
+        int damage = CalculateMagicDamage(tempTarget);
 
         //check for resistance and weaknesses
         if (target.MyRes.bForce)

@@ -256,10 +256,9 @@ MonoBehaviour:
   footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
   takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
   deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  addedMeleeAttackValue: 14
-  addedRangedAttackValue: 16
-  addedMagicAttackValue: 9
-  armorValue: 5
+  tempWeaponAttackValue: 2
+  tempWeaponMagicValue: 2
+  tempArmorValue: 1.5
 --- !u!114 &114539703176097850
 MonoBehaviour:
   m_ObjectHideFlags: 1
