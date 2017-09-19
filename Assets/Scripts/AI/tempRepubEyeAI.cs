@@ -28,6 +28,9 @@ namespace Artifice.Characters
 			if (_player.IsMyTurn) {
 				Debug.Log (gameObject.name.ToString () + "'s turn!");
 
+				//Cancel forcedMove
+				_movement.StopForcedMove(false);
+
 				float randA = Random.value; //which target
 
 				GameObject person;

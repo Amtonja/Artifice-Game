@@ -20425,7 +20425,7 @@ Prefab:
     - target: {fileID: 114192566013926390, guid: eb5b10750f6238645bd6d219514affec,
         type: 2}
       propertyPath: scene
-      value: kickstarterEndSlate
+      value: IntroScene2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb5b10750f6238645bd6d219514affec, type: 2}
