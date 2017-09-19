@@ -357,7 +357,10 @@ public class Player : Entity
         if (bIsEnemy)
         {
             this.GetComponent<AIBase>().ResumeWander();
-        }
+		} else {
+			//send this to AI targets
+			target.GetComponent<AIBase>().BHold = false;
+		}
 
     }
 
@@ -387,6 +390,12 @@ public class Player : Entity
         lbs.StartPosition = v3spellOrigin;
         lbs.EndObject = target.gameObject;
 
+
+		//tell enemy target to hold still. Completely disables the AI until it's done
+		if (!bIsEnemy) {
+			target.GetComponent<AIBase>().BHold = true;
+		}
+
         int damage = CalculateMagicDamage(tempTarget);
 
         //check for resistance and weaknesses
@@ -410,6 +419,13 @@ public class Player : Entity
     {
         GameObject gust = Instantiate(Resources.Load("Prefabs/Gust")) as GameObject;
         gust.transform.position = target.transform.position;
+
+		//tell enemy target to hold still. Completely disables the AI until it's done
+		if (!bIsEnemy) {
+			target.GetComponent<AIBase>().BHold = true;
+			//cancel their movement
+			target.GetComponent<Movement>().StopForcedMove(false);
+		}
 
         int damage = CalculateMagicDamage(tempTarget);
         //check for resistance and weaknesses

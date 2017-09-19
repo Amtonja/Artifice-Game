@@ -163,10 +163,9 @@ public class Battleground : MonoBehaviour {
 					enemies [i].transform.localScale = new Vector3 (1, 1, 1);
 				} else {
 					enemies [i].transform.localScale = new Vector3 (-1, 1, 1);
-					enemies [i].GetComponent<AIBase> ().BWaitingOnCombatStart = false;
 					Debug.Log ("Enemies facing left!");
 				}
-
+				enemies [i].GetComponent<AIBase> ().BWaitingOnCombatStart = false;
 			}
 
 			//Have everyone in party do into animations
