@@ -270,7 +270,7 @@ MonoBehaviour:
   takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
   deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
   tempWeaponAttackValue: 3
-  tempWeaponMagicValue: 1.5
+  tempWeaponMagicValue: 3
   tempArmorValue: 1.75
 --- !u!212 &212978801610733208
 SpriteRenderer:
