@@ -243,6 +243,34 @@ public class Movement : MonoBehaviour
 
     }
 
+	//Currently unsed but could be useful 
+	public Vector3 AdjustForCollision(Vector3 moveDelta){
+		float step = 0.0f;
+		for (int i = 0; i <= 7; i++) {
+			if (CollideCheck (0f, moveDelta.y, -0.05f + step, 0f)) {
+				moveDelta.y = 0;
+			}
+			//			Debug.Log("Step is " + (-0.05f + step).ToString());
+			step += 0.02f;
+		}
+
+
+		//		if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0f && CollideCheck(moveDelta.x, 0f, 0f, 0.05f) && CollideCheck(moveDelta.x, 0f, 0f, -0.05f)){
+		//			moveDelta.x = 0;
+		//		}
+		float stepB = 0.0f;
+		for (int i = 0; i <= 7; i++) {
+			if (CollideCheck (moveDelta.x, 0f, 0f, -0.05f + stepB)) {
+				moveDelta.x = 0;
+			}
+			//			Debug.Log("StepB is " + (-0.05f + stepB).ToString());
+			stepB += 0.02f;
+		}
+
+		return moveDelta;
+
+	}
+
 
 	private RaycastHit2D _raycastHit;
 	//
@@ -449,14 +477,42 @@ public class Movement : MonoBehaviour
                 moveDir = directions.Left;
             }
 
+			//Collision detection to make sure we don't hit a wall. This is mainly used by AI when wandering
+			bool bCollisionDetected = false;
+
+
+			//For collision detection, including for AI. DO NOT ENABLE, as battlegrounds use this to maneuver characters into position,
+			//and meaning if they hit a rock or whatever while trying to get into position it'll softlock
+//			float step = 0.0f;
+//			for (int i = 0; i <= 7; i++) {
+//				if (CollideCheck (0f, moveDelta.y, -0.05f + step, 0f)) {
+//					moveDelta.y = 0;
+//					bCollisionDetected = true;
+//				}
+//				//			Debug.Log("Step is " + (-0.05f + step).ToString());
+//				step += 0.02f;
+//			}
+//
+//			float stepB = 0.0f;
+//			for (int i = 0; i <= 7; i++) {
+//				if (CollideCheck (moveDelta.x, 0f, 0f, -0.05f + stepB)) {
+//					moveDelta.x = 0;
+//					bCollisionDetected = true;
+//				}
+//				//			Debug.Log("StepB is " + (-0.05f + stepB).ToString());
+//				stepB += 0.02f;
+//			}
+
+
+
             transform.Translate((moveDelta.normalized * moveSpeed) * Time.deltaTime);
             //			transform.position = moveDelta;
 
 
             //            transform.position = Vector3.MoveTowards(transform.position, new Vector3(Mathf.Floor(coordinate.x), Mathf.Floor(coordinate.y), 0f), Time.deltaTime * 5f);
 
-            //If we're at the end point, go to their idle
-            if (this.transform.position.x == intendedPosition.x && this.transform.position.y == intendedPosition.y)
+            //If we're at the end point, or we hit collision, go to their idle
+			if (this.transform.position.x == intendedPosition.x && this.transform.position.y == intendedPosition.y || bCollisionDetected )
             {
                 if (moveDir == directions.Up)
                 {
@@ -479,7 +535,12 @@ public class Movement : MonoBehaviour
                 }
             }
 
-
+			if (bCollisionDetected) {
+				//cancel early
+				StopForcedMove(true);
+				//Probably don't need to ResetFollowList as this is exclusively going to be used by AI
+				//who have wandered into a rock or something
+			}
 
         }
         else {

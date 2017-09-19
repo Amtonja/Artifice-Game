@@ -51,14 +51,17 @@ namespace Artifice.Characters
 				Debug.Log("Target = " + target.name.ToString());
 
 				_player.MyCombatAction(target);
-				bHoldPos = true;
+
 				waitForWanderCurrent = 0;
 
+				//Hold until animation is complete
+				bHoldPos = true;
+
 			}else if (!bHoldPos){
-//				waitForWanderCurrent += Time.deltaTime;
-//				if (waitForWanderCurrent >= waitForWander) {
-//					Wander ();
-//				}
+				waitForWanderCurrent += Time.deltaTime;
+				if (waitForWanderCurrent >= waitForWander) {
+					Wander ();
+				}
 			}
 		}
 

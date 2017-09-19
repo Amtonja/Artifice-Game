@@ -170,8 +170,15 @@ public class AIBase : MonoBehaviour {
 				Debug.Log ("AI wandering direction out of range, what the heck");
 			}
 
+
+			//Need to do raycasts later to determine if movepos is going to try to put us in a collider
+
+
+
+
 			//send to movement script
 			_movement.StartForcedMove (wanderPos);
+			//temp collision detection
 			_movement.GetForcedSender (this.gameObject);
 
 			wanderState = 1;
