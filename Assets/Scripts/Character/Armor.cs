@@ -9,6 +9,6 @@ namespace Artifice.Characters
     {
         public float armorValue;
         public float magicValue;
-        public float healthValue;
+        public int healthValue;
     }
 }

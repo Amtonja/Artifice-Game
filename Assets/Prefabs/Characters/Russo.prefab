@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 61247496284781636}
   - component: {fileID: 50843508790481082}
   - component: {fileID: 82567731228766328}
+  - component: {fileID: 114177473071046174}
   m_Layer: 0
   m_Name: Russo
   m_TagString: Player
@@ -208,6 +209,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114177473071046174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873920067709384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a73219787ae3b4da7908f94cb07398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equippedWeapon: {fileID: 11400000, guid: 2e90c81783a377648a44f54d19022082, type: 2}
+  equippedArmor: {fileID: 11400000, guid: 53c9b7cec9abdb541839179693a430d7, type: 2}
 --- !u!114 &114435887976355722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,9 +283,6 @@ MonoBehaviour:
   footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
   takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
   deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  tempWeaponAttackValue: 3
-  tempWeaponMagicValue: 3
-  tempArmorValue: 1.75
 --- !u!212 &212978801610733208
 SpriteRenderer:
   m_ObjectHideFlags: 1

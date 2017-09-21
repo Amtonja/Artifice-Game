@@ -31,6 +31,7 @@ public class Player : Entity
 
     private int experienceTotal;
     private int characterLevel;
+    private Inventory inventory;
 
     // Consider these temporary variables standing in for actual equipment values
     //public int addedMeleeAttackValue, addedRangedAttackValue, addedMagicAttackValue, armorValue;
@@ -43,10 +44,13 @@ public class Player : Entity
         _audio = GetComponent<AudioSource>();
         _footPos = transform.Find("Base").localPosition;
 
+        inventory = GetComponent<Inventory>();
+
         ResetStats();
+        Stats.maxHealth += inventory.equippedArmor.healthValue;
         health = Stats.maxHealth;
-        DefenseValue = Mathf.FloorToInt(Stats.defense * tempArmorValue * 0.8f);
-        MagicDefenseValue = Mathf.FloorToInt(Stats.magicDefense * tempArmorValue * 0.8f);
+        DefenseValue = Mathf.FloorToInt(Stats.defense * inventory.equippedArmor.armorValue * 0.8f);
+        MagicDefenseValue = Mathf.FloorToInt(Stats.magicDefense * inventory.equippedArmor.magicValue * 0.8f);
 
         // The time for a character's action bar to fill is equal to the default time minus a percentage equal to their Speed stat
         ActionBarTargetTime = actionBarDefaultTarget - (actionBarDefaultTarget * Stats.speed / 100f);
@@ -109,7 +113,7 @@ public class Player : Entity
     }
 
     private Entity tempTarget; //because we need to pass the target entity to the attack end state
-    public float tempWeaponAttackValue, tempWeaponMagicValue, tempArmorValue;
+    //public float tempWeaponAttackValue, tempWeaponMagicValue, tempArmorValue;
 
     /// <summary>
     /// Determine if an attack will hit by comparing accuracy vs. evasion
@@ -139,12 +143,12 @@ public class Player : Entity
     /// <returns></returns>
     private int CalculateAttackDamage(Entity target)
     {
-        return Mathf.FloorToInt((Stats.attack * tempWeaponAttackValue) + UnityEngine.Random.Range(0, 7) - target.DefenseValue);
+        return Mathf.FloorToInt((Stats.attack * inventory.equippedWeapon.baseAttackValue) + UnityEngine.Random.Range(0, 7) - target.DefenseValue);
     }
 
     private int CalculateMagicDamage(Entity target)
     {
-        return Mathf.FloorToInt((Stats.attack * tempWeaponMagicValue) + UnityEngine.Random.Range(0, 7) - target.DefenseValue);
+        return Mathf.FloorToInt((Stats.attack * inventory.equippedWeapon.baseMagicValue) + UnityEngine.Random.Range(0, 7) - target.DefenseValue);
     }
 
     public void PiercingAttack(Entity target)
@@ -369,7 +373,7 @@ public class Player : Entity
         PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
 
-        int healing = Mathf.FloorToInt(Stats.magic * tempWeaponMagicValue + UnityEngine.Random.Range(0, 7));
+        int healing = Mathf.FloorToInt(Stats.magic * inventory.equippedWeapon.baseMagicValue + UnityEngine.Random.Range(0, 7));
         target.Heal(healing);
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);

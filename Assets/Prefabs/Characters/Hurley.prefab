@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 82287076827496750}
   - component: {fileID: 114951257367780930}
   - component: {fileID: 114884606337466730}
+  - component: {fileID: 114393933717066138}
   m_Layer: 0
   m_Name: Hurley
   m_TagString: Player
@@ -221,6 +222,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10af1cb89b6f6e544b4cffcc4bf1132f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114393933717066138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002287157204096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a73219787ae3b4da7908f94cb07398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equippedWeapon: {fileID: 11400000, guid: eac83a91c82ccb145ac2f66440cb7fbd, type: 2}
+  equippedArmor: {fileID: 11400000, guid: e9644d0a9c87def468a8ae5fa845ebc3, type: 2}
 --- !u!114 &114469851435398964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,9 +272,6 @@ MonoBehaviour:
   footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
   takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
   deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  tempWeaponAttackValue: 2
-  tempWeaponMagicValue: 2
-  tempArmorValue: 2
 --- !u!114 &114551961529728186
 MonoBehaviour:
   m_ObjectHideFlags: 1
