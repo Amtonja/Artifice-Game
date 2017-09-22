@@ -36,7 +36,7 @@ namespace Artifice.Characters
                 else {
                     person = GameObject.Find("Hurley");
                 }
-                Entity target = person.GetComponent<Entity>();
+                CombatEntity target = person.GetComponent<CombatEntity>();
 
 //                if (randB < 0.5f)
 //                {

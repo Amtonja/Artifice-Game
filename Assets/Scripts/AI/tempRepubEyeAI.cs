@@ -25,7 +25,7 @@ namespace Artifice.Characters
 
 		// Update is called once per frame
 		public override void CombatUpdate () {
-			if (_player.IsMyTurn) {
+			if (_enemy.IsMyTurn) {
 				Debug.Log (gameObject.name.ToString () + "'s turn!");
 
 				//Cancel forcedMove
@@ -44,16 +44,16 @@ namespace Artifice.Characters
 					person = GameObject.Find ("Russo");
 					Debug.Log ("Scorpio attacking Russo!");
 				}
-				Entity target = person.GetComponent<Entity> ();
+				CombatEntity target = person.GetComponent<CombatEntity> ();
 
 				//				_player.MeleeAttack (target);
 				//_player.MyCombatAction = _player.MeleeAttack; 
-				_player.MySpell = _player.EyeLaser;
-				_player.MyCombatAction = _player.BeginSpellCast;
+				_enemy.MySpell = _enemy.EyeLaser;
+				_enemy.MyCombatAction = _enemy.BeginSpellCast;
 
 				Debug.Log("Target = " + target.name.ToString());
 
-				_player.MyCombatAction(target);
+				_enemy.MyCombatAction(target);
 
 				waitForWanderCurrent = 0;
 

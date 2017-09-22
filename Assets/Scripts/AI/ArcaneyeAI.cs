@@ -25,7 +25,7 @@ namespace Artifice.Characters
 
 		// Update is called once per frame
 		public override void CombatUpdate () {
-			if (_player.IsMyTurn) {
+			if (_enemy.IsMyTurn) {
 				Debug.Log (gameObject.name.ToString () + "'s turn!");
 
 //				float randA = Random.value; //which target
@@ -38,16 +38,16 @@ namespace Artifice.Characters
 //				} else {
 //					person = GameObject.Find ("Russo");
 //				}
-				Entity target = person.GetComponent<Entity> ();
+				CombatEntity target = person.GetComponent<CombatEntity> ();
 
 				//				_player.MeleeAttack (target);
 				//_player.MyCombatAction = _player.MeleeAttack; 
-				_player.MySpell = _player.EyeLaser;
-				_player.MyCombatAction = _player.BeginSpellCast;
+				_enemy.MySpell = _enemy.EyeLaser;
+				_enemy.MyCombatAction = _enemy.BeginSpellCast;
 
 				Debug.Log("Target = " + target.name.ToString());
 
-				_player.MyCombatAction(target);
+				_enemy.MyCombatAction(target);
 				bHold = true;
 				waitForWanderCurrent = 0;
 

@@ -15,13 +15,13 @@ public class PersistentCombatStatsData : MonoBehaviour
         // Note that you can use this static method to get the actor 
         // name associated with this GameObject:
         //    var actorName = OverrideActorName.GetActorName(transform);
-        Player player = GetComponent<Player>();
+        Artifice.Characters.CombatEntity entity = GetComponent<Artifice.Characters.CombatEntity>();
         var actorName = OverrideActorName.GetActorName(transform);
 
-        DialogueLua.SetActorField(actorName, "CurrentHealth", player.Health);
-        DialogueLua.SetActorField(actorName, "MaxHealth", player.Stats.maxHealth);
-        DialogueLua.SetActorField(actorName, "XP", player.ExperienceTotal);
-        DialogueLua.SetActorField(actorName, "Level", player.CharacterLevel);
+        DialogueLua.SetActorField(actorName, "CurrentHealth", entity.Health);
+        DialogueLua.SetActorField(actorName, "MaxHealth", entity.Stats.maxHealth);
+        DialogueLua.SetActorField(actorName, "XP", entity.ExperienceTotal);
+        DialogueLua.SetActorField(actorName, "Level", entity.CharacterLevel);        
     }
 
     public void OnApplyPersistentData()
@@ -39,13 +39,13 @@ public class PersistentCombatStatsData : MonoBehaviour
         //     yield return null; // Wait 1 frame for other scripts to initialize.
         //     <your code here>
         // }
-        Player player = GetComponent<Player>();
+        Artifice.Characters.CombatEntity entity = GetComponent<Artifice.Characters.CombatEntity>();
         var actorName = OverrideActorName.GetActorName(transform);
 
-        player.Stats.maxHealth = DialogueLua.GetActorField(actorName, "MaxHealth").AsInt;
-        player.Health = DialogueLua.GetActorField(actorName, "CurrentHealth").AsInt;
-        player.ExperienceTotal = DialogueLua.GetActorField(actorName, "XP").AsInt;
-        player.CharacterLevel = DialogueLua.GetActorField(actorName, "Level").AsInt;
+        entity.Stats.maxHealth = DialogueLua.GetActorField(actorName, "MaxHealth").AsInt;
+        entity.Health = DialogueLua.GetActorField(actorName, "CurrentHealth").AsInt;
+        entity.ExperienceTotal = DialogueLua.GetActorField(actorName, "XP").AsInt;
+        entity.CharacterLevel = DialogueLua.GetActorField(actorName, "Level").AsInt;
 
         //Debug.Log(actorName + "'s health was set to " + player.Health + "/" + player.Stats.maxHealth);
     }

@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4900159953496532}
   - component: {fileID: 212608912281419004}
   - component: {fileID: 95747291047831776}
-  - component: {fileID: 114456635862777894}
   - component: {fileID: 114666518476865346}
   - component: {fileID: 61841513666347090}
   - component: {fileID: 114556999746847378}
@@ -44,6 +43,7 @@ GameObject:
   - component: {fileID: 114251487290001768}
   - component: {fileID: 114908691397736000}
   - component: {fileID: 114400761375225478}
+  - component: {fileID: 114683044053751960}
   m_Layer: 0
   m_Name: AncientEye
   m_TagString: Enemy
@@ -218,46 +218,6 @@ MonoBehaviour:
   recordOn: 0
   variableName: 
   spawnWhenDestroyed: {fileID: 0}
---- !u!114 &114456635862777894
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1535301156841234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bIsEnemy: 1
-  baseStats: {fileID: 11400000, guid: 283e75235fcaf8a4f96f86bc23b81f6b, type: 2}
-  myRes:
-    bBlunt: 0
-    bPiercing: 0
-    bProjectile: 1
-    bWind: 0
-    bFire: 0
-    bLightning: 0
-    bIce: 0
-    bForce: 0
-  myWeak:
-    bBlunt: 0
-    bPiercing: 0
-    bProjectile: 0
-    bWind: 0
-    bFire: 0
-    bLightning: 1
-    bIce: 0
-    bForce: 0
-  spellOrigin: {x: 0, y: 0}
-  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
-  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
-  footstepSFX: {fileID: 8300000, guid: cdebbd691d1e7c748955b62cef466831, type: 3}
-  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
-  deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  tempWeaponAttackValue: 6
-  tempWeaponMagicValue: 6
-  tempArmorValue: 2
 --- !u!114 &114556999746847378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,6 +243,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   bNPC: 1
+--- !u!114 &114683044053751960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535301156841234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3332af31b24bb44ac3983d6bdf2e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellOrigin: {x: 0, y: 0}
+  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
+  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
+  footstepSFX: {fileID: 8300000, guid: cdebbd691d1e7c748955b62cef466831, type: 3}
+  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
+  deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
+  baseStats: {fileID: 11400000, guid: 283e75235fcaf8a4f96f86bc23b81f6b, type: 2}
+  myRes:
+    bBlunt: 0
+    bPiercing: 0
+    bProjectile: 1
+    bWind: 0
+    bFire: 0
+    bLightning: 0
+    bIce: 0
+    bForce: 0
+  myWeak:
+    bBlunt: 0
+    bPiercing: 0
+    bProjectile: 0
+    bWind: 0
+    bFire: 0
+    bLightning: 1
+    bIce: 0
+    bForce: 0
+  weaponClass: 6
+  armorClass: 2
 --- !u!114 &114908691397736000
 MonoBehaviour:
   m_ObjectHideFlags: 1

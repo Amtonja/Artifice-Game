@@ -52,7 +52,8 @@ namespace Artifice.Characters
 			evans.AddComponent (typeof(Oran_EvansAI));
 			//Pass along the passTarget
 			evans.GetComponent<Oran_EvansAI>().passTarget = passTarget;
-
+            // Activate Evans's inactive Enemy script
+            evans.GetComponent<Player>().TurnCoat();
 			//Start up the battleground
 			evansBattleground.Begin();
 		}

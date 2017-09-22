@@ -20,9 +20,10 @@ public class CombatPlayerUI : MonoBehaviour
     private GameObject iconPanel;
     private GameObject cursor;
     private Button firstSelectedIcon;
-    private List<Player> enemiesList;
+    private List<Enemy> enemiesList;
     private Player[] partyList;
-    private Player selectedEnemy, selectedPlayer;
+    private Enemy selectedEnemy;
+    private Player selectedPlayer;
 
     private float targetSelectionTimer;
     public float targetSelectionDelay;
@@ -139,7 +140,7 @@ public class CombatPlayerUI : MonoBehaviour
         }
     }
 
-    void MoveCursor(Player target)
+    void MoveCursor(CombatEntity target)
     {
         cursor.GetComponent<CombatCursor>().SelectedCharacter = target;
     }

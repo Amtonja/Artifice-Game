@@ -7,7 +7,7 @@ using Artifice.Characters;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class CombatCursor : MonoBehaviour
 {
-    private Player selectedCharacter;
+    private CombatEntity selectedCharacter;
 
     public float verticalOffset; // may need to vary according to the size of the target sprite
 
@@ -29,7 +29,7 @@ public class CombatCursor : MonoBehaviour
         transform.position = Camera.main.WorldToScreenPoint(SelectedCharacter.transform.position + Vector3.up * verticalOffset);
     }
 
-    public Player SelectedCharacter
+    public CombatEntity SelectedCharacter
     {
         get
         {

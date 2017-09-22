@@ -8,10 +8,10 @@ public class Movement : MonoBehaviour
 {
 
     /// <summary>
-    /// A reference to the player component that should also be attached
+    /// A reference to the CombatEntity component that should also be attached
     /// to this gameobject
     /// </summary>
-    private Player player;
+    private CombatEntity entity;
 
     /// <summary>
     /// The coordinate that this player is at. This should always be whole numbers.
@@ -93,7 +93,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        player = GetComponent<Player>();
+        entity = GetComponent<CombatEntity>();
         //sp = GetComponentInChildren<SortableSprite>();
         //        coordinate = new Vector2(this.transform.position.x, this.transform.position.y);
         //        followPos = coordinate;
@@ -125,7 +125,7 @@ public class Movement : MonoBehaviour
             ForceMove();
             return;
         }
-        if (player.InCombat) { return; }
+        if (entity.InCombat) { return; }
 
         //skip everything if we're just forced to face a direction
         if (bForceFace)
@@ -133,12 +133,12 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (followTarget == null && !player.InCombat && !bNPC)
+        if (followTarget == null && !entity.InCombat && !bNPC)
         {
             HandleMove();
 
         }
-		else if (followTarget != null && !player.InCombat && !bNPC && !bForceMove && !bIgnoreFollow)
+		else if (followTarget != null && !entity.InCombat && !bNPC && !bForceMove && !bIgnoreFollow)
         {
 
             FollowMove();

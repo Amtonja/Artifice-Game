@@ -26,7 +26,7 @@ namespace Artifice.Characters
 		// Update is called once per frame
 		public override void CombatUpdate()
 		{
-			if (_player.IsMyTurn)
+			if (_enemy.IsMyTurn)
 			{
 
 				//Cancel forcedMove
@@ -45,17 +45,17 @@ namespace Artifice.Characters
 				} else {
 					person = GameObject.Find ("Russo");
 				}
-				Entity target = person.GetComponent<Entity>();
+				CombatEntity target = person.GetComponent<CombatEntity>();
 
 				if (randB < 0.5f) {
 					//                    //_player.MeleeAttack(target);
-					_player.MyCombatAction = _player.PiercingAttack;
+					_enemy.MyCombatAction = _enemy.PiercingAttack;
 				} else {
-					_player.MyCombatAction = _player.ProjectileAttack;
+					_enemy.MyCombatAction = _enemy.ProjectileAttack;
 				}
 
 
-				_player.MyCombatAction(target);
+				_enemy.MyCombatAction(target);
 
 				//Hold until animation is complete
 				bHoldPos = true;

@@ -46,7 +46,7 @@ public class PlayManager : MonoBehaviour
     /// The enemies the player is currently engaged with.
     /// Usually this list is empty unless in combat.
     /// </summary>
-    private List<Player> combatantEnemies;
+    private List<Enemy> enemyCombatants;
 
     /// <summary>
     /// Game's timescale for combat. Used instead of modifying Time.timescale so we can pause things during combat
@@ -84,7 +84,7 @@ public class PlayManager : MonoBehaviour
     {
         exploreMode = true;
         instance = this;
-        combatantEnemies = new List<Player>();
+        enemyCombatants = new List<Enemy>();
         groupCombatUI = Instantiate(Resources.Load("Prefabs/PartyCombatUI")) as GameObject;
         GameObject playerActionUI = Instantiate(Resources.Load("Prefabs/PlayerActionUI")) as GameObject;
         combatUI = playerActionUI.GetComponent<CombatUIManager>();
@@ -213,9 +213,9 @@ public class PlayManager : MonoBehaviour
     {
         exploreMode = false;
 
-        for (int i = 0; i < combatantEnemies.Count; i++)
+        for (int i = 0; i < enemyCombatants.Count; i++)
         {
-            combatantEnemies[i].EnterCombat();
+            enemyCombatants[i].EnterCombat();
         }
         for (int i = 0; i < party.Length; i++)
         {
@@ -284,9 +284,9 @@ public class PlayManager : MonoBehaviour
 
         }
 
-        for (int i = 0; i < combatantEnemies.Count; i++)
+        for (int i = 0; i < enemyCombatants.Count; i++)
         {
-            combatantEnemies[i].ExitCombat();
+            enemyCombatants[i].ExitCombat();
 
         }
 
@@ -313,9 +313,9 @@ public class PlayManager : MonoBehaviour
 
         }
 
-        for (int i = 0; i < combatantEnemies.Count; i++)
+        for (int i = 0; i < enemyCombatants.Count; i++)
         {
-            combatantEnemies[i].ExitCombat();
+            enemyCombatants[i].ExitCombat();
 
         }
 
@@ -387,12 +387,11 @@ public class PlayManager : MonoBehaviour
         }
     }
     //Called when an enemy's HP is at zero
-    public void RemoveEnemy(Player enemy)
+    public void RemoveEnemy(Enemy enemy)
     {
         EnemyCombatants.Remove(enemy);
         if (EnemyCombatants.Count == 0)
         {
-
             Debug.Log("Enemies killed!");
             state = combatState.EndCombat;
         }
@@ -415,15 +414,15 @@ public class PlayManager : MonoBehaviour
     }   
 
     #region C# Properties
-    public List<Player> EnemyCombatants
+    public List<Enemy> EnemyCombatants
     {
         get
         {
-            return combatantEnemies;
+            return enemyCombatants;
         }
         set
         {
-            combatantEnemies = value;
+            enemyCombatants = value;
         }
     }
 

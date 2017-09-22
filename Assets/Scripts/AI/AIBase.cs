@@ -6,7 +6,7 @@ public class AIBase : MonoBehaviour {
 
 	//AI base class.
 
-	protected Player _player; //ref to our Player script
+	protected Enemy _enemy; //ref to our Enemy script
 	protected Movement _movement;
 
 	private Vector2 originLocation;
@@ -46,7 +46,7 @@ public class AIBase : MonoBehaviour {
 	// Use this for initialization
 	void Start()
 	{
-		_player = GetComponent<Player>();
+		_enemy = GetComponent<Enemy>();
 		_movement = GetComponent<Movement> ();
 	}
 	
@@ -67,7 +67,7 @@ public class AIBase : MonoBehaviour {
 			return;
 		}
 
-		if (_player.InCombat) {
+		if (_enemy.InCombat) {
 						
 			CombatUpdate ();
 		} else if (bWander) {

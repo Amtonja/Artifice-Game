@@ -3,7 +3,7 @@ using Artifice.Interfaces;
 
 namespace Artifice.Characters
 {
-    public abstract class Entity : MonoBehaviour, IIdentifiable, IInteractable, IHealth<int>, ICombatable
+    public abstract class CombatEntity : MonoBehaviour, IIdentifiable, IInteractable, IHealth<int>, ICombatable
     {
         protected string title;
         protected string id;
@@ -12,12 +12,26 @@ namespace Artifice.Characters
         protected bool defending;
         protected int health;
         protected CharacterRace race;
+        protected int experienceTotal;
+        protected int characterLevel;
         protected float actionBarValue = 0f;
         protected float actionBarTarget;
+        protected float actionBarDefaultTarget = 6f;
         private int defenseValue, magicDefenseValue;
         private bool isMyTurn = false;
+
+        public Vector2 spellOrigin;
+        protected Vector3 v3spellOrigin;
+
+        protected CombatAction _combatAction;
+        protected SpellDelegate _spell;
+
+        protected Animator _animator;
         
-		public bool bIsEnemy = false; //Used for AI
+        public AudioClip meleeSFX, rangedSFX, footstepSFX, takeDamageSFX, deathSFX;
+        protected AudioSource _audio;
+
+        //public bool bIsEnemy = false; //Used for AI
 
         private bool healthChanged = false;
 
@@ -111,6 +125,54 @@ namespace Artifice.Characters
             ActionBarTimer = 0f;
             inCombat = false;
         }
+
+        /// <summary>
+        /// Sets all combat stats equal to their base values.
+        /// Used for initialization or when all modifying effects are removed.
+        /// </summary>
+        protected void ResetStats()
+        {
+            Stats = Instantiate(baseStats);
+        }
+
+        protected void PlayFootstepSFX()
+        {
+            _audio.PlayOneShot(footstepSFX);
+        }
+
+        public void ShowWeakText(CombatEntity target)
+        {
+            PlayManager.instance.CreatePopupText("Weak", target.transform, Color.blue, Vector3.down);
+        }
+
+        public void ShowStrongText(CombatEntity target)
+        {
+            PlayManager.instance.CreatePopupText("Strong", target.transform, Color.red, Vector3.down);
+        }
+
+        /// <summary>
+        /// Determine if an attack will hit by comparing accuracy vs. evasion
+        /// and a random number
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        protected bool CalculateHit(CombatEntity target)
+        {
+            bool isAHit = true;
+
+            int attackRoll = UnityEngine.Random.Range(1, 100);
+
+            if (attackRoll <= 5)
+            {
+                isAHit = false;
+                Debug.Log(Stats.characterName + " missed!");
+            }
+
+            return isAHit;
+        }
+
+        public delegate void CombatAction(CombatEntity target);
+        public delegate void SpellDelegate(CombatEntity target);
 
         #region C# Properties
         public string Name
@@ -246,6 +308,58 @@ namespace Artifice.Characters
 				return myWeak;
 			}
 		}
+
+        public SpellDelegate MySpell
+        {
+            get
+            {
+                return _spell;
+            }
+
+            set
+            {
+                _spell = value;
+            }
+        }
+
+        public CombatAction MyCombatAction
+        {
+            get
+            {
+                return _combatAction;
+            }
+
+            set
+            {
+                _combatAction = value;
+            }
+        }
+
+        public int ExperienceTotal
+        {
+            get
+            {
+                return experienceTotal;
+            }
+
+            set
+            {
+                experienceTotal = value;
+            }
+        }
+
+        public int CharacterLevel
+        {
+            get
+            {
+                return characterLevel;
+            }
+
+            set
+            {
+                characterLevel = value;
+            }
+        }
         #endregion
     }
 }

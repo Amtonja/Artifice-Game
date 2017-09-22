@@ -32,7 +32,7 @@ namespace Artifice.Characters {
 				} else {
 					person = GameObject.Find ("Hurley");
 				}
-				Entity target = person.GetComponent<Entity> ();
+				CombatEntity target = person.GetComponent<CombatEntity> ();
 //				temptarget = target;
 
 				if(!bToggle){

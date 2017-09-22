@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4300643361603812}
   - component: {fileID: 212580860635875204}
   - component: {fileID: 95001201455329572}
-  - component: {fileID: 114141640679596544}
   - component: {fileID: 61639840833289546}
   - component: {fileID: 114052828545168000}
   - component: {fileID: 114121018603597948}
@@ -29,6 +28,7 @@ GameObject:
   - component: {fileID: 114804657336593886}
   - component: {fileID: 114776951557776196}
   - component: {fileID: 114472500977105518}
+  - component: {fileID: 114380923000093370}
   m_Layer: 0
   m_Name: Marauder
   m_TagString: Enemy
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderPos: {x: 0, y: 0}
---- !u!114 &114141640679596544
+--- !u!114 &114380923000093370
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -223,10 +223,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1310366724581956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f3332af31b24bb44ac3983d6bdf2e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIsEnemy: 1
+  spellOrigin: {x: -0.348, y: 0.022}
+  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
+  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
+  footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
+  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
+  deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
   baseStats: {fileID: 11400000, guid: 659a8f015d26d2340b17ddc532c873f5, type: 2}
   myRes:
     bBlunt: 0
@@ -246,15 +251,8 @@ MonoBehaviour:
     bLightning: 0
     bIce: 0
     bForce: 0
-  spellOrigin: {x: -0.348, y: 0.022}
-  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
-  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
-  footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
-  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
-  deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  tempWeaponAttackValue: 6
-  tempWeaponMagicValue: 6
-  tempArmorValue: 2
+  weaponClass: 6
+  armorClass: 2
 --- !u!114 &114472500977105518
 MonoBehaviour:
   m_ObjectHideFlags: 1

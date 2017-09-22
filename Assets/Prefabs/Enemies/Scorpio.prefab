@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4244856347876726}
   - component: {fileID: 212547942948823268}
   - component: {fileID: 95695627446497488}
-  - component: {fileID: 114198727807754866}
   - component: {fileID: 61384162733279226}
   - component: {fileID: 114939850832385646}
   - component: {fileID: 114949001461488516}
@@ -44,6 +43,7 @@ GameObject:
   - component: {fileID: 114747084416056130}
   - component: {fileID: 114892446073432352}
   - component: {fileID: 114558668778288678}
+  - component: {fileID: 114995955044239640}
   m_Layer: 0
   m_Name: Scorpio
   m_TagString: Enemy
@@ -190,46 +190,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114198727807754866
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841612056227444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bIsEnemy: 1
-  baseStats: {fileID: 11400000, guid: 1560c2feb53aba74ba0d4953a8863ac3, type: 2}
-  myRes:
-    bBlunt: 1
-    bPiercing: 0
-    bProjectile: 0
-    bWind: 0
-    bFire: 0
-    bLightning: 0
-    bIce: 0
-    bForce: 0
-  myWeak:
-    bBlunt: 0
-    bPiercing: 0
-    bProjectile: 1
-    bWind: 0
-    bFire: 0
-    bLightning: 0
-    bIce: 0
-    bForce: 0
-  spellOrigin: {x: -0.348, y: 0.022}
-  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
-  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
-  footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
-  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
-  deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  tempWeaponAttackValue: 6
-  tempWeaponMagicValue: 6
-  tempArmorValue: 2
 --- !u!114 &114558668778288678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -294,6 +254,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderPos: {x: 0, y: 0}
+--- !u!114 &114995955044239640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841612056227444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3332af31b24bb44ac3983d6bdf2e81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellOrigin: {x: -0.348, y: 0.022}
+  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
+  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
+  footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
+  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
+  deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
+  baseStats: {fileID: 11400000, guid: 1560c2feb53aba74ba0d4953a8863ac3, type: 2}
+  myRes:
+    bBlunt: 1
+    bPiercing: 0
+    bProjectile: 0
+    bWind: 0
+    bFire: 0
+    bLightning: 0
+    bIce: 0
+    bForce: 0
+  myWeak:
+    bBlunt: 0
+    bPiercing: 0
+    bProjectile: 1
+    bWind: 0
+    bFire: 0
+    bLightning: 0
+    bIce: 0
+    bForce: 0
+  weaponClass: 6
+  armorClass: 2
 --- !u!212 &212547942948823268
 SpriteRenderer:
   m_ObjectHideFlags: 1
