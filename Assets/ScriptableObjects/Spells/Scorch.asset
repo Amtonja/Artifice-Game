@@ -15,5 +15,6 @@ MonoBehaviour:
   methodName: OnScorch
   description: Deals fire-aspected damage to target enemy.
   damageType: 2
-  visualEffect: {fileID: 0}
-  soundEffect: {fileID: 0}
+  visualEffect: {fileID: 100002, guid: 74d264362dc5c1e4cbf80f1b68ca4259, type: 2}
+  soundEffect: {fileID: 82119902006771902, guid: 74d264362dc5c1e4cbf80f1b68ca4259,
+    type: 2}

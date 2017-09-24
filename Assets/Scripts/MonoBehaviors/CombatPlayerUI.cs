@@ -209,7 +209,23 @@ public class CombatPlayerUI : MonoBehaviour
         ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
         Input.ResetInputAxes();
         State = PlayerUIState.PLAYER_SELECT;
-    }    
+    }   
+    
+    public void OnScorch()
+    {
+        ActivePlayer.MySpell = ActivePlayer.ScorchSpell;
+        ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
+        Input.ResetInputAxes();
+        State = PlayerUIState.ENEMY_SELECT;
+    } 
+
+    public void OnFrost()
+    {
+        ActivePlayer.MySpell = ActivePlayer.FrostSpell;
+        ActivePlayer.MyCombatAction = ActivePlayer.BeginSpellCast;
+        Input.ResetInputAxes();
+        State = PlayerUIState.ENEMY_SELECT;
+    }
 
     public void OnFlee()
     {

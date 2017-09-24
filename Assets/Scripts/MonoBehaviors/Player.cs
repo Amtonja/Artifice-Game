@@ -387,6 +387,62 @@ public class Player : CombatEntity
         // functionality currently unknown
     }
 
+    public void ScorchSpell(CombatEntity target)
+    {
+        GameObject fireball = Instantiate(
+            Resources.Load("Prefabs/Scorch", typeof(GameObject)),
+            transform.position + v3spellOrigin,
+            Quaternion.identity,
+            transform) as GameObject;
+
+        int damage = CalculateMagicDamage(target);
+
+        //check for resistance and weaknesses
+        if (target.MyRes.bFire)
+        {
+            damage = (int)(damage * 0.75f);
+            ShowWeakText(tempTarget);
+        }
+        else if (target.MyWeak.bFire)
+        {
+            damage = (int)(damage * 1.5f);
+            ShowStrongText(tempTarget);
+        }
+        
+        fireball.GetComponent<EffectSettings>().Target = target.gameObject;
+        fireball.GetComponent<EffectSettings>().MoveDistance = Vector3.Distance(transform.position, target.transform.position);
+        float duration = fireball.GetComponent<AudioSource>().clip.length;
+        StartCoroutine(DealSpellDamage(target, fireball, duration, damage));
+    }
+
+    public void FrostSpell(CombatEntity target)
+    {
+        GameObject frost = Instantiate(
+            Resources.Load("Prefabs/Frost", typeof(GameObject)),
+            transform.position + v3spellOrigin,
+            Quaternion.identity,
+            transform) as GameObject;
+
+        int damage = CalculateMagicDamage(target);
+
+        //check for resistance and weaknesses
+        if (target.MyRes.bIce)
+        {
+            damage = (int)(damage * 0.75f);
+            ShowWeakText(tempTarget);
+        }
+        else if (target.MyWeak.bIce)
+        {
+            damage = (int)(damage * 1.5f);
+            ShowStrongText(tempTarget);
+        }
+
+        frost.GetComponent<EffectSettings>().Target = target.gameObject;
+        frost.GetComponent<EffectSettings>().MoveDistance = Vector3.Distance(transform.position, target.transform.position);
+        float duration = frost.GetComponent<AudioSource>().clip.length;
+        StartCoroutine(DealSpellDamage(target, frost, duration, damage));
+    }
+
     public void FireBreath(CombatEntity target)
     {
         Quaternion rotToTarget = Quaternion.LookRotation(target.transform.position - transform.position);
@@ -396,12 +452,12 @@ public class Player : CombatEntity
             rotToTarget,
             transform) as GameObject;
 
-        int damage = CalculateMagicDamage(tempTarget);
+        int damage = CalculateMagicDamage(target);
 
         //check for resistance and weaknesses
         if (target.MyRes.bFire)
         {
-            damage = (int)((float)damage * 0.75f);
+            damage = (int)(damage * 0.75f);
             ShowWeakText(tempTarget);
         }
         else if (target.MyWeak.bFire)
