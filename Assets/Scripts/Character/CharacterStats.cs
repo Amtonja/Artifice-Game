@@ -8,13 +8,11 @@ namespace Artifice.Characters
     public class CharacterStats : ScriptableObject
     {
         public string characterName;
-        public int startingLevel;
+        //public int startingLevel;
 
         public int attack, defense, magic, magicDefense, speed, maxHealth, xpValue;
-
-        public PhysicalDamageType primaryDamage, secondaryDamage, damageWeakness;
-
-        public List<WeaponAttack> weaponAttacks;
+        
+        //public List<WeaponAttack> weaponAttacks;
         public List<Spell> spells;
     }
 }

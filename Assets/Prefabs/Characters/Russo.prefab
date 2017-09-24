@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 61247496284781636}
   - component: {fileID: 50843508790481082}
   - component: {fileID: 82567731228766328}
-  - component: {fileID: 114177473071046174}
+  - component: {fileID: 114782965825020638}
   m_Layer: 0
   m_Name: Russo
   m_TagString: Player
@@ -209,19 +209,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114177473071046174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1873920067709384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a73219787ae3b4da7908f94cb07398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 11400000, guid: 2e90c81783a377648a44f54d19022082, type: 2}
-  equippedArmor: {fileID: 11400000, guid: 53c9b7cec9abdb541839179693a430d7, type: 2}
 --- !u!114 &114435887976355722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +233,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10af1cb89b6f6e544b4cffcc4bf1132f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114782965825020638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873920067709384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fca6c75fa83fe4f92ac98196fc34d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryWeapon: {fileID: 11400000, guid: 2e90c81783a377648a44f54d19022082, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: f85755c2a8852c94aaa506bc1468c942, type: 2}
+  armor: {fileID: 11400000, guid: 53c9b7cec9abdb541839179693a430d7, type: 2}
 --- !u!114 &114868313233984256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,7 +258,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bIsEnemy: 0
+  spellOrigin: {x: 0.19, y: 0.057}
+  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
+  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
+  footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
+  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
+  deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
   baseStats: {fileID: 11400000, guid: 7b56bfffe9ecfd14ca5f6ee23adc4427, type: 2}
   myRes:
     bBlunt: 1
@@ -277,12 +283,6 @@ MonoBehaviour:
     bLightning: 0
     bIce: 0
     bForce: 0
-  spellOrigin: {x: 0.19, y: 0.057}
-  meleeSFX: {fileID: 8300000, guid: c9b978a558cc4014ca01dcc1e7817c36, type: 3}
-  rangedSFX: {fileID: 8300000, guid: a87db7d1a40577a4b81cee65e8ce1122, type: 3}
-  footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
-  takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
-  deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
 --- !u!212 &212978801610733208
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -10,18 +10,18 @@ namespace Artifice.Characters
 
         //Temporary komodo script
 
-        private Player _player; //ref to our Player script
+        private Enemy _enemy; //ref to our Player script
 
         // Use this for initialization
         void Start()
         {
-            _player = GetComponent<Player>();
+            _enemy = GetComponent<Enemy>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (_player.IsMyTurn)
+            if (_enemy.IsMyTurn)
             {
                 Debug.Log(gameObject.name.ToString() + "'s turn!");
 
@@ -46,11 +46,11 @@ namespace Artifice.Characters
 //                else
 //                {
                     //_player.FireBreath(target);
-                    _player.MySpell = _player.FireBreath;
-                    _player.MyCombatAction = _player.BeginSpellCast;
+                    _enemy.MySpell = _enemy.FireBreath;
+                    _enemy.MyCombatAction = _enemy.BeginSpellCast;
 //                }
 
-                _player.MyCombatAction(target);
+                _enemy.MyCombatAction(target);
             }
         }
     }

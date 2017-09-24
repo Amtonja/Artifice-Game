@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 61400534968174820}
   - component: {fileID: 50919755712382930}
   - component: {fileID: 82720999272192888}
-  - component: {fileID: 114102949195903792}
   - component: {fileID: 114398012862520884}
+  - component: {fileID: 114292172343406204}
   m_Layer: 0
   m_Name: Evans
   m_TagString: Player
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10af1cb89b6f6e544b4cffcc4bf1132f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114102949195903792
+--- !u!114 &114292172343406204
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -229,11 +229,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1431489070619788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a73219787ae3b4da7908f94cb07398, type: 3}
+  m_Script: {fileID: 11500000, guid: 90fca6c75fa83fe4f92ac98196fc34d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equippedWeapon: {fileID: 11400000, guid: 0f5268e708c5e654e8c4930f218f1ccf, type: 2}
-  equippedArmor: {fileID: 11400000, guid: d782808f6a169a4489fc8ba6f68c8e90, type: 2}
+  primaryWeapon: {fileID: 11400000, guid: 0f5268e708c5e654e8c4930f218f1ccf, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: 4d97c54f900a9304096286a92ab7002a, type: 2}
+  armor: {fileID: 11400000, guid: d782808f6a169a4489fc8ba6f68c8e90, type: 2}
 --- !u!114 &114353809896882622
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Name: Brass Knuckles
   m_EditorClassIdentifier: 
   itemName: Brass Knuckles
+  description: 
   users:
   - Russo
   type: 3
+  damageType: 1
   baseAttackValue: 3
   baseMagicValue: 3
   abilities:

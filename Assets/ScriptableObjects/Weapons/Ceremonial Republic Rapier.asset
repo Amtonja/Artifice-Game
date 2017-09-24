@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Name: Ceremonial Republic Rapier
   m_EditorClassIdentifier: 
   itemName: Ceremonial Republic Rapier
+  description: Hurley's sword. The pointy end... well, you know.
   users:
   - Hurley
   type: 0

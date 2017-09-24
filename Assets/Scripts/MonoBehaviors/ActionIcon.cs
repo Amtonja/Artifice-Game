@@ -10,7 +10,7 @@ public class ActionIcon : MonoBehaviour
 { 
     private List<GameObject> subActions = new List<GameObject>();
     private GameObject subActionPanel;
-    private GameObject subActionPrefab;
+    private GameObject subActionPrefab, attackActionPrefab;
     private CombatPlayerUI parentUI;
     private Player player;    
     
@@ -20,6 +20,7 @@ public class ActionIcon : MonoBehaviour
         subActionPanel = transform.Find("OptionPanel").gameObject;        
 
         subActionPrefab = Resources.Load("Prefabs/SubActionPrefab") as GameObject;
+        attackActionPrefab = Resources.Load("Prefabs/AttackActionPrefab") as GameObject;
         parentUI = GetComponentInParent<CombatPlayerUI>();
         player = parentUI.ActivePlayer;        
 
@@ -45,8 +46,17 @@ public class ActionIcon : MonoBehaviour
     public void AddSubAction(CombatAction action)
     {
         GameObject newAction = Instantiate(subActionPrefab, subActionPanel.transform, false);
-        newAction.GetComponent<SubActionButton>().action = action;
+        newAction.GetComponent<SubActionButton>().Action = action;
         newAction.GetComponent<TextMeshProUGUI>().text = action.name;
+        subActions.Add(newAction);
+    }
+
+    public void AddAttackAction(Weapon weapon, bool isPrimaryWeapon)
+    {
+        GameObject newAction = Instantiate(attackActionPrefab, subActionPanel.transform, false);
+        newAction.GetComponent<AttackActionButton>().weapon = weapon;
+        newAction.GetComponent<AttackActionButton>().usePrimaryWeapon = isPrimaryWeapon;
+        newAction.GetComponent<TextMeshProUGUI>().text = weapon.itemName;
         subActions.Add(newAction);
     }
 
@@ -72,10 +82,9 @@ public class ActionIcon : MonoBehaviour
     {
         if (name == "AttackIcon")
         {
-            foreach (WeaponAttack attack in player.Stats.weaponAttacks)
-            {
-                AddSubAction(attack);
-            }
+            Equipment equip = parentUI.ActivePlayer.GetComponent<Equipment>();
+            AddAttackAction(equip.primaryWeapon, true);
+            AddAttackAction(equip.secondaryWeapon, false);            
         }
 
         if (name == "MagicIcon")

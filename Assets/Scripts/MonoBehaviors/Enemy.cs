@@ -7,6 +7,9 @@ public class Enemy : CombatEntity
 {
     public float weaponClass, armorClass;
 
+    protected AICombatAction _combatAction;
+    protected AISpellDelegate _spell;
+
     // Use this for initialization
     void Awake()
     {
@@ -325,6 +328,33 @@ public class Enemy : CombatEntity
         StartCoroutine(DealSpellDamage(target, eyeLaser, duration, damage));
     }
 
+    public void FireBreath(CombatEntity target)
+    {
+        Quaternion rotToTarget = Quaternion.LookRotation(target.transform.position - transform.position);
+        GameObject firebreath = Instantiate(
+            Resources.Load("Prefabs/FireBreath", typeof(GameObject)),
+            transform.position + v3spellOrigin,
+            rotToTarget,
+            transform) as GameObject;
+
+        int damage = CalculateMagicDamage(target);
+
+        //check for resistance and weaknesses
+        if (target.MyRes.bFire)
+        {
+            damage = (int)(damage * 0.75f);
+            ShowWeakText(tempTarget);
+        }
+        else if (target.MyWeak.bFire)
+        {
+            damage = (int)((float)damage * 1.5f);
+            ShowStrongText(tempTarget);
+        }
+
+        float duration = firebreath.GetComponent<AudioSource>().clip.length;
+        StartCoroutine(DealSpellDamage(target, firebreath, duration, damage));
+    }
+
     #region implemented abstract members of Entity
 
     public override void Interact()
@@ -370,4 +400,30 @@ public class Enemy : CombatEntity
     }
 
     #endregion
+
+    public AISpellDelegate MySpell
+    {
+        get
+        {
+            return _spell;
+        }
+
+        set
+        {
+            _spell = value;
+        }
+    }
+
+    public AICombatAction MyCombatAction
+    {
+        get
+        {
+            return _combatAction;
+        }
+
+        set
+        {
+            _combatAction = value;
+        }
+    }
 }

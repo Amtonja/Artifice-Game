@@ -98,7 +98,7 @@ public class CombatPlayerUI : MonoBehaviour
 
             if (Input.GetButtonDown("Submit"))
             {
-                ActivePlayer.MyCombatAction(selectedEnemy);
+                ActivePlayer.MyCombatAction(selectedEnemy, ActivePlayer.ActiveWeapon);
                 State = PlayerUIState.WAITING_FOR_TURN;
             }
 
@@ -129,7 +129,7 @@ public class CombatPlayerUI : MonoBehaviour
 
             if (Input.GetButtonDown("Submit"))
             {
-                ActivePlayer.MyCombatAction(selectedPlayer);
+                ActivePlayer.MyCombatAction(selectedPlayer, ActivePlayer.ActiveWeapon);
                 State = PlayerUIState.WAITING_FOR_TURN;
             }
 
@@ -158,26 +158,42 @@ public class CombatPlayerUI : MonoBehaviour
         }
     }
 
-    public void OnPiercing()
-    {        
-        ActivePlayer.MyCombatAction = ActivePlayer.PiercingAttack;
+    public void OnPrimaryAttack()
+    {
+        ActivePlayer.MyCombatAction = ActivePlayer.WeaponAttack;
+        ActivePlayer.ActiveWeapon = ActivePlayer.GetComponent<Equipment>().primaryWeapon;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
 
-    public void OnProjectile()
+    public void OnSecondaryAttack()
     {
-        ActivePlayer.MyCombatAction = ActivePlayer.ProjectileAttack;
+        ActivePlayer.MyCombatAction = ActivePlayer.WeaponAttack;
+        ActivePlayer.ActiveWeapon = ActivePlayer.GetComponent<Equipment>().secondaryWeapon;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
 
-    public void OnBlunt()
-    {
-        ActivePlayer.MyCombatAction = ActivePlayer.BluntAttack;
-        Input.ResetInputAxes();
-        State = PlayerUIState.ENEMY_SELECT;
-    }
+    //public void OnPiercing()
+    //{        
+    //    ActivePlayer.MyCombatAction = ActivePlayer.PiercingAttack;
+    //    Input.ResetInputAxes();
+    //    State = PlayerUIState.ENEMY_SELECT;
+    //}
+
+    //public void OnProjectile()
+    //{
+    //    ActivePlayer.MyCombatAction = ActivePlayer.ProjectileAttack;
+    //    Input.ResetInputAxes();
+    //    State = PlayerUIState.ENEMY_SELECT;
+    //}
+
+    //public void OnBlunt()
+    //{
+    //    ActivePlayer.MyCombatAction = ActivePlayer.BluntAttack;
+    //    Input.ResetInputAxes();
+    //    State = PlayerUIState.ENEMY_SELECT;
+    //}
 
     public void OnBolt()
     {

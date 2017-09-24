@@ -9,21 +9,25 @@ public class Player : CombatEntity
 {
     private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
     private float agilityBarTarget = 1f, magicBarTarget = 1f, rageBarTarget = 1f, specialBarTarget = 1f;
-        
-    private Inventory inventory;
-    
+
+    private Equipment equipment;
+    private Weapon activeWeapon;
+
+    private CombatAction _combatAction;
+    private SpellDelegate _spell;
+
     // Use this for initialization
     void Awake()
     {
         _animator = GetComponent<Animator>();
         _audio = GetComponent<AudioSource>();
-        inventory = GetComponent<Inventory>();
+        equipment = GetComponent<Equipment>();
 
         ResetStats();
-        Stats.maxHealth += inventory.equippedArmor.healthValue;
+        Stats.maxHealth += equipment.armor.healthValue;
         health = Stats.maxHealth;
-        DefenseValue = Mathf.FloorToInt(Stats.defense * inventory.equippedArmor.armorValue * 0.8f);
-        MagicDefenseValue = Mathf.FloorToInt(Stats.magicDefense * inventory.equippedArmor.magicValue * 0.8f);
+        DefenseValue = Mathf.FloorToInt(Stats.defense * equipment.armor.armorValue * 0.8f);
+        MagicDefenseValue = Mathf.FloorToInt(Stats.magicDefense * equipment.armor.magicValue * 0.8f);
 
         // The time for a character's action bar to fill is equal to the default time minus a percentage equal to their Speed stat
         ActionBarTargetTime = actionBarDefaultTarget - (actionBarDefaultTarget * Stats.speed / 100f);
@@ -81,55 +85,91 @@ public class Player : CombatEntity
     }
 
     private CombatEntity tempTarget; //because we need to pass the target entity to the attack end state
+    private Weapon tempWeapon;
 
     /// <summary>
     /// Damage calculation.
     /// </summary>
     /// <param name="target">The entity targeted by the attack</param>
     /// <returns></returns>
-    private int CalculateAttackDamage(CombatEntity target)
+    private int CalculateAttackDamage(CombatEntity target, Weapon weapon)
     {
-        return Mathf.FloorToInt((Stats.attack * inventory.equippedWeapon.baseAttackValue) + UnityEngine.Random.Range(0, 7) - target.DefenseValue);
+        return Mathf.FloorToInt((Stats.attack * weapon.baseAttackValue) + UnityEngine.Random.Range(0, 7) - target.DefenseValue);
     }
 
     private int CalculateMagicDamage(CombatEntity target)
     {
-        return Mathf.FloorToInt((Stats.magic * inventory.equippedWeapon.baseMagicValue) + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue);
+        return Mathf.FloorToInt((Stats.magic * equipment.primaryWeapon.baseMagicValue) + UnityEngine.Random.Range(0, 7) - target.MagicDefenseValue);
     }
 
-    public void PiercingAttack(CombatEntity target)
+    public void WeaponAttack(CombatEntity target, Weapon weapon)
     {
-        Debug.Log("Piercing attack on " + target.name);
         tempTarget = target;
-        _animator.Play(Animator.StringToHash("SwordAttack"));
+        tempWeapon = weapon;
+        // Since we currently only have ranged and melee animations for each character anyway
+        if (weapon.type != WeaponType.PISTOL && weapon.type != WeaponType.RIFLE)
+        {
+            _animator.Play(Animator.StringToHash("SwordAttack"));
+        }
+        else
+        {
+            _animator.Play(Animator.StringToHash("GunAttack"));
+        }
+
         ActionBarTimer = 0f;
         IsMyTurn = false;
-        //        PlayManager.instance.UnpauseGame();
         PlayManager.instance.SendAttackCount(1);
         PlayManager.instance.StartingAttack();
     }
 
-    //Called by animator. Ensures damage is dealt on the correct attack frame
-    public void EndPiercingAttack()
+    public void EndWeaponAttack()
     {
-        _audio.PlayOneShot(meleeSFX);
-        int damage = CalculateAttackDamage(tempTarget);
         if (CalculateHit(tempTarget))
         {
-            //check for resistance and weaknesses
-            if (tempTarget.MyRes.bPiercing)
-            {
-                damage = (int)((float)damage * 0.75f);
-                ShowWeakText(tempTarget);
-            }
-            else if (tempTarget.MyWeak.bPiercing)
-            {
-                damage = (int)((float)damage * 1.5f);
-                ShowStrongText(tempTarget);
-            }
+            int damage = CalculateAttackDamage(tempTarget, tempWeapon);
 
+            // check for resistance and weaknesses
+            switch (tempWeapon.damageType)
+            {
+                case DamageType.BLUNT:
+                    if (tempTarget.MyRes.bBlunt)
+                    {
+                        damage = (int)(damage * 0.75f);
+                        ShowWeakText(tempTarget);
+                    }
+                    else if (tempTarget.MyWeak.bBlunt)
+                    {
+                        damage = (int)(damage * 1.5f);
+                        ShowStrongText(tempTarget);
+                    }
+                    break;
+                case DamageType.PIERCING:
+                    if (tempTarget.MyRes.bPiercing)
+                    {
+                        damage = (int)(damage * 0.75f);
+                        ShowWeakText(tempTarget);
+                    }
+                    else if (tempTarget.MyWeak.bPiercing)
+                    {
+                        damage = (int)(damage * 1.5f);
+                        ShowStrongText(tempTarget);
+                    }
+                    break;
+                case DamageType.PROJECTILE:
+                    if (tempTarget.MyRes.bProjectile)
+                    {
+                        damage = (int)(damage * 0.75f);
+                        ShowWeakText(tempTarget);
+                    }
+                    else if (tempTarget.MyWeak.bProjectile)
+                    {
+                        damage = (int)(damage * 1.5f);
+                        ShowStrongText(tempTarget);
+                    }
+                    break;
+            } // end switch
             tempTarget.TakeDamage(damage);
-        }
+        } // end if
         else
         {
             PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
@@ -137,88 +177,128 @@ public class Player : CombatEntity
         }
     }
 
+    //public void PiercingAttack(CombatEntity target)
+    //{
+    //    Debug.Log("Piercing attack on " + target.name);
+    //    tempTarget = target;
+    //    _animator.Play(Animator.StringToHash("SwordAttack"));
+    //    ActionBarTimer = 0f;
+    //    IsMyTurn = false;
+    //    //        PlayManager.instance.UnpauseGame();
+    //    PlayManager.instance.SendAttackCount(1);
+    //    PlayManager.instance.StartingAttack();
+    //}
 
-    public void BluntAttack(CombatEntity target)
-    {
-        Debug.Log("Blunt attack on " + target.name);
-        tempTarget = target;
-        _animator.Play(Animator.StringToHash("SwordAttack"));
-        ActionBarTimer = 0f;
-        IsMyTurn = false;
-        //        PlayManager.instance.UnpauseGame();
-        PlayManager.instance.SendAttackCount(1);
-        PlayManager.instance.StartingAttack();
-    }
+    ////Called by animator. Ensures damage is dealt on the correct attack frame
+    //public void EndPiercingAttack()
+    //{
+    //    _audio.PlayOneShot(meleeSFX);
+    //    int damage = CalculateAttackDamage(tempTarget);
+    //    if (CalculateHit(tempTarget))
+    //    {
+    //        //check for resistance and weaknesses
+    //        if (tempTarget.MyRes.bPiercing)
+    //        {
+    //            damage = (int)((float)damage * 0.75f);
+    //            ShowWeakText(tempTarget);
+    //        }
+    //        else if (tempTarget.MyWeak.bPiercing)
+    //        {
+    //            damage = (int)((float)damage * 1.5f);
+    //            ShowStrongText(tempTarget);
+    //        }
 
-    //Called by animator. Ensures damage is dealt on the correct attack frame
-    public void EndBluntAttack()
-    {
-        Debug.Log("Ending blunt attack!");
-        _audio.PlayOneShot(meleeSFX);
-        int damage = CalculateAttackDamage(tempTarget);
-        if (CalculateHit(tempTarget))
-        {
-            //check for resistance and weaknesses
-            if (tempTarget.MyRes.bBlunt)
-            {
-                damage = (int)((float)damage * 0.75f);
-                ShowWeakText(tempTarget);
-            }
-            else if (tempTarget.MyWeak.bBlunt)
-            {
-                damage = (int)((float)damage * 1.5f);
-                ShowStrongText(tempTarget);
-            }
-            Debug.Log("Sending TakeDamage from blunt!");
-            tempTarget.TakeDamage(damage);
-        }
-        else
-        {
-            PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
-            PlayManager.instance.UpdateAttacked();
-        }
-    }
+    //        tempTarget.TakeDamage(damage);
+    //    }
+    //    else
+    //    {
+    //        PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
+    //        PlayManager.instance.UpdateAttacked();
+    //    }
+    //}
 
 
+    //public void BluntAttack(CombatEntity target)
+    //{
+    //    Debug.Log("Blunt attack on " + target.name);
+    //    tempTarget = target;
+    //    _animator.Play(Animator.StringToHash("SwordAttack"));
+    //    ActionBarTimer = 0f;
+    //    IsMyTurn = false;
+    //    //        PlayManager.instance.UnpauseGame();
+    //    PlayManager.instance.SendAttackCount(1);
+    //    PlayManager.instance.StartingAttack();
+    //}
 
-    public void ProjectileAttack(CombatEntity target)
-    {
-        tempTarget = target;
-        _animator.Play(Animator.StringToHash("GunAttack"));
-        ActionBarTimer = 0f;
-        IsMyTurn = false;
-        //        PlayManager.instance.UnpauseGame();
-        PlayManager.instance.SendAttackCount(1);
-        PlayManager.instance.StartingAttack();
-    }
+    ////Called by animator. Ensures damage is dealt on the correct attack frame
+    //public void EndBluntAttack()
+    //{
+    //    Debug.Log("Ending blunt attack!");
+    //    _audio.PlayOneShot(meleeSFX);
+    //    int damage = CalculateAttackDamage(tempTarget);
+    //    if (CalculateHit(tempTarget))
+    //    {
+    //        //check for resistance and weaknesses
+    //        if (tempTarget.MyRes.bBlunt)
+    //        {
+    //            damage = (int)((float)damage * 0.75f);
+    //            ShowWeakText(tempTarget);
+    //        }
+    //        else if (tempTarget.MyWeak.bBlunt)
+    //        {
+    //            damage = (int)((float)damage * 1.5f);
+    //            ShowStrongText(tempTarget);
+    //        }
+    //        Debug.Log("Sending TakeDamage from blunt!");
+    //        tempTarget.TakeDamage(damage);
+    //    }
+    //    else
+    //    {
+    //        PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
+    //        PlayManager.instance.UpdateAttacked();
+    //    }
+    //}
 
-    //Called by animator. Ensures damage is dealt on the correct attack frame
-    public void EndProjectileAttack()
-    {
-        _audio.PlayOneShot(rangedSFX);
-        int damage = CalculateAttackDamage(tempTarget);
-        if (CalculateHit(tempTarget))
-        {
-            //check for resistance and weaknesses
-            if (tempTarget.MyRes.bProjectile)
-            {
-                damage = (int)((float)damage * 0.75f);
-                ShowWeakText(tempTarget);
-            }
-            else if (tempTarget.MyWeak.bProjectile)
-            {
-                damage = (int)((float)damage * 1.5f);
-                ShowStrongText(tempTarget);
-            }
 
-            tempTarget.TakeDamage(damage);
-        }
-        else
-        {
-            PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
-            PlayManager.instance.UpdateAttacked();
-        }
-    }
+
+    //public void ProjectileAttack(CombatEntity target)
+    //{
+    //    tempTarget = target;
+    //    _animator.Play(Animator.StringToHash("GunAttack"));
+    //    ActionBarTimer = 0f;
+    //    IsMyTurn = false;
+    //    //        PlayManager.instance.UnpauseGame();
+    //    PlayManager.instance.SendAttackCount(1);
+    //    PlayManager.instance.StartingAttack();
+    //}
+
+    ////Called by animator. Ensures damage is dealt on the correct attack frame
+    //public void EndProjectileAttack()
+    //{
+    //    _audio.PlayOneShot(rangedSFX);
+    //    int damage = CalculateAttackDamage(tempTarget);
+    //    if (CalculateHit(tempTarget))
+    //    {
+    //        //check for resistance and weaknesses
+    //        if (tempTarget.MyRes.bProjectile)
+    //        {
+    //            damage = (int)((float)damage * 0.75f);
+    //            ShowWeakText(tempTarget);
+    //        }
+    //        else if (tempTarget.MyWeak.bProjectile)
+    //        {
+    //            damage = (int)((float)damage * 1.5f);
+    //            ShowStrongText(tempTarget);
+    //        }
+
+    //        tempTarget.TakeDamage(damage);
+    //    }
+    //    else
+    //    {
+    //        PlayManager.instance.CreatePopupText("Miss", tempTarget.transform, Color.gray, Vector3.zero);
+    //        PlayManager.instance.UpdateAttacked();
+    //    }
+    //}
 
     public void Defend()
     {
@@ -241,7 +321,7 @@ public class Player : CombatEntity
     /// and tells PlayManager that an attack is being carried out.
     /// </summary>
     /// <param name="target">The target of the spell.</param>
-    public void BeginSpellCast(CombatEntity target)
+    public void BeginSpellCast(CombatEntity target, Weapon weapon)
     {
         //_movement.ForceLock(true);
         Debug.Log(name + " begins casting a spell...");
@@ -273,7 +353,7 @@ public class Player : CombatEntity
     /// <param name="spellVisual">Game object instantiated for the spell's visual effect.</param>
     /// <param name="spellDuration">Duration in seconds of the visual effect.</param>
     /// <returns></returns>
-	public IEnumerator DealSpellDamage(CombatEntity target, GameObject spellVisual, float spellDuration, int damage)
+    public IEnumerator DealSpellDamage(CombatEntity target, GameObject spellVisual, float spellDuration, int damage)
     {
         Debug.Log(name + " casts " + spellVisual.name + "at " + target.name + "!");
         PlayManager.instance.DarkenBG(true);
@@ -293,7 +373,7 @@ public class Player : CombatEntity
         PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
 
-        int healing = Mathf.FloorToInt(Stats.magic * inventory.equippedWeapon.baseMagicValue + UnityEngine.Random.Range(0, 7));
+        int healing = Mathf.FloorToInt(Stats.magic * equipment.primaryWeapon.baseMagicValue + UnityEngine.Random.Range(0, 7));
         target.Heal(healing);
         Destroy(spellVisual);
         PlayManager.instance.DarkenBG(false);
@@ -408,7 +488,7 @@ public class Player : CombatEntity
             damage = (int)(damage * 1.5f);
             ShowStrongText(tempTarget);
         }
-        
+
         fireball.GetComponent<EffectSettings>().Target = target.gameObject;
         fireball.GetComponent<EffectSettings>().MoveDistance = Vector3.Distance(transform.position, target.transform.position);
         float duration = fireball.GetComponent<AudioSource>().clip.length;
@@ -442,39 +522,6 @@ public class Player : CombatEntity
         float duration = frost.GetComponent<AudioSource>().clip.length;
         StartCoroutine(DealSpellDamage(target, frost, duration, damage));
     }
-
-    public void FireBreath(CombatEntity target)
-    {
-        Quaternion rotToTarget = Quaternion.LookRotation(target.transform.position - transform.position);
-        GameObject firebreath = Instantiate(
-            Resources.Load("Prefabs/FireBreath", typeof(GameObject)),
-            transform.position + v3spellOrigin,
-            rotToTarget,
-            transform) as GameObject;
-
-        int damage = CalculateMagicDamage(target);
-
-        //check for resistance and weaknesses
-        if (target.MyRes.bFire)
-        {
-            damage = (int)(damage * 0.75f);
-            ShowWeakText(tempTarget);
-        }
-        else if (target.MyWeak.bFire)
-        {
-            damage = (int)((float)damage * 1.5f);
-            ShowStrongText(tempTarget);
-        }
-
-        float duration = firebreath.GetComponent<AudioSource>().clip.length;
-        StartCoroutine(DealSpellDamage(target, firebreath, duration, damage));
-
-        //int damage = Stats.Magic;
-        //target.TakeDamage(damage - target.Stats.MagicDefense);
-        //ActionBarValue = 0f;
-        //IsMyTurn = false;
-        //PlayManager.instance.UnpauseGame();
-    }    
 
     /// <summary>
     /// A struct to hold necessary info for this entity,
@@ -546,7 +593,7 @@ public class Player : CombatEntity
     {
         ExperienceTotal += xp;
     }
-    
+
     public void TurnCoat()
     {
         Enemy enemy = GetComponent<Enemy>();
@@ -558,7 +605,7 @@ public class Player : CombatEntity
         GetComponent<Movement>().bNPC = true;
         enemy.enabled = true;
         this.enabled = false;
-    }    
+    }
 
     #region implemented abstract members of Entity
 
@@ -713,6 +760,45 @@ public class Player : CombatEntity
         set
         {
             specialBarTarget = value;
+        }
+    }
+
+    public SpellDelegate MySpell
+    {
+        get
+        {
+            return _spell;
+        }
+
+        set
+        {
+            _spell = value;
+        }
+    }
+
+    public CombatAction MyCombatAction
+    {
+        get
+        {
+            return _combatAction;
+        }
+
+        set
+        {
+            _combatAction = value;
+        }
+    }
+
+    public Weapon ActiveWeapon
+    {
+        get
+        {
+            return activeWeapon;
+        }
+
+        set
+        {
+            activeWeapon = value;
         }
     }
     #endregion

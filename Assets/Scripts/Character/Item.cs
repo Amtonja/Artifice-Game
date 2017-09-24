@@ -7,5 +7,6 @@ namespace Artifice.Characters
     public class Item : ScriptableObject
     {
         public string itemName;
+        public string description;
     }
 }

@@ -7,10 +7,7 @@ public class Inventory : MonoBehaviour
 {
     private Dictionary<Item, int> items;
     private static int StackSize = 99;
-
-    public Weapon equippedWeapon;
-    public Armor equippedArmor;
-
+    
     // Use this for initialization
     void Start()
     {

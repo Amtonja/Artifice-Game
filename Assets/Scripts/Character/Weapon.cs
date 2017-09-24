@@ -24,12 +24,20 @@ namespace Artifice.Characters
         MEDIUM_HIGH,
         HIGH,
         VERY_HIGH
-    }    
+    } 
+    
+    public enum DamageType
+    {
+        PIERCING,
+        BLUNT,
+        PROJECTILE
+    }   
 
     [CreateAssetMenu]
     public class Weapon : Equipment
     {        
         public WeaponType type;
+        public DamageType damageType;
         public float baseAttackValue;
         public float baseMagicValue;
         public List<Spell> abilities;

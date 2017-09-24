@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Name: Desert Long Blade
   m_EditorClassIdentifier: 
   itemName: Desert Long Blade
+  description: Blade. Long. Deserty.
   users:
   - Evans
   type: 0
+  damageType: 0
   baseAttackValue: 2
   baseMagicValue: 2
   abilities:

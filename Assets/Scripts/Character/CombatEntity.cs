@@ -23,8 +23,8 @@ namespace Artifice.Characters
         public Vector2 spellOrigin;
         protected Vector3 v3spellOrigin;
 
-        protected CombatAction _combatAction;
-        protected SpellDelegate _spell;
+        //protected CombatAction _combatAction;
+        //protected SpellDelegate _spell;
 
         protected Animator _animator;
         
@@ -171,8 +171,11 @@ namespace Artifice.Characters
             return isAHit;
         }
 
-        public delegate void CombatAction(CombatEntity target);
+        public delegate void CombatAction(CombatEntity target, Weapon weapon);
         public delegate void SpellDelegate(CombatEntity target);
+        // Because enemies don't have equipment, as far as I know.
+        public delegate void AICombatAction(CombatEntity target);
+        public delegate void AISpellDelegate(CombatEntity target);
 
         #region C# Properties
         public string Name
@@ -309,31 +312,31 @@ namespace Artifice.Characters
 			}
 		}
 
-        public SpellDelegate MySpell
-        {
-            get
-            {
-                return _spell;
-            }
+        //public SpellDelegate MySpell
+        //{
+        //    get
+        //    {
+        //        return _spell;
+        //    }
 
-            set
-            {
-                _spell = value;
-            }
-        }
+        //    set
+        //    {
+        //        _spell = value;
+        //    }
+        //}
 
-        public CombatAction MyCombatAction
-        {
-            get
-            {
-                return _combatAction;
-            }
+        //public CombatAction MyCombatAction
+        //{
+        //    get
+        //    {
+        //        return _combatAction;
+        //    }
 
-            set
-            {
-                _combatAction = value;
-            }
-        }
+        //    set
+        //    {
+        //        _combatAction = value;
+        //    }
+        //}
 
         public int ExperienceTotal
         {
