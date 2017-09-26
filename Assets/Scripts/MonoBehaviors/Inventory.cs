@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private Dictionary<Item, int> items;
+    private Dictionary<Item, int> consumables;
+    private List<Item> equipables;
+    private List<Item> keyItems;
     private static int StackSize = 99;
     
     // Use this for initialization
@@ -20,30 +22,30 @@ public class Inventory : MonoBehaviour
 
     }
 
-    private void GiveItem(Inventory recipient, Item item, int quantity)
+    private void GiveConsumable(Inventory recipient, Item item, int quantity)
     {
-        if (items.ContainsKey(item))
+        if (consumables.ContainsKey(item))
         {
-            items[item]--;
-            if (items[item] == 0)
+            consumables[item]--;
+            if (consumables[item] == 0)
             {
-                items.Remove(item);
+                consumables.Remove(item);
             }
         }
         else
         {
             Debug.LogError("Inventory of " + gameObject.name + " does not have any of " + item.itemName);
         }
-        recipient.ReceiveItem(item, quantity);
+        recipient.ReceiveConsumable(item, quantity);
     }
 
-    public void ReceiveItem(Item item, int quantity)
+    public void ReceiveConsumable(Item item, int quantity)
     {
-        if (items.ContainsKey(item))
+        if (consumables.ContainsKey(item))
         {
-            if (items[item] < StackSize)
+            if (consumables[item] < StackSize)
             {
-                items[item]++;
+                consumables[item]++;
             }
             else
             {
@@ -52,7 +54,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            items.Add(item, 1);
+            consumables.Add(item, 1);
         }
     }
 }

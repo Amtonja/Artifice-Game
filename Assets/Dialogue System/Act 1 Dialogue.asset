@@ -13362,7 +13362,7 @@ MonoBehaviour:
         height: 30
   syncInfo:
     syncActors: 0
-    syncItems: 0
+    syncItems: 1
     syncLocations: 0
     syncVariables: 0
     syncActorsDatabase: {fileID: 0}

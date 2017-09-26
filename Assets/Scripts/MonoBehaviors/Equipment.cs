@@ -11,7 +11,19 @@ public class Equipment : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Create an instance of each weapon
+        // This should only be done on starting a new game.
+        Weapon primaryInstance = Object.Instantiate<Weapon>(primaryWeapon);
+        Weapon secondaryInstance = Object.Instantiate<Weapon>(secondaryWeapon);
 
+        primaryInstance.guid = System.Guid.NewGuid();
+        Debug.Log(name + "'s primary weapon assigned guid " + primaryInstance.guid.ToString());
+
+
+        secondaryInstance.guid = System.Guid.NewGuid();
+
+        primaryWeapon = primaryInstance;
+        secondaryWeapon = secondaryInstance;
     }
 
     // Update is called once per frame

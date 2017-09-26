@@ -40,7 +40,14 @@ namespace Artifice.Characters
         public DamageType damageType;
         public float baseAttackValue;
         public float baseMagicValue;
-        public List<Spell> abilities;
-        public AbilityLearningLevel learningLevel;        
+        public List<CombatAction> abilities;        
+        public AbilityLearningLevel learningLevel;
+
+        // Variables that vary per instance
+        public System.Guid guid;
+        public int XP;
+        public List<CombatAction> unlockedAbilities;
+        public float attackValue;
+        public float magicValue;
     }
 }
