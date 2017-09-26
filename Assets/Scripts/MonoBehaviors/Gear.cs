@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Artifice.Characters;
 
-public class Equipment : MonoBehaviour
+public class Gear : MonoBehaviour
 {
     public Weapon primaryWeapon, secondaryWeapon;
     public Armor armor;

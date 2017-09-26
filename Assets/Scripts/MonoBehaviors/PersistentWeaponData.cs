@@ -16,7 +16,7 @@ public class PersistentWeaponData : MonoBehaviour //<--Copy this file. Rename th
         // Note that you can use this static method to get the actor 
         // name associated with this GameObject:
         //    var actorName = OverrideActorName.GetActorName(transform);
-        Equipment equipment = GetComponent<Equipment>();
+        Gear equipment = GetComponent<Gear>();
         var actorName = OverrideActorName.GetActorName(transform);
         string primaryGUID = equipment.primaryWeapon.guid.ToString();
         Debug.Log("Saving weapon guid " + equipment.primaryWeapon.guid.ToString());
@@ -53,7 +53,7 @@ public class PersistentWeaponData : MonoBehaviour //<--Copy this file. Rename th
         //     <your code here>
         // }
 
-        Equipment equipment = GetComponent<Equipment>();
+        Gear equipment = GetComponent<Gear>();
         var actorName = OverrideActorName.GetActorName(transform);
 
         string weaponID = DialogueLua.GetActorField(actorName, "PrimaryWeaponID").AsString;

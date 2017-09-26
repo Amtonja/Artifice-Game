@@ -82,7 +82,7 @@ public class ActionIcon : MonoBehaviour
     {
         if (name == "AttackIcon")
         {
-            Equipment equip = parentUI.ActivePlayer.GetComponent<Equipment>();
+            Gear equip = parentUI.ActivePlayer.GetComponent<Gear>();
             AddAttackAction(equip.primaryWeapon, true);
             AddAttackAction(equip.secondaryWeapon, false);            
         }

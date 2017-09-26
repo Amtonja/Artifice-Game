@@ -10,7 +10,7 @@ public class Player : CombatEntity
     private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
     private float agilityBarTarget = 1f, magicBarTarget = 1f, rageBarTarget = 1f, specialBarTarget = 1f;
 
-    private Equipment equipment;
+    private Gear equipment;
     private Weapon activeWeapon;
 
     private CombatAction _combatAction;
@@ -21,7 +21,7 @@ public class Player : CombatEntity
     {
         _animator = GetComponent<Animator>();
         _audio = GetComponent<AudioSource>();
-        equipment = GetComponent<Equipment>();
+        equipment = GetComponent<Gear>();
 
         ResetStats();
         Stats.maxHealth += equipment.armor.healthValue;

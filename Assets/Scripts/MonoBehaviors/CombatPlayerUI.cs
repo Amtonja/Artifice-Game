@@ -161,7 +161,7 @@ public class CombatPlayerUI : MonoBehaviour
     public void OnPrimaryAttack()
     {
         ActivePlayer.MyCombatAction = ActivePlayer.WeaponAttack;
-        ActivePlayer.ActiveWeapon = ActivePlayer.GetComponent<Equipment>().primaryWeapon;
+        ActivePlayer.ActiveWeapon = ActivePlayer.GetComponent<Gear>().primaryWeapon;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
@@ -169,7 +169,7 @@ public class CombatPlayerUI : MonoBehaviour
     public void OnSecondaryAttack()
     {
         ActivePlayer.MyCombatAction = ActivePlayer.WeaponAttack;
-        ActivePlayer.ActiveWeapon = ActivePlayer.GetComponent<Equipment>().secondaryWeapon;
+        ActivePlayer.ActiveWeapon = ActivePlayer.GetComponent<Gear>().secondaryWeapon;
         Input.ResetInputAxes();
         State = PlayerUIState.ENEMY_SELECT;
     }
