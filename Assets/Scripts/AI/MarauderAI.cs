@@ -48,14 +48,15 @@ namespace Artifice.Characters
 				CombatEntity target = person.GetComponent<CombatEntity>();
 
 				if (randB < 0.5f) {
-					//                    //_player.MeleeAttack(target);
-					_enemy.MyCombatAction = _enemy.PiercingAttack;
+                    _enemy.ActiveWeapon = GetComponent<Gear>().primaryWeapon;
+					_enemy.MyCombatAction = _enemy.WeaponAttack;
 				} else {
-					_enemy.MyCombatAction = _enemy.ProjectileAttack;
+                    _enemy.ActiveWeapon = GetComponent<Gear>().secondaryWeapon;
+					_enemy.MyCombatAction = _enemy.WeaponAttack;
 				}
 
 
-				_enemy.MyCombatAction(target);
+				_enemy.MyCombatAction(target, _enemy.ActiveWeapon);
 
 				//Hold until animation is complete
 				bHoldPos = true;

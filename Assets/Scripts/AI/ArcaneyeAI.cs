@@ -47,7 +47,7 @@ namespace Artifice.Characters
 
 				Debug.Log("Target = " + target.name.ToString());
 
-				_enemy.MyCombatAction(target);
+				_enemy.MyCombatAction(target, _enemy.ActiveWeapon);
 				bHold = true;
 				waitForWanderCurrent = 0;
 

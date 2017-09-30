@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114892446073432352}
   - component: {fileID: 114558668778288678}
   - component: {fileID: 114995955044239640}
+  - component: {fileID: 114676678994388502}
   m_Layer: 0
   m_Name: Scorpio
   m_TagString: Enemy
@@ -204,6 +205,20 @@ MonoBehaviour:
   recordOn: 0
   variableName: 
   spawnWhenDestroyed: {fileID: 0}
+--- !u!114 &114676678994388502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841612056227444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fca6c75fa83fe4f92ac98196fc34d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryWeapon: {fileID: 11400000, guid: 8b4afeeaeda37704f83f98ff649cfe23, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: 8b4afeeaeda37704f83f98ff649cfe23, type: 2}
+  armor: {fileID: 11400000, guid: 3f75af072741f6d48bc1e4944d5eb71e, type: 2}
 --- !u!114 &114747084416056130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,8 +305,6 @@ MonoBehaviour:
     bLightning: 0
     bIce: 0
     bForce: 0
-  weaponClass: 6
-  armorClass: 2
 --- !u!212 &212547942948823268
 SpriteRenderer:
   m_ObjectHideFlags: 1

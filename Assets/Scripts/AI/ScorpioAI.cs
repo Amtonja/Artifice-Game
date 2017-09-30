@@ -52,7 +52,7 @@ namespace Artifice.Characters
 				//                if (randB < 0.5f)
 				//                {
 				//                    //_player.MeleeAttack(target);
-				_enemy.MyCombatAction = _enemy.BluntAttack;                    
+				_enemy.MyCombatAction = _enemy.WeaponAttack;                    
 				//                }
 				//                else
 				//                {
@@ -62,8 +62,8 @@ namespace Artifice.Characters
 				//                }
 
 				Debug.Log("Target = " + target.name.ToString());
-
-				_enemy.MyCombatAction (target);
+                _enemy.ActiveWeapon = _enemy.GetComponent<Gear>().primaryWeapon;
+				_enemy.MyCombatAction (target, _enemy.ActiveWeapon);
 				waitForWanderCurrent = 0;
 
 				//Hold until animation is complete

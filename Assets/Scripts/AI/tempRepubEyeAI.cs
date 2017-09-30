@@ -53,7 +53,7 @@ namespace Artifice.Characters
 
 				Debug.Log("Target = " + target.name.ToString());
 
-				_enemy.MyCombatAction(target);
+				_enemy.MyCombatAction(target, _enemy.ActiveWeapon);
 
 				waitForWanderCurrent = 0;
 

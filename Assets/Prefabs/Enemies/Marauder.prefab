@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114776951557776196}
   - component: {fileID: 114472500977105518}
   - component: {fileID: 114380923000093370}
+  - component: {fileID: 114289556915592170}
   m_Layer: 0
   m_Name: Marauder
   m_TagString: Enemy
@@ -215,6 +216,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderPos: {x: 0, y: 0}
+--- !u!114 &114289556915592170
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310366724581956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fca6c75fa83fe4f92ac98196fc34d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryWeapon: {fileID: 11400000, guid: da4525d1898bcde4cb9b91af07e67557, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: 51f4582160913f64580f5a44d9104fcb, type: 2}
+  armor: {fileID: 11400000, guid: 77409b8632e605047961115bd63bdb4f, type: 2}
 --- !u!114 &114380923000093370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -251,8 +266,6 @@ MonoBehaviour:
     bLightning: 0
     bIce: 0
     bForce: 0
-  weaponClass: 6
-  armorClass: 2
 --- !u!114 &114472500977105518
 MonoBehaviour:
   m_ObjectHideFlags: 1

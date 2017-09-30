@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 
+[RequireComponent(typeof(Gear), typeof(Animator), typeof(AudioSource))]
 public class Player : CombatEntity
 {
     private float agilityBarValue = 0f, magicBarValue = 0f, rageBarValue = 0f, specialBarValue = 0f;
@@ -12,10 +13,7 @@ public class Player : CombatEntity
 
     private Gear equipment;
     private Weapon activeWeapon;
-
-    private CombatAction _combatAction;
-    private SpellDelegate _spell;
-
+    
     // Use this for initialization
     void Awake()
     {
@@ -124,7 +122,11 @@ public class Player : CombatEntity
 
     public void EndWeaponAttack()
     {
-        if (CalculateHit(tempTarget))
+        if(!enabled)
+        {
+            return;
+        }
+        else if (CalculateHit(tempTarget))
         {
             int damage = CalculateAttackDamage(tempTarget, tempWeapon);
 
@@ -763,31 +765,31 @@ public class Player : CombatEntity
         }
     }
 
-    public SpellDelegate MySpell
-    {
-        get
-        {
-            return _spell;
-        }
+    //public SpellDelegate MySpell
+    //{
+    //    get
+    //    {
+    //        return _spell;
+    //    }
 
-        set
-        {
-            _spell = value;
-        }
-    }
+    //    set
+    //    {
+    //        _spell = value;
+    //    }
+    //}
 
-    public CombatAction MyCombatAction
-    {
-        get
-        {
-            return _combatAction;
-        }
+    //public CombatAction MyCombatAction
+    //{
+    //    get
+    //    {
+    //        return _combatAction;
+    //    }
 
-        set
-        {
-            _combatAction = value;
-        }
-    }
+    //    set
+    //    {
+    //        _combatAction = value;
+    //    }
+    //}
 
     public Weapon ActiveWeapon
     {

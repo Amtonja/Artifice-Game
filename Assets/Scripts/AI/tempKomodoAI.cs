@@ -50,7 +50,7 @@ namespace Artifice.Characters
                     _enemy.MyCombatAction = _enemy.BeginSpellCast;
 //                }
 
-                _enemy.MyCombatAction(target);
+                _enemy.MyCombatAction(target, _enemy.ActiveWeapon);
             }
         }
     }

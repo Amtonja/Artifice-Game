@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114640176037657058}
   - component: {fileID: 114519146500613510}
   - component: {fileID: 114645768082101888}
+  - component: {fileID: 114382891964351380}
   m_Layer: 0
   m_Name: Arcaneye
   m_TagString: Enemy
@@ -203,6 +204,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   bNPC: 1
+--- !u!114 &114382891964351380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873516945820432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fca6c75fa83fe4f92ac98196fc34d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryWeapon: {fileID: 11400000, guid: 37a287327c3d8c74b95f847583c75ba4, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: 37a287327c3d8c74b95f847583c75ba4, type: 2}
+  armor: {fileID: 11400000, guid: ecdf3c19874117046b75ebf3ba3cc163, type: 2}
 --- !u!114 &114430191313619486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -276,8 +291,6 @@ MonoBehaviour:
     bLightning: 1
     bIce: 0
     bForce: 0
-  weaponClass: 7
-  armorClass: 3
 --- !u!114 &114769498418872686
 MonoBehaviour:
   m_ObjectHideFlags: 1

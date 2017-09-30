@@ -28,7 +28,8 @@ public class AttackActionButton : SubActionButton, ICancelHandler, ISubmitHandle
 
     public new void OnSelect(BaseEventData eventData)
     {
-        Debug.Log("Selected button: " + weapon.itemName);
+        //Debug.Log("Selected button: " + weapon.itemName);
+        //Debug.Log("Selected weapon attack value: " + weapon.attackValue);
 
         if (weapon.description != null && descriptionDisplay != null)
         {

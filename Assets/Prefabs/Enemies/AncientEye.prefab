@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114908691397736000}
   - component: {fileID: 114400761375225478}
   - component: {fileID: 114683044053751960}
+  - component: {fileID: 114658376420334210}
   m_Layer: 0
   m_Name: AncientEye
   m_TagString: Enemy
@@ -230,6 +231,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wanderPos: {x: 0, y: 0}
+--- !u!114 &114658376420334210
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535301156841234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fca6c75fa83fe4f92ac98196fc34d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryWeapon: {fileID: 11400000, guid: f02e722b03b865e4dbdf59cc7bceb73e, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: f02e722b03b865e4dbdf59cc7bceb73e, type: 2}
+  armor: {fileID: 11400000, guid: e0eebb0a7dffe6b45be431522c1182af, type: 2}
 --- !u!114 &114666518476865346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -279,8 +294,6 @@ MonoBehaviour:
     bLightning: 1
     bIce: 0
     bForce: 0
-  weaponClass: 6
-  armorClass: 2
 --- !u!114 &114908691397736000
 MonoBehaviour:
   m_ObjectHideFlags: 1

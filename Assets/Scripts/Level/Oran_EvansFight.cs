@@ -54,8 +54,27 @@ namespace Artifice.Characters
 			evans.GetComponent<Oran_EvansAI>().passTarget = passTarget;
             // Activate Evans's inactive Enemy script
             evans.GetComponent<Player>().TurnCoat();
-			//Start up the battleground
-			evansBattleground.Begin();
+
+            // Change Evans's animation events to point to the right functions
+            //Animator animator = evans.GetComponent<Animator>();
+            //RuntimeAnimatorController rac = animator.runtimeAnimatorController;
+            //AnimationClip[] clips = rac.animationClips;
+            //foreach (AnimationClip clip in clips)
+            //{
+            //    if (clip.name == "Evans_GunAttack")
+            //    {
+            //        Debug.Log("Processing Evans_GunAttack");
+            //        clip.events[0].functionName = "EndProjectileAttack";
+            //    }
+            //    if (clip.name == "Evans_SwordAttack")
+            //    {
+            //        Debug.Log("Processing Evans_SwordAttack");
+            //        clip.events[0].functionName = "EndPiercingAttack";
+            //    }
+            //}
+
+            //Start up the battleground
+            evansBattleground.Begin();
 		}
 
 		public void Activate(){

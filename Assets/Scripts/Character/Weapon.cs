@@ -49,5 +49,13 @@ namespace Artifice.Characters
         public List<CombatAction> unlockedAbilities;
         public float attackValue;
         public float magicValue;
+
+        public void ResetStats()
+        {
+            XP = 0;
+            attackValue = baseAttackValue;
+            magicValue = baseMagicValue;
+            unlockedAbilities = new List<CombatAction>();
+        }
     }
 }

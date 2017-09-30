@@ -9,7 +9,7 @@ public class Gear : MonoBehaviour
     public Armor armor;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         // Create an instance of each weapon
         // This should only be done on starting a new game.
