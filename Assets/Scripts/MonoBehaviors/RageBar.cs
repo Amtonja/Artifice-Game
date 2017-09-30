@@ -18,14 +18,16 @@ public class RageBar : PartyUIElement
 
     void OnEnable()
     {
-        if (player == null)
+        if (player == null || !player.enabled)
         {
             barSlider.enabled = false;
+            barSlider.fillRect.gameObject.SetActive(false);
             barBorder.enabled = false;
         }
         else
         {
             barSlider.enabled = true;
+            barSlider.fillRect.gameObject.SetActive(true);
             barBorder.enabled = true;
         }
     }
@@ -33,7 +35,7 @@ public class RageBar : PartyUIElement
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        if (player != null && player.enabled)
         {
             barSlider.value = (float)player.RageBarValue / (float)player.RageBarTarget;
         }
