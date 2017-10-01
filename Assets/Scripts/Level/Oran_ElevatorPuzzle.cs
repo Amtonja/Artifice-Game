@@ -19,6 +19,11 @@ public class Oran_ElevatorPuzzle : MonoBehaviour {
 
 	public PuzzleNode[] nodes;
 
+	//For visual indicators on the elevator
+	public GameObject rightNode;
+	public GameObject leftNode;
+
+	private bool bComplete = false;
 	// Use this for initialization
 	void Start () {
 		bNodes = new bool[8];
@@ -26,7 +31,21 @@ public class Oran_ElevatorPuzzle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (bComplete) {
+			return;
+		}
+		//turn on and off lights
+//		if (bNodes [0]) {
+//			leftNode.SetActive (true);
+//		} else {
+//			leftNode.SetActive (false);
+//		}
+//		if (bNodes [6]) {
+//			rightNode.SetActive (true);
+//		} else {
+//			rightNode.SetActive(false);
+//		}
+
 	}
 
 	//Called by nodes to update their status
@@ -34,6 +53,17 @@ public class Oran_ElevatorPuzzle : MonoBehaviour {
 		bNodes [num] = true;
 		if (num < 4) {
 			//Left group
+			if (num != 0) {
+				leftNode.SetActive (false);
+			} else {
+				if (leftNode.activeSelf) {
+					leftNode.SetActive (false);
+				} else {
+					leftNode.SetActive (true);
+				}
+			}
+
+
 			for (int i = 0; i<4; i++) {
 				if (i != num) {
 					nodes [i].Deactivate ();
@@ -42,6 +72,16 @@ public class Oran_ElevatorPuzzle : MonoBehaviour {
 			}
 		} else {
 			//right group
+
+			if (num != 6) {
+				rightNode.SetActive (false);
+			} else {
+				if (rightNode.activeSelf) {
+					rightNode.SetActive (false);
+				} else {
+					rightNode.SetActive (true);
+				}
+			}
 			for (int i = 4; i<8; i++) {
 				if (i != num) {
 					nodes [i].Deactivate ();
@@ -54,6 +94,10 @@ public class Oran_ElevatorPuzzle : MonoBehaviour {
 			passTarget.SendMessage ("Activate");
 			Debug.Log ("Puzzle done! Elevator ready!");
             PixelCrushers.DialogueSystem.QuestLog.SetQuestState("Oran Elevator Puzzle", PixelCrushers.DialogueSystem.QuestState.Success);
+
+			rightNode.SetActive(false);
+			leftNode.SetActive(false);
+			bComplete = true;
 		}
 
 	}
