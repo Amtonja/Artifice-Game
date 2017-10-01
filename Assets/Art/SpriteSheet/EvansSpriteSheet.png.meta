@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: bb44fa4b3a78b8042b6cbed7d2bc1962
-timeCreated: 1502812029
+timeCreated: 1506869710
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -79,6 +79,10 @@ TextureImporter:
     21300144: Evans_Emote8
     21300146: Evans_Emote9
     21300148: Evans_Emote10
+    21300150: Evans_Dodge1
+    21300152: Evans_Dodge2
+    21300154: Evans_Dodge3
+    21300156: Evans_Dodge4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -1080,6 +1084,58 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Dodge1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Dodge2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Dodge3
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Evans_Dodge4
+      rect:
+        serializedVersion: 2
+        x: 384
         y: 0
         width: 64
         height: 64

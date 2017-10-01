@@ -6,7 +6,7 @@ public class WinterController : MonoBehaviour
 {
 
 
-    //0 Activation -> 1 Leg raise -> 2 change leg layer order -> 3 move -> 4 hammer down -> 5 Pass to passtarget -> 6 End
+    //0 Activation -> 1 Leg raise -> 2 change leg layer order -> 3 move -> 4 hammer down, evans dodge -> 5 Pass to passtarget -> 6 End
 
 
     public GameObject attackLeg;
@@ -28,6 +28,14 @@ public class WinterController : MonoBehaviour
 
     public AudioClip movementSound, stompSound, voiceSound;
 
+	public GameObject evans; 
+	private bool bMoveEvans = false;
+
+	private float evansMoveSpeed = 5.0f;
+	private float evansMoveTimer = 0.35f;
+	private float evansMoveTimerCurrent = 0f;
+
+
     // Use this for initialization
     void Start()
     {
@@ -37,6 +45,18 @@ public class WinterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		//For the dodge
+		if (bMoveEvans) {
+			
+			evans.GetComponent<Movement> ().PlayAnimation ("Dodge");
+			evans.transform.Translate (Vector3.right * evansMoveSpeed *Time.deltaTime);
+
+			evansMoveTimerCurrent += Time.deltaTime;
+			if (evansMoveTimerCurrent >= evansMoveTimer) {
+				bMoveEvans = false;
+			}
+		}
+
 		if (state == 0) {
 			//			if (Input.GetKeyDown (KeyCode.Space)) {
 			//				state = 1;
@@ -82,7 +102,7 @@ public class WinterController : MonoBehaviour
         else if (state == 5)
         {
             attackLeg.GetComponent<Animator>().Play(Animator.StringToHash("Attack"));
-
+			bMoveEvans = true;
         }
         else if (state == 6)
         {
@@ -96,6 +116,7 @@ public class WinterController : MonoBehaviour
             //do nothing
         }
 
+		//for evans' dodging
 
 
     }

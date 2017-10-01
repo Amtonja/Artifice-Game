@@ -62397,6 +62397,7 @@ MonoBehaviour:
   movementSound: {fileID: 8300000, guid: 99364e846c421f742ac26144bd3530f4, type: 3}
   stompSound: {fileID: 8300000, guid: c8812ead3748ed745862c9bf0bf394f1, type: 3}
   voiceSound: {fileID: 8300000, guid: 47a6aecea1e53ab4899333d23599c1ec, type: 3}
+  evans: {fileID: 233}
 --- !u!114 &2213
 MonoBehaviour:
   m_ObjectHideFlags: 0
