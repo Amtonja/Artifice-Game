@@ -18,7 +18,7 @@ public class NameDisplay : PartyUIElement
 
     void OnEnable()
     {
-        if (player != null)
+        if (player != null && player.enabled)
         {
             nameDisplay.text = player.Stats.characterName;
         }

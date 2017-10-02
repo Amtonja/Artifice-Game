@@ -18,7 +18,7 @@ public class HealthDisplay : PartyUIElement
 
     void OnEnable()
     {
-        if (player != null)
+        if (player != null && player.enabled)
         {
             healthDisplay.text = player.Health + "/" + player.Stats.maxHealth;
         }
@@ -31,7 +31,7 @@ public class HealthDisplay : PartyUIElement
     // Update is called once per frame
     void Update()
     {
-        if (player != null && player.HealthChanged)
+        if (player != null && player.HealthChanged && player.enabled)
         {
             healthDisplay.text = player.Health + "/" + player.Stats.maxHealth;
         }

@@ -354,7 +354,7 @@ public class Enemy : CombatEntity
         _animator.SetBool("SpellComplete", true);
 
         //send this to AI targets
-        target.GetComponent<AIBase>().BHold = false;
+        //target.GetComponent<AIBase>().BHold = false;
     }
 
     public IEnumerator DealSpellHealing(CombatEntity target, GameObject spellVisual, float spellDuration)
@@ -391,29 +391,30 @@ public class Enemy : CombatEntity
 
     public void EyeLaser(CombatEntity target) //I'm assuming this uses Force?
     {
-        GameObject eyeLaser = Instantiate(Resources.Load("Prefabs/EyeLaser", typeof(GameObject)), transform) as GameObject;
-        LineRenderer lr = eyeLaser.GetComponent<LineRenderer>();
-        lr.sortingLayerName = "VisualEffects";
-        lr.numPositions = 2;
-        Vector3[] positions = { transform.position + v3spellOrigin, target.transform.position };
-        lr.SetPositions(positions);
+        GameObject eyeLaser = Instantiate(
+            Resources.Load("Prefabs/EyeLaser", typeof(GameObject)),
+            transform.position + v3spellOrigin,
+            Quaternion.identity,
+            transform) as GameObject;
 
-        int damage = CalculateMagicDamage(tempTarget);
+        int damage = CalculateMagicDamage(target);
 
         //check for resistance and weaknesses
         if (target.MyRes.bForce)
         {
-            damage = (int)((float)damage * 0.75f);
+            damage = (int)(damage * 0.75f);
             ShowWeakText(tempTarget);
         }
         else if (target.MyWeak.bForce)
         {
-            damage = (int)((float)damage * 1.5f);
+            damage = (int)(damage * 1.5f);
             ShowStrongText(tempTarget);
         }
 
+        eyeLaser.GetComponent<EffectSettings>().Target = target.gameObject;
+        eyeLaser.GetComponent<EffectSettings>().MoveDistance = Vector3.Distance(transform.position, target.transform.position);
         float duration = eyeLaser.GetComponent<AudioSource>().clip.length;
-        StartCoroutine(DealSpellDamage(target, eyeLaser, duration, damage));
+        StartCoroutine(DealSpellDamage(target, eyeLaser, duration, damage));        
     }
 
     public void FireBreath(CombatEntity target)

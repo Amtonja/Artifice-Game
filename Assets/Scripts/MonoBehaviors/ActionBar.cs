@@ -20,7 +20,7 @@ public class ActionBar : PartyUIElement
 
     void OnEnable()
     {
-        if (player == null)
+        if (player == null || !player.enabled)
         {
             barSlider.enabled = false;
             barBorder.enabled = false;
@@ -35,7 +35,7 @@ public class ActionBar : PartyUIElement
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        if (player != null && player.enabled)
         {
             barSlider.value = player.ActionBarTimer / player.ActionBarTargetTime;
         }

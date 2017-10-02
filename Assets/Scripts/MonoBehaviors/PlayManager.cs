@@ -276,7 +276,7 @@ public class PlayManager : MonoBehaviour
         Debug.Log("Running from combat!");
         exploreMode = true;
 
-        MusicManager.instance.PlayCombatEnding();
+        //MusicManager.instance.PlayCombatEnding();
 
         for (int i = 0; i < party.Length; i++)
         {
@@ -294,7 +294,8 @@ public class PlayManager : MonoBehaviour
         combatUI.DeactivatePlayerUI();
         //Tell Battleground players are running, so set up blinking and then reset collider
         currentBattleground.RunAway();
-
+        //Reset state. Need to reset here specifically
+        state = combatState.Init;
         groupCombatUI.SetActive(false);
         MusicManager.instance.StopAllCoroutines(); //to stop the battle music 
 
@@ -319,6 +320,8 @@ public class PlayManager : MonoBehaviour
 
         }
 
+        //Reset state. Need to reset here specifically
+        state = combatState.Init;
         //turn off combat UI
         combatUI.DeactivatePlayerUI();
         groupCombatUI.SetActive(false);
