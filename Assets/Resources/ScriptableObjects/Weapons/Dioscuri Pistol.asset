@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Dioscuri Pistol
   m_EditorClassIdentifier: 
   itemName: Dioscuri Pistol
-  description: A pistol.
+  description: Deals projectile damage to target enemy.
   users:
   - Arthur
   - Hurley
@@ -22,3 +22,7 @@ MonoBehaviour:
   baseMagicValue: 1.5
   abilities: []
   learningLevel: 0
+  XP: 0
+  unlockedAbilities: []
+  attackValue: 0
+  magicValue: 0

@@ -5375,7 +5375,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: '{{none}}'
         type: 0
         typeString: 
       conversationID: 13
@@ -5448,7 +5448,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 'SetPortrait(Hurley, pic=4);
+        value: 'Gibberish(entrytag);
+
+          SetPortrait(Hurley, pic=4);
 
           required SendMessage(DialogueComplete,,Scene 9 Trigger)@{{end}};'
         type: 0

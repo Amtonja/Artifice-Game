@@ -212,7 +212,7 @@ public class PlayManager : MonoBehaviour
 	public void EnemyEncountered()//Player enemy)
     {
         exploreMode = false;
-
+        
         for (int i = 0; i < enemyCombatants.Count; i++)
         {
             enemyCombatants[i].EnterCombat();
@@ -245,13 +245,14 @@ public class PlayManager : MonoBehaviour
     {
         exploreMode = true;
 
-        MusicManager.instance.StartCoroutine("PlayCombatEnding");
+        DisplayCombatRewards(2f);
 
-        //DisplayCombatRewards(2f);
+        MusicManager.instance.StartCoroutine(MusicManager.instance.PlayCombatEnding());        
 
         for (int i = 0; i < party.Length; i++)
         {
             party[i].ExitCombat();
+            party[i].GetComponent<Movement>().StartCoroutine(party[i].GetComponent<Movement>().VictoryAnimation());
             party[i].AddExperience(experiencePool);
             party[i].GetComponent<Movement>().BIgnoreFollow = false;
             //Reset characters following lead character
@@ -306,7 +307,7 @@ public class PlayManager : MonoBehaviour
     {
         exploreMode = true;
 
-        MusicManager.instance.PlayCombatEnding();
+        //MusicManager.instance.PlayCombatEnding();
 
         for (int i = 0; i < party.Length; i++)
         {
@@ -333,9 +334,13 @@ public class PlayManager : MonoBehaviour
         //float messageDuration = 2f;
         for (int i = 0; i < party.Length; i++)
         {
-            DialogueManager.ShowAlert(party[i].name + " gained " + experiencePool + " XP!", messageDuration);
+            DialogueManager.ShowAlert(party[i].name + " gained " + "10% completion with the " +
+                party[i].GetComponent<Gear>().primaryWeapon.itemName, messageDuration);
+            DialogueManager.ShowAlert(party[i].name + " gained " + "5% completion with the " +
+                party[i].GetComponent<Gear>().secondaryWeapon.itemName, messageDuration);
         }
     }
+
 
     public void PauseGame()
     {
@@ -414,7 +419,7 @@ public class PlayManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         PersistentDataManager.Apply();
-    }   
+    }
 
     #region C# Properties
     public List<Enemy> EnemyCombatants

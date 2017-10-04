@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Hunter's Rifle
   m_EditorClassIdentifier: 
   itemName: Hunter's Rifle
-  description: It's a rifle, maybe you hunt with it, I dunno.
+  description: Deals projectile damage to target enemy.
   users:
   - Evans
   type: 1
@@ -21,3 +21,7 @@ MonoBehaviour:
   baseMagicValue: 2
   abilities: []
   learningLevel: 0
+  XP: 0
+  unlockedAbilities: []
+  attackValue: 0
+  magicValue: 0

@@ -15,6 +15,7 @@ public class CombatPlayerUI : MonoBehaviour
     //All the various ui elements that need to be updated during battle
     private Image actionBar, specialBar, rageBar, magicBar, agilityBar, healthBar, healthBarDelta;
     private Text playerName, playerLevel;
+    private GameObject descriptionDisplay;
 
     //private Canvas iconCanvas;
     private GameObject iconPanel;
@@ -45,7 +46,7 @@ public class CombatPlayerUI : MonoBehaviour
     {
         iconPanel = transform.Find("IconPanel").gameObject;
         iconPanel.SetActive(false);
-
+        descriptionDisplay = PlayManager.instance.groupCombatUI.transform.Find("Canvas/Panel/ActionInfo/ActionDescription").gameObject;
         cursor = transform.Find("Cursor").gameObject;
         firstSelectedIcon = iconPanel.transform.Find("AttackIcon").GetComponent<Button>();
 
@@ -312,6 +313,7 @@ public class CombatPlayerUI : MonoBehaviour
                         MoveCursor(selectedPlayer);                  
                         break;
                     case PlayerUIState.WAITING_FOR_TURN:
+                        descriptionDisplay.GetComponent<Text>().text = "";
                         CloseAllSubmenus();
                         iconPanel.SetActive(false);
                         EventSystem.current.sendNavigationEvents = true;

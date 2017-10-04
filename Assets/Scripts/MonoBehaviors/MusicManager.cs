@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 
 public class MusicManager : MonoBehaviour
@@ -40,11 +41,16 @@ public class MusicManager : MonoBehaviour
     
     public IEnumerator PlayCombatEnding()
     {
+        UnityUIDialogueUI dialogueUI = DialogueManager.DialogueUI as UnityUIDialogueUI;
         AudioClip fanfare = Resources.Load("Music/Victory Fanfare - Triumph") as AudioClip;
         musicSource.clip = fanfare;
+        musicSource.loop = true;
         musicSource.Play();
-        yield return new WaitForSeconds(musicSource.clip.length);
-        PlayBGM();      
+
+        // Yield execution, continuing to play the victory music, until all the post-combat alerts are done displaying
+        yield return new WaitWhile(() => dialogueUI.alert.panel.gameObject.activeSelf);
+
+        PlayBGM();
     }    
 
     public void PlayBGM()

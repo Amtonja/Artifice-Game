@@ -23,11 +23,13 @@ public class ActionBar : PartyUIElement
         if (player == null || !player.enabled)
         {
             barSlider.enabled = false;
+            barSlider.fillRect.gameObject.SetActive(false);
             barBorder.enabled = false;
         }
         else
         {
             barSlider.enabled = true;
+            barSlider.fillRect.gameObject.SetActive(true);
             barBorder.enabled = true;
         }
     }

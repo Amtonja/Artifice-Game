@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Throwing Knives
   m_EditorClassIdentifier: 
   itemName: Throwing Knives
-  description: Knives that one throws.
+  description: Deals projectile damage to target enemy.
   users:
   - Russo
   type: 5
@@ -21,3 +21,7 @@ MonoBehaviour:
   baseMagicValue: 3
   abilities: []
   learningLevel: 0
+  XP: 0
+  unlockedAbilities: []
+  attackValue: 0
+  magicValue: 0

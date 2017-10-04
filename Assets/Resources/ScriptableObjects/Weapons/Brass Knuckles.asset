@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Brass Knuckles
   m_EditorClassIdentifier: 
   itemName: Brass Knuckles
-  description: 
+  description: Deals blunt damage to target enemy.
   users:
   - Russo
   type: 3
@@ -22,3 +22,7 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: fbf8350234f08a145ab341790cbf5f96, type: 2}
   learningLevel: 0
+  XP: 0
+  unlockedAbilities: []
+  attackValue: 0
+  magicValue: 0

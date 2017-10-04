@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Name: Hrunting
   m_EditorClassIdentifier: 
   itemName: Hrunting
+  description: Deals piercing damage to target enemy.
   users:
   - Hurley
   - Evans
   type: 0
+  damageType: 0
   baseAttackValue: 3
   baseMagicValue: 2
   abilities: []
   learningLevel: 1
+  XP: 0
+  unlockedAbilities: []
+  attackValue: 0
+  magicValue: 0

@@ -658,6 +658,18 @@ public class Movement : MonoBehaviour
         //Debug.Log(name + " is now following " + FollowTarget.name);
     }
 
+    public IEnumerator VictoryAnimation()
+    {
+        PixelCrushers.DialogueSystem.UnityUIDialogueUI dialogueUI = PixelCrushers.DialogueSystem.DialogueManager.DialogueUI 
+            as PixelCrushers.DialogueSystem.UnityUIDialogueUI;
+
+        PlayAnimation("Victory");
+
+        yield return new WaitWhile(() => dialogueUI.alert.panel.gameObject.activeSelf);
+
+        EndAnimation();
+    }
+
     //Old, tile-based movement. Unused, and just here for reference.
     //	private void OldMove(){
     //		if (followTarget == null && !player.InCombat && !bNPC)

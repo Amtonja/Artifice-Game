@@ -358,12 +358,12 @@ public class Player : CombatEntity
     public IEnumerator DealSpellDamage(CombatEntity target, GameObject spellVisual, float spellDuration, int damage)
     {
         Debug.Log(name + " casts " + spellVisual.name + "at " + target.name + "!");
-        PlayManager.instance.DarkenBG(true);
+        //PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
 
         target.TakeDamage(damage);
         Destroy(spellVisual);
-        PlayManager.instance.DarkenBG(false);
+        //PlayManager.instance.DarkenBG(false);
         _animator.SetBool("SpellComplete", true);
 
         //send this to AI targets
@@ -372,13 +372,13 @@ public class Player : CombatEntity
 
     public IEnumerator DealSpellHealing(CombatEntity target, GameObject spellVisual, float spellDuration)
     {
-        PlayManager.instance.DarkenBG(true);
+        //PlayManager.instance.DarkenBG(true);
         yield return new WaitForSeconds(spellDuration);
 
         int healing = Mathf.FloorToInt(Stats.magic * equipment.primaryWeapon.baseMagicValue + UnityEngine.Random.Range(0, 7));
         target.Heal(healing);
         Destroy(spellVisual);
-        PlayManager.instance.DarkenBG(false);
+        //PlayManager.instance.DarkenBG(false);
         _animator.SetBool("SpellComplete", true);
 
         PlayManager.instance.UpdateAttacked();

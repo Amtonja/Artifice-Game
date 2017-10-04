@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Name: Ceremonial Republic Rapier
   m_EditorClassIdentifier: 
   itemName: Ceremonial Republic Rapier
-  description: Hurley's sword. The pointy end... well, you know.
+  description: Deals piercing damage to target enemy.
   users:
   - Hurley
   type: 0
+  damageType: 0
   baseAttackValue: 2
   baseMagicValue: 2
   abilities:
   - {fileID: 11400000, guid: 0efdc25a9eede58488797a0707aaf937, type: 2}
   - {fileID: 11400000, guid: fbf8350234f08a145ab341790cbf5f96, type: 2}
   learningLevel: 0
+  XP: 0
+  unlockedAbilities: []
+  attackValue: 0
+  magicValue: 0
