@@ -38,9 +38,12 @@ public class MusicManager : MonoBehaviour
         musicSource.Play();
     }
     
-    public void PlayCombatEnding()
+    public IEnumerator PlayCombatEnding()
     {
-        musicSource.Stop(); // Don't have the victory fanfare thing yet  
+        AudioClip fanfare = Resources.Load("Music/Victory Fanfare - Triumph") as AudioClip;
+        musicSource.clip = fanfare;
+        musicSource.Play();
+        yield return new WaitForSeconds(musicSource.clip.length);
         PlayBGM();      
     }    
 

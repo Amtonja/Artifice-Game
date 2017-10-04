@@ -3857,6 +3857,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 102
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &621877058 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1026692788}
 --- !u!1 &651685192
 GameObject:
   m_ObjectHideFlags: 0
@@ -7025,19 +7030,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1995131018}
+    m_TransformParent: {fileID: 1348590381}
     m_Modifications:
     - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 557.52
       objectReference: {fileID: 0}
     - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 311.79
       objectReference: {fileID: 0}
     - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7057,8 +7062,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4904468370088748, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114372134637563990, guid: 865f4ea04e30c7040a7879522715370e,
+        type: 2}
+      propertyPath: BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: d437803ddfb1541448495a09d41f0efe, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 865f4ea04e30c7040a7879522715370e, type: 2}
   m_IsPrefabParent: 0
@@ -7256,12 +7266,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2.5}
---- !u!114 &1082025193 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114156426576957308, guid: 83420eed0e59f0a44b38d9f30687fc5e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1600025399}
-  m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
 --- !u!4 &1082025200 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4005800490796838, guid: 83420eed0e59f0a44b38d9f30687fc5e,
@@ -7479,7 +7483,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1856559645082952, guid: b406117de1af4464ca68d8573fdcf81d, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b406117de1af4464ca68d8573fdcf81d, type: 2}
@@ -9464,6 +9468,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1552848125}
+  - {fileID: 621877058}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12135,12 +12140,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1818782221}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1819930702 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114156426576957308, guid: 83420eed0e59f0a44b38d9f30687fc5e,
-    type: 2}
-  m_PrefabInternal: {fileID: 707086645}
-  m_Script: {fileID: 11500000, guid: 68d57fc63a9af421582e1ed895416bf2, type: 3}
 --- !u!4 &1819930709 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4005800490796838, guid: 83420eed0e59f0a44b38d9f30687fc5e,
@@ -13264,11 +13263,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1992779736}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!224 &1995131018 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224373388875583804, guid: b406117de1af4464ca68d8573fdcf81d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1113338609}
 --- !u!1 &2002101730
 GameObject:
   m_ObjectHideFlags: 0
@@ -14074,8 +14068,8 @@ MonoBehaviour:
   - {fileID: 1313051022}
   - {fileID: 152153373}
   enemies:
-  - {fileID: 1819930702}
-  - {fileID: 1082025193}
+  - {fileID: 0}
+  - {fileID: 0}
   secondPlayerPosList:
   - {fileID: 0}
   - {fileID: 0}

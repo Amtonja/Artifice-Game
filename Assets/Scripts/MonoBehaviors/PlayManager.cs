@@ -245,7 +245,7 @@ public class PlayManager : MonoBehaviour
     {
         exploreMode = true;
 
-        MusicManager.instance.PlayCombatEnding();
+        MusicManager.instance.StartCoroutine("PlayCombatEnding");
 
         //DisplayCombatRewards(2f);
 
