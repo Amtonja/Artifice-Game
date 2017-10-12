@@ -80,6 +80,8 @@ public class PlayManager : MonoBehaviour
 
     public int experiencePool;
 
+	public GameObject flagManager;
+
     void Start()
     {
         exploreMode = true;
@@ -90,6 +92,8 @@ public class PlayManager : MonoBehaviour
         combatUI = playerActionUI.GetComponent<CombatUIManager>();
 
         //groupCombatUI.SetActive(false);
+
+		flagManager = GameObject.Find ("SceneFlagManager");
     }
 
 
@@ -172,6 +176,7 @@ public class PlayManager : MonoBehaviour
             //				dudebro.ExitCombat ();
             //			}
             EncounterComplete();
+			 
         }
 
     }
@@ -269,6 +274,10 @@ public class PlayManager : MonoBehaviour
         combatUI.DeactivatePlayerUI();
         groupCombatUI.SetActive(false);
         experiencePool = 0;
+
+
+		//Send SceneFlagManager the message this battleground has been wiped
+		flagManager.GetComponent<SceneFlagManager>().UpdateBattleground(currentBattleground.gameObject);
     }
 
     //Run option. 

@@ -11,5 +11,8 @@ public class CM_Set_Flag : MonoBehaviour
     {
         DialogueLua.SetVariable(cutsceneName, true);
         Debug.Log("Cutscene " + cutsceneName + " flagged as complete");
+
+
     }
+
 }
