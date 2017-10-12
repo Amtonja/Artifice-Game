@@ -65,14 +65,16 @@ public class SaveManager : MonoBehaviour
         CloseMenu();
     }
 
-    public void LoadGame(int fileNumber)
+    public void LoadGame(string fileName)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        FileStream saveFile = File.Open("Saves/Save" + fileNumber + ".binary", FileMode.Open);
+        FileStream saveFile = File.Open("Saves/" + fileName, FileMode.Open);
 
         string saveData = formatter.Deserialize(saveFile) as string;
 
-        PersistentDataManager.ApplySaveData(saveData);
+        //PersistentDataManager.ApplySaveData(saveData);
+        DialogueManager.Instance.GetComponent<LevelManager>().LoadGame(saveData);
+
 
         saveFile.Close();        
     }

@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 82567731228766328}
   - component: {fileID: 114782965825020638}
   - component: {fileID: 114489533639558360}
+  - component: {fileID: 114246556767893088}
+  - component: {fileID: 114620007854929228}
   m_Layer: 0
   m_Name: Russo
   m_TagString: Player
@@ -210,6 +212,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114246556767893088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873920067709384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1005983785, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideActorName: 
+  recordCurrentLevel: 1
+  restoreCurrentLevelPosition: 1
 --- !u!114 &114435887976355722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -232,6 +248,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400e864f4b5a3f6468330161353a0e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114620007854929228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873920067709384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f41f9399641d74ba3b35dcd9ca2a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114723446761312004

@@ -17,7 +17,7 @@ public class Gear : MonoBehaviour
         Weapon secondaryInstance = Object.Instantiate<Weapon>(secondaryWeapon);
 
         primaryInstance.guid = System.Guid.NewGuid();
-        Debug.Log(name + "'s primary weapon assigned guid " + primaryInstance.guid.ToString());
+        //Debug.Log(name + "'s primary weapon assigned guid " + primaryInstance.guid.ToString());
 
 
         secondaryInstance.guid = System.Guid.NewGuid();

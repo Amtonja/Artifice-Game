@@ -331,6 +331,7 @@ public class Enemy : CombatEntity
     {
         Debug.Log(name + " finishes casting " + MySpell.Method);
         MySpell(tempTarget);
+        GetComponent<AIBase>().ResumeWander();
     }
 
     /// <summary>
