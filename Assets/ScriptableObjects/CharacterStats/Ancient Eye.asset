@@ -12,15 +12,11 @@ MonoBehaviour:
   m_Name: Ancient Eye
   m_EditorClassIdentifier: 
   characterName: Ancient Eye
-  startingLevel: 1
   attack: 8
   defense: 7
-  magic: 0
+  magic: 8
   magicDefense: 10
   speed: 9
   maxHealth: 35
   xpValue: 0
-  primaryDamage: 2
-  secondaryDamage: 2
-  damageWeakness: 1
   spells: []

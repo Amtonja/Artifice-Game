@@ -85,7 +85,7 @@ public class SaveManager : MonoBehaviour
 
         data.fileNumber = fileNumber;
         data.timeStamp = System.DateTime.Now.ToString();
-        data.location = "Placeholder Valley";
+        data.location = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         data.elapsedTime = new System.TimeSpan(0, 4, 33).ToString();
         
         return data;
@@ -116,10 +116,16 @@ public class SaveManager : MonoBehaviour
         return mdList;
     }
 
-    public void OpenMenu()
+    public void OpenSaveMenu()
     {
         MetadataList = LoadAllMetadata();
         menu = Instantiate(Resources.Load("Prefabs/SaveMenu")) as GameObject;                
+    }
+
+    public void OpenLoadMenu()
+    {
+        MetadataList = LoadAllMetadata();
+        menu = Instantiate(Resources.Load("Prefabs/LoadMenu")) as GameObject;
     }
 
     public void CloseMenu()

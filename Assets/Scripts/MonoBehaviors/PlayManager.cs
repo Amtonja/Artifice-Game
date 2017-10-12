@@ -430,6 +430,22 @@ public class PlayManager : MonoBehaviour
         PersistentDataManager.Apply();
     }
 
+    // Called via message whenever the Persistent Data Manager applies persistent data
+    public void OnApplyPersistentData()
+    {
+        for (int i = 0; i < Party.Length; i++)
+        {
+            if (i == 0)
+            {
+                Party[i].GetComponent<Movement>().ClearFollowTarget();
+            }
+            else
+            {
+                Party[i].GetComponent<Movement>().SetFollowTarget(Party[i - 1].name);
+            }
+        }
+    }
+
     #region C# Properties
     public List<Enemy> EnemyCombatants
     {

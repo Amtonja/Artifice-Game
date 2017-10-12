@@ -5,9 +5,12 @@ using PixelCrushers.DialogueSystem;
 
 public class SaveNode : MonoBehaviour
 {
+    public AreaInfo area;
+
     public void Activate()
     {
-        SaveManager.instance.OpenMenu();
+        DialogueLua.SetVariable("AreaInfo", area.name);
+        SaveManager.instance.OpenSaveMenu();
     }
 
     // Use this for initialization

@@ -40,9 +40,7 @@ GameObject:
   - component: {fileID: 61841513666347090}
   - component: {fileID: 114556999746847378}
   - component: {fileID: 82575859602860234}
-  - component: {fileID: 114251487290001768}
   - component: {fileID: 114908691397736000}
-  - component: {fileID: 114400761375225478}
   - component: {fileID: 114683044053751960}
   - component: {fileID: 114658376420334210}
   m_Layer: 0
@@ -191,34 +189,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114251487290001768
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1535301156841234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1005983785, guid: b5a7519e94754fb4a8ea0c272031db78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overrideActorName: 
-  recordCurrentLevel: 1
-  restoreCurrentLevelPosition: 1
---- !u!114 &114400761375225478
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1535301156841234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1981088f45054349954e84366b8a2a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recordOn: 0
-  variableName: 
-  spawnWhenDestroyed: {fileID: 0}
 --- !u!114 &114556999746847378
 MonoBehaviour:
   m_ObjectHideFlags: 1

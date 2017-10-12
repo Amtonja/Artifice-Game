@@ -48,6 +48,11 @@ public class SaveFileButton : MonoBehaviour
         SaveManager.instance.SaveGame(FileNumber);
     }
 
+    public void Load()
+    {
+        SaveManager.instance.LoadGame("Save" + FileNumber.ToString() + ".binary");
+    }
+
     public int FileNumber
     {
         get
