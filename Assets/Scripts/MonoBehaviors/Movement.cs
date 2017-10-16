@@ -68,9 +68,11 @@ public class Movement : MonoBehaviour
     //    private float waitTimer = 0.22f;
 
 
-    private bool bForceLock = false; //Locks controls. Used by AreaTransition, etc?
+    private bool bForceLock = false; //Locks controls, sets idle animation state. Used by AreaTransition and cutscenes like Oran's elevator.
 
 	private bool bAnimating = false; //If this character is being forced to animate
+
+	private bool bDisableInput = false; //just disables input.
 
 
 
@@ -109,7 +111,7 @@ public class Movement : MonoBehaviour
     {
 
         //If we're in combat or a cutscene, skip everything
-		if (bForceLock || bAnimating) { return; }
+		if (bForceLock || bAnimating || bDisableInput) { return; }
 
         //		if (PlayManager.instance.ExploreMode) {
         //			return;
@@ -618,7 +620,7 @@ public class Movement : MonoBehaviour
         bForceFace = false;
     }
 
-
+	//Used during transitions, such as oran's elevator. Do not remove animation plays unless you remove those dependancies
     public void ForceLock(bool setting)
     {
         bForceLock = setting;
@@ -820,6 +822,11 @@ public class Movement : MonoBehaviour
 
 	public void EndAnimation(){
 		bAnimating = false;
+	}
+
+
+	public void DisableInput(bool setting){
+		bDisableInput = setting;
 	}
 
 
