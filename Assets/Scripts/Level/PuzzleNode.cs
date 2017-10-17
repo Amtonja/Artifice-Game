@@ -58,6 +58,12 @@ public class PuzzleNode : MonoBehaviour
 
     }
 
+	//Called by flag managers to manually set conditions
+	public void SilentActivate(){
+		spr.enabled = true;
+		bOn = true;
+	}
+
 
     public void Deactivate()
     {

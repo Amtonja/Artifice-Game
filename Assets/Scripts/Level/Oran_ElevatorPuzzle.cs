@@ -102,7 +102,17 @@ public class Oran_ElevatorPuzzle : MonoBehaviour {
 
 	}
 
+	//Called by flag managers to manually set conditions
+	public void SilentActivate(){
+		passTarget.SendMessage ("Activate");
+		Debug.Log ("Puzzle done! Elevator ready!");
+		//Below should already be set?
+//		PixelCrushers.DialogueSystem.QuestLog.SetQuestState("Oran Elevator Puzzle", PixelCrushers.DialogueSystem.QuestState.Success);
 
+		rightNode.SetActive(false);
+		leftNode.SetActive(false);
+		bComplete = true;
+	}
 
 	void OnDrawGizmos(){
 		//	void OnDrawGizmosSelected(){
