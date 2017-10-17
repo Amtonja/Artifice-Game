@@ -123,6 +123,7 @@ namespace Artifice.Characters
         public virtual void ExitCombat()
         {
             ActionBarTimer = 0f;
+            IsMyTurn = false;
             inCombat = false;
         }
 

@@ -308,7 +308,7 @@ public class PlayManager : MonoBehaviour
         state = combatState.Init;
         groupCombatUI.SetActive(false);
         MusicManager.instance.StopAllCoroutines(); //to stop the battle music 
-
+        MusicManager.instance.PlayBGM();
     }
 
     //Straight-up cancel combat. Only used to bail on combat for cutscenes.

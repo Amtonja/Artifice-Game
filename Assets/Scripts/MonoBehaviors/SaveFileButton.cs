@@ -27,7 +27,7 @@ public class SaveFileButton : MonoBehaviour
         fileNumberDisplay.text = FileNumber.ToString();
     }
 
-    public void ShowInformation(string timestamp, string location, string elapsedTime)
+    public void ShowInformation(string timestamp, string location, int elapsedTime)
     {
         //fileNumberDisplay.text = "File " + FileNumber.ToString();        
 
@@ -38,7 +38,7 @@ public class SaveFileButton : MonoBehaviour
         sb.Append(",");
         sb.Append(location);
         sb.Append(",");
-        sb.Append(elapsedTime);
+        sb.Append(System.TimeSpan.FromSeconds(elapsedTime));
 
         informationDisplay.text = sb.ToString();
     }

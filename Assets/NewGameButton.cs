@@ -7,6 +7,7 @@ public class NewGameButton : MonoBehaviour
 {
     public void LoadStartScene()
     {
+        GameObject.Find("PlayTimer").GetComponent<PlayTimer>().Reset();
         SceneManager.LoadScene("OranDesert");
     }
 }

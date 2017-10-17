@@ -86,7 +86,7 @@ public class SaveManager : MonoBehaviour
         data.fileNumber = fileNumber;
         data.timeStamp = System.DateTime.Now.ToString();
         data.location = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        data.elapsedTime = new System.TimeSpan(0, 4, 33).ToString();
+        data.elapsedTime = GameObject.Find("PlayTimer").GetComponent<PlayTimer>().PlayTime;
         
         return data;
     }
@@ -160,5 +160,5 @@ public class SaveGameMetadata
     public int fileNumber;
     public string timeStamp; // Real-world time when the save was made
     public string location; // Name of the in-game location where the save was made
-    public string elapsedTime; // hh:mm:ss since this game was started
+    public int elapsedTime; // hh:mm:ss since this game was started
 }
