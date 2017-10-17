@@ -388,17 +388,13 @@ public class Player : CombatEntity
 
     public void BoltSpell(CombatEntity target)
     {
-        //_animator.Play(Animator.StringToHash("CastSpell"));
-        GameObject lightningBolt = Instantiate(Resources.Load("Prefabs/SimpleLightningBoltPrefab"), transform) as GameObject;
-        lightningBolt.GetComponent<LineRenderer>().sortingLayerName = "VisualEffects"; // Doing this here because it's not exposed in inspector
-        DigitalRuby.LightningBolt.LightningBoltScript lbs = lightningBolt.GetComponent<DigitalRuby.LightningBolt.LightningBoltScript>();
-        lbs.StartObject = gameObject;
-        lbs.StartPosition = v3spellOrigin;
-        lbs.EndObject = target.gameObject;
-
+        GameObject lightningBolt = Instantiate(
+            Resources.Load("Prefabs/LightningBolt", typeof(GameObject)),
+            transform.position + v3spellOrigin,
+            Quaternion.identity,
+            transform) as GameObject;
 
         //tell enemy target to hold still. Completely disables the AI until it's done
-
         target.GetComponent<AIBase>().BHold = true;
 
         int damage = CalculateMagicDamage(tempTarget);
@@ -415,7 +411,9 @@ public class Player : CombatEntity
             ShowStrongText(tempTarget);
         }
 
-        float duration = lbs.GetComponent<AudioSource>().clip.length * 2;
+        lightningBolt.GetComponent<EffectSettings>().Target = target.gameObject;
+        lightningBolt.GetComponent<EffectSettings>().MoveDistance = Vector3.Distance(transform.position, target.transform.position);
+        float duration = lightningBolt.GetComponent<AudioSource>().clip.length * 2;
         StartCoroutine(DealSpellDamage(target, lightningBolt, duration, damage));
         //        PlayManager.instance.UnpauseGame();
     }

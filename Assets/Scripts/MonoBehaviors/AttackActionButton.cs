@@ -16,6 +16,7 @@ public class AttackActionButton : SubActionButton, ICancelHandler, ISubmitHandle
 
     public new void OnSubmit(BaseEventData eventData)
     {
+        GetComponent<AudioSource>().PlayOneShot(submitSFX);
         if (usePrimaryWeapon)
         {
             parentUI.OnPrimaryAttack();
@@ -40,5 +41,10 @@ public class AttackActionButton : SubActionButton, ICancelHandler, ISubmitHandle
         {
             Debug.LogError("Couldn't find object to dislay attack description");
         }
+    }
+
+    public new void OnCancel(BaseEventData eventData)
+    {
+        base.OnCancel(eventData);
     }
 }

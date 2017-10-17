@@ -15,6 +15,6 @@ MonoBehaviour:
   methodName: OnBolt
   description: Deals lightning-aspected damage to target enemy.
   damageType: 1
-  visualEffect: {fileID: 106988, guid: 837f662d54fb17447b7137b278febf21, type: 2}
+  visualEffect: {fileID: 100010, guid: 1870478485f9c8a419d9b81246b5922a, type: 2}
   soundEffect: {fileID: 82435558145710820, guid: 837f662d54fb17447b7137b278febf21,
     type: 2}

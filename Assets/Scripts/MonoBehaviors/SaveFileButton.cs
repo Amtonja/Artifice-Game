@@ -46,6 +46,7 @@ public class SaveFileButton : MonoBehaviour
     public void Save()
     {
         SaveManager.instance.SaveGame(FileNumber);
+        GetComponent<AudioSource>().Play();
     }
 
     public void Load()

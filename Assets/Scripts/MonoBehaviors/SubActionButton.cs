@@ -12,19 +12,23 @@ public class SubActionButton : MonoBehaviour, ICancelHandler, ISubmitHandler, IS
 {
     protected ActionIcon _actionIcon;
     protected CombatPlayerUI parentUI;
-    protected TextMeshProUGUI textmesh;        
+    protected TextMeshProUGUI textmesh;
     protected GameObject descriptionDisplay;
 
     private CombatAction action;
-        
+    private AudioSource audioSource;
+
+    public AudioClip submitSFX, cancelSFX;
+
     protected void Awake()
-    {
+    {        
         descriptionDisplay = PlayManager.instance.groupCombatUI.transform.Find("Canvas/Panel/ActionInfo/ActionDescription").gameObject;
     }
 
     // Use this for initialization
     protected void Start()
     {
+        //audioSource = GetComponent<AudioSource>();
         _actionIcon = GetComponentInParent<ActionIcon>();
         parentUI = GetComponentInParent<CombatPlayerUI>();
         //descriptionDisplay = PlayManager.instance.groupCombatUI.transform.Find("Canvas/Panel/ActionInfo/ActionDescription").gameObject;
@@ -32,15 +36,17 @@ public class SubActionButton : MonoBehaviour, ICancelHandler, ISubmitHandler, IS
 
     public void OnCancel(BaseEventData eventData)
     {
-        _actionIcon.CloseSubmenu();
+        GetComponent<AudioSource>().PlayOneShot(cancelSFX);        
+        _actionIcon.CloseSubmenu();        
     }
 
     public void OnSubmit(BaseEventData eventData)
     {
+        GetComponent<AudioSource>().PlayOneShot(submitSFX);
         if (Action.methodName != null)
         {
             parentUI.Invoke(Action.methodName, 0);
-        }
+        }        
     }
 
     public void OnSelect(BaseEventData eventData)

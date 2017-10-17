@@ -35,6 +35,7 @@ public class ActionIcon : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(subActions[0].gameObject);
         }
+        GetComponent<AudioSource>().Play();
     }
 
     public void CloseSubmenu()
