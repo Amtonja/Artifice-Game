@@ -60,7 +60,7 @@ public class Movement : MonoBehaviour
     public enum directions { Up, Down, Left, Right };
     private directions moveDir;
 
-    private float moveSpeed = 3.0f;
+    public float moveSpeed = 3.0f;
 
 
     //Temporary measure to stop following animation from constantly going into an idle state every time it pops into place
@@ -548,6 +548,26 @@ public class Movement : MonoBehaviour
         else {
 //            Debug.Log("Finished moving!");
             this.transform.position = intendedPosition;
+
+			//Below might break things? This was added to get Brawler Wight to use idle states, though Marauder works without it somehow
+			if (moveDir == directions.Up)
+			{
+				_animator.Play(Animator.StringToHash("IdleUp"));
+			}
+			else if (moveDir == directions.Down)
+			{
+				_animator.Play(Animator.StringToHash("IdleDown"));
+			}
+			else if (moveDir == directions.Right)
+			{
+				_animator.Play(Animator.StringToHash("IdleRight"));
+			}
+			else if (moveDir == directions.Left)
+			{
+				//                _animator.Play(Animator.StringToHash("IdleLeft"));
+				_animator.Play(Animator.StringToHash("IdleRight"));
+			}
+
 			StopForcedMove(true);
             //            inputDelay = 0.3f;
 			ResetFollowList(); //to make sure we stay at our position

@@ -11,7 +11,7 @@ public class AIBase : MonoBehaviour {
 
 	private Vector2 originLocation;
 
-	private bool bWander = true;
+	public bool bWander = true; //turn off for hidden enemies. Note that this only affects enemies before combat at present
 
 	[System.Serializable] //temporary for debugging purposes
 	private struct WanderBoundaries
@@ -43,13 +43,18 @@ public class AIBase : MonoBehaviour {
 
 	private bool bWaitingOnCombatStart = false; //for when going to position and waiting on the combat to start. Prevents wandering overlapping
 
+	private bool bShuffleLeft = true; //for shuffling
+
 	// Use this for initialization
 	void Start()
 	{
 		_enemy = GetComponent<Enemy>();
 		_movement = GetComponent<Movement> ();
+		PostStart ();
 	}
-	
+
+	public virtual void PostStart(){} //for extending Start
+
 	// Update is called once per frame
 	void Update () {
 		if (bHold) {
@@ -71,6 +76,7 @@ public class AIBase : MonoBehaviour {
 						
 			CombatUpdate ();
 		} else if (bWander) {
+			//for wandering around outside combat
 			Wander ();
 		} else {
 			//do nothing
@@ -204,6 +210,56 @@ public class AIBase : MonoBehaviour {
 
 
 	}
+
+	//Similar to wander, but used horizontally
+	public void Shuffle (){
+		if (wanderState == 0) {
+			//decision making
+			wanderPos = this.transform.position;
+			if (bShuffleLeft) {
+				wanderPos.x -= 2;
+				if (wanderPos.x < bounds.minX + 0.5f) {
+					wanderPos.x = bounds.minX + 0.5f;
+				}
+					
+			} else {
+				wanderPos.x += 2;
+				if (wanderPos.x > bounds.maxX - 0.5f) {
+					wanderPos.x = bounds.maxX - 0.5f;
+				}
+			}
+
+			//send to movement script
+			_movement.StartForcedMove (wanderPos);
+			//temp collision detection
+			_movement.GetForcedSender (this.gameObject);
+
+			wanderState = 1;
+
+		} else if (wanderState == 1) {
+			//movetimer
+//			moveTimerCurrent += Time.deltaTime;
+//			if (moveTimerCurrent >= moveTimer) {
+//				//we're trying to move to an inaccessable location, so continue from here
+//				moveTimerCurrent = 0f;
+//
+//				_movement.StopForcedMove (false);
+//				wanderState = 2;
+//			}
+
+		} else if (wanderState == 2) {
+			//waittimer
+			waitTimerCurrent += Time.deltaTime;
+			if (waitTimerCurrent >= waitTimer) {
+				waitTimerCurrent = 0f;
+				wanderState = 0;
+				bShuffleLeft = !bShuffleLeft;
+			}
+		}
+
+
+	}
+
 	//Called by Movement to signify we hit the end of a position
 	private void MoveComplete(){
 //		Debug.Log ("Wandered into position!");
@@ -233,11 +289,12 @@ public class AIBase : MonoBehaviour {
 	}
 
 	//Overwritten by specific AI
-	public virtual void CombatUpdate(){
+	public virtual void CombatUpdate(){}
 
+	public virtual void ResumeWander(){
+		//when an enemy is hit, if they don't have a waittimer active in wanderState 1, they'll hang there
+		wanderState = 2;
 	}
-
-	public virtual void ResumeWander(){}
 
 	public bool BHold {
 		set {

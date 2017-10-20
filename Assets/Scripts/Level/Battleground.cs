@@ -36,6 +36,8 @@ public class Battleground : MonoBehaviour
 
     private float alphaColor = 1.0f; //for temporary blink
 
+	public bool bHidden = false; //for if the enemies are a surprise, like the Wights
+
     // Use this for initialization
     void Start()
     {
@@ -94,8 +96,16 @@ public class Battleground : MonoBehaviour
             enemies[i].GetComponent<Movement>().StopForcedMove(false);
             enemies[i].GetComponent<AIBase>().CombatStart(bPlayersFightRight);// tells facing direction
             enemies[i].GetComponent<AIBase>().BWaitingOnCombatStart = true; //get them to not wander
-            enemies[i].GetComponent<Movement>().GetForcedSender(this.gameObject);
-            enemies[i].GetComponent<Movement>().StartForcedMove(enemyPosList[i].transform.position);
+			//for hidden enemies
+			if (bHidden) {
+				enemies [i].transform.position = enemyPosList [i].transform.position; //snap to position
+				MoveComplete ();
+			} else {
+				enemies [i].GetComponent<Movement> ().GetForcedSender (this.gameObject);
+				enemies [i].GetComponent<Movement> ().StartForcedMove (enemyPosList [i].transform.position);
+			}
+
+
         }
 
     }
@@ -155,6 +165,9 @@ public class Battleground : MonoBehaviour
                 blinkCurrent = 0;
             }
             Debug.Log("Done blinking!");
+
+			//Made hidden enemies hide again here
+
         }
 
     }
