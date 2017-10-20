@@ -2103,6 +2103,53 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1001 &273712483
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2019905026}
+    m_Modifications:
+    - target: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.4300542
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.86886156
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8b6d0c0a6f27df4428f32dd1882d51ef, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &273712484 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4073735006074028, guid: 8b6d0c0a6f27df4428f32dd1882d51ef,
+    type: 2}
+  m_PrefabInternal: {fileID: 273712483}
 --- !u!1 &280779727
 GameObject:
   m_ObjectHideFlags: 0
@@ -13818,6 +13865,7 @@ Transform:
   - {fileID: 1348916363}
   - {fileID: 1890652099}
   - {fileID: 2137197790}
+  - {fileID: 273712484}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
