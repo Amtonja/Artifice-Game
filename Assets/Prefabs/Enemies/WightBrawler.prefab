@@ -214,9 +214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fca6c75fa83fe4f92ac98196fc34d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 11400000, guid: da4525d1898bcde4cb9b91af07e67557, type: 2}
-  secondaryWeapon: {fileID: 11400000, guid: 51f4582160913f64580f5a44d9104fcb, type: 2}
-  armor: {fileID: 11400000, guid: 77409b8632e605047961115bd63bdb4f, type: 2}
+  primaryWeapon: {fileID: 11400000, guid: 6e15a8c9bed9ffb4ea15dd0d73b72f7e, type: 2}
+  secondaryWeapon: {fileID: 11400000, guid: 6e15a8c9bed9ffb4ea15dd0d73b72f7e, type: 2}
+  armor: {fileID: 11400000, guid: cebd24bc37154924e8c58a78e5296cc7, type: 2}
 --- !u!114 &114380923000093370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -234,7 +234,7 @@ MonoBehaviour:
   footstepSFX: {fileID: 8300000, guid: 04e334277583d7e4baf0962b37b6447b, type: 3}
   takeDamageSFX: {fileID: 8300000, guid: 793266847e4397a4da3da045e72ef3ff, type: 3}
   deathSFX: {fileID: 8300000, guid: b96bb3e8d83b80c43b8222b9fa7b60f6, type: 3}
-  baseStats: {fileID: 11400000, guid: 659a8f015d26d2340b17ddc532c873f5, type: 2}
+  baseStats: {fileID: 11400000, guid: dffbf770d496e20418d210cc25973947, type: 2}
   myRes:
     bBlunt: 0
     bPiercing: 0

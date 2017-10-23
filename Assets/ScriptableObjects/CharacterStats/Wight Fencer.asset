@@ -12,15 +12,11 @@ MonoBehaviour:
   m_Name: Wight Fencer
   m_EditorClassIdentifier: 
   characterName: Wight Fencer
-  startingLevel: 1
-  attack: 7
-  defense: 7
-  magic: 0
+  attack: 11
+  defense: 8
+  magic: 5
   magicDefense: 5
-  speed: 6
-  maxHealth: 35
+  speed: 8
+  maxHealth: 55
   xpValue: 50
-  primaryDamage: 1
-  secondaryDamage: 1
-  damageWeakness: 0
   spells: []
