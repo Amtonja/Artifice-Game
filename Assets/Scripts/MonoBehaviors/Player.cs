@@ -13,7 +13,7 @@ public class Player : CombatEntity
 
     private Gear equipment;
     private Weapon activeWeapon;
-    
+
     // Use this for initialization
     void Awake()
     {
@@ -122,7 +122,7 @@ public class Player : CombatEntity
 
     public void EndWeaponAttack()
     {
-        if(!enabled)
+        if (!enabled)
         {
             return;
         }
@@ -537,10 +537,10 @@ public class Player : CombatEntity
         //		move.ForceLock (false);
         //GetComponent<Movement>().ForceLock(false);
         base.ExitCombat();
-        AgilityBarValue = 0f;
-        MagicBarValue = 0f;
+        //AgilityBarValue = 0f;
+        //MagicBarValue = 0f;
         RageBarValue = 0f;
-        SpecialBarValue = 0f;
+        //SpecialBarValue = 0f;
     }
 
     public override void TakeDamage(int _damage)

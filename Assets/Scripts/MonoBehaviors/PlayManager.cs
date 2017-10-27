@@ -82,6 +82,8 @@ public class PlayManager : MonoBehaviour
 
 	public GameObject flagManager;
 
+    public GameObject menu;
+
     void Start()
     {
         exploreMode = true;
@@ -103,10 +105,15 @@ public class PlayManager : MonoBehaviour
         //This update loop contributes exclusively towards combat and combat-related processes.
         if (exploreMode)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetButtonDown("Submit"))
             {
                 InteractCheck();
             }
+
+            if (Input.GetButtonDown("Menu") && !DialogueManager.IsConversationActive)
+            {
+                menu.SetActive(!menu.activeSelf);
+            }            
 
             //			Player target = party [0];
             //			Transform basePoint = target.transform.FindChild ("Base");

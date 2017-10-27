@@ -14,5 +14,7 @@ namespace Artifice.Characters
         
         //public List<WeaponAttack> weaponAttacks;
         public List<Spell> spells;
+
+        public Sprite menuPortrait;
     }
 }
