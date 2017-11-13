@@ -111,7 +111,7 @@ public class Movement : MonoBehaviour
     {
 
         //If we're in combat or a cutscene, skip everything
-		if (bForceLock || bAnimating || bDisableInput) { return; }
+		if (bForceLock || bAnimating) { return; }
 
         //		if (PlayManager.instance.ExploreMode) {
         //			return;
@@ -127,7 +127,7 @@ public class Movement : MonoBehaviour
             ForceMove();
             return;
         }
-        if (entity.InCombat) { return; }
+		if (entity.InCombat  || bDisableInput) { return; }
 
         //skip everything if we're just forced to face a direction
         if (bForceFace)

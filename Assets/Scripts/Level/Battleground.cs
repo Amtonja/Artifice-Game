@@ -89,6 +89,7 @@ public class Battleground : MonoBehaviour
             party[i].GetComponent<Movement>().GetForcedSender(this.gameObject);
             party[i].GetComponent<Movement>().StartForcedMove(playerPosList[i].transform.position);
             party[i].GetComponent<Movement>().BIgnoreFollow = true;
+			party [i].GetComponent<Movement> ().DisableInput (true);//so they can't move when in position
         }
 
         for (int i = 0; i < enemies.Count; i++)
@@ -122,6 +123,7 @@ public class Battleground : MonoBehaviour
         for (int i = 0; i < party.Length; i++)
         {
             party[i].GetComponent<Movement>().BIgnoreFollow = false;
+			party [i].GetComponent<Movement> ().DisableInput (false);//so they can't move when in position
         }
     }
 
@@ -190,6 +192,9 @@ public class Battleground : MonoBehaviour
                 else {
                     party[i].transform.localScale = new Vector3(-1, 1, 1);
                 }
+
+				//Go ahead and re-enable input so we don't have to mess with the combat loop - we can just add it there later if there's an issue
+				party [i].GetComponent<Movement> ().DisableInput (false);//so they can't move when in position
 
             }
             //Later change to send the AI script a message to tel them what direction they need to face to attack for when they wander
