@@ -84,6 +84,8 @@ public class PlayManager : MonoBehaviour
 
     public GameObject menu;
 
+    private Inventory inventory;
+
     void Start()
     {
         exploreMode = true;
@@ -96,6 +98,7 @@ public class PlayManager : MonoBehaviour
         //groupCombatUI.SetActive(false);
 
 		flagManager = GameObject.Find ("SceneFlagManager");
+        Inventory = GetComponent<Inventory>();
     }
 
 
@@ -511,6 +514,19 @@ public class PlayManager : MonoBehaviour
         set
         {
             currentBattleground = value;
+        }
+    }
+
+    public Inventory Inventory
+    {
+        get
+        {
+            return inventory;
+        }
+
+        set
+        {
+            inventory = value;
         }
     }
 

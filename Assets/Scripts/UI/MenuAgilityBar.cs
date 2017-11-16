@@ -10,6 +10,14 @@ public class MenuAgilityBar : MonoBehaviour
     {
         Image bar = GetComponent<Image>();
         CharacterDisplay cd = GetComponentInParent<CharacterDisplay>();
+        if (cd == null)
+        {
+            CharacterSelectButton csb = GetComponentInParent<CharacterSelectButton>();
+            if (csb != null && csb.Character != null)
+            {
+                bar.fillAmount = csb.Character.AgilityBarValue / csb.Character.AgilityBarTarget;
+            }
+        }
         if (cd != null && cd.Character != null)
         {
             bar.fillAmount = cd.Character.AgilityBarValue / cd.Character.AgilityBarTarget;

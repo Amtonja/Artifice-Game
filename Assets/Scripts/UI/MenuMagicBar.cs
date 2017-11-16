@@ -10,6 +10,14 @@ public class MenuMagicBar : MonoBehaviour
     {
         Image bar = GetComponent<Image>();
         CharacterDisplay cd = GetComponentInParent<CharacterDisplay>();
+        if (cd == null)
+        {
+            CharacterSelectButton csb = GetComponentInParent<CharacterSelectButton>();
+            if (csb != null && csb.Character != null)
+            {
+                bar.fillAmount = csb.Character.MagicBarValue / csb.Character.MagicBarTarget;
+            }
+        }
         if (cd != null && cd.Character != null)
         {
             bar.fillAmount = cd.Character.MagicBarValue / cd.Character.MagicBarTarget;

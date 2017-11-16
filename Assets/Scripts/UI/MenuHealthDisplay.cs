@@ -6,13 +6,26 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Text))]
 public class MenuHealthDisplay : MonoBehaviour
 {
+    private Player character;
+    private Text healthDisplay;
+
     void Init()
     {
-        Text healthDisplay = GetComponent<Text>();
+        healthDisplay = GetComponent<Text>();
         CharacterDisplay cd = GetComponentInParent<CharacterDisplay>();
+        if (cd == null)
+        {
+            CharacterSelectButton csb = GetComponentInParent<CharacterSelectButton>();
+            Character = csb.Character;
+            if (csb != null && csb.Character != null)
+            {
+                healthDisplay.text = Character.Health + " / " + Character.Stats.maxHealth;
+            }
+        }
         if (cd != null && cd.Character != null)
         {
-            healthDisplay.text = cd.Character.Health + " / " + cd.Character.Stats.maxHealth;
+            Character = cd.Character;
+            healthDisplay.text = Character.Health + " / " + Character.Stats.maxHealth;
         }
     }
 
@@ -24,5 +37,26 @@ public class MenuHealthDisplay : MonoBehaviour
     void CharacterDisplayChange()
     {
         Init();
-    }    
+    }
+
+    void Update()
+    {
+        if (Character != null && healthDisplay != null && Character.HealthChanged)
+        {
+            healthDisplay.text = Character.Health + " / " + Character.Stats.maxHealth;
+        }
+    }
+
+    public Player Character
+    {
+        get
+        {
+            return character;
+        }
+
+        set
+        {
+            character = value;
+        }
+    }
 }

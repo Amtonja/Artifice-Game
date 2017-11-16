@@ -103,6 +103,8 @@ namespace Artifice.Characters
             health += _health;
             health = Mathf.Clamp(health, 0, Stats.maxHealth);
             PlayManager.instance.CreatePopupText(_health.ToString(), transform, Color.green, Vector3.zero);
+
+            Debug.Log(name + " was healed for " + _health);
         }
 
 		//Quietly resets to max health without a popup. Useful for, say, resetting Evans' health before he turns on his party in Oran

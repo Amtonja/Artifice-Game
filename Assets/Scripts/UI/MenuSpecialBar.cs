@@ -10,6 +10,14 @@ public class MenuSpecialBar : MonoBehaviour {
     {
         Image bar = GetComponent<Image>();
         CharacterDisplay cd = GetComponentInParent<CharacterDisplay>();
+        if (cd == null)
+        {
+            CharacterSelectButton csb = GetComponentInParent<CharacterSelectButton>();
+            if (csb != null && csb.Character != null)
+            {
+                bar.fillAmount = csb.Character.SpecialBarValue / csb.Character.SpecialBarTarget;
+            }
+        }
         if (cd != null && cd.Character != null)
         {
             bar.fillAmount = cd.Character.SpecialBarValue / cd.Character.SpecialBarTarget;

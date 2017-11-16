@@ -10,6 +10,14 @@ public class MenuNameDisplay : MonoBehaviour
     {
         Text nameDisplay = GetComponent<Text>();
         CharacterDisplay cd = GetComponentInParent<CharacterDisplay>();
+        if (cd == null)
+        {
+            CharacterSelectButton csb = GetComponentInParent<CharacterSelectButton>();
+            if (csb != null && csb.Character != null)
+            {
+                nameDisplay.text = csb.Character.Stats.characterName;
+            }
+        }
         if (cd != null && cd.Character != null)
         {
             nameDisplay.text = cd.Character.Stats.characterName;

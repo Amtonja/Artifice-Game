@@ -3,34 +3,51 @@ using System.Collections;
 using System.Collections.Generic;
 using Artifice.Characters;
 using UnityEngine;
+using System.Linq;
+using UnityEditor;
 
 public class Inventory : MonoBehaviour
 {
-    private Dictionary<Item, int> consumables;
+    private Dictionary<Consumable, int> consumables;
     private List<Item> equipables;
     private List<Item> keyItems;
     private static int StackSize = 99;
-    
+
+    private bool tempFlag = false;
+
     // Use this for initialization
     void Start()
     {
+        Consumables = new Dictionary<Consumable, int>();
+        equipables = new List<Item>();
+        keyItems = new List<Item>();
 
+        // TESTING!
+        HealthPotion potion = Instantiate(Resources.Load("ScriptableObjects/Items/Potion")) as HealthPotion;
+        ReceiveConsumable(potion, 5);
+
+        HealthPotion potion2 = Instantiate(Resources.Load("ScriptableObjects/Items/Aux Potion")) as HealthPotion;        
+        ReceiveConsumable(potion2, 4); 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!tempFlag)
+        {
+            GameObject.Find("Hurley").GetComponent<Player>().TakeDamage(300);
+            tempFlag = true;
+        }   
     }
 
-    public void GiveConsumable(Inventory recipient, Item item, int quantity)
+    public void GiveConsumable(Inventory recipient, Consumable item, int quantity)
     {
-        if (consumables.ContainsKey(item))
+        if (Consumables.Keys.Any(c => c.itemName == item.itemName))
         {
-            consumables[item]--;
-            if (consumables[item] == 0)
+            Consumables[item]--;
+            if (Consumables[item] == 0)
             {
-                consumables.Remove(item);
+                Consumables.Remove(item);
             }
         }
         else
@@ -40,13 +57,13 @@ public class Inventory : MonoBehaviour
         recipient.ReceiveConsumable(item, quantity);
     }
 
-    public void ReceiveConsumable(Item item, int quantity)
+    public void ReceiveConsumable(Consumable item, int quantity)
     {
-        if (consumables.ContainsKey(item))
+        if (Consumables.Keys.Any(c => c.itemName == item.itemName))
         {
-            if (consumables[item] < StackSize)
+            if (Consumables[item] < StackSize)
             {
-                consumables[item]++;
+                Consumables[item] += quantity;
             }
             else
             {
@@ -55,20 +72,20 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            consumables.Add(item, 1);
+            Consumables.Add(item, quantity);
         }
     }
 
-    public void UseConsumable(Item item)
+    public void UseConsumable(Consumable item, CombatEntity target)
     {
-        if (consumables.ContainsKey(item))
+        if (Consumables.Keys.Any(c => c.itemName == item.itemName))
         {
-            consumables[item]--;
-            if (consumables[item] == 0)
+            Consumables[item]--;
+            if (Consumables[item] == 0)
             {
-                consumables.Remove(item);
+                Consumables.Remove(item);
             }
-            // call item's use method
+            item.OnUse(target);
         }
         else
         {
@@ -155,4 +172,19 @@ public class Inventory : MonoBehaviour
             keyItems.Add(item);
         }
     }
+
+    #region C# Properties
+    public Dictionary<Consumable, int> Consumables
+    {
+        get
+        {
+            return consumables;
+        }
+
+        set
+        {
+            consumables = value;
+        }
+    }
+    #endregion
 }
