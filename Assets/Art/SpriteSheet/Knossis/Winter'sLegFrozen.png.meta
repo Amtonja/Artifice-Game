@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 6e407bfc6357d4c4ea5e431accf19d5d
-timeCreated: 1501796423
+guid: 8575213e638c48d47a627055fec1eab8
+timeCreated: 1511563916
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Winter'sLegs_0
-    21300002: Winter'sLegs_1
-    21300004: Winter'sLegs_2
-    21300006: Winter'sLegs_3
-    21300008: Winter'sLegs_4
+    21300000: Winter'sLegFrozen_0
+    21300002: Winter'sLegFrozen_1
+    21300004: Winter'sLegFrozen_2
+    21300006: Winter'sLegFrozen_3
+    21300008: Winter'sLegFrozen_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -45,7 +45,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 50
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -83,7 +83,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Winter'sLegs_0
+      name: Winter'sLegFrozen_0
       rect:
         serializedVersion: 2
         x: 52
@@ -96,7 +96,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Winter'sLegs_1
+      name: Winter'sLegFrozen_1
       rect:
         serializedVersion: 2
         x: 263
@@ -109,7 +109,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Winter'sLegs_2
+      name: Winter'sLegFrozen_2
       rect:
         serializedVersion: 2
         x: 503
@@ -122,7 +122,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Winter'sLegs_3
+      name: Winter'sLegFrozen_3
       rect:
         serializedVersion: 2
         x: 732
@@ -135,7 +135,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Winter'sLegs_4
+      name: Winter'sLegFrozen_4
       rect:
         serializedVersion: 2
         x: 1086
